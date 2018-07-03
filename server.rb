@@ -17,6 +17,21 @@ class SealApp < Sinatra::Base
     end
   end
 
+  post '/add-member/:team_name/:team_member/:secret' do
+    if params[:secret] == ENV["SEAL_SECRET"]
+      Seal.new(params[:team_name]).bark
+      "Seal received message with #{params[:team_name]} team name"
+    end
+  end
+
+  post '/add-team/:team_name/:secret' do
+    if params[:secret] == ENV["SEAL_SECRET"]
+      team = Team.create!(name: "#{params[:team_name]}")
+      Seal.new(params[:team_name]).bark
+      "Seal received message with #{params[:team_name]} team name"
+    end
+  end
+
   post '/bark-quotes/:team_name' do
     Seal.new(params[:team_name], "quotes").bark
     "Seal received message with #{params[:team_name]} team name"

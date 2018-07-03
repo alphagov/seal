@@ -1,0 +1,11 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: seal-development
+  pool: 2
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: seal-production
+  pool: 2
