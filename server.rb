@@ -1,3 +1,4 @@
+require 'net/http'
 require 'sinatra'
 require './lib/seal'
 require './lib/github_fetcher'
@@ -22,14 +23,31 @@ class SealApp < Sinatra::Base
     "Seal received message with #{params[:team_name]} team name"
   end
 
-  post '/slack-bark' do
-    slack_signing_secret = request.env["SLACK_SIGNING_SECRET"]
-    request_payload = JSON.parse(request.body.read)
-    "this is working - request_payload #{request_payload} - slack_signing_secret #{request.env["SLACK_SIGNING_SECRET"]}"
-    if params[:secret] == ENV["SEAL_SECRET"]
-      Seal.new(params[:team_name]).bark
-      "Seal received message with #{params[:team_name]} team name"
-    end
+  get '/slack-bark' do
+    uri = URI('https://moody-seal-pr-25.herokuapp.com/slack-bark')
+    response = Net::HTTP.get(uri)
+    "#{response}"
+    # response = HTTParty.get('https://moody-seal-pr-25.herokuapp.com/slack-bark')
+    # puts "response body"
+    # puts response.body
+    # puts "response code"
+    # response.code
+    # puts "response message"
+    # response.message
+    # puts "response headers"
+    # response.headers
+    # puts "response headers inspect"
+    # response.headers.inspect
+
+    "end"
+    #
+    #  - request_payload #{request_payload} - slack_signing_secret #{request.env["SLACK_SIGNING_SECRET"]}"
+    # slack_signing_secret = request.env["SLACK_SIGNING_SECRET"]
+    # request_payload = JSON.parse(request.body.read)
+    # if params[:secret] == ENV["SEAL_SECRET"]
+    #   Seal.new(params[:team_name]).bark
+    #   "Seal received message with #{params[:team_name]} team name"
+    # end
   end
 
   post '/add-team' do
