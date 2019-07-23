@@ -211,3 +211,6 @@ govuk-step-by-step:
     - "[PROTOTYPE]"
     - WIP
     - "[WIP]"
+
+  exclude_repos:
+    - "gds-way"
