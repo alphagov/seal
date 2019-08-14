@@ -95,20 +95,13 @@ govuk-taxonomy:
     - WIP
     - "[WIP]"
 
-govuk-pub-workflow:
+govuk-notifications:
   members:
     - 1pretz1
-    - alex-ju
-    - benthorner
-    - brucebolt
-    - emmabeynon
-    - JonathanHallam
     - kevindew
-    - Tetrino
-    - theseanything
 
   channel:
-    "#govuk-pubworkflow-dev"
+    "#govuk-notifications"
 
   exclude_titles:
     - "DO NOT MERGE"
