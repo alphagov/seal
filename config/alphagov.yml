@@ -95,13 +95,15 @@ govuk-taxonomy:
     - WIP
     - "[WIP]"
 
-govuk-notifications:
+brexit-notifications:
   members:
     - 1pretz1
+    - eamonn-mcelroy-gds
     - kevindew
+    - thomasleese
 
   channel:
-    "#govuk-notifications"
+    "#brexit-notifications"
 
   exclude_titles:
     - "DO NOT MERGE"
