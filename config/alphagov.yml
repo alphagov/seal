@@ -193,7 +193,7 @@ govuk-step-by-step:
     - VitalieMogoreanu
 
   channel:
-    "#govuk-step-by-step"
+    "#govuk-step-by-step-tooling"
 
   compact: true
 
