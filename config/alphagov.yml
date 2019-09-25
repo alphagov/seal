@@ -62,6 +62,7 @@ digitalmarketplace:
     - "digitalmarketplace-user-frontend"
     - "digitalmarketplace-utils"
     - "digitalmarketplace-visual-regression"
+    - "govuk-frontend-jinja"
 
   compact: false
 
