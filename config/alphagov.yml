@@ -131,9 +131,7 @@ govuk-taxonomy:
 
 brexit-notifications:
   members:
-    - 1pretz1
     - eamonn-mcelroy-gds
-    - kevindew
     - thomasleese
 
   channel:
@@ -220,12 +218,14 @@ govuk-pay:
 
 govuk-step-by-step:
   members:
+    - 1pretz1
     - AgaDufrat
     - alex-ju
     - brucebolt
     - ChrisBAshton
     - erino
     - JonathanHallam
+    - kevindew
     - leenagupte
     - VitalieMogoreanu
 
