@@ -129,18 +129,6 @@ govuk-taxonomy:
     - WIP
     - "[WIP]"
 
-brexit-notifications:
-  members:
-    - eamonn-mcelroy-gds
-    - thomasleese
-
-  channel:
-    "#brexit-notifications"
-
-  exclude_titles:
-    - "DO NOT MERGE"
-    - "WIP"
-
 govuk-licensing:
   members:
     - PeteLeaman
