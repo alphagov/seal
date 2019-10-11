@@ -91,16 +91,14 @@ govuk-frontend-a11y:
 
 govuk-searchandnav:
   members:
-    - andysellick
     - barrucadu
     - bilbof
-    - injms
     - hannako
-    - karlbaker02
-    - koetsier
+    - kr8n3r
+    - laurentqro
     - SamJamCul
     - sihugh
-    - VitalieMogoreanu
+    - Tetrino
 
   channel:
     "#govuk-searchandnav"
