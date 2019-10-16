@@ -49,6 +49,7 @@ digitalmarketplace:
     - "digitalmarketplace-frameworks"
     - "digitalmarketplace-frontend-toolkit"
     - "digitalmarketplace-functional-tests"
+    - "digitalmarketplace-govuk-frontend"
     - "digitalmarketplace-jenkins"
     - "digitalmarketplace-logdia"
     - "digitalmarketplace-manual"
