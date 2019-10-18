@@ -67,6 +67,21 @@ digitalmarketplace:
 
   compact: false
 
+govuk-data-labs:
+  members:
+    - karlbaker02
+    - oscarwyatt
+    - ff-l
+
+  channel:
+    "#govuk-data-labs"
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
+
 govuk-frontend-a11y:
   members:
     - chao-xian

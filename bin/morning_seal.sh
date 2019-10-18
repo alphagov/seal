@@ -3,6 +3,7 @@
 teams=(
   design-system-dev
   digitalmarketplace
+  govuk-data-labs
   govuk-frontend-a11y
   govuk-data-informed
   govuk-searchandnav
