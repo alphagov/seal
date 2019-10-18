@@ -67,6 +67,21 @@ digitalmarketplace:
 
   compact: false
 
+govuk-data-labs:
+  members:
+    - karlbaker02
+    - oscarwyatt
+    - ff-l
+
+  channel:
+    "#govuk-data-labs"
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
+
 govuk-frontend-a11y:
   members:
     - chao-xian
@@ -112,22 +127,6 @@ govuk-searchandnav:
     - WIP
     - "[WIP]"
 
-govuk-taxonomy:
-  members:
-    - oscarwyatt
-    - koetsier
-
-  channel:
-    "#govuk-taxonomy"
-
-  compact: true
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
-
 govuk-licensing:
   members:
     - PeteLeaman
@@ -154,6 +153,7 @@ govuk-platform-health:
     - kentsanggds
     - MahmudH
     - MuriloDalRi
+    - nicholsj
     - thomasleese
 
   channel:
