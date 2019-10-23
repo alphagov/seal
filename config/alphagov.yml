@@ -203,21 +203,19 @@ govuk-pay:
     - "[DO NOT MERGE]"
     - WIP
 
-govuk-step-by-step:
+govuk-pub-workflow:
   members:
     - 1pretz1
     - AgaDufrat
     - alex-ju
     - brucebolt
     - ChrisBAshton
-    - erino
     - JonathanHallam
     - kevindew
     - leenagupte
-    - VitalieMogoreanu
 
   channel:
-    "#govuk-step-by-step-tooling"
+    "#govuk-pubworkflow-dev"
 
   compact: true
 
