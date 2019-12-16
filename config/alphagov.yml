@@ -143,6 +143,7 @@ govuk-licensing:
 govuk-platform-health:
   members:
     - AlanGabbianelli
+    - benjamineskol
     - bevanloon
     - callumknights
     - cbaines
