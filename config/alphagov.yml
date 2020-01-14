@@ -68,9 +68,14 @@ digitalmarketplace:
 
 govuk-data-labs:
   members:
-    - karlbaker02
-    - oscarwyatt
+    - bevanloon
     - ff-l
+    - karlbaker02
+    - mammykins
+    - nacnudus
+    - oscarwyatt
+    - suganya-s
+    - trvllngmn
 
   channel:
     "#govuk-data-labs"
@@ -144,7 +149,6 @@ govuk-platform-health:
   members:
     - AlanGabbianelli
     - benjamineskola
-    - bevanloon
     - callumknights
     - cbaines
     - deborahchua
