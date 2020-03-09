@@ -115,8 +115,6 @@ govuk-searchandnav:
     - barrucadu
     - bilbof
     - hannako
-    - kr8n3r
-    - SamJamCul
     - sihugh
     - Tetrino
 
@@ -130,6 +128,18 @@ govuk-searchandnav:
     - "[PROTOTYPE]"
     - WIP
     - "[WIP]"
+
+  quotes:
+    - Stay at home and rest up when you feel ill
+    - Work how you like to work
+    - It's ok to have an off day
+    - Take time to learn
+    - The vibe of the team should be chill
+    - Behold, the snack matrix
+    - I sense frustration. Do not be afraid to ask for help.
+    - When you lose, don't lose the lesson
+    - Mountains are again merely mountains
+    - Fear is the mind killer
 
 govuk-licensing:
   members:
