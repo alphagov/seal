@@ -11,8 +11,6 @@ teams=(
   govuk-pay
   govuk-platform-health
   govuk-pub-workflow
-  govuk-search-perf
-  govuk-step-by-step
   govuk-taxonomy
 )
 

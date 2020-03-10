@@ -5,6 +5,7 @@ teams=(
   govuk-data-informed
   govuk-licensing
   govuk-platform-health
+  govuk-searchandnav
   govuk-step-by-step
 )
 
