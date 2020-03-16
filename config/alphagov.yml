@@ -66,6 +66,42 @@ digitalmarketplace:
 
   compact: false
 
+govuk-corona-product:
+  members:
+    - andysellick
+    - DilwoarH
+    - hannako
+    - sihugh
+
+  channel:
+    "#govuk-corona-product"
+
+  compact: true
+
+  exclude_titles:
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
+
+govuk-coronavirus-notifications:
+  members:
+    - huwd
+    - koetsier
+    - laurentqro
+    - theseanything
+    - vanitabarrett
+
+  channel:
+    "#govuk-coronavirus-notifications"
+
+  compact: true
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
+
 govuk-data-labs:
   members:
     - bevanloon
