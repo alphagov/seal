@@ -126,7 +126,6 @@ govuk-data-labs:
 govuk-frontend-a11y:
   members:
     - chao-xian
-    - vanitabarrett
     - injms
     - maxgds
 
@@ -145,6 +144,11 @@ govuk-frontend-a11y:
     - "Be Excellent To Each Other!"
     - ":smiling-batman:"
     - "Don't be working if you're ill!"
+    - ":green_heart:"
+    - "It's okay to ask for help"
+    - "It's okay to depend on the team"
+    - "It's okay to take time to learn"
+    - "It's okay not know everything"
 
 govuk-searchandnav:
   members:
