@@ -17,7 +17,6 @@ design-system-dev:
 
 digitalmarketplace:
   members:
-    - benvand
     - lfdebrux
     - risicle
     - agalamatis
