@@ -258,15 +258,12 @@ govuk-pay:
 govuk-pub-workflow:
   members:
     - 1pretz1
-    - alex-ju
     - benthorner
-    - brucebolt
     - ChrisBAshton
     - emmabeynon
     - gclssvglx
     - JonathanHallam
     - kevindew
-    - leenagupte
     - Rosa-Fox
 
   channel:
@@ -282,3 +279,21 @@ govuk-pub-workflow:
 
   exclude_repos:
     - "gds-way"
+
+govuk-corona-services:
+  members:
+    - alex-ju
+    - bilbof
+    - brucebolt
+    - huwd
+    - injms
+    - issyl0
+    - leenagupte
+    - richardTowers
+
+  channel:
+    "#govuk-corona-services-tech"
+
+  exclude_title:
+    - "DO NOT MERGE"
+    - "🚧"
