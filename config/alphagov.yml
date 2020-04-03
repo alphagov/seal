@@ -149,20 +149,6 @@ govuk-frontend-a11y:
     - "It's okay to take time to learn"
     - "It's okay not know everything"
 
-govuk-licensing:
-  members:
-    - PeteLeaman
-    - SomniGiggles
-    - steven-radford
-    - chrispapto
-
-  channel:
-    "#govuk-licensing"
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[WIP]"
-
 govuk-platform-health:
   members:
     - AlanGabbianelli
