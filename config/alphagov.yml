@@ -84,7 +84,8 @@ govuk-corona-product:
 
 govuk-coronavirus-notifications:
   members:
-    - huwd
+    - benthorner
+    - kevindew
     - koetsier
     - laurentqro
     - theseanything
@@ -151,18 +152,21 @@ govuk-frontend-a11y:
 
 govuk-platform-health:
   members:
+    - 1pretz1
     - AlanGabbianelli
     - barrucadu
     - beccapearce
     - benjamineskola
     - callumknights
     - cbaines
+    - ChrisBAshton
     - deborahchua
     - edwardkerry
     - kentsanggds
     - MahmudH
     - MuriloDalRi
     - nicholsj
+    - Tetrino
     - thomasleese
 
   channel:
@@ -212,42 +216,19 @@ govuk-pay:
     - "[DO NOT MERGE]"
     - WIP
 
-govuk-pub-workflow:
-  members:
-    - 1pretz1
-    - benthorner
-    - ChrisBAshton
-    - emmabeynon
-    - gclssvglx
-    - JonathanHallam
-    - kevindew
-    - Rosa-Fox
-    - Tetrino
-
-  channel:
-    "#govuk-pubworkflow-dev"
-
-  compact: true
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
-
-  exclude_repos:
-    - "gds-way"
-
 govuk-corona-services:
   members:
     - alex-ju
     - bilbof
     - brucebolt
+    - gclssvglx
     - huwd
     - injms
     - issyl0
+    - JonathanHallam
     - leenagupte
     - richardTowers
+    - Rosa-Fox
 
   channel:
     "#govuk-corona-services-tech"
