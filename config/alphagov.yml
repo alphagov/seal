@@ -2,11 +2,36 @@
 design-system-dev:
   members:
     - 36degrees
-    - amyhupe
-    - dashouse
+    - christopherthomasdesign
     - hannalaakso
-    - nickcolley
+    - joelanman
+    - kellylee-gds
+    - m-green
+    - RosieClayton
+    - StephenGill
     - timpaul
+
+  include_repos:
+    - accessible-autocomplete
+    - design-system-support
+    - design-system-team-credentials
+    - design-system-team-docs
+    - design-system-team-internal
+    - design-system-team-labels
+    - govuk-design-system
+    - govuk-design-system-architecture
+    - govuk-design-system-backlog
+    - govuk-frontend
+    - govuk-frontend-docs
+    - govuk-prototype-kit
+    - govuk-prototype-kit-docs
+    - govuk_elements
+    - govuk_elements_rails
+    - govuk_frontend_toolkit
+    - govuk_frontend_toolkit_gem
+    - govuk_frontend_toolkit_npm
+    - govuk_template
+    - prototype-kit-training
 
   channel:
     "#design-system-dev"
@@ -14,6 +39,8 @@ design-system-dev:
   exclude_titles:
     - DO NOT MERGE
     - WIP
+
+  compact: true
 
 digitalmarketplace:
   members:
