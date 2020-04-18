@@ -1,4 +1,4 @@
-FROM ruby:2.6.5-alpine
+FROM ruby:2.6.6-alpine
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 RUN apk add --no-cache build-base
