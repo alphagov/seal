@@ -1,0 +1,14 @@
+name: Run Tests
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6'
+    - name: RSpec
+      run: |
+        bundle install
+        bundle exec rake
