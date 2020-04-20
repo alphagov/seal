@@ -8,7 +8,7 @@ jobs:
     - uses: actions/setup-ruby@v1
       with:
         ruby-version: '2.6'
-    - name: RSpec
+    - name: Install dependencies and run Rake
       run: |
         bundle install
         bundle exec rake
