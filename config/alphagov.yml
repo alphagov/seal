@@ -261,3 +261,11 @@ govuk-corona-services:
   exclude_title:
     - "DO NOT MERGE"
     - "🚧"
+    - "[WIP]"
+    - "[Do Not Merge]"
+
+  include_repos:
+    - govuk-coronavirus-business-volunteer-form
+    - govuk-coronavirus-find-support
+    - govuk-coronavirus-vulnerable-people-form
+    - govuk-developer-docs
