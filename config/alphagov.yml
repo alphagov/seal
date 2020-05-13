@@ -273,7 +273,7 @@ govuk-corona-services:
   channel:
     "#govuk-corona-services-tech"
 
-  exclude_title:
+  exclude_titles:
     - "DO NOT MERGE"
     - "🚧"
     - "[WIP]"
