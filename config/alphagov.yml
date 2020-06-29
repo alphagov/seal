@@ -193,9 +193,7 @@ govuk-datagovuk:
 
 govuk-platform-health:
   members:
-    - 1pretz1
     - AlanGabbianelli
-    - barrucadu
     - beccapearce
     - benjamineskola
     - callumknights
@@ -204,7 +202,6 @@ govuk-platform-health:
     - deborahchua
     - edwardkerry
     - kentsanggds
-    - MahmudH
     - MuriloDalRi
     - nicholsj
     - Tetrino
