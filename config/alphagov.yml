@@ -139,6 +139,32 @@ govuk-brexit-content-team:
     - WIP
     - "[WIP]"
 
+govuk-corona-services:
+  members:
+    - alex-ju
+    - gclssvglx
+    - GDSNewt
+    - JonathanHallam
+    - leenagupte
+    - reggieb
+    - Rosa-Fox
+    - steveholmes
+
+  channel:
+    "#govuk-corona-services-tech"
+
+  exclude_titles:
+    - "DO NOT MERGE"
+    - "🚧"
+    - "[WIP]"
+    - "[Do Not Merge]"
+
+  include_repos:
+    - govuk-coronavirus-business-volunteer-form
+    - govuk-coronavirus-find-support
+    - govuk-coronavirus-vulnerable-people-form
+    - govuk-developer-docs
+
 govuk-data-labs:
   members:
     - chao-xian
@@ -281,30 +307,19 @@ govuk-pay:
     - "[DO NOT MERGE]"
     - WIP
 
-govuk-corona-services:
+govuk-replatforming:
   members:
-    - alex-ju
     - bilbof
-    - gclssvglx
-    - GDSNewt
-    - injms
+    - deanwilson
     - issyl0
-    - JonathanHallam
-    - leenagupte
-    - Rosa-Fox
-    - steveholmes
+    - MahmudH
+    - richardTowers
+    - seb-szy
 
   channel:
-    "#govuk-corona-services-tech"
+    "#govuk-replatforming"
 
   exclude_titles:
-    - "DO NOT MERGE"
-    - "🚧"
+    - "[DO NOT MERGE]"
+    - WIP
     - "[WIP]"
-    - "[Do Not Merge]"
-
-  include_repos:
-    - govuk-coronavirus-business-volunteer-form
-    - govuk-coronavirus-find-support
-    - govuk-coronavirus-vulnerable-people-form
-    - govuk-developer-docs
