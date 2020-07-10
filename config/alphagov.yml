@@ -139,24 +139,6 @@ govuk-brexit-content-team:
     - WIP
     - "[WIP]"
 
-govuk-coronavirus-notifications:
-  members:
-    - benthorner
-    - chao-xian
-    - laurentqro
-    - vanitabarrett
-
-  channel:
-    "#govuk-coronavirus-notifications"
-
-  compact: true
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
-
 govuk-data-labs:
   members:
     - bevanloon
@@ -213,6 +195,24 @@ govuk-datagovuk:
 
   channel:
     "#govuk-datagovuk"
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
+
+govuk-notifications:
+  members:
+    - 1pretz1
+    - benthorner
+    - kevindew
+    - laurentqro
+
+  channel:
+    "#govuk-notifications-dev"
+
+  compact: true
 
   exclude_titles:
     - "[DO NOT MERGE]"
