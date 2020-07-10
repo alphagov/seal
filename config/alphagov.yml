@@ -160,6 +160,21 @@ govuk-data-labs:
     - WIP
     - "[WIP]"
 
+govuk-datagovuk:
+  members:
+    - kentsanggds
+    - maxgds
+    - risicle
+
+  channel:
+    "#govuk-datagovuk"
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
+
 govuk-frontend-a11y:
   members:
     - chao-xian
@@ -186,21 +201,6 @@ govuk-frontend-a11y:
     - "It's okay to depend on the team"
     - "It's okay to take time to learn"
     - "It's okay not know everything"
-
-govuk-datagovuk:
-  members:
-    - kentsanggds
-    - maxgds
-    - risicle
-
-  channel:
-    "#govuk-datagovuk"
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
 
 govuk-notifications:
   members:
