@@ -1,6 +1,7 @@
 #!/bin/bash
 
 teams=(
+  govuk-accounts
   govuk-corona-product
   govuk-coronavirus-notifications
   govuk-frontend-a11y
