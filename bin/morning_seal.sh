@@ -3,7 +3,7 @@
 teams=(
   design-system-dev
   digitalmarketplace
-  govuk-accounts
+  govuk-accounts-tech
   govuk-corona-product
   govuk-corona-services
   govuk-coronavirus-notifications

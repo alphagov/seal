@@ -94,22 +94,8 @@ digitalmarketplace:
   compact: false
 
 govuk-accounts:
-  members:
-    - andysellick
-    - barrucadu
-    - bevanloon
-    - brucebolt
-    - erino
-    - huwd
-
   channel:
     "#govuk-accounts"
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
 
   quotes:
     - "We put users first. We strive to create services that bring real value to our users and that meet their needs and expectations."
@@ -122,6 +108,24 @@ govuk-accounts:
     - "We work in the open so users and government colleagues know what we’re doing and why."
     - "We know we can't do this alone. We need to work with teams across GDS and government to succeed."
     - "We invest time and effort in increasing our understanding of the problems we’re working on. This will help us make things better for users and move the conversation about personalisation in government forward."
+
+govuk-accounts-tech:
+  members:
+    - andysellick
+    - barrucadu
+    - bevanloon
+    - brucebolt
+    - erino
+    - huwd
+
+  channel:
+    "#govuk-accounts-tech"
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
 
 govuk-brexit-content-team:
   members:
