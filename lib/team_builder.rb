@@ -23,7 +23,7 @@ class TeamBuilder
 
   def build_single_team(team_name)
     team = Team.new(apply_env(static_config[team_name.to_s] || {}))
-    if team.members.empty?
+    if team.channel.nil?
       []
     else
       [team]
