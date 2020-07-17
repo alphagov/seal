@@ -190,6 +190,21 @@ govuk-data-labs:
     - WIP
     - "[WIP]"
 
+  quotes:
+    - "Be Excellent To Each Other!"
+    - ":smiling-batman:"
+    - "Don't be working if you're ill!"
+    - ":green_heart:"
+    - "Remember to take into consideration that our colleagues may be having a hard time outside of work. Support them at a team and individual level."
+    - "Remember to avoid talking over each other during meetings, and be mindful of colleagues who wish to speak but have yet to do so."
+    - "Understand the diverse character types within our team and appreciate that some of us may prefer a description of a meeting in advance to allow time to prepare."
+    - "Keep conversations inclusive to the audience, ensuring that technical detail is fairly high level where possible."
+    - "Be mindful of the workload of others even if it does not impact yours directly."
+    - "Clarify the importance of attendance in certain meetings, outlining the purpose/objective, and where appropriate an agenda that helps us get to said outcome."
+    - "Give informal and continuous feedback especially if the feedback includes encouragement."
+    - "We're not 'working from home', we are _'working at home during a crisis_', so we need to take the time that we need during a working day."
+
+
 govuk-datagovuk:
   members:
     - kentsanggds
