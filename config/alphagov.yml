@@ -10,6 +10,7 @@ design-system-dev:
     - RosieClayton
     - StephenGill
     - timpaul
+    - vanitabarrett
 
   include_repos:
     - accessible-autocomplete
