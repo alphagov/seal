@@ -146,12 +146,9 @@ govuk-brexit-content-team:
 
 govuk-corona-services:
   members:
-    - alex-ju
-    - gclssvglx
     - GDSNewt
     - JonathanHallam
     - leenagupte
-    - reggieb
     - Rosa-Fox
     - steveholmes
 
@@ -163,12 +160,6 @@ govuk-corona-services:
     - "🚧"
     - "[WIP]"
     - "[Do Not Merge]"
-
-  include_repos:
-    - govuk-coronavirus-business-volunteer-form
-    - govuk-coronavirus-find-support
-    - govuk-coronavirus-vulnerable-people-form
-    - govuk-developer-docs
 
 govuk-data-labs:
   members:
