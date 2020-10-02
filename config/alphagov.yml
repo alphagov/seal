@@ -317,6 +317,7 @@ govuk-pay:
 
   exclude_titles:
     - "[DO NOT MERGE]"
+    - "[DRAFT]"
     - WIP
 
 govuk-replatforming:
