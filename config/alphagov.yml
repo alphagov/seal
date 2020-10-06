@@ -297,20 +297,28 @@ govuk-platform-health:
 
 govuk-pay:
   members:
-    - heathd
+    - adityapahuja
     - alexbishop1
-    - cobainc0
+    - antoniasimmons
     - danworth
+    - dasarindra
+    - dj-maisy
     - heathd
-    - jonheslop
+    - iqbalgds
+    - jonathanglassman
+    - katstevens
     - kbottla
     - mrlumbu
+    - niaaudrina
+    - nimalank7
     - oswaldquek
-    - SandorArpa
-    - stephencdaly
-    - jankowiakmaria
-    - sfount
+    - rjbaker
     - RoryMalcolm
+    - SandorArpa
+    - sfount
+    - stephencdaly
+    - stevenjmesser
+    - xander-gds
 
   channel:
     "#govuk-pay-tech"
