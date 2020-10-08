@@ -247,7 +247,7 @@ govuk-notifications:
     - kevindew
 
   channel:
-    "#govuk-notifications-dev"
+    "#govuk-notifications"
 
   compact: true
 
