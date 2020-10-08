@@ -6,7 +6,7 @@ teams=(
   govuk-accounts-tech
   govuk-corona-product
   govuk-corona-services
-  govuk-coronavirus-notifications
+  govuk-notifications
   govuk-data-labs
   govuk-frontend-a11y
   govuk-pay

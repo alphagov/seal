@@ -245,10 +245,9 @@ govuk-notifications:
     - 1pretz1
     - benthorner
     - kevindew
-    - laurentqro
 
   channel:
-    "#govuk-notifications-dev"
+    "#govuk-notifications"
 
   compact: true
 
