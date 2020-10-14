@@ -45,6 +45,7 @@ design-system-dev:
 
 digitalmarketplace:
   members:
+    - alex9smith
     - lfdebrux
     - gidsg
     - agalamatis
