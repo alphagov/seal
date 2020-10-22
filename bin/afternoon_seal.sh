@@ -1,6 +1,7 @@
 #!/bin/bash
 
 teams=(
+  digitalmarketplace-team
   govuk-accounts
   govuk-corona-product
   govuk-coronavirus-notifications
