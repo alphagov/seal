@@ -194,16 +194,20 @@ govuk-corona-services:
 
 govuk-data-labs:
   members:
+    - avisionh
     - chao-xian
-    - ff-l
+    - ESKYoung
+    - exfalsoquodlibet
     - karlbaker02
     - mammykins
     - nacnudus
     - oscarwyatt
     - suganya-s
-    - trvllngmn
     - VitalieMogoreanu
-
+    - whojammyflip
+    - ZacharyForrest
+    - zilnhoj
+    
   channel:
     "#govuk-data-labs"
 
