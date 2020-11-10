@@ -377,3 +377,22 @@ govuk-replatforming:
     - "[DO NOT MERGE]"
     - WIP
     - "[WIP]"
+
+govwifi:
+  members:
+    - alan-gds
+    - camdesgov
+    - colinbm
+    - freesteph
+    - koetsier
+    - robinmitra
+    - sarahseewhy
+
+  channel:
+    "#govwifi"
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
