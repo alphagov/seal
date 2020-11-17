@@ -11,6 +11,7 @@ teams=(
   govuk-frontend-a11y
   govuk-pay
   govuk-platform-health
+  govwifi
 )
 
 for team in ${teams[*]}; do
