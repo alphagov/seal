@@ -217,6 +217,13 @@ govuk-data-labs:
     - WIP
     - "[WIP]"
 
+  use_labels: true
+
+  exclude_labels:
+    - "wip"
+    - "WIP"
+    - "ignore"
+
   quotes:
     - "Be Excellent To Each Other!"
     - ":smiling-batman:"
