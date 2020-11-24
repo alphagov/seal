@@ -387,6 +387,28 @@ govwifi:
     - robinmitra
     - sarahseewhy
 
+  include_repos:
+    - govwifi-acceptance-tests
+    - govwifi-admin
+    - govwifi-authentication-api
+    - govwifi-build
+    - govwifi-builder-task
+    - govwifi-concourse-deploy-pipeline
+    - govwifi-concourse-runner
+    - govwifi-dashboard
+    - govwifi-database-setup
+    - govwifi-dev-docs
+    - govwifi-frontend
+    - govwifi-logging-api
+    - govwifi-product-page
+    - govwifi-redirect
+    - govwifi-safe-restarter
+    - govwifi-shared-frontend
+    - govwifi-tech-docs
+    - govwifi-terraform
+    - govwifi-user-signup-api
+    - govwifi-watchdog
+
   channel:
     "#govwifi"
 
