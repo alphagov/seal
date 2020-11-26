@@ -254,33 +254,6 @@ govuk-datagovuk:
     - WIP
     - "[WIP]"
 
-govuk-frontend-a11y:
-  members:
-    - danacotoran
-    - injms
-    - maxgds
-
-  channel:
-    "#govuk-frontend-a11y"
-
-  compact: true
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
-
-  quotes:
-    - "Be Excellent To Each Other!"
-    - ":smiling-batman:"
-    - "Don't be working if you're ill!"
-    - ":green_heart:"
-    - "It's okay to ask for help"
-    - "It's okay to depend on the team"
-    - "It's okay to take time to learn"
-    - "It's okay not know everything"
-
 govuk-notifications:
   members:
     - 1pretz1
