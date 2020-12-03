@@ -161,6 +161,7 @@ govuk-accounts-tech:
 
 govuk-brexit-content-team:
   members:
+    - benthorner
     - DilwoarH
     - hannako
     - sihugh
@@ -179,6 +180,7 @@ govuk-corona-services:
   members:
     - GDSNewt
     - JonathanHallam
+    - kevindew
     - leenagupte
     - Rosa-Fox
     - steveholmes
@@ -281,25 +283,9 @@ govuk-frontend-a11y:
     - "It's okay to take time to learn"
     - "It's okay not know everything"
 
-govuk-notifications:
-  members:
-    - 1pretz1
-    - benthorner
-    - kevindew
-
-  channel:
-    "#govuk-notifications"
-
-  compact: true
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
-
 govuk-platform-health:
   members:
+    - 1pretz1
     - AlanGabbianelli
     - beccapearce
     - benjamineskola
