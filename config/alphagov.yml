@@ -143,14 +143,14 @@ govuk-accounts:
 
 govuk-accounts-tech:
   members:
+    - AlanGabbianelli
     - andysellick
     - barrucadu
     - bevanloon
+    - danacotoran
     - erino
     - huwd
-    - danacotoran
     - jonathanglassman
-    - AlanGabbianelli
 
   channel:
     "#govuk-accounts-tech"
