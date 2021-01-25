@@ -72,7 +72,7 @@ digitalmarketplace:
     - "digitalmarketplace-buyer-frontend"
     - "digitalmarketplace-content-loader"
     - "digitalmarketplace-credentials"
-    - "digitalmarketplace-design-patterns"
+    - "digitalmarketplace-developer-tools"
     - "digitalmarketplace-docker-base"
     - "digitalmarketplace-frameworks"
     - "digitalmarketplace-frontend-toolkit"
