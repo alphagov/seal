@@ -245,8 +245,6 @@ govuk-data-labs:
 govuk-datagovuk:
   members:
     - kentsanggds
-    - owenatgov
-    - risicle
 
   channel:
     "#govuk-datagovuk"
@@ -257,13 +255,15 @@ govuk-datagovuk:
     - WIP
     - "[WIP]"
 
-govuk-frontend-a11y:
+govuk-accessibility-team:
   members:
     - injms
     - maxgds
+    - owenatgov
+    - chris-gds
 
   channel:
-    "#govuk-frontend-a11y"
+    "#govuk-accessibility-team"
 
   compact: true
 
@@ -272,16 +272,6 @@ govuk-frontend-a11y:
     - "[PROTOTYPE]"
     - WIP
     - "[WIP]"
-
-  quotes:
-    - "Be Excellent To Each Other!"
-    - ":smiling-batman:"
-    - "Don't be working if you're ill!"
-    - ":green_heart:"
-    - "It's okay to ask for help"
-    - "It's okay to depend on the team"
-    - "It's okay to take time to learn"
-    - "It's okay not know everything"
 
 govuk-platform-health:
   members:
