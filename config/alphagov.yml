@@ -178,14 +178,14 @@ govuk-brexit-content-team:
     - WIP
     - "[WIP]"
 
-govuk-corona-services:
+govuk-corona-products:
   members:
+    - gclssvglx
     - GDSNewt
     - JonathanHallam
     - kevindew
     - leenagupte
     - Rosa-Fox
-    - steveholmes
 
   channel:
     "#govuk-corona-services-tech"
