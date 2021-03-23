@@ -4,8 +4,7 @@ teams=(
   design-system-dev
   digitalmarketplace
   govuk-accounts-tech
-  govuk-corona-product
-  govuk-corona-services
+  govuk-corona-products
   govuk-data-labs
   govuk-frontend-a11y
   govuk-pay
