@@ -332,6 +332,7 @@ govuk-pay:
     - stephencdaly
     - stevenjmesser
     - xander-gds
+    - nathand-gds
 
   channel:
     "#govuk-pay-tech"
