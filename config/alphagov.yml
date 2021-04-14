@@ -360,13 +360,13 @@ govuk-replatforming:
 
 govwifi:
   members:
-    - alan-gds
-    - camdesgov
     - colinbm
-    - freesteph
     - koetsier
-    - robinmitra
+    - camdesgov
     - sarahseewhy
+    - Ian-Nicholls
+    - cchani
+    - seb-szy
 
   include_repos:
     - govwifi-acceptance-tests
@@ -377,7 +377,7 @@ govwifi:
     - govwifi-concourse-deploy-pipeline
     - govwifi-concourse-runner
     - govwifi-dashboard
-    - govwifi-database-setup
+    - govwifi-database-backup
     - govwifi-dev-docs
     - govwifi-frontend
     - govwifi-logging-api
@@ -385,16 +385,18 @@ govwifi:
     - govwifi-redirect
     - govwifi-safe-restarter
     - govwifi-shared-frontend
+    - govwifi-smoke-tests
     - govwifi-tech-docs
     - govwifi-terraform
     - govwifi-user-signup-api
     - govwifi-watchdog
 
   channel:
-    "#govwifi"
+    "#govwifi-monitoring"
 
   exclude_titles:
     - "[DO NOT MERGE]"
     - "[PROTOTYPE]"
     - WIP
     - "[WIP]"
+    - "[PARKED]"
