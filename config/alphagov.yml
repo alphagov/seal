@@ -313,6 +313,7 @@ govuk-pay:
     - adityapahuja
     - alexbishop1
     - antoniasimmons
+    - crispinfugds
     - danworth
     - dasarindra
     - dj-maisy
@@ -324,13 +325,14 @@ govuk-pay:
     - niaaudrina
     - nimalank7
     - oswaldquek
+    - richblake
     - RoryMalcolm
+    - samanthabry
     - SandorArpa
     - sfount
     - stephencdaly
     - stevenjmesser
     - xander-gds
-    - nathand-gds
 
   channel:
     "#govuk-pay-tech"
