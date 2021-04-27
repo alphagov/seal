@@ -123,6 +123,24 @@ digitalmarketplace-team:
     - "We are empowered to speak up"
     - "We remember the prime directive"
 
+govuk-accessibility-team:
+  members:
+    - injms
+    - maxgds
+    - owenatgov
+    - chris-gds
+
+  channel:
+    "#govuk-accessibility-team"
+
+  compact: true
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
+
 govuk-accounts:
   channel:
     "#govuk-accounts"
@@ -245,24 +263,6 @@ govuk-datagovuk:
 
   channel:
     "#govuk-datagovuk"
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
-
-govuk-accessibility-team:
-  members:
-    - injms
-    - maxgds
-    - owenatgov
-    - chris-gds
-
-  channel:
-    "#govuk-accessibility-team"
-
-  compact: true
 
   exclude_titles:
     - "[DO NOT MERGE]"
