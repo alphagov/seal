@@ -270,6 +270,25 @@ govuk-datagovuk:
     - WIP
     - "[WIP]"
 
+govuk-explore:
+  members:
+    - chao-xian
+
+  channel:
+    "#govuk-explore-navigation"
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - WIP
+    - "[WIP]"
+
+  quotes:
+    - "Be Excellent To Each Other!"
+    - ":smiling-batman:"
+    - "Don't be working if you're ill!"
+    - ":green_heart:"
+    - "We're not 'working from home', we are _'working at home during a crisis_', so take that time to look after yourselves even during a working day."
+
 govuk-platform-health:
   members:
     - 1pretz1
