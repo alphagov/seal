@@ -270,7 +270,7 @@ govuk-datagovuk:
     - WIP
     - "[WIP]"
 
-govuk-explore:
+govuk-explore-navigation:
   members:
     - chao-xian
 
