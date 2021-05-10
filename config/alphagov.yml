@@ -351,6 +351,7 @@ govuk-pay:
     - stephencdaly
     - stevenjmesser
     - xander-gds
+    - sjzarb
 
   channel:
     "#govuk-pay-tech"
