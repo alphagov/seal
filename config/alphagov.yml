@@ -2,15 +2,19 @@
 design-system-dev:
   members:
     - 36degrees
+    - calvin-lau-sig7
+    - CharlotteDowns
     - christopherthomasdesign
+    - EoinShaughnessy
     - hannalaakso
+    - ImranH-GDS
     - joelanman
     - kellylee-gds
     - lfdebrux
-    - m-green
     - RosieClayton
-    - StephenGill
+    - SaraC19
     - timpaul
+    - trang-erskine
     - vanitabarrett
 
   include_repos:
