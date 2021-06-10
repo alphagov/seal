@@ -185,7 +185,6 @@ govuk-accounts-tech:
 govuk-brexit-content-team:
   members:
     - benthorner
-    - DilwoarH
     - hannako
     - sihugh
 
@@ -278,6 +277,7 @@ govuk-datagovuk:
 govuk-explore-navigation:
   members:
     - chao-xian
+    - DilwoarH
 
   channel:
     "#govuk-explore-navigation"
