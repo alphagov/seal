@@ -75,6 +75,7 @@ digitalmarketplace:
     - "digitalmarketplace-briefs-frontend"
     - "digitalmarketplace-buyer-frontend"
     - "digitalmarketplace-content-loader"
+    - "digitalmarketplace-contained"
     - "digitalmarketplace-credentials"
     - "digitalmarketplace-developer-tools"
     - "digitalmarketplace-docker-base"
