@@ -132,7 +132,6 @@ digitalmarketplace-team:
 
 govuk-accessibility-team:
   members:
-    - injms
     - maxgds
     - owenatgov
     - chris-gds
@@ -278,6 +277,7 @@ govuk-explore-navigation:
   members:
     - chao-xian
     - DilwoarH
+    - injms
 
   channel:
     "#govuk-explore-navigation"
