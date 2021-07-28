@@ -135,6 +135,7 @@ govuk-accessibility-team:
     - maxgds
     - owenatgov
     - chris-gds
+    - edwardkerry
 
   channel:
     "#govuk-accessibility-team"
@@ -184,7 +185,6 @@ govuk-accounts-tech:
 govuk-brexit-content-team:
   members:
     - benthorner
-    - hannako
     - sihugh
 
   channel:
@@ -303,12 +303,11 @@ govuk-platform-health:
     - callumknights
     - ChrisBAshton
     - deborahchua
-    - edwardkerry
+    - hannako
     - kentsanggds
     - MuriloDalRi
     - nicholsj
     - Tetrino
-    - thomasleese
 
   channel:
     "#govuk-platform-health"
