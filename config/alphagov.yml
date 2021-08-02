@@ -386,9 +386,10 @@ govwifi:
     - koetsier
     - camdesgov
     - sarahseewhy
-    - Ian-Nicholls
-    - cchani
     - seb-szy
+    - cbaines
+    - szd55gds
+    - jimnarey
 
   include_repos:
     - govwifi-acceptance-tests
