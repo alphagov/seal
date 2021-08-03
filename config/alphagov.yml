@@ -166,12 +166,10 @@ govuk-accounts:
 
 govuk-accounts-tech:
   members:
-    - andysellick
     - barrucadu
     - bevanloon
     - danacotoran
     - huwd
-    - jonathanglassman
 
   channel:
     "#govuk-accounts-tech"
