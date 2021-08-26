@@ -57,7 +57,7 @@ digitalmarketplace:
     - daniele-occhipinti
 
   channel:
-    "#dm-review"
+    "#dm-2ndline"
 
   exclude_titles:
     - WIP
