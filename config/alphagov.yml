@@ -55,9 +55,11 @@ digitalmarketplace:
     - domoscargin
     - bjgill
     - daniele-occhipinti
+    - ghill95
+    - ccs-jamie-e
 
   channel:
-    "#dm-review"
+    "#dm-2ndline"
 
   exclude_titles:
     - WIP
