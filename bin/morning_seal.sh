@@ -1,7 +1,6 @@
 #!/bin/bash
 
 teams=(
-  digitalmarketplace
   govuk-accounts-tech
   govuk-corona-products
   govuk-data-labs
