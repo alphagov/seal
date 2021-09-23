@@ -1,34 +1,4 @@
 # Please insert new items alphabetically.
-digitalmarketplace-team:
-  channel:
-    "#dm-frameworks"
-
-  quotes:
-    - "We feel comfortable asking and answering questions from each other - no matter how basic"
-    - "We help each other grow and learn"
-    - "We are supportive and look out for each other"
-    - "We value each other's roles and contributions"
-    - "We are inclusive and considerate to others"
-    - "We communicate in an inclusive and effective manner"
-    - "We ensure meetings are focused with a clear purpose and relevant people, and keep to time"
-    - "We have meetings that are effective, short and have outcomes"
-    - "We respect each other's working styles and patterns"
-    - "We have a good life-work balance"
-    - "We are remote-first"
-    - "We are flexible"
-    - "We acknowledge people may be struggling and not able to be as productive as in normal times"
-    - "We are good at protecting our time as a team"
-    - "We do the hard work to make it easier on others"
-    - "We make time for learning and development"
-    - "We put users first"
-    - "We are ambitious but realistic"
-    - "We are open, honest and transparent"
-    - "We make evidence-based decisions"
-    - "We take the time to think things through"
-    - "We are open to new ideas, perspectives and methods"
-    - "We are empowered to speak up"
-    - "We remember the prime directive"
-
 govuk-accessibility-team:
   members:
     - maxgds
