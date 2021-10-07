@@ -2,7 +2,6 @@
 govuk-accessibility-team:
   members:
     - maxgds
-    - owenatgov
     - chris-gds
     - edwardkerry
 
@@ -145,6 +144,7 @@ govuk-explore-navigation:
     - chao-xian
     - DilwoarH
     - injms
+    - owenatgov
 
   channel:
     "#govuk-explore-navigation"
