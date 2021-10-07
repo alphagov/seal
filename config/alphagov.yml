@@ -139,7 +139,7 @@ govuk-datagovuk:
     - WIP
     - "[WIP]"
 
-govuk-explore-navigation:
+govuk-explore-devs:
   members:
     - chao-xian
     - DilwoarH
@@ -147,12 +147,17 @@ govuk-explore-navigation:
     - owenatgov
 
   channel:
-    "#govuk-explore-navigation"
+    "#govuk-explore-devs"
 
   exclude_titles:
     - "[DO NOT MERGE]"
     - WIP
     - "[WIP]"
+
+govuk-explore-navigation:
+
+  channel:
+    "#govuk-explore-navigation"
 
   quotes:
     - "Be Excellent To Each Other!"

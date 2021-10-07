@@ -4,6 +4,7 @@ teams=(
   govuk-accounts-tech
   govuk-corona-products
   govuk-data-labs
+  govuk-explore-devs
   govuk-explore-navigation
   govuk-frontend-a11y
   govuk-pay

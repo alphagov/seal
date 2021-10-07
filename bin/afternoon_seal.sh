@@ -3,6 +3,7 @@
 teams=(
   govuk-accounts
   govuk-data-labs
+  govuk-explore-devs
   govuk-explore-navigation
   govuk-frontend-a11y
   govuk-platform-health
