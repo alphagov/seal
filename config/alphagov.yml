@@ -287,7 +287,7 @@ govwifi:
     - govwifi-watchdog
 
   channel:
-    "#govwifi-monitoring"
+    "#govwifi-sre-dev-magic-"
 
   exclude_titles:
     - "[DO NOT MERGE]"
