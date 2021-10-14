@@ -154,7 +154,6 @@ govuk-explore-devs:
     - "[WIP]"
 
 govuk-explore-navigation:
-
   channel:
     "#govuk-explore-navigation"
 
