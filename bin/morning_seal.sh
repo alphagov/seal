@@ -5,8 +5,6 @@ teams=(
   govuk-corona-products
   govuk-data-labs
   govuk-explore-devs
-  govuk-explore-navigation
-  govuk-frontend-a11y
   govuk-pay
   govuk-platform-health
   govwifi

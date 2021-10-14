@@ -5,7 +5,6 @@ teams=(
   govuk-data-labs
   govuk-explore-devs
   govuk-explore-navigation
-  govuk-frontend-a11y
   govuk-platform-health
   govuk-step-by-step
 )
