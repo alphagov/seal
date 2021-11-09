@@ -233,6 +233,22 @@ govuk-pay:
     - "[DRAFT]"
     - WIP
 
+govuk-publishing:
+  members:
+    - beccapearce
+    - brucebolt
+    - kevindew
+    - spikeheap
+
+  channel:
+    "#govuk-publishing-tech"
+
+  exclude_title:
+    - "[DO NOT MERGE]"
+    - "WIP"
+
+  compact: true
+
 govuk-replatforming:
   members:
     - bilbof
