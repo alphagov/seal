@@ -7,6 +7,7 @@ teams=(
   govuk-explore-devs
   govuk-pay
   govuk-platform-health
+  govuk-publishing
   govwifi
 )
 
