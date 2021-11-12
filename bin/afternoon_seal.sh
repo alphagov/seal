@@ -6,7 +6,7 @@ teams=(
   govuk-explore-devs
   govuk-explore-navigation
   govuk-platform-health
-  govuk-step-by-step
+  govuk-corona-products
 )
 
 for team in ${teams[*]} ; do

@@ -2,7 +2,7 @@
 govuk-accessibility-team:
   members:
     - maxgds
-    - chris-gds
+    - "chris-gds"
     - edwardkerry
 
   channel:
@@ -70,7 +70,7 @@ govuk-corona-products:
     - JonathanHallam
     - kevindew
     - leenagupte
-    - Rosa-Fox
+    - "Rosa-Fox"
 
   channel:
     "#govuk-corona-services-tech"
@@ -89,8 +89,8 @@ govuk-data-labs:
     - maxf
     - nacnudus
     - oscarwyatt
-    - st-alice
-    - suganya-s
+    - "st-alice"
+    - "suganya-s"
     - VitalieMogoreanu
     - ZacharyForrest
     - zilnhoj
@@ -141,7 +141,7 @@ govuk-datagovuk:
 
 govuk-explore-devs:
   members:
-    - chao-xian
+    - "chao-xian"
     - injms
     - owenatgov
 
@@ -205,13 +205,13 @@ govuk-pay:
     - crispinfugds
     - danworth
     - dasarindra
-    - dj-maisy
+    - "dj-maisy"
     - gidsg
     - heathd
     - iqbalgds
     - jabrahoarder
     - jfharden
-    - jonny-walkley
+    - "jonny-walkley"
     - katstevens
     - kbottla
     - mrlumbu
@@ -223,7 +223,7 @@ govuk-pay:
     - SandorArpa
     - sfount
     - stephencdaly
-    - xander-gds
+    - "xander-gds"
     - sjzarb
 
   channel:
@@ -257,7 +257,7 @@ govuk-replatforming:
     - issyl0
     - MahmudH
     - richardTowers
-    - seb-szy
+    - "seb-szy"
 
   channel:
     "#govuk-replatforming"
@@ -272,33 +272,33 @@ govwifi:
     - koetsier
     - camdesgov
     - sarahseewhy
-    - seb-szy
+    - "seb-szy"
     - cbaines
     - szd55gds
     - jimnarey
 
   include_repos:
-    - govwifi-acceptance-tests
-    - govwifi-admin
-    - govwifi-authentication-api
-    - govwifi-build
-    - govwifi-builder-task
-    - govwifi-concourse-deploy-pipeline
-    - govwifi-concourse-runner
-    - govwifi-dashboard
-    - govwifi-database-backup
-    - govwifi-dev-docs
-    - govwifi-frontend
-    - govwifi-logging-api
-    - govwifi-product-page
-    - govwifi-redirect
-    - govwifi-safe-restarter
-    - govwifi-shared-frontend
-    - govwifi-smoke-tests
-    - govwifi-tech-docs
-    - govwifi-terraform
-    - govwifi-user-signup-api
-    - govwifi-watchdog
+    - "govwifi-acceptance-tests"
+    - "govwifi-admin"
+    - "govwifi-authentication-api"
+    - "govwifi-build"
+    - "govwifi-builder-task"
+    - "govwifi-concourse-deploy-pipeline"
+    - "govwifi-concourse-runner"
+    - "govwifi-dashboard"
+    - "govwifi-database-backup"
+    - "govwifi-dev-docs"
+    - "govwifi-frontend"
+    - "govwifi-logging-api"
+    - "govwifi-product-page"
+    - "govwifi-redirect"
+    - "govwifi-safe-restarter"
+    - "govwifi-shared-frontend"
+    - "govwifi-smoke-tests"
+    - "govwifi-tech-docs"
+    - "govwifi-terraform"
+    - "govwifi-user-signup-api"
+    - "govwifi-watchdog"
 
   channel:
     "#govwifi-monitoring"
