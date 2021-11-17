@@ -6,9 +6,9 @@ class GithubFetcher
 
   def initialize(team)
     @organisation = ENV["SEAL_ORGANISATION"]
-    @github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"], per_page: 10000)
+    @github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
     @github.api_endpoint = ENV["GITHUB_API_ENDPOINT"] if ENV["GITHUB_API_ENDPOINT"]
-    @github.auto_paginate = false
+    @github.auto_paginate = true
     @people = team.members
     @use_labels = team.use_labels
     @exclude_labels = team.exclude_labels.map(&:downcase).uniq
