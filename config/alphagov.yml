@@ -1,16 +1,32 @@
 # Please insert new items alphabetically.
-govuk-accessibility-team:
+explore-find-and-view:
+  channel:
+    "#explore-find-and-view"
+
+  quotes:
+    - "Be Excellent To Each Other!"
+    - ":smiling-batman:"
+    - "Don't be working if you're ill!"
+    - ":green_heart:"
+    - "We're not 'working from home', we are _'working at home during a crisis_', so take that time to look after yourselves even during a working day."
+
+find-and-view-tech:
+  channel:
+    "#find-and-view-tech"
   members:
-    - maxgds
+    - "1pretz1"
+    - andyhd
+    - "chao-xian"
     - "chris-gds"
     - edwardkerry
+    - hannako
+    - hannalaakso
+    - injms
+    - "jon-kirwan"
     - "KludgeKML"
-
-  channel:
-    "#govuk-accessibility-team"
-
+    - maxgds
+    - Tetrino
   compact: true
-
   exclude_titles:
     - "[DO NOT MERGE]"
     - "[PROTOTYPE]"
@@ -139,31 +155,6 @@ govuk-datagovuk:
     - "[PROTOTYPE]"
     - WIP
     - "[WIP]"
-
-govuk-explore-devs:
-  members:
-    - "chao-xian"
-    - injms
-    - owenatgov
-
-  channel:
-    "#govuk-explore-devs"
-
-  exclude_titles:
-    - "[DO NOT MERGE]"
-    - WIP
-    - "[WIP]"
-
-govuk-explore-navigation:
-  channel:
-    "#govuk-explore-navigation"
-
-  quotes:
-    - "Be Excellent To Each Other!"
-    - ":smiling-batman:"
-    - "Don't be working if you're ill!"
-    - ":green_heart:"
-    - "We're not 'working from home', we are _'working at home during a crisis_', so take that time to look after yourselves even during a working day."
 
 govuk-platform-health:
   members:
