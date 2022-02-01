@@ -245,11 +245,17 @@ govuk-publishing:
 govuk-replatforming:
   members:
     - bilbof
-    - deanwilson
-    - issyl0
-    - MahmudH
     - richardTowers
-    - "seb-szy"
+    - sengi
+    - alexbakervr
+    - lwilts
+    - marcpomfret
+    - theseanything
+    - jibolaolu
+    - fredericfrancois
+    - rtrinque
+    - smford
+    - nsabri1
 
   channel:
     "#govuk-replatforming"
