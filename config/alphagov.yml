@@ -159,8 +159,6 @@ govuk-datagovuk:
 govuk-platform-health:
   members:
     - 1pretz1
-    - benjamineskola
-    - callumknights
     - ChrisBAshton
     - deborahchua
     - hannako
@@ -227,8 +225,12 @@ govuk-pay:
 
 govuk-publishing:
   members:
+    - baisa
     - beccapearce
+    - benjamineskola
     - brucebolt
+    - callumknights
+    - DilwoarH
     - kevindew
     - ollietreend
     - spikeheap
