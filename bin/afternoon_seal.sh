@@ -1,11 +1,11 @@
 #!/bin/bash
 
 teams=(
-  govuk-accounts
-  govuk-data-labs
   find-and-view-tech
-  govuk-platform-reliability
+  govuk-accounts
   govuk-corona-services-tech
+  govuk-data-labs
+  govuk-platform-reliability
 )
 
 for team in ${teams[*]} ; do
