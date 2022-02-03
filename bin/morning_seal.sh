@@ -1,12 +1,12 @@
 #!/bin/bash
 
 teams=(
+  find-and-view-tech
   govuk-accounts-tech
-  govuk-corona-products
+  govuk-corona-services-tech
   govuk-data-labs
-  govuk-explore-devs
   govuk-pay
-  govuk-platform-health
+  govuk-platform-reliability
   govuk-publishing
   govwifi
 )
