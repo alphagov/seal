@@ -2,11 +2,11 @@
 
 teams=(
   govuk-accounts-tech
-  govuk-corona-products
+  govuk-corona-services-tech
   govuk-data-labs
-  govuk-explore-devs
+  find-and-view-tech
   govuk-pay
-  govuk-platform-health
+  govuk-platform-reliability
   govuk-publishing
   govwifi
 )

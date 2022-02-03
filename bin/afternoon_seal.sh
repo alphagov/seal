@@ -3,10 +3,9 @@
 teams=(
   govuk-accounts
   govuk-data-labs
-  govuk-explore-devs
-  govuk-explore-navigation
-  govuk-platform-health
-  govuk-corona-products
+  find-and-view-tech
+  govuk-platform-reliability
+  govuk-corona-services-tech
 )
 
 for team in ${teams[*]} ; do
