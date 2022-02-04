@@ -8,7 +8,7 @@ class GithubFetcher
     @organisation = ENV["SEAL_ORGANISATION"]
     @github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
     @github.api_endpoint = ENV["GITHUB_API_ENDPOINT"] if ENV["GITHUB_API_ENDPOINT"]
-    @github.auto_paginate = true
+    @github.auto_paginate = false
     @people = team.members
     @use_labels = team.use_labels
     @exclude_labels = team.exclude_labels.map(&:downcase).uniq
@@ -16,6 +16,7 @@ class GithubFetcher
     @labels = {}
     @exclude_repos = team.exclude_repos
     @include_repos = team.include_repos
+    @sleep_time = ENV.has_key?("THROTTLE_SECS") ? ENV["THROTTLE_SECS"].to_i : 10
   end
 
   def list_pull_requests
@@ -24,6 +25,20 @@ class GithubFetcher
     pull_requests_from_github
       .reject { |pr| hidden?(pr) }
       .map { |pr| present_pull_request(pr) }
+  end
+
+  def pull_requests_from_github
+    github.search_issues("is:pr state:open user:#{organisation} archived:false -is:draft", per_page: 100)
+    last_response = github.last_response
+    pulls = last_response.data.items
+    return [] if pulls.empty?
+
+    until last_response.rels[:next].nil?
+      sleep sleep_time
+      last_response = last_response.rels[:next].get
+      pulls << last_response.data.items
+    end
+    pulls.flatten
   end
 
   private
@@ -35,7 +50,8 @@ class GithubFetcher
     :include_repos,
     :organisation,
     :people,
-    :github
+    :github,
+    :sleep_time
 
   def present_pull_request(pull_request)
     repo = repo_name(pull_request)
@@ -51,12 +67,6 @@ class GithubFetcher
       updated: Date.parse(pull_request.updated_at.to_s),
       labels: labels(pull_request, repo),
     }
-  end
-
-  # https://developer.github.com/v3/search/#search-issues
-  # returns up to 100 results per page.
-  def pull_requests_from_github
-    github.search_issues("is:pr state:open user:#{organisation} archived:false -is:draft").items
   end
 
   def person_subscribed?(pull_request)
