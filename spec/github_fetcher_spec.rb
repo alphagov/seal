@@ -124,8 +124,10 @@ RSpec.describe GithubFetcher do
   before do
     allow(Octokit::Client).to receive(:new).and_return(fake_octokit_client)
     allow(fake_octokit_client).to receive_message_chain('user.login')
-    allow(fake_octokit_client).to receive(:auto_paginate=).with(true)
-    allow(fake_octokit_client).to receive(:search_issues).with("is:pr state:open user:alphagov archived:false -is:draft").and_return(double(items: [pull_2266, pull_2248]))
+    allow(fake_octokit_client).to receive(:auto_paginate=).with(false)
+    response = double(items: [pull_2266, pull_2248])
+    allow(fake_octokit_client).to receive(:search_issues).with("is:pr state:open user:alphagov archived:false -is:draft", per_page: 100).and_return(response)
+    allow(fake_octokit_client).to receive(:last_response).and_return(double(data: response, rels: { next: nil }))
 
     allow(fake_octokit_client).to receive(:issue_comments).with(whitehall_repo_name, 2266).and_return(comments_2266)
     allow(fake_octokit_client).to receive(:issue_comments).with(whitehall_rebuild_repo_name, 2248).and_return(comments_2248)
@@ -140,6 +142,25 @@ RSpec.describe GithubFetcher do
     describe '#list_pull_requests' do
       it "displays open pull requests open on the team's repos by a team member" do
         expect(github_fetcher.list_pull_requests).to match expected_open_prs
+      end
+    end
+
+    describe '#pull_requests_from_github' do
+      it "returns an empty array when there are no items returned from search" do
+        allow(fake_octokit_client).to receive(:last_response).and_return(
+          double(data: double(items: []), rels: { next: nil })
+        )
+
+        expect(github_fetcher.pull_requests_from_github).to eq([])
+      end
+
+      it "steps through each page of results" do
+        ENV["THROTTLE_SECS"] = "0"
+        second_page = double(data: double(items: [pull_2248]), rels: { next: nil })
+        first_page = double(data: double(items: [pull_2266]), rels: { next: double(get: second_page) })
+        allow(fake_octokit_client).to receive(:last_response).and_return(first_page)
+
+        expect(github_fetcher.pull_requests_from_github).to eq([pull_2266, pull_2248])
       end
     end
   end
