@@ -220,6 +220,7 @@ govuk-publishing:
   exclude_title:
     - "[DO NOT MERGE]"
     - "WIP"
+    - "[WIP]"
 
   compact: true
 
