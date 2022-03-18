@@ -86,10 +86,7 @@ govuk-data-labs:
     - mammykins
     - maxf
     - nacnudus
-    - oscarwyatt
     - "st-alice"
-    - "suganya-s"
-    - VitalieMogoreanu
     - ZacharyForrest
     - zilnhoj
 
@@ -139,10 +136,14 @@ govuk-datagovuk:
 
 govuk-platform-reliability:
   members:
+    - BhupsAL1
+    - catalinailie
     - ChrisBAshton
     - deborahchua
     - MuriloDalRi
     - nicholsj
+    - rtrinque
+    - sihugh
 
   channel:
     "#govuk-platform-reliability-team"
@@ -226,7 +227,6 @@ govuk-publishing:
 
 govuk-replatforming:
   members:
-    - bilbof
     - richardTowers
     - sengi
     - alexbakervr
