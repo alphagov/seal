@@ -170,11 +170,9 @@ govuk-platform-reliability:
 
 govuk-pay:
   members:
+    - alan-gds
     - alexbishop1
     - antoniasimmons
-    - crispinfugds
-    - "dj-maisy"
-    - gidsg
     - heathd
     - iqbalgds
     - jabrahoarder
@@ -188,7 +186,6 @@ govuk-pay:
     - niaaudrina
     - oswaldquek
     - richblake
-    - samanthabry
     - SandorArpa
     - sfount
     - stephencdaly
