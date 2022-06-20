@@ -183,24 +183,35 @@ govuk-pay:
     - "[DRAFT]"
     - WIP
 
-govuk-publishing:
+govuk-publishing-experience:
   members:
     - baisa
     - beccapearce
-    - BeckaL
     - benjamineskola
-    - brucebolt
-    - callumknights
     - davidgisbey
     - davidtrussler
     - DilwoarH
     - jyoung-gds
-    - kevindew
     - ollietreend
-    - spikeheap
 
   channel:
-    "#govuk-publishing-tech"
+    "#govuk-publishing-experience-tech"
+
+  exclude_title:
+    - "[DO NOT MERGE]"
+    - "WIP"
+    - "[WIP]"
+
+  compact: true
+
+govuk-publishing-platform:
+  members:
+    - BeckaL
+    - brucebolt
+    - callumknights
+    - JonathanHallam
+  channel:
+    "#govuk-publishing-platform"
 
   exclude_title:
     - "[DO NOT MERGE]"
