@@ -63,23 +63,6 @@ govuk-accounts-tech:
     - WIP
     - "[WIP]"
 
-govuk-corona-services-tech:
-  members:
-    - gclssvglx
-    - GDSNewt
-    - JonathanHallam
-    - leenagupte
-    - "Rosa-Fox"
-
-  channel:
-    "#govuk-corona-services-tech"
-
-  exclude_titles:
-    - "DO NOT MERGE"
-    - "🚧"
-    - "[WIP]"
-    - "[Do Not Merge]"
-
 govuk-data-labs:
   members:
     - ESKYoung
