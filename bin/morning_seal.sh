@@ -2,7 +2,6 @@
 
 teams=(
   find-and-view-tech
-  FUN-workstream
   govuk-accounts-tech
   govuk-corona-services-tech
   govuk-data-labs
@@ -14,4 +13,12 @@ teams=(
 
 for team in ${teams[*]}; do
   ./bin/seal.rb $team
+done
+
+morning_quote_teams=(
+  FUN-workstream
+)
+
+for team in ${morning_quote_teams[*]}; do
+  ./bin/seal.rb $team quotes
 done
