@@ -2,6 +2,7 @@
 
 teams=(
   find-and-view-tech
+  FUN-workstream
   govuk-accounts-tech
   govuk-corona-services-tech
   govuk-data-labs
