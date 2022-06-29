@@ -64,6 +64,9 @@ class SlackPoster
     elsif @mood == "charter"
       @mood_hash[:icon_emoji]= ":happyseal:"
       @mood_hash[:username]= "Team Charter Seal"
+    elsif @mood == "fun-workstream"
+      @mood_hash[:icon_emoji]= ":wholesome-seal:"
+      @mood_hash[:username]= "It's ok Seal"
     else
       fail "Bad mood: #{mood}."
     end
@@ -98,6 +101,8 @@ class SlackPoster
   def check_if_quotes
     if @team_channel == "#club-tea"
       @mood = "tea"
+    elsif @team_channel == "#sealtesting"
+       @mood = "fun-workstream"
     elsif @mood == nil
       @mood = "charter"
     end

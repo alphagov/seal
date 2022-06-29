@@ -14,3 +14,11 @@ teams=(
 for team in ${teams[*]}; do
   ./bin/seal.rb $team
 done
+
+morning_quote_teams=(
+  FUN-workstream
+)
+
+for team in ${morning_quote_teams[*]}; do
+  ./bin/seal.rb $team quotes
+done
