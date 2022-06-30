@@ -2,7 +2,9 @@
 
 FUN-workstream:
   channel:
-    "#sealtesting"
+    - "#govuk"
+    - "#gds-community"
+
   quotes:
     - "It’s ok to feel the way you feel"
     - "It’s ok to talk about how you're feeling"
@@ -34,7 +36,7 @@ FUN-workstream:
     - "It’s ok to put yourself first"
     - "It’s ok to love what you do"
 
-    
+
 find-and-view-tech:
   channel:
     "#find-and-view-tech"
