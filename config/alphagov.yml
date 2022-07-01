@@ -1,40 +1,5 @@
 # Please insert new items alphabetically.
 
-FUN-workstream:
-  channel:
-    "#sealtesting"
-  quotes:
-    - "It’s ok to feel the way you feel"
-    - "It’s ok to talk about how you're feeling"
-    - "It’s ok to ask for feedback"
-    - "It’s ok to have days off"
-    - "It’s ok to have off days"
-    - "It’s ok to go outside during work"
-    - "It’s ok to switch off at the end of the day"
-    - "It’s ok to not constantly check chat and emails"
-    - "It’s ok to have screen breaks"
-    - "It’s ok to say you're not comfortable with something"
-    - "It’s ok to raise your concerns"
-    - "It’s ok to be you"
-    - "It’s ok to change your mind"
-    - "It’s ok to say no"
-    - "It’s ok to have other things going on"
-    - "It’s ok to forget things"
-    - "It’s ok to have a meeting"
-    - "It’s ok to not have a meeting"
-    - "It’s ok to turn off notifications"
-    - "It’s ok to block time out to think and reflect"
-    - "It’s ok to approach tasks your own way"
-    - "It’s ok to work flexibly"
-    - "It’s ok to turn your camera off"
-    - "It’s ok to take time off if you're not well"
-    - "It’s ok to make mistakes"
-    - "It’s ok to say you don't understand"
-    - "It’s ok to ask for help"
-    - "It’s ok to put yourself first"
-    - "It’s ok to love what you do"
-
-    
 find-and-view-tech:
   channel:
     "#find-and-view-tech"
@@ -66,6 +31,75 @@ find-and-view-tech:
     - ":smiling-batman:"
     - "Don't be working if you're ill!"
     - ":green_heart:"
+
+fun-workstream-gds-community:
+  channel:
+    "#govuk"
+  quotes:
+    - "It’s ok to feel the way you feel"
+    - "It’s ok to talk about how you're feeling"
+    - "It’s ok to ask for feedback"
+    - "It’s ok to have days off"
+    - "It’s ok to have off days"
+    - "It’s ok to go outside during work"
+    - "It’s ok to switch off at the end of the day"
+    - "It’s ok to not constantly check chat and emails"
+    - "It’s ok to have screen breaks"
+    - "It’s ok to say you're not comfortable with something"
+    - "It’s ok to raise your concerns"
+    - "It’s ok to be you"
+    - "It’s ok to change your mind"
+    - "It’s ok to say no"
+    - "It’s ok to have other things going on"
+    - "It’s ok to forget things"
+    - "It’s ok to have a meeting"
+    - "It’s ok to not have a meeting"
+    - "It’s ok to turn off notifications"
+    - "It’s ok to block time out to think and reflect"
+    - "It’s ok to approach tasks your own way"
+    - "It’s ok to work flexibly"
+    - "It’s ok to turn your camera off"
+    - "It’s ok to take time off if you're not well"
+    - "It’s ok to make mistakes"
+    - "It’s ok to say you don't understand"
+    - "It’s ok to ask for help"
+    - "It’s ok to put yourself first"
+    - "It’s ok to love what you do"
+
+
+fun-workstream-govuk:
+  channel:
+    "#govuk"
+  quotes:
+    - "It’s ok to feel the way you feel"
+    - "It’s ok to talk about how you're feeling"
+    - "It’s ok to ask for feedback"
+    - "It’s ok to have days off"
+    - "It’s ok to have off days"
+    - "It’s ok to go outside during work"
+    - "It’s ok to switch off at the end of the day"
+    - "It’s ok to not constantly check chat and emails"
+    - "It’s ok to have screen breaks"
+    - "It’s ok to say you're not comfortable with something"
+    - "It’s ok to raise your concerns"
+    - "It’s ok to be you"
+    - "It’s ok to change your mind"
+    - "It’s ok to say no"
+    - "It’s ok to have other things going on"
+    - "It’s ok to forget things"
+    - "It’s ok to have a meeting"
+    - "It’s ok to not have a meeting"
+    - "It’s ok to turn off notifications"
+    - "It’s ok to block time out to think and reflect"
+    - "It’s ok to approach tasks your own way"
+    - "It’s ok to work flexibly"
+    - "It’s ok to turn your camera off"
+    - "It’s ok to take time off if you're not well"
+    - "It’s ok to make mistakes"
+    - "It’s ok to say you don't understand"
+    - "It’s ok to ask for help"
+    - "It’s ok to put yourself first"
+    - "It’s ok to love what you do"
 
 govuk-accounts:
   channel:
