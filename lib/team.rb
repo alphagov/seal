@@ -1,6 +1,7 @@
 class Team
   def initialize(
                   members: nil,
+                  github_team: nil,
                   use_labels: nil,
                   compact: nil,
                   exclude_labels: nil,
@@ -11,6 +12,7 @@ class Team
                   slack_channel: nil
                 )
     @members = members || []
+    @github_team  = github_team
     @use_labels = (use_labels.nil? ? false : use_labels)
     @compact = (compact.nil? ? false : compact)
     @exclude_labels = exclude_labels || []
@@ -23,6 +25,7 @@ class Team
 
   attr_reader *%i[
     members
+    github_team
     use_labels
     compact
     exclude_labels

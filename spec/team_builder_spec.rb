@@ -40,6 +40,10 @@ RSpec.describe TeamBuilder do
         ],
         "channel" => "#tigers",
       },
+      "cats" => {
+        "github_team" => "cat-coding-club",
+        "channel" => "#cats",
+      },
     ))
   end
 
@@ -48,12 +52,13 @@ RSpec.describe TeamBuilder do
   let(:teams) { TeamBuilder.build(env: env) }
 
   it "loads each team from the static config file" do
-    expect(teams.count).to eq(2)
-    expect(teams.map(&:channel)).to match_array(["#lions", "#tigers"])
+    expect(teams.count).to eq(3)
+    expect(teams.map(&:channel)).to match_array(["#lions", "#tigers", "#cats"])
   end
 
   it "loads all keys" do
     lions = teams.find {|t| t.channel == "#lions"}
+    cats = teams.find {|t| t.channel == "#cats"}
 
     expect(lions.members).to eq([
       "lil lion",
@@ -78,6 +83,8 @@ RSpec.describe TeamBuilder do
       "This is a quote",
       "This is also a quote",
     ])
+
+    expect(cats.github_team).to eq("cat-coding-club")
   end
 
   it "provides sensible defaults" do
