@@ -34,7 +34,7 @@ find-and-view-tech:
 
 fun-workstream-gds-community:
   channel:
-    "#govuk"
+    "#gds-community"
   quotes:
     - "It’s ok to feel the way you feel"
     - "It’s ok to talk about how you're feeling"
