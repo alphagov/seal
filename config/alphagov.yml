@@ -32,6 +32,14 @@ find-and-view-tech:
     - "Don't be working if you're ill!"
     - ":green_heart:"
 
+fun-workstream-test-channel:
+  channel:
+    "#sealtesting"
+  quotes:
+    - "[It’s ok](https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to) to feel the way you feel."
+    - "[It’s ok](https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to) to talk about how you're feeling"
+    - "[It’s ok](https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to) to ask for feedback"
+
 fun-workstream-gds-community:
   channel:
     "#gds-community"

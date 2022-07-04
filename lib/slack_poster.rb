@@ -102,7 +102,7 @@ class SlackPoster
     if @team_channel == "#club-tea"
       @mood = "tea"
     # If the channel name is either govuk or gds-community, set the mood to 'fun-workstream'
-    elsif ['#govuk', '#gds-community'].include?(@team_channel)
+    elsif ['#govuk', '#gds-community', '#sealtesting'].include?(@team_channel)
        @mood = "fun-workstream"
     elsif @mood == nil
       @mood = "charter"
