@@ -101,7 +101,8 @@ class SlackPoster
   def check_if_quotes
     if @team_channel == "#club-tea"
       @mood = "tea"
-    elsif @team_channel == "#sealtesting"
+    # If the channel name is either govuk or gds-community, set the mood to 'fun-workstream'
+    elsif ['#govuk', '#gds-community'].include?(@team_channel)
        @mood = "fun-workstream"
     elsif @mood == nil
       @mood = "charter"
