@@ -18,6 +18,7 @@ done
 morning_quote_teams=(
   fun-workstream-govuk
   fun-workstream-gds-community
+  fun-workstream-test-channel
 )
 
 for team in ${morning_quote_teams[*]}; do
