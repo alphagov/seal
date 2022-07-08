@@ -36,9 +36,8 @@ fun-workstream-test-channel:
   channel:
     "#sealtesting"
   quotes:
-    - "[It’s ok](https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to) to feel the way you feel."
-    - "[It’s ok](https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to) to talk about how you're feeling"
-    - "[It’s ok](https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to) to ask for feedback"
+    - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to|It's okay to> test the seal! (No quotes)
+    - "<https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to|It's okay to> test the seal! (With quotes)"
 
 fun-workstream-gds-community:
   channel:
