@@ -16,7 +16,7 @@ class GithubFetcher
     @labels = {}
     @exclude_repos = team.exclude_repos
     @include_repos = team.include_repos
-    @sleep_time = ENV.has_key?("THROTTLE_SECS") ? ENV["THROTTLE_SECS"].to_i : 10
+    @sleep_time = ENV.has_key?("THROTTLE_SECS") ? ENV["THROTTLE_SECS"].to_i : 60
   end
 
   def list_pull_requests
