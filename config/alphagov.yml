@@ -192,6 +192,20 @@ govuk-datagovuk:
     - WIP
     - "[WIP]"
 
+govuk-forms:
+  github_team: "forms-devs"
+
+  channel:
+    "#govuk-forms-tech"
+
+  exclude_titles:
+    - "[DO NOT MERGE]"
+    - "[PROTOTYPE]"
+    - WIP
+    - "[WIP]"
+
+  compact: true
+
 govuk-platform-reliability:
   members:
     - catalinailie
