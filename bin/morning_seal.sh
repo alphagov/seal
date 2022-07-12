@@ -5,6 +5,7 @@ teams=(
   govuk-accounts-tech
   govuk-corona-services-tech
   govuk-data-labs
+  govuk-forms
   govuk-pay
   govuk-platform-reliability
   govuk-publishing
