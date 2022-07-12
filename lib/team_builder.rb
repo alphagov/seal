@@ -22,7 +22,7 @@ class TeamBuilder
   attr_reader :env
 
   def build_single_team(team_name)
-    team = Team.new(apply_env(static_config[team_name.to_s] || {}))
+    team = Team.new(**apply_env(static_config[team_name.to_s] || {}))
     if team.channel.nil?
       []
     else
@@ -32,7 +32,7 @@ class TeamBuilder
 
   def build_all_teams
     static_config.map do |_, team_config|
-      Team.new(apply_env(team_config))
+      Team.new(**apply_env(team_config))
     end
   end
 
