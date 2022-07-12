@@ -39,6 +39,7 @@ class TeamBuilder
   def apply_env(config)
     {
       members: env["GITHUB_MEMBERS"]&.split(",") || config["members"],
+      github_team: env["GITHUB_TEAM"] || config["github_team"],
       use_labels: env["GITHUB_USE_LABELS"] == "true" || config["use_labels"],
       compact: env["COMPACT"] == "true" || config["compact"],
       exclude_labels: env["GITHUB_EXCLUDE_LABELS"]&.split(',') || config["exclude_labels"],

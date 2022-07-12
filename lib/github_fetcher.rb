@@ -9,19 +9,18 @@ class GithubFetcher
     @github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
     @github.api_endpoint = ENV["GITHUB_API_ENDPOINT"] if ENV["GITHUB_API_ENDPOINT"]
     @github.auto_paginate = false
-    @people = team.members
+    @github.user.login
+    @people = get_team_members(team.github_team, team.members)
     @use_labels = team.use_labels
     @exclude_labels = team.exclude_labels.map(&:downcase).uniq
     @exclude_titles = team.exclude_titles.map(&:downcase).uniq
     @labels = {}
     @exclude_repos = team.exclude_repos
-    @include_repos = team.include_repos
+    @include_repos = get_team_repos(team.github_team, team.include_repos)
     @sleep_time = ENV.has_key?("THROTTLE_SECS") ? ENV["THROTTLE_SECS"].to_i : 60
   end
 
   def list_pull_requests
-    github.user.login
-
     pull_requests_from_github
       .reject { |pr| hidden?(pr) }
       .map { |pr| present_pull_request(pr) }
@@ -127,5 +126,27 @@ class GithubFetcher
 
   def repo_name(pr)
     pr.html_url.split("/")[4]
+  end
+
+  def get_team_members(team_slug, members)
+    return members if team_slug.nil?
+
+    github_team_members = get_github_team_members(team_slug)
+    (github_team_members + members).uniq
+  end
+
+  def get_github_team_members(team_slug)
+    github.get("/orgs/#{@organisation}/teams/#{team_slug}/members").map { |member| member.login }
+  end
+
+  def get_team_repos(team_slug, repos)
+    return repos if team_slug.nil?
+
+    github_team_repos = get_github_team_repos(team_slug)
+    (github_team_repos + repos).uniq
+  end
+
+  def get_github_team_repos(team_slug)
+    github.get("/orgs/#{@organisation}/teams/#{team_slug}/repos").map{|repo| repo.name}
   end
 end

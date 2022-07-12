@@ -5,6 +5,7 @@ RSpec.describe GithubFetcher do
   let(:team) {
     Team.new(
       members: team_members_accounts,
+      github_team: github_team,
       use_labels: use_labels,
       exclude_labels: exclude_labels,
       exclude_titles: exclude_titles,
@@ -20,6 +21,7 @@ RSpec.describe GithubFetcher do
   let(:fake_octokit_client) { double(Octokit::Client) }
   let(:whitehall_repo_name) { "#{ENV['SEAL_ORGANISATION']}/whitehall" }
   let(:whitehall_rebuild_repo_name) { "#{ENV['SEAL_ORGANISATION']}/whitehall-rebuild" }
+  let(:whitehall_security_repo_name) { "#{ENV['SEAL_ORGANISATION']}/whitehall-security" }
   let(:blocked_and_wip) do
     [
       {
@@ -71,6 +73,7 @@ RSpec.describe GithubFetcher do
   let(:include_repos) { nil }
 
   let(:team_members_accounts) { %w(binaryberry boffbowsh jackscotti tekin elliotcm tommyp mattbostock) }
+  let(:github_team) { nil }
 
   let(:pull_2266) do
     double(Sawyer::Resource,
@@ -96,6 +99,18 @@ RSpec.describe GithubFetcher do
           )
   end
 
+  let(:pull_2295) do
+    double(Sawyer::Resource,
+           user: double(Sawyer::Resource, login: 'lauramipsum'),
+           title: 'Enable ssh key signing',
+           html_url: 'https://github.com/alphagov/whitehall-security/pull/2295',
+           number: 2295,
+           review_comments: 0,
+           comments: 0,
+           updated_at: '2015-07-17 01:00:44 UTC'
+          )
+  end
+
   let(:comments_2266) do
     [
       "You should add more seal images on the front end",
@@ -111,6 +126,10 @@ RSpec.describe GithubFetcher do
     ].map { |body| double(Sawyer::Resource, body: body)}
   end
 
+  let(:comments_2295) do
+    []
+  end
+
   let(:reviews_2248) do
     [
       double(Sawyer::Resource, state: "APPROVED" )
@@ -119,13 +138,15 @@ RSpec.describe GithubFetcher do
 
   let(:reviews_2266) { [] }
 
+  let(:reviews_2295) { [] }
+
   let(:titles) { github_fetcher.list_pull_requests.map { |pr| pr[:title] } }
 
   before do
     allow(Octokit::Client).to receive(:new).and_return(fake_octokit_client)
     allow(fake_octokit_client).to receive_message_chain('user.login')
     allow(fake_octokit_client).to receive(:auto_paginate=).with(false)
-    response = double(items: [pull_2266, pull_2248])
+    response = double(items: [pull_2266, pull_2248, pull_2295])
     allow(fake_octokit_client).to receive(:search_issues).with("is:pr state:open user:alphagov archived:false -is:draft", per_page: 100).and_return(response)
     allow(fake_octokit_client).to receive(:last_response).and_return(double(data: response, rels: { next: nil }))
 
@@ -134,6 +155,7 @@ RSpec.describe GithubFetcher do
 
     allow(fake_octokit_client).to receive(:pull_request).with(whitehall_rebuild_repo_name, 2248).and_return(pull_2248)
     allow(fake_octokit_client).to receive(:pull_request).with(whitehall_repo_name, 2266).and_return(pull_2266)
+
     allow(fake_octokit_client).to receive(:get).with(%r"repos/alphagov/[\w-]+/pulls/2248/reviews").and_return(reviews_2248)
     allow(fake_octokit_client).to receive(:get).with(%r"repos/alphagov/[\w-]+/pulls/2266/reviews").and_return(reviews_2266)
   end
@@ -172,6 +194,7 @@ RSpec.describe GithubFetcher do
     before do
       allow(fake_octokit_client).to receive(:labels_for_issue).with(whitehall_rebuild_repo_name, 2248).and_return(blocked_and_wip)
       allow(fake_octokit_client).to receive(:labels_for_issue).with(whitehall_repo_name, 2266).and_return([])
+      allow(fake_octokit_client).to receive(:labels_for_issue).with(whitehall_security_repo_name, 2295).and_return([])
     end
 
     context 'excluding nothing' do
@@ -258,6 +281,65 @@ RSpec.describe GithubFetcher do
         it 'filters out PRs for the "whitehall-rebuild" repo' do
           expect(titles).to match_array(['[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host'])
         end
+      end
+    end
+  end
+
+  context 'with github team configured' do
+
+    let(:use_labels) { false }
+    let(:github_team) { 'whitehall-security-devs' }
+
+    let(:github_team_members) do
+      [
+        double(Sawyer::Resource, login: "lauramipsum" )
+      ]
+    end
+
+    let(:github_team_repos) do
+      [
+        double(Sawyer::Resource, name: "whitehall-security" )
+      ]
+    end
+
+    before do
+      allow(fake_octokit_client).to receive(:get).with("/orgs/#{ENV['SEAL_ORGANISATION']}/teams/#{github_team}/members").and_return(github_team_members)
+      allow(fake_octokit_client).to receive(:get).with("/orgs/#{ENV['SEAL_ORGANISATION']}/teams/#{github_team}/repos").and_return(github_team_repos)
+      allow(fake_octokit_client).to receive(:issue_comments).with(whitehall_security_repo_name, 2295).and_return(comments_2295)
+      allow(fake_octokit_client).to receive(:pull_request).with(whitehall_security_repo_name, 2295).and_return(pull_2295)
+      allow(fake_octokit_client).to receive(:get).with(%r"repos/alphagov/[\w-]+/pulls/2295/reviews").and_return(reviews_2295)
+    end
+
+    context 'with no team members configured' do
+      let(:include_repos) { ['whitehall', 'whitehall-rebuild', 'whitehall-security'] }
+      let(:team_members_accounts) { [] }
+
+      it 'only shows PRs for members of the github team' do
+        expect(titles).to match_array(["Enable ssh key signing"])
+      end
+    end
+     
+    context 'with additional team members configured' do
+      let(:include_repos) { ['whitehall', 'whitehall-rebuild', 'whitehall-security'] }
+
+      it 'shows PRs for members of the github team and the additional team members' do
+        expect(titles).to match_array(["Enable ssh key signing","Remove all Import-related code","[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host"])
+      end
+    end
+     
+    context 'without include_repos configured' do
+      let(:include_repos) { [] }
+
+      it 'only shows PRs for repos owned by the github team' do
+        expect(titles).to match_array(["Enable ssh key signing"])
+      end
+    end
+     
+    context 'with include_repos configured' do
+      let(:include_repos) { ['whitehall', 'whitehall-rebuild'] }
+
+      it 'shows PRs for repos owned by the github team and the additional configured repos' do
+        expect(titles).to match_array(["Enable ssh key signing","Remove all Import-related code","[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host"])
       end
     end
   end
