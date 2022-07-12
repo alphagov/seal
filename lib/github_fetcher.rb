@@ -129,22 +129,24 @@ class GithubFetcher
   end
 
   def get_team_members(team_slug, members)
+    return members if team_slug.nil?
+
     github_team_members = get_github_team_members(team_slug)
     (github_team_members + members).uniq
   end
 
   def get_github_team_members(team_slug)
-    return [] if team_slug.nil? || team_slug.empty?
-    team_members = github.get("/orgs/#{@organisation}/teams/#{team_slug}/members").map{|member| member.login}
+    github.get("/orgs/#{@organisation}/teams/#{team_slug}/members").map { |member| member.login }
   end
 
   def get_team_repos(team_slug, repos)
+    return repos if team_slug.nil?
+
     github_team_repos = get_github_team_repos(team_slug)
     (github_team_repos + repos).uniq
   end
 
   def get_github_team_repos(team_slug)
-    return [] if team_slug.nil? || team_slug.empty?
-    team_repos = github.get("/orgs/#{@organisation}/teams/#{team_slug}/repos").map{|repo| repo.name}
+    github.get("/orgs/#{@organisation}/teams/#{team_slug}/repos").map{|repo| repo.name}
   end
 end
