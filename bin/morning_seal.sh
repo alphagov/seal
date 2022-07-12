@@ -16,7 +16,9 @@ for team in ${teams[*]}; do
 done
 
 morning_quote_teams=(
-  FUN-workstream
+  fun-workstream-govuk
+  fun-workstream-gds-community
+  fun-workstream-test-channel
 )
 
 for team in ${morning_quote_teams[*]}; do
