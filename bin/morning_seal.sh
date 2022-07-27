@@ -9,6 +9,7 @@ teams=(
   govuk-pay
   govuk-platform-reliability
   govuk-publishing
+  govuk-replatforming
   govwifi
 )
 

@@ -313,26 +313,19 @@ govuk-publishing-platform:
   compact: true
 
 govuk-replatforming:
-  members:
-    - richardTowers
-    - sengi
-    - alexbakervr
-    - lwilts
-    - marcpomfret
-    - theseanything
-    - jibolaolu
-    - fredericfrancois
-    - rtrinque
-    - smford
-    - nsabri1
-
-  channel:
-    "#govuk-replatforming"
-
+  github_team: gov-uk-replatforming
+  channel: "#govuk-replatforming"
+  compact: true
   exclude_titles:
+    - "[DNM]"
     - "[DO NOT MERGE]"
-    - WIP
     - "[WIP]"
+    - "WIP "
+    - "WIP:"
+  include_repos:
+    - govuk-helm-charts
+    - govuk-infrastructure
+    - govuk-kubernetes-cluster-user-docs
 
 govwifi:
   members:
