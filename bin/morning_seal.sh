@@ -8,7 +8,8 @@ teams=(
   govuk-forms
   govuk-pay
   govuk-platform-reliability
-  govuk-publishing
+  govuk-publishing-experience
+  govuk-publishing-platform  
   govuk-replatforming
   govwifi
 )
