@@ -67,6 +67,9 @@ class SlackPoster
     elsif @mood == "fun-workstream"
       @mood_hash[:icon_emoji]= ":wholesome-seal:"
       @mood_hash[:username]= "It's ok Seal"
+    elsif @mood == "govuk-green-team"
+      @mood_hash[:icon_emoji]=":happybabyseal:"
+      @mood_hash[:username]= "Elephant Seal"
     else
       fail "Bad mood: #{mood}."
     end
@@ -104,6 +107,8 @@ class SlackPoster
     # If the channel name is either govuk or gds-community, set the mood to 'fun-workstream'
     elsif ['#govuk', '#gds-community', '#sealtesting'].include?(@team_channel)
        @mood = "fun-workstream"
+     elsif @team_channel == "#govuk-green-team"
+       @mood = "govuk-green-team"
     elsif @mood == nil
       @mood = "charter"
     end

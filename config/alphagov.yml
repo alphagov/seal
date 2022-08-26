@@ -106,6 +106,19 @@ fun-workstream-govuk:
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to|It's ok to> put yourself first
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/this-is-gds/its-ok-to|It's ok to> love what you do
 
+govuk-green-team:
+  channel:
+    "#govuk-green-team"
+  quotes:
+    - "Remember to make time for personal development :big-brain:"
+    - "Remember to make time for community and corporate objectives :handshake:"
+    - "Remember to make time for wellbeing :happyseal:"
+    - "Remember to celebrating maintaining content :celebrate:"
+    - "Remember to fill out the <https://docs.google.com/spreadsheets/d/1MV7ASHzDj_FWxix2tCo_EpuBmK0uvuYPnwjijjGIp00/edit#gid=0|spreadsheet> if you're going into the office soon so your teammates can look out for you. :office:"
+    - "Remember to add <https://docs.google.com/document/d/14L5FbIxpTEcjTXgA2deTAupr4y8n3JcIJixNSH5Czz0/edit|QOTDs> to the pinned list when you think of them"
+    - "Remember to read or add entries to the monthly newsletter (pinned to the channel) and find out what the team has been doing lately! :newspaper:"
+    - "Remember to <https://forms.gle/DdzRiptNuYQqA1Xn9|let me know> if there’s anything else I can help with or if you have any feedback. :mega:"
+
 govuk-accounts:
   channel:
     "#govuk-accounts"
