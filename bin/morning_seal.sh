@@ -9,7 +9,7 @@ teams=(
   govuk-pay
   govuk-platform-reliability
   govuk-publishing-experience
-  govuk-publishing-platform  
+  govuk-publishing-platform
   govuk-replatforming
   govwifi
 )
@@ -22,6 +22,7 @@ morning_quote_teams=(
   fun-workstream-govuk
   fun-workstream-gds-community
   fun-workstream-test-channel
+  govuk-green-team
 )
 
 for team in ${morning_quote_teams[*]}; do
