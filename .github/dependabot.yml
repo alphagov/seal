@@ -4,9 +4,3 @@ updates:
     directory: /
     schedule:
       interval: daily
-    allow:
-      # Framework gems
-      - dependency-name: rspec
-        dependency-type: direct
-      - dependency-name: sinatra
-        dependency-type: direct
