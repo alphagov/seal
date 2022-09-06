@@ -1,10 +1,8 @@
 # Seal
 
-[![Build Status](https://travis-ci.org/binaryberry/seal.svg)](https://travis-ci.org/binaryberry/seal)
-
 ## What is it?
 
-This is a Slack bot that publishes a team's pull requests to their Slack Channel, once provided the organisation name and either a [Github team] (https://docs.github.com/en/organizations/organizing-members-into-teams/about-teams) name or the team members' individual github names. It is my first 20% project at GDS.
+This is a Slack bot that publishes a team's pull requests to their Slack Channel, once provided the organisation name, team names and respectivo repos.
 
 ![image](https://github.com/binaryberry/seal/blob/master/images/readme/informative.png)
 ![image](https://github.com/binaryberry/seal/blob/master/images/readme/angry.png)
@@ -15,7 +13,7 @@ This is a Slack bot that publishes a team's pull requests to their Slack Channel
 
 Fork the repo and add/change the config files that relate to your github organisation. For example, the alphagov config file is located at [config/alphagov.yml](config/alphagov.yml) and the config for scheduled daily visits can be found in [bin](bin)
 
-Include your team's name, the Slack channel you want to post to, and either the name of your team on Github or the the Github names of your individual team members. You can also choose to provide _both_ the Github team name and the names of additional individual team members.
+Include your team's name, repos and the Slack channel you want to post to.
 
 In your shell profile, put in:
 
@@ -42,7 +40,6 @@ export GITHUB_API_ENDPOINT="your_github_api_endpoint" # OPTIONAL If you are usin
 export SLACK_WEBHOOK="get_your_incoming_webhook_link_for_your_slack_group_channel"
 export SLACK_CHANNEL="#whatever-channel-you-prefer"
 export GITHUB_TEAM="your-team-name-on-github"
-export GITHUB_MEMBERS="netflash,binaryberry,otheruser"
 export GITHUB_USE_LABELS=true
 export GITHUB_EXCLUDE_LABELS="[DO NOT MERGE],Don't merge,DO NOT MERGE,Waiting on factcheck,wip"
 export GITHUB_EXCLUDE_REPOS="notmyproject,someotherproject" # Ensure these projects are *NOT* included
@@ -115,7 +112,6 @@ docker run -it --rm --name seal \
   -e SLACK_WEBHOOK=${SLACK_WEBHOOK} \
   -e DYNO=${DYNO} \
   -e SLACK_CHANNEL=${SLACK_CHANNEL} \
-  -e GITHUB_MEMBERS=${GITHUB_MEMBERS} \
   -e GITHUB_TEAM=${GITHUB_TEAM} \
   -e GITHUB_USE_LABELS=${GITHUB_USE_LABELS} \
   -e "GITHUB_EXCLUDE_LABELS=${GITHUB_EXCLUDE_LABELS}" \

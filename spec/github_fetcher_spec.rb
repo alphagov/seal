@@ -4,7 +4,6 @@ require_relative "../lib/github_fetcher"
 RSpec.describe GithubFetcher do
   let(:team) {
     Team.new(
-      members: team_members_accounts,
       github_team: github_team,
       use_labels: use_labels,
       exclude_labels: exclude_labels,
@@ -72,7 +71,6 @@ RSpec.describe GithubFetcher do
   let(:exclude_repos) { nil }
   let(:include_repos) { nil }
 
-  let(:team_members_accounts) { %w(binaryberry boffbowsh jackscotti tekin elliotcm tommyp mattbostock) }
   let(:github_team) { nil }
 
   let(:pull_2266) do
@@ -162,7 +160,7 @@ RSpec.describe GithubFetcher do
 
   shared_examples_for 'fetching from GitHub' do
     describe '#list_pull_requests' do
-      it "displays open pull requests open on the team's repos by a team member" do
+      it "displays open pull requests open on the team's repos" do
         expect(github_fetcher.list_pull_requests).to match expected_open_prs
       end
     end
@@ -290,12 +288,6 @@ RSpec.describe GithubFetcher do
     let(:use_labels) { false }
     let(:github_team) { 'whitehall-security-devs' }
 
-    let(:github_team_members) do
-      [
-        double(Sawyer::Resource, login: "lauramipsum" )
-      ]
-    end
-
     let(:github_team_repos) do
       [
         double(Sawyer::Resource, name: "whitehall-security" )
@@ -303,28 +295,10 @@ RSpec.describe GithubFetcher do
     end
 
     before do
-      allow(fake_octokit_client).to receive(:get).with("/orgs/#{ENV['SEAL_ORGANISATION']}/teams/#{github_team}/members").and_return(github_team_members)
       allow(fake_octokit_client).to receive(:get).with("/orgs/#{ENV['SEAL_ORGANISATION']}/teams/#{github_team}/repos").and_return(github_team_repos)
       allow(fake_octokit_client).to receive(:issue_comments).with(whitehall_security_repo_name, 2295).and_return(comments_2295)
       allow(fake_octokit_client).to receive(:pull_request).with(whitehall_security_repo_name, 2295).and_return(pull_2295)
       allow(fake_octokit_client).to receive(:get).with(%r"repos/alphagov/[\w-]+/pulls/2295/reviews").and_return(reviews_2295)
-    end
-
-    context 'with no team members configured' do
-      let(:include_repos) { ['whitehall', 'whitehall-rebuild', 'whitehall-security'] }
-      let(:team_members_accounts) { [] }
-
-      it 'only shows PRs for members of the github team' do
-        expect(titles).to match_array(["Enable ssh key signing"])
-      end
-    end
-     
-    context 'with additional team members configured' do
-      let(:include_repos) { ['whitehall', 'whitehall-rebuild', 'whitehall-security'] }
-
-      it 'shows PRs for members of the github team and the additional team members' do
-        expect(titles).to match_array(["Enable ssh key signing","Remove all Import-related code","[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host"])
-      end
     end
      
     context 'without include_repos configured' do

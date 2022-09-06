@@ -11,11 +11,6 @@ RSpec.describe TeamBuilder do
     FileUtils.mkdir_p(File.join(File.dirname(__FILE__), "../config"))
     File.write(File.join(File.dirname(__FILE__), "../config/#{organisation}.yml"), YAML.dump(
       "lions" => {
-        "members" => [
-          "lil lion",
-          "snoop lion",
-          "biggy smalls",
-        ],
         "channel" => "#lions",
         "exclude_titles" => [
           "DO NOT MERGE",
@@ -33,11 +28,6 @@ RSpec.describe TeamBuilder do
         ],
       },
       "tigers" => {
-        "members" => [
-          "tony",
-          "stripey",
-          "biggy smalls",
-        ],
         "channel" => "#tigers",
       },
       "cats" => {
@@ -59,12 +49,6 @@ RSpec.describe TeamBuilder do
   it "loads all keys" do
     lions = teams.find {|t| t.channel == "#lions"}
     cats = teams.find {|t| t.channel == "#cats"}
-
-    expect(lions.members).to eq([
-      "lil lion",
-      "snoop lion",
-      "biggy smalls",
-    ])
 
     expect(lions.exclude_titles).to eq([
       "DO NOT MERGE",

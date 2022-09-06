@@ -3,23 +3,6 @@
 find-and-view-tech:
   channel:
     "#find-and-view-tech"
-  members:
-    - "1pretz1"
-    - AgaDufrat
-    - andyhd
-    - "chao-xian"
-    - "chris-gds"
-    - edwardkerry
-    - hannako
-    - hannalaakso
-    - "jon-kirwan"
-    - "KludgeKML"
-    - kashifatcha
-    - martinjjones
-    - matthillco
-    - maxgds
-    - patrickpatrickpatrick
-    - Tetrino
   compact: true
   exclude_titles:
     - "[DO NOT MERGE]"
@@ -136,11 +119,6 @@ govuk-accounts:
     - "We invest time and effort in increasing our understanding of the problems we’re working on. This will help us make things better for users and move the conversation about personalisation in government forward."
 
 govuk-accounts-tech:
-  members:
-    - alex9smith
-    - danacotoran
-    - huwd
-
   channel:
     "#govuk-accounts-tech"
 
@@ -153,13 +131,6 @@ govuk-accounts-tech:
 data-infrastructure:
   channel:
     "#data-infrastructure"
-  members:
-    - andyhd
-    - DAVadgama
-    - Nyzl
-    - ollyroberts
-    - "st-alice"
-    - zilnhoj
   exclude_titles:
     - "[DO NOT MERGE]"
     - "[PROTOTYPE]"
@@ -174,12 +145,6 @@ data-infrastructure:
 data-insights:
   channel:
     "#data-insights"
-  members:
-    - DMorrison1996
-    - hwrightson
-    - j-marvin-GDS
-    - paulcronk
-    - TMSGDS
   exclude_titles:
     - "[DO NOT MERGE]"
     - "[PROTOTYPE]"
@@ -194,16 +159,6 @@ data-insights:
 data-products:
   channel:
     "#data-products"
-  members:
-    - abdisalam101
-    - amyrosecastiglione
-    - exfalsoquodlibet
-    - FelixReillyGDS
-    - mammykins
-    - maxf
-    - nacnudus
-    - rory-hurley-gds
-    - "st-alice"
   exclude_titles:
     - "[DO NOT MERGE]"
     - "[PROTOTYPE]"
@@ -216,9 +171,6 @@ data-products:
     - "ignore"
 
 govuk-datagovuk:
-  members:
-    - kentsanggds
-
   channel:
     "#govuk-datagovuk"
 
@@ -243,18 +195,6 @@ govuk-forms:
   compact: true
 
 govuk-platform-reliability:
-  members:
-    - catalinailie
-    - ChrisBAshton
-    - deborahchua
-    - MahmudH
-    - MuriloDalRi
-    - PeterHattyar
-    - nicholsj
-    - robinjam
-    - rtrinque
-    - sihugh
-
   channel:
     "#govuk-platform-reliability-team"
 
@@ -277,33 +217,6 @@ govuk-platform-reliability:
   compact: true
 
 govuk-pay:
-  members:
-    - AbdirizakIdris
-    - alanmaddrell
-    - alan-gds
-    - alexbishop1
-    - antoniasimmons
-    - Beth-Brown
-    - heathd
-    - iqbalgds
-    - jabrahoarder
-    - jfharden
-    - "jonny-walkley"
-    - katstevens
-    - kaydale
-    - kbottla
-    - Nadia42
-    - nlsteers
-    - niaaudrina
-    - oswaldquek
-    - richblake
-    - Rkotyank
-    - SandorArpa
-    - sfount
-    - stephencdaly
-    - "xander-gds"
-    - sjzarb
-
   channel:
     "#govuk-pay-tech"
 
@@ -313,17 +226,6 @@ govuk-pay:
     - WIP
 
 govuk-publishing-experience:
-  members:
-    - baisa
-    - beccapearce
-    - benjamineskola
-    - dnkrj
-    - davidgisbey
-    - davidtrussler
-    - DilwoarH
-    - jyoung-gds
-    - ollietreend
-
   channel:
     "#govuk-publishing-experience-tech"
 
@@ -335,11 +237,6 @@ govuk-publishing-experience:
   compact: true
 
 govuk-publishing-platform:
-  members:
-    - BeckaL
-    - brucebolt
-    - callumknights
-    - JonathanHallam
   channel:
     "#govuk-publishing-platform"
 
@@ -366,15 +263,6 @@ govuk-replatforming:
     - govuk-kubernetes-cluster-user-docs
 
 govwifi:
-  members:
-    - koetsier
-    - camdesgov
-    - sarahseewhy
-    - "seb-szy"
-    - cbaines
-    - szd55gds
-    - jimnarey
-
   include_repos:
     - "govwifi-acceptance-tests"
     - "govwifi-admin"

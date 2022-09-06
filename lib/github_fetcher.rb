@@ -10,7 +10,6 @@ class GithubFetcher
     @github.api_endpoint = ENV["GITHUB_API_ENDPOINT"] if ENV["GITHUB_API_ENDPOINT"]
     @github.auto_paginate = false
     @github.user.login
-    @people = get_team_members(team.github_team, team.members)
     @use_labels = team.use_labels
     @exclude_labels = team.exclude_labels.map(&:downcase).uniq
     @exclude_titles = team.exclude_titles.map(&:downcase).uniq
@@ -48,7 +47,6 @@ class GithubFetcher
     :exclude_repos,
     :include_repos,
     :organisation,
-    :people,
     :github,
     :sleep_time
 
@@ -66,10 +64,6 @@ class GithubFetcher
       updated: Date.parse(pull_request.updated_at.to_s),
       labels: labels(pull_request, repo),
     }
-  end
-
-  def person_subscribed?(pull_request)
-    people.empty? || people.include?("#{pull_request.user.login}")
   end
 
   def count_comments(pull_request, repo)
@@ -100,7 +94,6 @@ class GithubFetcher
     excluded_repo?(repo) ||
       excluded_label?(pull_request, repo) ||
       excluded_title?(pull_request.title) ||
-      !person_subscribed?(pull_request) ||
       (include_repos.any? && !explicitly_included_repo?(repo))
   end
 
@@ -126,17 +119,6 @@ class GithubFetcher
 
   def repo_name(pr)
     pr.html_url.split("/")[4]
-  end
-
-  def get_team_members(team_slug, members)
-    return members if team_slug.nil?
-
-    github_team_members = get_github_team_members(team_slug)
-    (github_team_members + members).uniq
-  end
-
-  def get_github_team_members(team_slug)
-    github.get("/orgs/#{@organisation}/teams/#{team_slug}/members").map { |member| member.login }
   end
 
   def get_team_repos(team_slug, repos)
