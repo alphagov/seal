@@ -257,13 +257,13 @@ govuk-replatforming:
     - "[WIP]"
     - "WIP "
     - "WIP:"
-  include_repos:
+  repos:
     - govuk-helm-charts
     - govuk-infrastructure
     - govuk-kubernetes-cluster-user-docs
 
 govwifi:
-  include_repos:
+  repos:
     - "govwifi-acceptance-tests"
     - "govwifi-admin"
     - "govwifi-authentication-api"

@@ -11,9 +11,7 @@ class GithubFetcher
     @exclude_labels = team.exclude_labels.map(&:downcase).uniq
     @exclude_titles = team.exclude_titles.map(&:downcase).uniq
     @labels = {}
-    @exclude_repos = team.exclude_repos
-    @include_repos = get_team_repos(team.github_team, team.include_repos)
-    @sleep_time = ENV.has_key?("THROTTLE_SECS") ? ENV["THROTTLE_SECS"].to_i : 60
+    @repos = get_team_repos(team.github_team, team.repos)
   end
 
   def list_pull_requests
@@ -23,43 +21,39 @@ class GithubFetcher
   end
 
   def pull_requests_from_github
-    github.search_issues("is:pr state:open user:#{organisation} archived:false -is:draft", per_page: 100)
-    last_response = github.last_response
-    pulls = last_response.data.items
-    return [] if pulls.empty?
-
-    until last_response.rels[:next].nil?
-      sleep sleep_time
-      last_response = last_response.rels[:next].get
-      pulls << last_response.data.items
+    pulls = []
+    @repos.each do |repo|
+      github.pull_requests("#{organisation}/#{repo}", { state: :open, sort: :created })
+            .reject { |p| p.user.login.include?("dependabot") || p.draft }.each do |pr|
+              pulls << pr
+            end
     end
+
     pulls.flatten
   end
 
   private
 
   attr_reader :use_labels,
-    :exclude_labels,
-    :exclude_titles,
-    :exclude_repos,
-    :include_repos,
-    :organisation,
-    :github,
-    :sleep_time
+              :exclude_labels,
+              :exclude_titles,
+              :repos,
+              :organisation,
+              :github
 
   def present_pull_request(pull_request)
-    repo = repo_name(pull_request)
+    repo = pull_request.head.repo.name
 
     {
       title: pull_request.title,
       link: pull_request.html_url,
       author: pull_request.user.login,
-      repo: repo,
+      repo:,
       comments_count: count_comments(pull_request, repo),
       thumbs_up: count_thumbs_up(pull_request, repo),
       approved: approved?(pull_request, repo),
       updated: Date.parse(pull_request.updated_at.to_s),
-      labels: labels(pull_request, repo),
+      labels: labels(pull_request)
     }
   end
 
@@ -71,7 +65,7 @@ class GithubFetcher
   def count_thumbs_up(pull_request, repo)
     response = github.issue_comments("#{organisation}/#{repo}", pull_request.number)
     comments_string = response.map(&:body).join
-    thumbs_up = comments_string.scan(/:\+1:/).count
+    comments_string.scan(/:\+1:/).count
   end
 
   def approved?(pull_request, repo)
@@ -79,43 +73,22 @@ class GithubFetcher
     reviews.any? { |review| review.state == 'APPROVED' }
   end
 
-  def labels(pull_request, repo)
+  def labels(pull_request)
     return [] unless use_labels
-    key = "#{organisation}/#{repo}/#{pull_request.number}".to_sym
-    @labels[key] ||= github.labels_for_issue("#{organisation}/#{repo}", pull_request.number)
+
+    pull_request.labels.map { |label| label[:name].downcase }
   end
 
   def hidden?(pull_request)
-    repo = repo_name(pull_request)
-
-    excluded_repo?(repo) ||
-      excluded_label?(pull_request, repo) ||
-      excluded_title?(pull_request.title) ||
-      (include_repos.any? && !explicitly_included_repo?(repo))
+    excluded_label?(pull_request) || excluded_title?(pull_request.title)
   end
 
-  def excluded_label?(pull_request, repo)
-    return false unless exclude_labels.any?
-    lowercase_label_names = labels(pull_request, repo).map { |l| l['name'].downcase }
-    exclude_labels.any? { |e| lowercase_label_names.include?(e) }
+  def excluded_label?(pull_request)
+    exclude_labels.any? { |e| labels(pull_request).include?(e) }
   end
 
   def excluded_title?(title)
     exclude_titles.any? { |t| title.downcase.include?(t) }
-  end
-
-  def excluded_repo?(repo)
-    return false unless exclude_repos.any?
-    exclude_repos.include?(repo)
-  end
-
-  def explicitly_included_repo?(repo)
-    return false unless include_repos.any?
-    include_repos.include?(repo)
-  end
-
-  def repo_name(pr)
-    pr.html_url.split("/")[4]
   end
 
   def get_team_repos(team_slug, repos)
@@ -126,6 +99,6 @@ class GithubFetcher
   end
 
   def get_github_team_repos(team_slug)
-    github.get("/orgs/#{@organisation}/teams/#{team_slug}/repos").map{|repo| repo.name}
+    github.get("/orgs/#{@organisation}/teams/#{team_slug}/repos").map(&:name)
   end
 end

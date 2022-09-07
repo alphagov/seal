@@ -43,8 +43,7 @@ class TeamBuilder
       compact: env["COMPACT"] == "true" || config["compact"],
       exclude_labels: env["GITHUB_EXCLUDE_LABELS"]&.split(',') || config["exclude_labels"],
       exclude_titles: env["GITHUB_EXCLUDE_TITLES"]&.split(',') || config["exclude_titles"],
-      exclude_repos: env["GITHUB_EXCLUDE_REPOS"]&.split(',') || config["exclude_repos"],
-      include_repos: env["GITHUB_INCLUDE_REPOS"]&.split(',') || config["include_repos"],
+      repos: env["GITHUB_REPOS"]&.split(',') || config["repos"],
       quotes: env["SEAL_QUOTES"]&.split(',') || config["quotes"],
       slack_channel: env["SLACK_CHANNEL"] || config["channel"],
     }

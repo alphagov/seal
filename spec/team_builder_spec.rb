@@ -79,8 +79,7 @@ RSpec.describe TeamBuilder do
     expect(tigers.use_labels).to eq(false)
     expect(tigers.compact).to eq(false)
     expect(tigers.quotes).to eq([])
-    expect(tigers.include_repos).to eq([])
-    expect(tigers.exclude_repos).to eq([])
+    expect(tigers.repos).to eq([])
   end
 
   it "allows the overriding of options via environment variables" do

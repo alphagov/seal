@@ -8,8 +8,7 @@ RSpec.describe GithubFetcher do
       use_labels: use_labels,
       exclude_labels: exclude_labels,
       exclude_titles: exclude_titles,
-      exclude_repos: exclude_repos,
-      include_repos: include_repos,
+      repos: repos,
     )
   }
 
@@ -68,8 +67,7 @@ RSpec.describe GithubFetcher do
 
   let(:exclude_labels) { nil }
   let(:exclude_titles) { nil }
-  let(:exclude_repos) { nil }
-  let(:include_repos) { nil }
+  let(:repos) { nil }
 
   let(:github_team) { nil }
 
@@ -224,15 +222,7 @@ RSpec.describe GithubFetcher do
     end
 
     context 'excluding "whitehall-rebuild" repo' do
-      let(:exclude_repos) { ['whitehall-rebuild'] }
-
-      it 'filters out PRs for the "whitehall-rebuild" repo' do
-        expect(titles).to match_array(['[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host'])
-      end
-    end
-
-    context 'excluding "whitehall-rebuild" repo' do
-      let(:include_repos) { ['whitehall-rebuild'] }
+      let(:repos) { ['whitehall-rebuild'] }
 
       it 'filters out PRs NOT from the "whitehall-rebuild" repo' do
         expect(titles).to match_array(['Remove all Import-related code'])
@@ -272,14 +262,6 @@ RSpec.describe GithubFetcher do
           expect(titles).to include('Remove all Import-related code')
         end
       end
-
-      context 'excluding "whitehall-rebuild" repo' do
-        let(:exclude_repos) { ['whitehall-rebuild'] }
-
-        it 'filters out PRs for the "whitehall-rebuild" repo' do
-          expect(titles).to match_array(['[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host'])
-        end
-      end
     end
   end
 
@@ -301,16 +283,16 @@ RSpec.describe GithubFetcher do
       allow(fake_octokit_client).to receive(:get).with(%r"repos/alphagov/[\w-]+/pulls/2295/reviews").and_return(reviews_2295)
     end
      
-    context 'without include_repos configured' do
-      let(:include_repos) { [] }
+    context 'without repos configured' do
+      let(:repos) { [] }
 
       it 'only shows PRs for repos owned by the github team' do
         expect(titles).to match_array(["Enable ssh key signing"])
       end
     end
      
-    context 'with include_repos configured' do
-      let(:include_repos) { ['whitehall', 'whitehall-rebuild'] }
+    context 'with repos configured' do
+      let(:repos) { ['whitehall', 'whitehall-rebuild'] }
 
       it 'shows PRs for repos owned by the github team and the additional configured repos' do
         expect(titles).to match_array(["Enable ssh key signing","Remove all Import-related code","[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host"])
