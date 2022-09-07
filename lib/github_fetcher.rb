@@ -1,9 +1,6 @@
 require "octokit"
 
 class GithubFetcher
-  # TODO: remove media type when review support comes out of preview
-  Octokit.default_media_type = "application/vnd.github.black-cat-preview+json"
-
   def initialize(team)
     @organisation = ENV["SEAL_ORGANISATION"]
     @github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
