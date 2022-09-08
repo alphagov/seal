@@ -2,7 +2,7 @@ require_relative "team"
 
 class TeamBuilder
   def self.build(env: {}, team_name: nil)
-    self.new(env).build(team_name)
+    new(env).build(team_name)
   end
 
   def initialize(env)
@@ -17,7 +17,7 @@ class TeamBuilder
     end
   end
 
-  private
+private
 
   attr_reader :env
 
@@ -41,10 +41,10 @@ class TeamBuilder
       github_team: env["GITHUB_TEAM"] || config["github_team"],
       use_labels: env["GITHUB_USE_LABELS"] == "true" || config["use_labels"],
       compact: env["COMPACT"] == "true" || config["compact"],
-      exclude_labels: env["GITHUB_EXCLUDE_LABELS"]&.split(',') || config["exclude_labels"],
-      exclude_titles: env["GITHUB_EXCLUDE_TITLES"]&.split(',') || config["exclude_titles"],
-      repos: env["GITHUB_REPOS"]&.split(',') || config["repos"],
-      quotes: env["SEAL_QUOTES"]&.split(',') || config["quotes"],
+      exclude_labels: env["GITHUB_EXCLUDE_LABELS"]&.split(",") || config["exclude_labels"],
+      exclude_titles: env["GITHUB_EXCLUDE_TITLES"]&.split(",") || config["exclude_titles"],
+      repos: env["GITHUB_REPOS"]&.split(",") || config["repos"],
+      quotes: env["SEAL_QUOTES"]&.split(",") || config["quotes"],
       slack_channel: env["SLACK_CHANNEL"] || config["channel"],
     }
   end

@@ -1,22 +1,22 @@
-require 'spec_helper'
-require './lib/message_builder'
+require "spec_helper"
+require "./lib/message_builder"
 
 RSpec.describe MessageBuilder do
   let(:team) { double(:team, compact: false) }
-  let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests)}
+  let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests) }
   subject(:message_builder) { MessageBuilder.new(team) }
 
   let(:no_unapproved_pull_requests) do
     [
       {
-        title: 'Some approved PR',
-        link: 'https://github.com/alphagov/whitehall/pull/9999',
-        author: 'helpful_person',
-        repo: 'whitehall',
+        title: "Some approved PR",
+        link: "https://github.com/alphagov/whitehall/pull/9999",
+        author: "helpful_person",
+        repo: "whitehall",
         comments_count: 5,
         thumbs_up: 0,
         approved: true,
-        updated: Date.parse('2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)'),
+        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
     ]
@@ -25,25 +25,25 @@ RSpec.describe MessageBuilder do
   let(:recent_pull_requests) do
     [
       {
-        title: 'Remove all Import-related code',
-        link: 'https://github.com/alphagov/whitehall/pull/2248',
-        author: 'tekin',
-        repo: 'whitehall',
+        title: "Remove all Import-related code",
+        link: "https://github.com/alphagov/whitehall/pull/2248",
+        author: "tekin",
+        repo: "whitehall",
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
-        updated: Date.parse('2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)'),
+        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
       {
-        title: 'Some approved PR',
-        link: 'https://github.com/alphagov/whitehall/pull/9999',
-        author: 'helpful_person',
-        repo: 'whitehall',
+        title: "Some approved PR",
+        link: "https://github.com/alphagov/whitehall/pull/9999",
+        author: "helpful_person",
+        repo: "whitehall",
         comments_count: 5,
         thumbs_up: 0,
         approved: true,
-        updated: Date.parse('2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)'),
+        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
     ]
@@ -52,125 +52,125 @@ RSpec.describe MessageBuilder do
   let(:old_and_new_pull_requests) do
     [
       {
-        title: '[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host',
-        link: 'https://github.com/alphagov/whitehall/pull/2266',
-        author: 'mattbostock',
-        repo: 'whitehall',
+        title: "[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host",
+        link: "https://github.com/alphagov/whitehall/pull/2266",
+        author: "mattbostock",
+        repo: "whitehall",
         comments_count: 1,
         thumbs_up: 1,
         approved: false,
-        updated: Date.parse('2015-07-13 ((2457217j, 0s, 0n), +0s, 2299161j)'),
+        updated: Date.parse("2015-07-13 ((2457217j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
       {
-        title: 'Remove all Import-related code',
-        link: 'https://github.com/alphagov/whitehall/pull/2248',
-        author: 'tekin',
-        repo: 'whitehall',
+        title: "Remove all Import-related code",
+        link: "https://github.com/alphagov/whitehall/pull/2248",
+        author: "tekin",
+        repo: "whitehall",
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
-        updated: Date.parse('2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)'),
+        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
       {
-        title: 'Add extra examples to the specs',
-        link: 'https://github.com/alphagov/seal/pull/9999',
-        author: 'elliotcm',
-        repo: 'seal',
+        title: "Add extra examples to the specs",
+        link: "https://github.com/alphagov/seal/pull/9999",
+        author: "elliotcm",
+        repo: "seal",
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
-        updated: Date.parse('2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)'),
+        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
     ]
   end
 
   before do
-    Timecop.freeze(Time.local(2015, 07, 18))
+    Timecop.freeze(Time.local(2015, 0o7, 18))
 
     allow(GithubFetcher).to receive(:new).with(team).and_return(github_fetcher)
   end
 
-  context 'with labels' do
-    let(:mood) { 'informative' }
+  context "with labels" do
+    let(:mood) { "informative" }
     let(:pull_requests) do
       [
         {
-          title: 'My WIP',
-          link: 'https://github.com/org/repo/pull/42',
-          author: 'Agatha Christie',
-          repo: 'repo',
+          title: "My WIP",
+          link: "https://github.com/org/repo/pull/42",
+          author: "Agatha Christie",
+          repo: "repo",
           comments_count: 0,
           thumbs_up: 0,
           approved: false,
           updated: Date.today,
           labels: [
-            { 'name' => 'wip' },
-            { 'name' => 'blocked' }
+            { "name" => "wip" },
+            { "name" => "blocked" },
           ],
         },
       ]
     end
 
-    it 'includes the labels in the built message' do
+    it "includes the labels in the built message" do
       expect(message_builder.build.text).to include(
-        '[wip] [blocked] <https://github.com/org/repo/pull/42|My WIP> - 0 comments'
+        "[wip] [blocked] <https://github.com/org/repo/pull/42|My WIP> - 0 comments",
       )
     end
   end
 
-  context 'pull requests are recent' do
+  context "pull requests are recent" do
     let(:pull_requests) { recent_pull_requests }
 
-    it 'builds informative message excluding approved PRs' do
+    it "builds informative message excluding approved PRs" do
       expect(message_builder.build.text).to eq("Hello team!\n\nHere are the pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | updated yesterday\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n\nMerry reviewing!")
     end
 
-    it 'has an informative poster mood' do
+    it "has an informative poster mood" do
       expect(message_builder.build.mood).to eq("informative")
     end
   end
 
-  context 'no unapproved pull requests' do
+  context "no unapproved pull requests" do
     let(:pull_requests) { no_unapproved_pull_requests }
 
-    it 'builds seal of approval message' do
+    it "builds seal of approval message" do
       expect(message_builder.build.text).to eq("Aloha team! It's a beautiful day! :happyseal: :happyseal: :happyseal:\n\nNo pull requests to review today! :rainbow: :sunny: :metal: :tada:")
     end
 
-    it 'has an approval poster mood' do
+    it "has an approval poster mood" do
       expect(message_builder.build.mood).to eq("approval")
     end
   end
 
-  context 'there are some PRs that are over 2 days old' do
-    let(:mood) { 'angry' }
+  context "there are some PRs that are over 2 days old" do
+    let(:mood) { "angry" }
     let(:pull_requests) { old_and_new_pull_requests }
 
     context "and some recent ones" do
-      before { Timecop.freeze(Time.local(2015, 07, 18)) }
-      it 'builds message' do
+      before { Timecop.freeze(Time.local(2015, 0o7, 18)) }
+      it "builds message" do
         expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request has not been updated in over 2 days.\n\n1) *whitehall* | mattbostock | updated 5 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\nRemember each time you forget to review your pull requests, a baby seal dies.\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | updated yesterday\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | updated yesterday\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
       end
     end
 
     context "but no recent ones" do
-      before { Timecop.freeze(Time.local(2015, 07, 16)) }
-      it 'builds message' do
+      before { Timecop.freeze(Time.local(2015, 0o7, 16)) }
+      it "builds message" do
         expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request has not been updated in over 2 days.\n\n1) *whitehall* | mattbostock | updated 3 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\nRemember each time you forget to review your pull requests, a baby seal dies.\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | updated -1 days ago\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | updated -1 days ago\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
       end
     end
 
-    it 'has an angry poster mood' do
+    it "has an angry poster mood" do
       expect(message_builder.build.mood).to eq("angry")
     end
 
     context "when in compact mode" do
       let(:team) { double(:team, compact: true) }
 
-      before { Timecop.freeze(Time.local(2015, 07, 18)) }
+      before { Timecop.freeze(Time.local(2015, 0o7, 18)) }
 
       it "builds a more compact message" do
         expect(message_builder.build.text).to eq("*Old pull requests*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host>\n\n*Recent pull requests*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code>\n2) seal: <https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs>")
@@ -178,37 +178,37 @@ RSpec.describe MessageBuilder do
     end
   end
 
-  context 'rotting' do
+  context "rotting" do
     let(:pull_request) do
       {
-        title: '[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host',
-        link: 'https://github.com/alphagov/whitehall/pull/2266',
-        author: 'mattbostock',
-        repo: 'whitehall',
-        comments_count: '1',
-        thumbs_up: '0',
-        updated: Date.parse('2015-07-13 ((2457217j,0s,0n),+0s,2299161j)'),
+        title: "[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host",
+        link: "https://github.com/alphagov/whitehall/pull/2266",
+        author: "mattbostock",
+        repo: "whitehall",
+        comments_count: "1",
+        thumbs_up: "0",
+        updated: Date.parse("2015-07-13 ((2457217j,0s,0n),+0s,2299161j)"),
       }
     end
 
     let(:pull_requests) { [pull_request] }
 
-    context 'old PR' do
+    context "old PR" do
       before do
-        Timecop.freeze(Time.local(2015, 07, 16))
+        Timecop.freeze(Time.local(2015, 0o7, 16))
       end
 
-      it 'is rotten' do
+      it "is rotten" do
         expect(message_builder).to be_rotten(pull_request)
       end
     end
 
-    context 'recent PR' do
+    context "recent PR" do
       before do
-        Timecop.freeze(Time.local(2015, 07, 15))
+        Timecop.freeze(Time.local(2015, 0o7, 15))
       end
 
-      it 'is not rotten' do
+      it "is not rotten" do
         expect(message_builder).to_not be_rotten(pull_request)
       end
     end

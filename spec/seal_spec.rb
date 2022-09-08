@@ -5,17 +5,17 @@ require_relative "../lib/team"
 RSpec.describe Seal do
   subject(:seal) { described_class.new(teams) }
 
-  let(:lions) {
+  let(:lions) do
     Team.new(
       slack_channel: "#lions",
       quotes: ["go lions!"],
     )
-  }
-  let(:tigers) {
+  end
+  let(:tigers) do
     Team.new(
       slack_channel: "#tigers",
     )
-  }
+  end
   let(:teams) do
     [
       lions,
