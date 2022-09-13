@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby File.read(".ruby-version").chomp
 
 gem 'slack-poster', '~> 1.0.1'
-gem "octokit", "~> 5.4"
+gem "octokit", "~> 5.5"
 gem "sinatra"
 gem "thin"
 
