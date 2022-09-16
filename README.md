@@ -2,7 +2,7 @@
 
 ## What is it?
 
-This is a Slack bot that publishes a team's pull requests to their Slack Channel, once provided the organisation name, team names and respectivo repos.
+This is a Slack bot that publishes a team's pull requests to their Slack Channel, once provided the organisation name, team names and respective repos.
 
 ![image](https://github.com/binaryberry/seal/blob/master/images/readme/informative.png)
 ![image](https://github.com/binaryberry/seal/blob/master/images/readme/angry.png)
@@ -84,9 +84,9 @@ Use the Heroku scheduler add-on to create repeated tasks - I set the seal to run
 
 Any questions feel free to contact me on Twitter - my handle is binaryberry
 
-## Deploy to Heroku
+## Deployment
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+Heroku will deploy the main branch automatically.
 
 ## How to run the tests?
 
@@ -131,22 +131,6 @@ response = github.repos(org: ENV['SEAL_ORGANISATION'])
 repo_names = response.select { |repo| Date.parse(repo.updated_at.to_s) > (Date.today - 365) }.map(&:name)
 ```
 
-## CRC
+## Licence
 
-Github fetcher:
-
-- queries Github's API
-
-Message Builder:
-
-- produces message from Github API's content
-
-Slack Poster:
-
-- posts message to Slack
-
-Trello board: https://trello.com/b/sgakJmlY/moody-seal
-
-## License
-
-See the [LICENSE](LICENSE) file for license rights and limitations (MIT).
+[MIT License](LICENCE)
