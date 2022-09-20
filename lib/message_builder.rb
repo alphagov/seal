@@ -24,17 +24,17 @@ class MessageBuilder
   def rotten?(pull_request)
     today = Date.today
     actual_age = (today - pull_request[:updated]).to_i
-    if today.monday?
-      weekdays_age = actual_age - 2
-    elsif today.tuesday?
-      weekdays_age = actual_age - 1
-    else
-      weekdays_age = actual_age
-    end
+    weekdays_age = if today.monday?
+                     actual_age - 2
+                   elsif today.tuesday?
+                     actual_age - 1
+                   else
+                     actual_age
+                   end
     weekdays_age > 2
   end
 
-  private
+private
 
   attr_reader :team
 
@@ -73,6 +73,7 @@ class MessageBuilder
 
   def comments(pull_request)
     return " comment" if pull_request[:comments_count] == 1
+
     " comments"
   end
 
@@ -98,11 +99,11 @@ class MessageBuilder
     @title = pr[:title]
     @days = age_in_days(@pr)
 
-    @thumbs_up = if @pr[:thumbs_up] > 0
-      " | #{@pr[:thumbs_up]} :+1:"
-    else
-      ""
-    end
+    @thumbs_up = if (@pr[:thumbs_up]).positive?
+                   " | #{@pr[:thumbs_up]} :+1:"
+                 else
+                   ""
+                 end
 
     @approved = @pr[:approved] ? " | :white_check_mark: " : ""
 
@@ -120,7 +121,7 @@ class MessageBuilder
   def days_plural(days)
     case days
     when 0
-      'today'
+      "today"
     when 1
       "yesterday"
     else
@@ -131,11 +132,11 @@ class MessageBuilder
   def labels(pull_request)
     pull_request[:labels]
       .map { |label| "[#{label['name']}]" }
-      .join(' ')
+      .join(" ")
   end
 
   def html_encode(string)
-    string.tr('&', '&amp;').tr('<', '&lt;').tr('>', '&gt;')
+    string.tr("&", "&amp;").tr("<", "&lt;").tr(">", "&gt;")
   end
 
   def apply_style(template_name)

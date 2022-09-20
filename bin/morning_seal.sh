@@ -3,9 +3,10 @@
 teams=(
   find-and-view-tech
   govuk-accounts-tech
-  govuk-corona-services-tech
-  govuk-data-labs
+  govuk-datagovuk
+  govuk-developers
   govuk-forms
+  govuk-frontenders
   govuk-pay
   govuk-platform-reliability
   govuk-publishing-experience
@@ -21,7 +22,6 @@ done
 morning_quote_teams=(
   fun-workstream-govuk
   fun-workstream-gds-community
-  fun-workstream-test-channel
   govuk-green-team
 )
 

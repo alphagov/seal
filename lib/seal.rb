@@ -11,21 +11,21 @@ class Seal
 
   def bark(mode: nil)
     teams.each do |team|
-      bark_at(team, mode: mode)
+      bark_at(team, mode:)
     end
   end
 
-  private
+private
 
   attr_reader :teams
 
   def bark_at(team, mode: nil)
     message = case mode
-    when "quotes"
-      Message.new(team.quotes.sample)
-    else
-      MessageBuilder.new(team).build
-    end
+              when "quotes"
+                Message.new(team.quotes.sample)
+              else
+                MessageBuilder.new(team).build
+              end
 
     poster = SlackPoster.new(team.channel, message.mood)
     poster.send_request(message.text)

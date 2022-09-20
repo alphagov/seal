@@ -1,17 +1,16 @@
-require 'sinatra'
-require './lib/seal'
-require './lib/github_fetcher'
-require './lib/message_builder'
-require './lib/slack_poster'
-require './lib/team_builder'
+require "sinatra"
+require "./lib/seal"
+require "./lib/github_fetcher"
+require "./lib/message_builder"
+require "./lib/slack_poster"
+require "./lib/team_builder"
 
 class SealApp < Sinatra::Base
-
-  get '/' do
+  get "/" do
     "Hello Seal"
   end
 
-  post '/bark/:team_name/:secret' do
+  post "/bark/:team_name/:secret" do
     if params[:secret] == ENV["SEAL_SECRET"]
       team = TeamBuilder.build(env: ENV, team_name: params[:team_name])
       Seal.new(team).bark
@@ -19,9 +18,11 @@ class SealApp < Sinatra::Base
     end
   end
 
-  post '/bark-quotes/:team_name' do
-    team = TeamBuilder.build(env: ENV, team_name: params[:team_name])
-    Seal.new(team).bark(mode: 'quotes')
-    "Seal received message with #{params[:team_name]} team name for quotes"
+  post "/bark-quotes/:team_name/:secret" do
+    if params[:secret] == ENV["SEAL_SECRET"]
+      team = TeamBuilder.build(env: ENV, team_name: params[:team_name])
+      Seal.new(team).bark(mode: "quotes")
+      "Seal received message with #{params[:team_name]} team name for quotes"
+    end
   end
 end
