@@ -187,6 +187,7 @@ govuk-datagovuk:
 
 govuk-developers:
   channel: '#govuk-developers'
+  compact: true
   exclude_titles:
     - DNM
     - DO NOT MERGE
