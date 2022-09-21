@@ -1,7 +1,6 @@
 #!/bin/bash
 
 teams=(
-  find-and-view-tech
   govuk-accounts
   govuk-platform-reliability
 )

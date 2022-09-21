@@ -72,9 +72,9 @@ find-and-view-tech:
     - WIP
   quotes:
     - Be Excellent To Each Other!
-    - ':smiling-batman:'
     - Don't be working if you're ill!
-    - ':green_heart:'
+    - Is your work waiting to be reviewed? Make sure to ask someone.
+    - Did you learn something cool recently? Share it with your fellow devs!
 
 fun-workstream-gds-community:
   channel: '#gds-community'
