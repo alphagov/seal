@@ -20,6 +20,7 @@ for team in ${teams[*]}; do
 done
 
 morning_quote_teams=(
+  find-and-view-tech
   fun-workstream-govuk
   fun-workstream-gds-community
   govuk-green-team
