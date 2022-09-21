@@ -215,6 +215,12 @@ govuk-forms:
     - PARKED
     - PROTOTYPE
     - WIP
+  repos:
+    - forms
+    - forms-admin
+    - forms-api
+    - forms-runner
+    - forms-product-page
 
 govuk-frontenders:
   channel: '#govuk-frontenders'
