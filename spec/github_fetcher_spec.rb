@@ -4,7 +4,6 @@ require_relative "../lib/github_fetcher"
 RSpec.describe GithubFetcher do
   let(:team) do
     Team.new(
-      github_team:,
       use_labels:,
       exclude_labels:,
       exclude_titles:,
@@ -62,8 +61,6 @@ RSpec.describe GithubFetcher do
   let(:exclude_labels) { nil }
   let(:exclude_titles) { nil }
   let(:repos) { %w[whitehall govuk-docker content-store] }
-
-  let(:github_team) { nil }
 
   let(:pull_2266) do
     double(Sawyer::Resource,
@@ -231,44 +228,6 @@ RSpec.describe GithubFetcher do
       it "filters out the DISCUSSION" do
         expect(titles).not_to include("[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host")
         expect(titles).to include("Remove all Import-related code")
-      end
-    end
-  end
-
-  context "with github team configured" do
-    let(:use_labels) { false }
-    let(:github_team) { "content-store-devs" }
-
-    let(:github_team_repos) do
-      [
-        double(Sawyer::Resource, name: "content-store"),
-      ]
-    end
-
-    before do
-      allow(fake_octokit_client).to receive(:get).with("/orgs/#{ENV['SEAL_ORGANISATION']}/teams/#{github_team}/repos").and_return(github_team_repos)
-      allow(fake_octokit_client).to receive(:issue_comments).with(content_store_repo_name,
-                                                                  2295).and_return(comments_2295)
-      allow(fake_octokit_client).to receive(:pull_request).with(content_store_repo_name,
-                                                                2295).and_return(pull_2295)
-      allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/pulls/2295/reviews}).and_return(reviews_2295)
-    end
-
-    context "without repos configured" do
-      let(:repos) { [] }
-
-      it "only shows PRs for repos owned by the github team" do
-        expect(titles).to match_array(["Enable ssh key signing"])
-      end
-    end
-
-    context "with repos configured" do
-      let(:repos) { %w[whitehall govuk-docker] }
-
-      it "shows PRs for repos owned by the github team and the additional configured repos" do
-        expect(titles).to match_array(["Enable ssh key signing",
-                                       "Remove all Import-related code",
-                                       "[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host"])
       end
     end
   end

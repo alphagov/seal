@@ -32,7 +32,6 @@ RSpec.describe TeamBuilder do
                    "channel" => "#tigers",
                  },
                  "cats" => {
-                   "github_team" => "cat-coding-club",
                    "channel" => "#cats",
                  },
                ))
@@ -59,8 +58,6 @@ RSpec.describe TeamBuilder do
     expect(lions.compact).to eq(true)
 
     expect(lions.quotes).to eq(["This is a quote", "This is also a quote"])
-
-    expect(cats.github_team).to eq("cat-coding-club")
   end
 
   it "provides sensible defaults" do

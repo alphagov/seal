@@ -11,7 +11,7 @@ class GithubFetcher
     @exclude_labels = team.exclude_labels.map(&:downcase).uniq
     @exclude_titles = team.exclude_titles.map(&:downcase).uniq
     @labels = {}
-    @repos = get_team_repos(team.github_team, team.repos)
+    @repos = team.repos
   end
 
   def list_pull_requests
@@ -92,16 +92,5 @@ private
 
   def excluded_title?(title)
     exclude_titles.any? { |t| title.downcase.include?(t) }
-  end
-
-  def get_team_repos(team_slug, repos)
-    return repos if team_slug.nil?
-
-    github_team_repos = get_github_team_repos(team_slug)
-    (github_team_repos + repos).uniq
-  end
-
-  def get_github_team_repos(team_slug)
-    github.get("/orgs/#{@organisation}/teams/#{team_slug}/repos").map(&:name)
   end
 end
