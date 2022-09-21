@@ -1,7 +1,6 @@
 #!/bin/bash
 
 teams=(
-  find-and-view-tech
   govuk-accounts-tech
   govuk-datagovuk
   govuk-developers
@@ -13,6 +12,9 @@ teams=(
   govuk-publishing-platform
   govuk-replatforming
   govwifi
+  interaction-and-personalisation-govuk
+  navigation-and-presentation-govuk
+  user-experience-measurement-govuk
 )
 
 for team in ${teams[*]}; do
@@ -20,10 +22,10 @@ for team in ${teams[*]}; do
 done
 
 morning_quote_teams=(
-  find-and-view-tech
   fun-workstream-govuk
   fun-workstream-gds-community
   govuk-green-team
+  navigation-and-presentation-govuk
 )
 
 for team in ${morning_quote_teams[*]}; do

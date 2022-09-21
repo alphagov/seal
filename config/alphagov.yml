@@ -60,22 +60,6 @@ data-products:
     - tagging-suggester
   use_labels: true
 
-find-and-view-tech:
-  channel: '#find-and-view-tech'
-  compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
-  quotes:
-    - Be Excellent To Each Other!
-    - Don't be working if you're ill!
-    - Is your work waiting to be reviewed? Make sure to ask someone.
-    - Did you learn something cool recently? Share it with your fellow devs!
-
 fun-workstream-gds-community:
   channel: '#gds-community'
   quotes:
@@ -420,3 +404,41 @@ govwifi:
     - govwifi-terraform
     - govwifi-user-signup-api
     - govwifi-watchdog
+
+interaction-and-personalisation-govuk:
+  channel: '#tech-interaction-and-personalisation'
+  compact: true
+  exclude_titles:
+    - DNM
+    - DO NOT MERGE
+    - DRAFT
+    - PARKED
+    - PROTOTYPE
+    - WIP
+
+navigation-and-presentation-govuk:
+  channel: '#navigation-and-presentation-govuk'
+  compact: true
+  exclude_titles:
+    - DNM
+    - DO NOT MERGE
+    - DRAFT
+    - PARKED
+    - PROTOTYPE
+    - WIP
+  quotes:
+    - Be Excellent To Each Other!
+    - Don't be working if you're ill!
+    - Is your work waiting to be reviewed? Make sure to ask someone.
+    - Did you learn something cool recently? Share it with your fellow devs!
+
+user-experience-measurement-govuk:
+  channel: '#user-experience-measurement-govuk'
+  compact: true
+  exclude_titles:
+    - DNM
+    - DO NOT MERGE
+    - DRAFT
+    - PARKED
+    - PROTOTYPE
+    - WIP
