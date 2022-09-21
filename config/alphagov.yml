@@ -215,7 +215,6 @@ govuk-forms:
     - PARKED
     - PROTOTYPE
     - WIP
-  github_team: forms-devs
 
 govuk-frontenders:
   channel: '#govuk-frontenders'
@@ -387,7 +386,6 @@ govuk-replatforming:
     - PARKED
     - PROTOTYPE
     - WIP
-  github_team: gov-uk-replatforming
   repos:
     - govuk-helm-charts
     - govuk-infrastructure
