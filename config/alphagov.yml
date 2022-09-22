@@ -247,6 +247,50 @@ govuk-pay:
     - DO NOT MERGE
     - '[DRAFT]'
     - WIP
+  repos:
+    - pay-adminusers
+    - pay-api-docs-generator
+    - pay-aws-compliance
+    - pay-cardid
+    - pay-cardid-data
+    - pay-ci
+    - pay-cloudwatch-logs-s3-export
+    - pay-cloudwatch-logs-s3-lambda
+    - pay-concourse
+    - pay-concourse-deployment
+    - pay-connector
+    - pay-egress
+    - pay-endtoend
+    - pay-frontend
+    - pay-infra
+    - pay-java-commons
+    - pay-js-commons
+    - pay-ledger
+    - pay-logging-lambdas
+    - pay-nginx-forward-proxy
+    - pay-nginx-proxy
+    - pay-notifications
+    - pay-performance-reporter
+    - pay-perftests
+    - pay-product-page
+    - pay-products
+    - pay-products-ui
+    - pay-prototype
+    - pay-publicapi
+    - pay-publicauth
+    - pay-scripts
+    - pay-selfservice
+    - pay-selfservice-policy-docs
+    - pay-smoke-tests
+    - pay-stream-s3-sqs
+    - pay-stubs
+    - pay-tcp-proxy
+    - pay-team-manual
+    - pay-tech-docs
+    - pay-telegraf
+    - pay-toolbox
+    - pay-user-support
+    - pay-webhooks
 
 govuk-platform-reliability:
   channel: '#govuk-platform-reliability-team'
