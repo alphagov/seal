@@ -173,7 +173,7 @@ RSpec.describe MessageBuilder do
       before { Timecop.freeze(Time.local(2015, 0o7, 18)) }
 
       it "builds a more compact message" do
-        expect(message_builder.build.text).to eq("*Old pull requests*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host>\n\n*Recent pull requests*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code>\n2) seal: <https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs>")
+        expect(message_builder.build.text).to eq("*Old pull requests*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host>\n\n*Pull requests with recent activity*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code>\n2) seal: <https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs>")
       end
     end
   end
