@@ -72,7 +72,7 @@ RSpec.describe GithubFetcher do
            comments: 0,
            updated_at: "2015-07-13 01:00:44 UTC",
            draft: false,
-           head: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "whitehall")),
+           base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "whitehall")),
            labels: [
              { name: "wip" },
            ])
@@ -88,7 +88,7 @@ RSpec.describe GithubFetcher do
            comments: 4,
            updated_at: "2015-07-17 01:00:44 UTC",
            draft: false,
-           head: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "govuk-docker")),
+           base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "govuk-docker")),
            labels: [])
   end
 
@@ -102,7 +102,7 @@ RSpec.describe GithubFetcher do
            comments: 0,
            updated_at: "2015-07-17 01:00:44 UTC",
            draft: false,
-           head: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "content-store")),
+           base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "content-store")),
            labels: [])
   end
 

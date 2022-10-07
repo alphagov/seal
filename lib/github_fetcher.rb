@@ -45,7 +45,7 @@ private
               :github
 
   def present_pull_request(pull_request)
-    repo = pull_request.head.repo.name
+    repo = pull_request.base.repo.name
 
     {
       title: pull_request.title,
