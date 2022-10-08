@@ -424,6 +424,7 @@ govuk-replatforming:
     - govuk-helm-charts
     - govuk-infrastructure
     - govuk-kubernetes-cluster-user-docs
+    - govuk-ruby-images
 
 govwifi:
   channel: '#govwifi-monitoring'
