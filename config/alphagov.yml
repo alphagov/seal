@@ -149,6 +149,8 @@ govuk-accounts-tech:
     - PARKED
     - PROTOTYPE
     - WIP
+  repos:
+    - di-account-management-backend
 
 govuk-datagovuk:
   channel: '#govuk-datagovuk'
