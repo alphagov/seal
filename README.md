@@ -89,32 +89,7 @@ Heroku will deploy the main branch automatically.
 
 ## How to run the tests?
 
-Just run `rspec` in the command line
-
-## Docker container
-
-You can build your own docker container, Dockerfile is provided.
-
-```sh
-docker build -t seal .
-```
-
-And then run it (assuming you already set all the env variables)
-
-```sh
-#!/bin/bash
-docker run -it --rm --name seal \
-  -e "SEAL_ORGANISATION=${SEAL_ORGANISATION}" \
-  -e GITHUB_TOKEN=${GITHUB_TOKEN} \
-  -e GITHUB_API_ENDPOINT=${GITHUB_API_ENDPOINT} \
-  -e SLACK_WEBHOOK=${SLACK_WEBHOOK} \
-  -e DYNO=${DYNO} \
-  -e SLACK_CHANNEL=${SLACK_CHANNEL} \
-  -e GITHUB_USE_LABELS=${GITHUB_USE_LABELS} \
-  -e "GITHUB_EXCLUDE_LABELS=${GITHUB_EXCLUDE_LABELS}" \
-  -e "SEAL_QUOTES=${SEAL_QUOTES}" \
-  seal
-```
+Just run `rspec` in the command line.
 
 ## Tips
 
