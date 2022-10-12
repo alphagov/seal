@@ -1,5 +1,3 @@
-require "slack-poster"
-
 class SlackPoster
   attr_accessor :webhook_url, :poster, :mood, :mood_hash, :channel, :season_name, :halloween_season, :festive_season
 

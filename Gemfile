@@ -2,10 +2,11 @@ source "https://rubygems.org"
 
 ruby File.read(".ruby-version").chomp
 
+gem "faraday-retry"
 gem "octokit", "~> 5.6"
 gem "rubocop-govuk", require: false
 gem "sinatra"
-gem "slack-poster", "~> 1.0.1"
+gem "slack-poster", "~> 2.2.2"
 gem "thin"
 
 group :test do
