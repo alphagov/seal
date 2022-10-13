@@ -472,6 +472,18 @@ interaction-and-personalisation-govuk:
 navigation-and-presentation-govuk:
   channel: '#navigation-and-presentation-govuk'
   compact: true
+  repos:
+    - authenticating-proxy
+    - bouncer
+    - cache-clearing-service
+    - collections
+    - frontend
+    - government-frontend
+    - info-frontend
+    - router
+    - router-api
+    - service-manual-frontend
+    - static
   exclude_titles:
     - DNM
     - DO NOT MERGE
