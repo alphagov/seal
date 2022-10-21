@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby File.read(".ruby-version").chomp
 
 gem "faraday-retry"
-gem "octokit", "~> 5.6"
+gem "octokit", "~> 6.0"
 gem "rubocop-govuk", require: false
 gem "sinatra"
 gem "slack-poster", "~> 2.2.2"
