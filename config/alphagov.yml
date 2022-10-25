@@ -336,8 +336,6 @@ govuk-platform-reliability:
     - govuk_test
     - icinga_slack_webhook
     - locations-api
-    - mapit
-    - mapit-scripts
     - packager
     - plek
     - puppet-gor
