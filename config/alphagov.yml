@@ -240,18 +240,22 @@ govuk-pay:
     - '[DRAFT]'
     - WIP
   repos:
+    - gds-apple-developer-account-governance
+    - pay-access-control
     - pay-adminusers
     - pay-api-docs-generator
+    - pay-architecture
     - pay-aws-compliance
     - pay-cardid
     - pay-cardid-data
     - pay-ci
     - pay-cloudwatch-logs-s3-export
     - pay-cloudwatch-logs-s3-lambda
+    - pay-code-analysis-config
     - pay-concourse
     - pay-concourse-deployment
     - pay-connector
-    - pay-egress
+    - pay-dockerfiles
     - pay-endtoend
     - pay-frontend
     - pay-infra
@@ -273,15 +277,14 @@ govuk-pay:
     - pay-scripts
     - pay-selfservice
     - pay-selfservice-policy-docs
+    - pay-set-up-pre-commit
     - pay-smoke-tests
     - pay-stream-s3-sqs
     - pay-stubs
-    - pay-tcp-proxy
     - pay-team-manual
     - pay-tech-docs
     - pay-telegraf
     - pay-toolbox
-    - pay-user-support
     - pay-webhooks
 
 govuk-platform-reliability:
