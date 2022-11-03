@@ -32,7 +32,6 @@ RSpec.describe GithubFetcher do
         updated: Date.parse("2015-07-13 ((2457217j,0s,0n),+0s,2299161j)"),
         labels: wip_or_not,
       },
-
       {
         title: "Remove all Import-related code",
         link: "https://github.com/alphagov/govuk-docker/pull/2248",
@@ -173,7 +172,7 @@ RSpec.describe GithubFetcher do
   shared_examples_for "fetching from GitHub" do
     describe "#list_pull_requests" do
       it "displays open pull requests open on the team's repos" do
-        expect(github_fetcher.list_pull_requests).to match expected_open_prs
+        expect(github_fetcher.list_pull_requests).to match expected_open_prs.sort_by { |pr| pr[:date] }.reverse
       end
     end
 

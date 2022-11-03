@@ -18,6 +18,7 @@ class GithubFetcher
     pull_requests_from_github
       .reject { |pr| hidden?(pr) }
       .map { |pr| present_pull_request(pr) }
+      .sort_by { |pr| pr[:date] }.reverse
   end
 
   def pull_requests_from_github
