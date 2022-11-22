@@ -4,7 +4,7 @@ require "./lib/message_builder"
 RSpec.describe MessageBuilder do
   let(:team) { double(:team, compact: false) }
   let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests) }
-  subject(:message_builder) { MessageBuilder.new(team) }
+  subject(:message_builder) { MessageBuilder.new(team, :seal) }
 
   let(:no_unapproved_pull_requests) do
     [

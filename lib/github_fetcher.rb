@@ -25,7 +25,7 @@ class GithubFetcher
     pulls = []
     @repos.each do |repo|
       github.pull_requests("#{organisation}/#{repo}", { state: :open, sort: :created })
-            .reject { |p| p.user.login.include?("dependabot") || p.draft }.each do |pr|
+            .reject { |p| p.draft }.each do |pr|
         pulls << pr
       end
     rescue StandardError => e
