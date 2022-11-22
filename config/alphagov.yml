@@ -405,7 +405,6 @@ govuk-publishing-platform:
     - link-checker-api
     - optic14n
     - publishing-api
-    - side-by-side-browser
     - sidekiq-monitoring
     - signon
     - transition
