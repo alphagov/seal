@@ -396,7 +396,6 @@ govuk-publishing-platform:
     - govspeak
     - govspeak-preview
     - govuk-content-api-docs
-    - govuk-content-schemas
     - govuk_message_queue_consumer
     - govuk_schemas
     - govuk_sidekiq
