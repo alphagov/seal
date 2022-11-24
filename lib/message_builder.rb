@@ -7,17 +7,22 @@ class MessageBuilder
 
   attr_accessor :pull_requests, :report, :mood, :poster_mood
 
-  def initialize(team)
+  def initialize(team, animal)
     @team = team
+    @animal = animal
   end
 
   def build
-    if old_pull_requests.any?
-      Message.new(bark_about_old_pull_requests, mood: "angry")
-    elsif unapproved_pull_requests.any?
-      Message.new(list_pull_requests, mood: "informative")
+    if @animal == :panda
+      Message.new(dependapanda_message, mood: "panda") if dependapanda.any?
     else
-      Message.new(no_pull_requests, mood: "approval")
+      if old_pull_requests.any?
+        Message.new(bark_about_old_pull_requests, mood: "angry")
+      elsif unapproved_pull_requests.any?
+        Message.new(list_pull_requests, mood: "informative")
+      else
+        Message.new(no_pull_requests, mood: "approval")
+      end
     end
   end
 
@@ -38,16 +43,24 @@ private
 
   attr_reader :team
 
+  def panda_filter(prs)
+    prs.reject { |pr| pr[:author].include?("dependabot") }
+  end
+
   def pull_requests
     @pull_requests ||= GithubFetcher.new(team).list_pull_requests
   end
 
+  def dependapanda
+    @dependapanda ||= pull_requests.select { |pr| pr[:author].include?("dependabot") }
+  end
+
   def old_pull_requests
-    @old_pull_requests ||= pull_requests.select { |pr| rotten?(pr) }
+    @old_pull_requests ||= panda_filter(pull_requests).select { |pr| rotten?(pr) }
   end
 
   def unapproved_pull_requests
-    @unapproved_pull_requests ||= pull_requests.reject { |pr| pr[:approved] }
+    @unapproved_pull_requests ||= panda_filter(pull_requests).reject { |pr| pr[:approved] }
   end
 
   def recent_pull_requests
@@ -69,6 +82,13 @@ private
 
   def no_pull_requests
     render "no_pull_requests"
+  end
+
+  def dependapanda_message
+    @message = panda_presenter
+
+    template_file = TEMPLATE_DIR + "dependapanda.text.erb"
+    ERB.new(template_file.read, trim_mode: '-').result(binding).strip
   end
 
   def comments(pull_request)
@@ -97,7 +117,7 @@ private
     @index = index
     @pr = pr
     @title = pr[:title]
-    @days = age_in_days(@pr)
+    @days = age_in_days(@pr[:updated])
 
     @thumbs_up = if (@pr[:thumbs_up]).positive?
                    " | #{@pr[:thumbs_up]} :+1:"
@@ -114,8 +134,8 @@ private
     prs.map.with_index(1) { |pr, n| present(pr, n) }.join("\n")
   end
 
-  def age_in_days(pull_request)
-    (Date.today - pull_request[:updated]).to_i
+  def age_in_days(date)
+    (Date.today - date).to_i
   end
 
   def days_plural(days)
@@ -150,5 +170,20 @@ private
   def render(template_name)
     template_file = TEMPLATE_DIR + "#{apply_style(template_name)}.text.erb"
     ERB.new(template_file.read).result(binding).strip
+  end
+
+  def panda_presenter
+    prs_by_repo = dependapanda.group_by { |pr| pr[:repo] }
+
+    prs = prs_by_repo.map do |repo_name, pr_for_app|
+      {
+        repo_name: repo_name,
+        repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
+        pr_count: pr_for_app.count,
+        oldest_pr: age_in_days(pr_for_app.min_by { |pr| pr[:updated] }[:updated])
+      }
+    end
+    
+    prs.sort_by {|pr| pr[:oldest_pr]}.reverse
   end
 end

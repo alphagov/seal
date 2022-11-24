@@ -26,10 +26,13 @@ private
     message = case mode
               when "quotes"
                 Message.new(team.quotes.sample)
+              when "dependapanda"
+                MessageBuilder.new(team, :panda).build
               else
-                MessageBuilder.new(team).build
+                MessageBuilder.new(team, :seal).build
               end
 
+    return if message.nil?
     poster = SlackPoster.new(team.channel, message.mood)
     poster.send_request(message.text)
   end

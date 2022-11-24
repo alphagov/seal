@@ -47,6 +47,9 @@ private
 
   def assign_poster_settings
     case @mood
+    when "panda"
+      @mood_hash[:icon_emoji] = ":panda_face:"
+      @mood_hash[:username] = "Dependapanda"
     when "informative"
       @mood_hash[:icon_emoji] = ":#{@season_symbol}informative_seal:"
       @mood_hash[:username] = "#{@season_name}Informative Seal"

@@ -34,7 +34,7 @@ RSpec.describe Seal do
 
     it "barks at all teams" do
       teams.each do |team|
-        expect(MessageBuilder).to receive(:new).with(team).and_return(message_builder)
+        expect(MessageBuilder).to receive(:new).with(team, :seal).and_return(message_builder)
         expect(SlackPoster).to receive(:new).with(team.channel, anything)
       end
 
