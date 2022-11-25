@@ -337,7 +337,6 @@ govuk-platform-reliability:
     - govuk_seed_crawler
     - govuk_test
     - icinga_slack_webhook
-    - locations-api
     - packager
     - plek
     - puppet-gor
