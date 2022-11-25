@@ -316,7 +316,6 @@ govuk-platform-reliability:
     - govuk-aws
     - govuk-aws-data
     - govuk-cdn-config
-    - govuk-dependencies
     - govuk-dependency-checker
     - govuk-deploy-lag-badger
     - govuk-dns
