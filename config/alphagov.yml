@@ -161,15 +161,6 @@ govuk-datagovuk:
     - PARKED
     - PROTOTYPE
     - WIP
-  repos:
-    - ckan-functional-tests
-    - ckan-mock-harvest-sources
-    - ckanext-datagovuk
-    - datagovuk-tech-docs
-    - datagovuk_find
-    - datagovuk_publish
-    - datagovuk_publish_elasticsearch_monitor
-    - datagovuk_reference
 
 govuk-developers:
   channel: '#govuk-developers'
@@ -180,16 +171,6 @@ govuk-developers:
     - PARKED
     - PROTOTYPE
     - WIP
-  repos:
-    - govuk-browser-extension
-    - govuk-connect
-    - govuk-developer-docs
-    - govuk-docker
-    - govuk-ithc-documentation
-    - govuk-rfcs
-    - govuk-rota-announcer
-    - govuk-user-reviewer
-    - slimmer
 
 govuk-forms:
   channel: '#govuk-forms-tech'
@@ -217,9 +198,6 @@ govuk-frontenders:
     - PARKED
     - PROTOTYPE
     - WIP
-  repos:
-    - govuk_publishing_components
-    - stylelint-config-gds
 
 govuk-green-team:
   channel: '#govuk-green-team'
@@ -310,46 +288,6 @@ govuk-platform-reliability:
     - Try with each bit of work to upskill others
     - It's okay to spend some time understanding the thing(s) before implementing the solution
     - It's OK to pick up and work on something you don't understand yet
-  repos:
-    - bulk-merger
-    - content-data-admin
-    - content-data-api
-    - gds_zendesk
-    - govuk-app-deployment
-    - govuk-aws
-    - govuk-aws-data
-    - govuk-cdn-config
-    - govuk-dependency-checker
-    - govuk-deploy-lag-badger
-    - govuk-dns
-    - govuk-jenkinslib
-    - govuk-lambda-app-deployment
-    - govuk-load-testing
-    - govuk-paas-office-ip-router
-    - govuk-pact-broker
-    - govuk-puppet
-    - govuk-repo-mirror
-    - govuk-saas-config
-    - govuk-secondline-blinken
-    - govuk-secrets
-    - govuk-sentry-monitor
-    - govuk-zendesk-display-screen
-    - govuk_app_config
-    - govuk_crawler_worker
-    - govuk_seed_crawler
-    - govuk_test
-    - icinga_slack_webhook
-    - packager
-    - plek
-    - puppet-gor
-    - rack-logstasher
-    - release
-    - rubocop-govuk
-    - seal
-    - smokey
-    - support
-    - support-api
-    - upgrade-ruby-version
 
 govuk-publishing-experience:
   channel: '#govuk-publishing-experience-tech'
@@ -361,23 +299,6 @@ govuk-publishing-experience:
     - PARKED
     - PROTOTYPE
     - WIP
-  repos:
-    - collections-publisher
-    - contacts-admin
-    - content-publisher
-    - content-tagger
-    - govuk_admin_template
-    - manuals-publisher
-    - maslow
-    - miller-columns-element
-    - paste-html-to-govspeak
-    - publisher
-    - service-manual-publisher
-    - short-url-manager
-    - special-route-publisher
-    - specialist-publisher
-    - travel-advice-publisher
-    - whitehall
 
 govuk-publishing-platform:
   channel: '#govuk-publishing-platform'
@@ -389,25 +310,6 @@ govuk-publishing-platform:
     - PARKED
     - PROTOTYPE
     - WIP
-  repos:
-    - asset-manager
-    - content-store
-    - gds-api-adapters
-    - gds-sso
-    - govspeak
-    - govspeak-preview
-    - govuk-content-api-docs
-    - govuk_message_queue_consumer
-    - govuk_schemas
-    - govuk_sidekiq
-    - hmrc-manuals-api
-    - link-checker-api
-    - optic14n
-    - publishing-api
-    - sidekiq-monitoring
-    - signon
-    - transition
-    - transition-config
 
 govuk-replatforming:
   channel: '#govuk-replatforming'
@@ -419,11 +321,6 @@ govuk-replatforming:
     - PARKED
     - PROTOTYPE
     - WIP
-  repos:
-    - govuk-helm-charts
-    - govuk-infrastructure
-    - govuk-kubernetes-cluster-user-docs
-    - govuk-ruby-images
 
 govwifi:
   channel: '#govwifi-monitoring'
@@ -469,18 +366,6 @@ interaction-and-personalisation-govuk:
 navigation-and-presentation-govuk:
   channel: '#navigation-and-presentation-govuk'
   compact: true
-  repos:
-    - authenticating-proxy
-    - bouncer
-    - cache-clearing-service
-    - collections
-    - frontend
-    - government-frontend
-    - info-frontend
-    - router
-    - router-api
-    - service-manual-frontend
-    - static
   exclude_titles:
     - DNM
     - DO NOT MERGE
