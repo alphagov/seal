@@ -61,4 +61,10 @@ private
       end
     end
   end
+
+  def govuk_json
+    source = "https://docs.publishing.service.gov.uk/repos.json"
+    resp = Net::HTTP.get_response(URI.parse(source))
+    JSON.parse(resp.body)
+  end
 end

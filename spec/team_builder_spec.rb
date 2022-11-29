@@ -1,5 +1,6 @@
 require "spec_helper"
 require "fakefs/spec_helpers"
+require 'webmock/rspec'
 require_relative "../lib/team_builder"
 
 RSpec.describe TeamBuilder do
@@ -7,7 +8,16 @@ RSpec.describe TeamBuilder do
 
   let(:organisation) { "big_cats" }
 
+  let(:uri) { URI('https://docs.publishing.service.gov.uk/repos.json') }
+
+  let(:repos) {[{"app_name" => "Brazil", "team" => "#govuk-jaguars"},
+                {"app_name" => "rainforest", "team" => "#govuk-wildcats-team"},
+                {"app_name" => "savanna", "team" => "#govuk-wildcats-team"},
+                {"app_name" => "grassland", "team" => "#govuk-wildcats-team"}]}
+
   before do
+    stub_request(:get, uri).with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).to_return(status: 200, body: JSON.dump(repos), headers: {})
+
     FileUtils.mkdir_p(File.join(File.dirname(__FILE__), "../config"))
     File.write(File.join(File.dirname(__FILE__), "../config/#{organisation}.yml"),
                YAML.dump(
