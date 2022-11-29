@@ -9,6 +9,7 @@ class TeamBuilder
 
   def initialize(env)
     @env = env
+    @govuk_data = govuk_json
   end
 
   def build(team_name = nil)
@@ -25,15 +26,22 @@ private
 
   def build_single_team(team_name)
     team = Team.new(**apply_env(static_config[team_name.to_s] || {}))
+
     if team.channel.nil?
       []
     else
+      if team.repos.empty?
+        (team.repos << govuk_team_repos(team.channel)).flatten!
+      end
       [team]
     end
   end
 
   def build_all_teams
     static_config.map do |_, team_config|
+      if team_config["repos"].nil?
+        team_config["repos"] = govuk_team_repos(team_config["channel"])
+      end
       Team.new(**apply_env(team_config))
     end
   end
@@ -66,5 +74,9 @@ private
     source = "https://docs.publishing.service.gov.uk/repos.json"
     resp = Net::HTTP.get_response(URI.parse(source))
     JSON.parse(resp.body)
+  end
+
+  def govuk_team_repos(team_channel)
+    @govuk_data.select{|repos| repos["team"] == team_channel}.map{|repo| repo["app_name"]}
   end
 end
