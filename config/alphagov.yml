@@ -297,6 +297,9 @@ govuk-platform-reliability:
     - PROTOTYPE
     - WIP
   quotes:
+    - When picking up a new card, ask if anyone would like to work on it with you.
+    - Stuck on something? Don't be afraid to ask for help or ask if anyone is free to pair.
+    - Have you paired at all this week? Pairing is a great way of upskilling others - let's do more of it!
     - Be ready and willing to pair on work
     - Slack as primary point of contact; email for things you want to remember
     - Assume everyone is trying to do the right thing
