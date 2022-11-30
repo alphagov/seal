@@ -1,5 +1,6 @@
 require "spec_helper"
 require "fakefs/spec_helpers"
+require 'webmock/rspec'
 require_relative "../lib/team_builder"
 
 RSpec.describe TeamBuilder do
@@ -7,7 +8,16 @@ RSpec.describe TeamBuilder do
 
   let(:organisation) { "big_cats" }
 
+  let(:uri) { URI('https://docs.publishing.service.gov.uk/repos.json') }
+
+  let(:repos) {[{"app_name" => "Brazil", "team" => "#govuk-jaguars"},
+                {"app_name" => "rainforest", "team" => "#govuk-wildcats-team"},
+                {"app_name" => "savanna", "team" => "#govuk-wildcats-team"},
+                {"app_name" => "grassland", "team" => "#govuk-wildcats-team"}]}
+
   before do
+    stub_request(:get, uri).with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).to_return(status: 200, body: JSON.dump(repos), headers: {})
+
     FileUtils.mkdir_p(File.join(File.dirname(__FILE__), "../config"))
     File.write(File.join(File.dirname(__FILE__), "../config/#{organisation}.yml"),
                YAML.dump(
@@ -27,6 +37,9 @@ RSpec.describe TeamBuilder do
                      "This is a quote",
                      "This is also a quote",
                    ],
+                   "repos" => [
+                     "Africa"
+                   ],
                  },
                  "tigers" => {
                    "channel" => "#tigers",
@@ -34,6 +47,12 @@ RSpec.describe TeamBuilder do
                  "cats" => {
                    "channel" => "#cats",
                  },
+                 "govuk-jaguars" => {
+                   "channel" => "#govuk-jaguars",
+                 },
+                 "govuk-wildcats" => {
+                   "channel" => "#govuk-wildcats-team",
+                 }
                ))
   end
 
@@ -42,8 +61,8 @@ RSpec.describe TeamBuilder do
   let(:teams) { TeamBuilder.build(env:) }
 
   it "loads each team from the static config file" do
-    expect(teams.count).to eq(3)
-    expect(teams.map(&:channel)).to match_array(["#lions", "#tigers", "#cats"])
+    expect(teams.count).to eq(5)
+    expect(teams.map(&:channel)).to match_array(["#lions", "#tigers", "#cats", "#govuk-jaguars", "#govuk-wildcats-team"])
   end
 
   it "loads all keys" do
@@ -69,6 +88,21 @@ RSpec.describe TeamBuilder do
     expect(tigers.compact).to eq(false)
     expect(tigers.quotes).to eq([])
     expect(tigers.repos).to eq([])
+  end
+
+  it "gets non gov.uk team repos from the static config file if repos array is defined" do
+    lions = teams.find { |t| t.channel == "#lions" }
+    expect(lions.repos).to eq(["Africa"])
+  end
+
+  it "gets gov.uk team repos from an external JSON file if repos array is not defined in static config file" do
+    jaguars = teams.find { |t| t.channel == "#govuk-jaguars" }
+    expect(jaguars.repos).to eq(["Brazil"])
+  end
+
+  it "gets gov.uk team repos from an external JSON file if repos array is not defined in static config file and team channel differs to team name" do
+    teams = TeamBuilder.build(env:, team_name: "govuk-wildcats")
+    expect(teams.first.repos).to eq(["rainforest", "savanna", "grassland"])
   end
 
   it "allows the overriding of options via environment variables" do
