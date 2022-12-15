@@ -105,7 +105,7 @@ In `irb`, from the folder of the project, run:
 require 'octokit'
 github = Octokit::Client.new(:access_token => ENV['GITHUB_TOKEN'], auto_pagination: true)
 response = github.repos(org: ENV['SEAL_ORGANISATION'])
-repo_names = response.select { |repo| Date.parse(repo.updated_at.to_s) > (Date.today - 365) }.map(&:name)
+repo_names = response.select { |repo| Date.parse(repo.created_at.to_s) > (Date.today - 365) }.map(&:name)
 ```
 
 ## Licence

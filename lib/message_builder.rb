@@ -28,7 +28,7 @@ class MessageBuilder
 
   def rotten?(pull_request)
     today = Date.today
-    actual_age = (today - pull_request[:updated]).to_i
+    actual_age = (today - pull_request[:created]).to_i
     weekdays_age = if today.monday?
                      actual_age - 2
                    elsif today.tuesday?
@@ -117,7 +117,7 @@ private
     @index = index
     @pr = pr
     @title = pr[:title]
-    @days = age_in_days(@pr[:updated])
+    @days = age_in_days(@pr[:created])
 
     @thumbs_up = if (@pr[:thumbs_up]).positive?
                    " | #{@pr[:thumbs_up]} :+1:"
@@ -180,7 +180,7 @@ private
         repo_name: repo_name,
         repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
         pr_count: pr_for_app.count,
-        oldest_pr: age_in_days(pr_for_app.min_by { |pr| pr[:updated] }[:updated])
+        oldest_pr: age_in_days(pr_for_app.min_by { |pr| pr[:created] }[:created])
       }
     end
     
