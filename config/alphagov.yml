@@ -152,6 +152,7 @@ govuk-accounts-tech:
   repos:
     - di-account-management-backend
     - di-authentication-account-management
+    - di-accounts-infra
 
 govuk-datagovuk:
   channel: '#govuk-datagovuk'
