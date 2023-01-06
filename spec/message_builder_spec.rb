@@ -16,7 +16,7 @@ RSpec.describe MessageBuilder do
         comments_count: 5,
         thumbs_up: 0,
         approved: true,
-        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
+        created: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
     ]
@@ -32,7 +32,7 @@ RSpec.describe MessageBuilder do
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
-        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
+        created: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
       {
@@ -43,7 +43,7 @@ RSpec.describe MessageBuilder do
         comments_count: 5,
         thumbs_up: 0,
         approved: true,
-        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
+        created: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
     ]
@@ -59,7 +59,7 @@ RSpec.describe MessageBuilder do
         comments_count: 1,
         thumbs_up: 1,
         approved: false,
-        updated: Date.parse("2015-07-13 ((2457217j, 0s, 0n), +0s, 2299161j)"),
+        created: Date.parse("2015-07-13 ((2457217j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
       {
@@ -70,7 +70,7 @@ RSpec.describe MessageBuilder do
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
-        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
+        created: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
       {
@@ -81,7 +81,7 @@ RSpec.describe MessageBuilder do
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
-        updated: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
+        created: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
         labels: [],
       },
     ]
@@ -105,7 +105,7 @@ RSpec.describe MessageBuilder do
           comments_count: 0,
           thumbs_up: 0,
           approved: false,
-          updated: Date.today,
+          created: Date.today,
           labels: [
             { "name" => "wip" },
             { "name" => "blocked" },
@@ -125,7 +125,7 @@ RSpec.describe MessageBuilder do
     let(:pull_requests) { recent_pull_requests }
 
     it "builds informative message excluding approved PRs" do
-      expect(message_builder.build.text).to eq("Hello team!\n\nHere are the pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | updated yesterday\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n\nMerry reviewing!")
+      expect(message_builder.build.text).to eq("Hello team!\n\nHere are the pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | created yesterday\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n\nMerry reviewing!")
     end
 
     it "has an informative poster mood" do
@@ -152,14 +152,14 @@ RSpec.describe MessageBuilder do
     context "and some recent ones" do
       before { Timecop.freeze(Time.local(2015, 0o7, 18)) }
       it "builds message" do
-        expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request has not been updated in over 2 days.\n\n1) *whitehall* | mattbostock | updated 5 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | updated yesterday\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | updated yesterday\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
+        expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request has are over 2 days old.\n\n1) *whitehall* | mattbostock | created 5 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | created yesterday\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | created yesterday\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
       end
     end
 
     context "but no recent ones" do
       before { Timecop.freeze(Time.local(2015, 0o7, 16)) }
       it "builds message" do
-        expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request has not been updated in over 2 days.\n\n1) *whitehall* | mattbostock | updated 3 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | updated -1 days ago\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | updated -1 days ago\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
+        expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request has are over 2 days old.\n\n1) *whitehall* | mattbostock | created 3 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | created -1 days ago\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | created -1 days ago\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
       end
     end
 
@@ -173,7 +173,7 @@ RSpec.describe MessageBuilder do
       before { Timecop.freeze(Time.local(2015, 0o7, 18)) }
 
       it "builds a more compact message" do
-        expect(message_builder.build.text).to eq("*Old pull requests*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host>\n\n*Pull requests with recent activity*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code>\n2) seal: <https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs>")
+        expect(message_builder.build.text).to eq("*Old pull requests*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host>\n\n*Recent pull requests*:\n1) whitehall: <https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code>\n2) seal: <https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs>")
       end
     end
   end
@@ -187,7 +187,7 @@ RSpec.describe MessageBuilder do
         repo: "whitehall",
         comments_count: "1",
         thumbs_up: "0",
-        updated: Date.parse("2015-07-13 ((2457217j,0s,0n),+0s,2299161j)"),
+        created: Date.parse("2015-07-13 ((2457217j,0s,0n),+0s,2299161j)"),
       }
     end
 

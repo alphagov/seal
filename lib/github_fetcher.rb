@@ -57,6 +57,7 @@ private
       thumbs_up: count_thumbs_up(pull_request, repo),
       approved: approved?(pull_request, repo),
       updated: Date.parse(pull_request.updated_at.to_s),
+      created: Date.parse(pull_request.created_at.to_s),
       labels: labels(pull_request),
     }
   end
