@@ -192,7 +192,7 @@ govuk-forms:
     - forms-product-page
 
 govuk-frontenders:
-  channel: '#govuk-frontenders'
+  channel: '#govuk-publishing-components'
   exclude_titles:
     - DNM
     - DO NOT MERGE
