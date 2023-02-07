@@ -107,9 +107,9 @@ private
 
   def pr_plural(pr_count)
     if pr_count == 1
-      "pull request has"
+      "pull request is"
     else
-      "pull requests have"
+      "pull requests are"
     end
   end
 
