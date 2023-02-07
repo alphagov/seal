@@ -152,14 +152,14 @@ RSpec.describe MessageBuilder do
     context "and some recent ones" do
       before { Timecop.freeze(Time.local(2015, 0o7, 18)) }
       it "builds message" do
-        expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request has are over 2 days old.\n\n1) *whitehall* | mattbostock | created 5 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | created yesterday\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | created yesterday\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
+        expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request is over 2 days old.\n\n1) *whitehall* | mattbostock | created 5 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | created yesterday\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | created yesterday\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
       end
     end
 
     context "but no recent ones" do
       before { Timecop.freeze(Time.local(2015, 0o7, 16)) }
       it "builds message" do
-        expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request has are over 2 days old.\n\n1) *whitehall* | mattbostock | created 3 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | created -1 days ago\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | created -1 days ago\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
+        expect(message_builder.build.text).to eq("AAAAAAARGH! This pull request is over 2 days old.\n\n1) *whitehall* | mattbostock | created 3 days ago | 1 :+1:\n<https://github.com/alphagov/whitehall/pull/2266|[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host> - 1 comment\n\n\nThere are also these pull requests that need to be reviewed today:\n\n1) *whitehall* | tekin | created -1 days ago\n<https://github.com/alphagov/whitehall/pull/2248|Remove all Import-related code> - 5 comments\n2) *seal* | elliotcm | created -1 days ago\n<https://github.com/alphagov/seal/pull/9999|Add extra examples to the specs> - 5 comments")
       end
     end
 
