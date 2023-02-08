@@ -151,7 +151,7 @@ govuk-accounts-tech:
     - WIP
   repos:
     - di-account-management-backend
-    - di-authentication-account-management
+    - di-account-management-frontend
     - di-accounts-infra
 
 govuk-datagovuk:
