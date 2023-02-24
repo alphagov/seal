@@ -1,6 +1,7 @@
 #!/bin/bash
 
 teams=(
+  di-ipv-orange-cri-maintainers
   govuk-accounts-tech
   govuk-datagovuk
   govuk-developers

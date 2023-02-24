@@ -21,6 +21,21 @@ data-insights:
     - WIP
   use_labels: true
 
+
+di-ipv-orange-cri-maintainers:
+  channel: '#di-cri-orange-team-tech'
+  exclude_labels:
+    - WIP
+    - ignore
+  exclude_titles:
+    - DO NOT MERGE
+    - PROTOTYPE
+    - WIP
+  repos:
+    - di-ipv-cri-common-lambdas
+    - di-ipv-cri-common-express
+  use_labels: true
+  
 data-products:
   channel: '#data-products'
   exclude_labels:
