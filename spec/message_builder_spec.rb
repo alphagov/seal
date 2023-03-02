@@ -212,5 +212,28 @@ RSpec.describe MessageBuilder do
         expect(message_builder).to_not be_rotten(pull_request)
       end
     end
+
+    context "old PR recently marked ready for review" do
+      let(:pull_request) do
+        {
+          title: "[FOR DISCUSSION ONLY] Remove Whitehall.case_study_preview_host",
+          link: "https://github.com/alphagov/whitehall/pull/2266",
+          author: "mattbostock",
+          repo: "whitehall",
+          comments_count: "1",
+          thumbs_up: "0",
+          created: Date.new(2015, 6, 13),
+          marked_ready_for_review_at: Date.new(2015, 7, 13)
+        }
+      end
+
+      before do
+        Timecop.freeze(Time.local(2015, 7, 15))
+      end
+
+      it "is not rotten" do
+        expect(message_builder).to_not be_rotten(pull_request)
+      end
+    end
   end
 end

@@ -31,6 +31,7 @@ RSpec.describe GithubFetcher do
         approved: false,
         created: Date.parse("2015-07-13 ((2457217j,0s,0n),+0s,2299161j)"),
         updated: Date.parse("2015-07-13 ((2457217j,0s,0n),+0s,2299161j)"),
+        marked_ready_for_review_at: nil,
         labels: wip_or_not,
       },
       {
@@ -43,6 +44,7 @@ RSpec.describe GithubFetcher do
         approved: true,
         created: Date.parse("2015-07-17 ((2457221j,0s,0n),+0s,2299161j)"),
         updated: Date.parse("2015-07-17 ((2457221j,0s,0n),+0s,2299161j)"),
+        marked_ready_for_review_at: nil,
         labels: [],
       },
       {
@@ -56,6 +58,7 @@ RSpec.describe GithubFetcher do
         title: "Enable ssh key signing",
         created: Date.parse("2015-07-17 ((2457221j,0s,0n),+0s,2299161j)"),
         updated: Date.parse("2015-07-17 ((2457221j,0s,0n),+0s,2299161j)"),
+        marked_ready_for_review_at: Date.new(2015, 7, 18),
       },
     ]
   end
@@ -140,6 +143,16 @@ RSpec.describe GithubFetcher do
 
   let(:reviews_2295) { [] }
 
+  let(:timeline_2248) { [] }
+
+  let(:timeline_2266) { [] }
+
+  let(:timeline_2295) do
+    [
+      double(Sawyer::Resource, created_at: Time.new(2015, 7, 18, 2, 0, 44, "UTC"), event: "ready_for_review")
+    ]
+  end
+
   let(:titles) { github_fetcher.list_pull_requests.map { |pr| pr[:title] } }
 
   let(:no_prs) { [] }
@@ -173,6 +186,10 @@ RSpec.describe GithubFetcher do
     allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/pulls/2248/reviews}).and_return(reviews_2248)
     allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/pulls/2266/reviews}).and_return(reviews_2266)
     allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/pulls/2295/reviews}).and_return(reviews_2295)
+
+    allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/issues/2248/timeline}).and_return(timeline_2248)
+    allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/issues/2266/timeline}).and_return(timeline_2266)
+    allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/issues/2295/timeline}).and_return(timeline_2295)
   end
 
   shared_examples_for "fetching from GitHub" do

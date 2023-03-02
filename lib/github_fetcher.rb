@@ -58,6 +58,7 @@ private
       approved: approved?(pull_request, repo),
       updated: Date.parse(pull_request.updated_at.to_s),
       created: Date.parse(pull_request.created_at.to_s),
+      marked_ready_for_review_at: marked_ready_for_review_at(pull_request, repo)&.to_date,
       labels: labels(pull_request),
     }
   end
@@ -94,5 +95,10 @@ private
 
   def excluded_title?(title)
     exclude_titles.any? { |t| title.downcase.include?(t) }
+  end
+
+  def marked_ready_for_review_at(pull_request, repo)
+    events = github.get("repos/#{organisation}/#{repo}/issues/#{pull_request.number}/timeline")
+    events.filter { |e| e.event == "ready_for_review" }.map(&:created_at).sort.last
   end
 end
