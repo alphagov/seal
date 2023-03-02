@@ -28,7 +28,7 @@ class MessageBuilder
 
   def rotten?(pull_request)
     today = Date.today
-    actual_age = (today - pull_request[:created]).to_i
+    actual_age = (today - pr_date(pull_request)).to_i
     weekdays_age = if today.monday?
                      actual_age - 2
                    elsif today.tuesday?
@@ -42,6 +42,10 @@ class MessageBuilder
 private
 
   attr_reader :team
+
+  def pr_date(pr)
+    pr[:marked_ready_for_review_at] || pr[:created]
+  end
 
   def panda_filter(prs)
     prs.reject { |pr| pr[:author].include?("dependabot") }
@@ -117,7 +121,7 @@ private
     @index = index
     @pr = pr
     @title = pr[:title]
-    @days = age_in_days(@pr[:created])
+    @days = age_in_days(pr_date(@pr))
 
     @thumbs_up = if (@pr[:thumbs_up]).positive?
                    " | #{@pr[:thumbs_up]} :+1:"
@@ -175,12 +179,12 @@ private
   def panda_presenter
     prs_by_repo = dependapanda.group_by { |pr| pr[:repo] }
 
-    prs = prs_by_repo.map do |repo_name, pr_for_app|
+    prs = prs_by_repo.map do |repo_name, prs_for_app|
       {
         repo_name: repo_name,
         repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
-        pr_count: pr_for_app.count,
-        oldest_pr: age_in_days(pr_for_app.min_by { |pr| pr[:created] }[:created])
+        pr_count: prs_for_app.count,
+        oldest_pr: age_in_days(prs_for_app.map { |pr| pr_date(pr) }.min)
       }
     end
     
