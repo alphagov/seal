@@ -32,8 +32,17 @@ di-ipv-orange-cri-maintainers:
     - PROTOTYPE
     - WIP
   repos:
-    - di-ipv-cri-common-lambdas
+    - di-ipv-acceptance-tests
+    - di-ipv-config
+    - di-ipv-cri-address-api
+    - di-ipv-cri-address-front
     - di-ipv-cri-common-express
+    - di-ipv-cri-common-infrastructure
+    - di-ipv-cri-common-lambdas
+    - di-ipv-cri-kbv-api
+    - di-ipv-cri-kbv-front
+    - di-ipv-cri-lib
+    - di-ipv-cri-pipieline-deployment
   use_labels: true
   
 data-products:
