@@ -180,11 +180,13 @@ private
     prs_by_repo = dependapanda.group_by { |pr| pr[:repo] }
 
     prs = prs_by_repo.map do |repo_name, prs_for_app|
+      oldest_pr, newest_pr = prs_for_app.map { |pr| pr_date(pr) }.minmax
       {
         repo_name: repo_name,
         repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
         pr_count: prs_for_app.count,
-        oldest_pr: age_in_days(prs_for_app.map { |pr| pr_date(pr) }.min)
+        oldest_pr: age_in_days(oldest_pr),
+        newest_pr: age_in_days(newest_pr)
       }
     end
     
