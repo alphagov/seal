@@ -1,5 +1,9 @@
 You have <%= @message.reduce(0) { |acc, pr| acc + pr.fetch(:pr_count) } %> Dependabot PRs open on the following apps:
 
 <% @message.each do |pr| -%>
-<<%= pr[:repo_url] %>|<%= html_encode(pr[:repo_name]) %>> (<%= pr[:pr_count] %>, <%= pr[:pr_count] > 1 ? 'oldest:' days_plural(pr[:oldest_pr])', newest:' days_plural(pr[:newest_pr])  : 'opened' %> <%= days_plural(pr[:oldest_pr]) %>)
+<<%= pr[:repo_url] %>|<%= html_encode(pr[:repo_name]) %>> (<%= pr[:pr_count] %>, <% if pr[:pr_count] > 1 -%>
+oldest: <%= days_plural(pr[:oldest_pr])%>, newest: <%= days_plural(pr[:newest_pr]) %>)
+<% else -%>
+opened <%= days_plural(pr[:oldest_pr]) %>)
+<% end -%>
 <% end -%>
