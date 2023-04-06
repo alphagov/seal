@@ -63,7 +63,7 @@ private
       filename = File.join(File.dirname(__FILE__), "../config/#{env['SEAL_ORGANISATION']}.yml")
 
       if File.exist?(filename)
-        YAML.load_file(filename)
+        YAML.load_file(filename, aliases: true)
       else
         {}
       end
