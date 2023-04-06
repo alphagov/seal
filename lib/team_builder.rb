@@ -18,6 +18,9 @@ class TeamBuilder
     else
       build_all_teams
     end
+  rescue => e
+    puts "Error building team(s): #{e.message}"
+    []
   end
 
 private
@@ -35,6 +38,9 @@ private
       end
       [team]
     end
+  rescue => e
+    puts "Error building single team (#{team_name}): #{e.message}"
+    []
   end
 
   def build_all_teams
@@ -44,6 +50,9 @@ private
       end
       Team.new(**apply_env(team_config))
     end
+  rescue => e
+    puts "Error building all teams: #{e.message}"
+    []
   end
 
   def apply_env(config)
@@ -63,20 +72,29 @@ private
       filename = File.join(File.dirname(__FILE__), "../config/#{env['SEAL_ORGANISATION']}.yml")
 
       if File.exist?(filename)
-        YAML.load_file(filename)
+        YAML.load_file(filename, aliases: true)
       else
         {}
       end
     end
+  rescue => e
+    puts "Error loading static configuration: #{e.message}"
+    {}
   end
 
   def govuk_json
     source = "https://docs.publishing.service.gov.uk/repos.json"
     resp = Net::HTTP.get_response(URI.parse(source))
     JSON.parse(resp.body)
+  rescue => e
+    puts "Error fetching govuk JSON: #{e.message}"
+    []
   end
 
   def govuk_team_repos(team_channel)
     @govuk_data.select{|repos| repos["team"] == team_channel}.map{|repo| repo["app_name"]}
+  rescue => e
+    puts "Error fetching govuk team repos (#{team_channel}): #{e.message}"
+    []
   end
 end

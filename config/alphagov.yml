@@ -1,36 +1,31 @@
 ---
-data-infrastructure:
-  channel: '#data-infrastructure'
+# To overwrite a specific section of common_properties, add the desired property with a new value after the '<<: *common_properties' line in the corresponding section
+
+common_properties: &common_properties
   exclude_labels:
     - WIP
     - ignore
+  use_labels: true
   exclude_titles:
     - DO NOT MERGE
     - PROTOTYPE
     - WIP
-  use_labels: true
+    - DNM
+    - DRAFT
+    - PARKED
+
+data-infrastructure:
+  channel: '#data-infrastructure'
+  <<: *common_properties
 
 data-insights:
   channel: '#data-insights'
-  exclude_labels:
-    - WIP
-    - ignore
-  exclude_titles:
-    - DO NOT MERGE
-    - PROTOTYPE
-    - WIP
-  use_labels: true
+  <<: *common_properties
 
 
 di-ipv-orange-cri-maintainers:
   channel: '#di-cri-orange-team-tech'
-  exclude_labels:
-    - WIP
-    - ignore
-  exclude_titles:
-    - DO NOT MERGE
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
   repos:
     - di-ipv-acceptance-tests
     - di-ipv-config
@@ -43,17 +38,10 @@ di-ipv-orange-cri-maintainers:
     - di-ipv-cri-kbv-front
     - di-ipv-cri-lib
     - di-ipv-cri-pipieline-deployment
-  use_labels: true
   
 data-products:
   channel: '#data-products'
-  exclude_labels:
-    - WIP
-    - ignore
-  exclude_titles:
-    - DO NOT MERGE
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
   repos:
     - data-community-tech-docs
     - differential-privacy-tests
@@ -82,7 +70,6 @@ data-products:
     - lstm_segmentation
     - related-links-data
     - tagging-suggester
-  use_labels: true
 
 fun-workstream-gds-community:
   channel: '#gds-community'
@@ -166,13 +153,7 @@ govuk-accounts:
 
 govuk-accounts-tech:
   channel: '#govuk-accounts-tech'
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
   repos:
     - di-account-management-backend
     - di-account-management-frontend
@@ -180,34 +161,16 @@ govuk-accounts-tech:
 
 govuk-datagovuk:
   channel: '#govuk-datagovuk'
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
 
 govuk-developers:
   channel: '#govuk-developers'
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
 
 govuk-forms:
   channel: '#govuk-forms-tech'
   compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
   repos:
     - forms
     - forms-admin
@@ -217,13 +180,7 @@ govuk-forms:
 
 govuk-frontenders:
   channel: '#govuk-publishing-components'
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
 
 govuk-green-team:
   channel: '#govuk-green-team'
@@ -293,13 +250,7 @@ govuk-pay:
 govuk-platform-reliability:
   channel: '#govuk-platform-reliability-team'
   compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
   quotes:
     - When picking up a new card, ask if anyone would like to work on it with you.
     - Stuck on something? Don't be afraid to ask for help or ask if anyone is free to pair.
@@ -318,35 +269,17 @@ govuk-platform-reliability:
 govuk-publishing-experience:
   channel: '#govuk-publishing-experience-tech'
   compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
 
 govuk-publishing-platform:
   channel: '#govuk-publishing-platform'
   compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
 
 govuk-replatforming:
   channel: '#govuk-replatforming'
   compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
 
 govwifi:
   channel: '#govwifi-monitoring'
@@ -381,24 +314,12 @@ govwifi:
 interaction-and-personalisation-govuk:
   channel: '#tech-interaction-and-personalisation'
   compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
 
 navigation-and-presentation-govuk:
   channel: '#navigation-and-presentation-govuk'
   compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties
   quotes:
     - Be Excellent To Each Other!
     - Don't be working if you're ill!
@@ -408,10 +329,4 @@ navigation-and-presentation-govuk:
 user-experience-measurement-govuk:
   channel: '#user-experience-measurement-govuk'
   compact: true
-  exclude_titles:
-    - DNM
-    - DO NOT MERGE
-    - DRAFT
-    - PARKED
-    - PROTOTYPE
-    - WIP
+  <<: *common_properties

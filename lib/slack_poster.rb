@@ -17,12 +17,16 @@ class SlackPoster
   end
 
   def send_request(message)
-    if ENV["DRY"]
-      puts "Will#{' not' unless postable_day} post #{mood} message to #{channel} on #{today.strftime('%A')}"
-      puts slack_options.inspect
-      puts message
-    elsif postable_day
-      poster.send_message(message)
+    begin
+      if ENV["DRY"]
+        puts "Will#{' not' unless postable_day} post #{mood} message to #{channel} on #{today.strftime('%A')}"
+        puts slack_options.inspect
+        puts message
+      elsif postable_day
+        poster.send_message(message)
+      end
+    rescue => e
+      puts "Error sending request: #{e.message}"
     end
   end
 
