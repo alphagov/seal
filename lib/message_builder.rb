@@ -24,6 +24,9 @@ class MessageBuilder
         Message.new(no_pull_requests, mood: "approval")
       end
     end
+  rescue => e
+    puts "Error building message: #{e.message}"
+    nil
   end
 
   def rotten?(pull_request)
@@ -191,5 +194,8 @@ private
     end
     
     prs.sort_by {|pr| pr[:oldest_pr]}.reverse
+  rescue => e
+    puts "Error generating panda presenter: #{e.message}"
+    []
   end
 end
