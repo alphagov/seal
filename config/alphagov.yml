@@ -168,7 +168,7 @@ govuk-developers:
   <<: *common_properties
 
 dev-platform-team:
-  channel: '#di-dev-platform-team'
+  channel: '#di-dev-platform-team-internal'
   <<: *common_properties
   quotes:
     - We put users first. We strive to create services that bring real value to our users and that meet their needs and expectations.
