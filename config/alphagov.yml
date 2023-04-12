@@ -184,6 +184,19 @@ dev-platform-team:
     - 'Remember to celebreate our successes :tada:'
     - We believe in the power of documentation.
     - We believe that no bug should occur twice, but if it does, we will be able to fix it off documentation.
+  repos:
+    - di-devplatform-deploy
+    - di-devplatform-demo-sam-app 
+    - di-devplatform-utils
+    - di-devplatform-identity-broker 
+    - di-devplatform-infra-audit-hook 
+    - di-devplatform-lambda-audit-hook 
+    - di-devplatform-upload-action
+    - di-devplatform-upload-action-ecr 
+    - di-devplatform-metriccollector
+    - di-devplatform-checkov-hook 
+    - di-devplatform-container-verifier 
+    - di-devplatform-auth-api-test 
 
 govuk-forms:
   channel: '#govuk-forms-tech'
