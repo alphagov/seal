@@ -183,7 +183,7 @@ dev-platform-team:
     - 'Remember to make time for personal-development :big-brain:'
     - 'Remember to celebreate our successes :tada:'
     - We believe in the power of documentation.
-    - We believe that no bug should occur twice, but if it does, we will be able to fix it off documentation.
+    - We believe that no bug should occur twice, but if it does, we will be able to fix it following documentation.
   repos:
     - di-devplatform-deploy
     - di-devplatform-demo-sam-app 
