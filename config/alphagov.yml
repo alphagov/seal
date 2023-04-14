@@ -181,9 +181,22 @@ dev-platform-team:
     - We know we can't do this alone. We need to work with teams across GDS and government to succeed.
     - We invest time and effort in increasing our understanding of the problems we’re working on. This will help us make things better for users and move the conversation about personalisation in government forward.
     - 'Remember to make time for personal-development :big-brain:'
-    - 'Remember to celebreate our successes :tada:'
+    - 'Remember to celebrate our successes :tada:'
     - We believe in the power of documentation.
-    - We believe that no bug should occur twice, but if it does, we will be able to fix it off documentation.
+    - We believe that no bug should occur twice, but if it does, we will be able to fix it following documentation.
+  repos:
+    - di-devplatform-deploy
+    - di-devplatform-demo-sam-app 
+    - di-devplatform-utils
+    - di-devplatform-identity-broker 
+    - di-devplatform-infra-audit-hook 
+    - di-devplatform-lambda-audit-hook 
+    - di-devplatform-upload-action
+    - di-devplatform-upload-action-ecr 
+    - di-devplatform-metriccollector
+    - di-devplatform-checkov-hook 
+    - di-devplatform-container-verifier 
+    - di-devplatform-auth-api-test 
 
 govuk-forms:
   channel: '#govuk-forms-tech'
