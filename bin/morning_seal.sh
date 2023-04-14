@@ -16,6 +16,7 @@ teams=(
   interaction-and-personalisation-govuk
   navigation-and-presentation-govuk
   user-experience-measurement-govuk
+  dev-platform-team
 )
 
 for team in ${teams[*]}; do
@@ -27,6 +28,7 @@ morning_quote_teams=(
   fun-workstream-gds-community
   govuk-green-team
   navigation-and-presentation-govuk
+  dev-platform-team
 )
 
 for team in ${morning_quote_teams[*]}; do
