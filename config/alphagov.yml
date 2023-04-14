@@ -347,8 +347,8 @@ interaction-and-personalisation-govuk:
   compact: true
   <<: *common_properties
 
-navigation-and-presentation-govuk:
-  channel: '#navigation-and-presentation-govuk'
+navigation-and-homepage-govuk:
+  channel: '#govuk-navigation-tech'
   compact: true
   <<: *common_properties
   quotes:
