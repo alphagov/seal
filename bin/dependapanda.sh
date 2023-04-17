@@ -12,7 +12,7 @@ teams=(
   govuk-publishing-platform
   govuk-replatforming
   interaction-and-personalisation-govuk
-  navigation-and-presentation-govuk
+  navigation-and-homepage-govuk
   user-experience-measurement-govuk
 )
 
