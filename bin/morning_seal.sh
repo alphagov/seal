@@ -14,7 +14,7 @@ teams=(
   govuk-replatforming
   govwifi
   interaction-and-personalisation-govuk
-  navigation-and-presentation-govuk
+  navigation-and-homepage-govuk
   user-experience-measurement-govuk
   dev-platform-team
 )
@@ -27,7 +27,7 @@ morning_quote_teams=(
   fun-workstream-govuk
   fun-workstream-gds-community
   govuk-green-team
-  navigation-and-presentation-govuk
+  navigation-and-homepage-govuk
   dev-platform-team
 )
 
