@@ -27,18 +27,9 @@ class GithubFetcher
   end
 
   def pull_requests_from_github
-    pulls = []
-    @repos.each do |repo|
-      github.pull_requests("#{organisation}/#{repo}", { state: :open, sort: :created })
-            .reject(&:draft).each do |pr|
-        pulls << pr
-      end
-    rescue StandardError => e
-      puts "Error fetching pull requests from GitHub for repo #{repo}: #{e.message}"
-      next
+    repos.flat_map do |repo|
+      fetch_pull_requests(repo).reject(&:draft)
     end
-
-    pulls.flatten
   end
 
 private
@@ -49,6 +40,13 @@ private
               :repos,
               :organisation,
               :github
+
+  def fetch_pull_requests(repo)
+    github.pull_requests("#{organisation}/#{repo}", state: :open, sort: :created)
+  rescue StandardError => e
+    puts "Error fetching pull requests from GitHub for repo #{repo}: #{e.message}"
+    []
+  end
 
   def present_pull_request(pull_request)
     repo = pull_request.base.repo.name
