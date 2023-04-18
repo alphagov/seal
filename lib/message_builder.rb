@@ -13,14 +13,11 @@ class MessageBuilder
   end
 
   def build
-    if @animal == :panda
-      Message.new(dependapanda_message, mood: "panda") if dependapanda.any?
-    elsif old_pull_requests.any?
-      Message.new(bark_about_old_pull_requests, mood: "angry")
-    elsif unapproved_pull_requests.any?
-      Message.new(list_pull_requests, mood: "informative")
+    case @animal
+    when :panda
+      build_dependapanda_message
     else
-      Message.new(no_pull_requests, mood: "approval")
+      build_regular_message
     end
   rescue StandardError => e
     puts "Error building message: #{e.message}"
@@ -43,6 +40,22 @@ class MessageBuilder
 private
 
   attr_reader :team
+
+  def build_dependapanda_message
+    return unless dependapanda.any?
+
+    Message.new(dependapanda_message, mood: "panda")
+  end
+
+  def build_regular_message
+    if old_pull_requests.any?
+      Message.new(bark_about_old_pull_requests, mood: "angry")
+    elsif unapproved_pull_requests.any?
+      Message.new(list_pull_requests, mood: "informative")
+    else
+      Message.new(no_pull_requests, mood: "approval")
+    end
+  end
 
   def pr_date(pr)
     pr[:marked_ready_for_review_at] || pr[:created]
