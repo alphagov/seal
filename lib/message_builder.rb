@@ -15,16 +15,14 @@ class MessageBuilder
   def build
     if @animal == :panda
       Message.new(dependapanda_message, mood: "panda") if dependapanda.any?
+    elsif old_pull_requests.any?
+      Message.new(bark_about_old_pull_requests, mood: "angry")
+    elsif unapproved_pull_requests.any?
+      Message.new(list_pull_requests, mood: "informative")
     else
-      if old_pull_requests.any?
-        Message.new(bark_about_old_pull_requests, mood: "angry")
-      elsif unapproved_pull_requests.any?
-        Message.new(list_pull_requests, mood: "informative")
-      else
-        Message.new(no_pull_requests, mood: "approval")
-      end
+      Message.new(no_pull_requests, mood: "approval")
     end
-  rescue => e
+  rescue StandardError => e
     puts "Error building message: #{e.message}"
     nil
   end
@@ -94,8 +92,8 @@ private
   def dependapanda_message
     @message = panda_presenter
 
-    template_file = TEMPLATE_DIR + "dependapanda.text.erb"
-    ERB.new(template_file.read, trim_mode: '-').result(binding).strip
+    template_file = "#{TEMPLATE_DIR}dependapanda.text.erb"
+    ERB.new(template_file.read, trim_mode: "-").result(binding).strip
   end
 
   def comments(pull_request)
@@ -185,16 +183,16 @@ private
     prs = prs_by_repo.map do |repo_name, prs_for_app|
       oldest_pr, newest_pr = prs_for_app.map { |pr| pr_date(pr) }.minmax
       {
-        repo_name: repo_name,
+        repo_name:,
         repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
         pr_count: prs_for_app.count,
         oldest_pr: age_in_days(oldest_pr),
-        newest_pr: age_in_days(newest_pr)
+        newest_pr: age_in_days(newest_pr),
       }
     end
-    
-    prs.sort_by {|pr| pr[:oldest_pr]}.reverse
-  rescue => e
+
+    prs.sort_by { |pr| pr[:oldest_pr] }.reverse
+  rescue StandardError => e
     puts "Error generating panda presenter: #{e.message}"
     []
   end

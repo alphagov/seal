@@ -18,7 +18,7 @@ class TeamBuilder
     else
       build_all_teams
     end
-  rescue => e
+  rescue StandardError => e
     puts "Error building team(s): #{e.message}"
     []
   end
@@ -38,7 +38,7 @@ private
       end
       [team]
     end
-  rescue => e
+  rescue StandardError => e
     puts "Error building single team (#{team_name}): #{e.message}"
     []
   end
@@ -50,7 +50,7 @@ private
       end
       Team.new(**apply_env(team_config))
     end
-  rescue => e
+  rescue StandardError => e
     puts "Error building all teams: #{e.message}"
     []
   end
@@ -78,7 +78,7 @@ private
         {}
       end
     end
-  rescue => e
+  rescue StandardError => e
     puts "Error loading static configuration: #{e.message}"
     {}
   end
@@ -87,14 +87,14 @@ private
     source = "https://docs.publishing.service.gov.uk/repos.json"
     resp = Net::HTTP.get_response(URI.parse(source))
     JSON.parse(resp.body)
-  rescue => e
+  rescue StandardError => e
     puts "Error fetching govuk JSON: #{e.message}"
     []
   end
 
   def govuk_team_repos(team_channel)
-    @govuk_data.select{|repos| repos["team"] == team_channel}.map{|repo| repo["app_name"]}
-  rescue => e
+    @govuk_data.select { |repos| repos["team"] == team_channel }.map { |repo| repo["app_name"] }
+  rescue StandardError => e
     puts "Error fetching govuk team repos (#{team_channel}): #{e.message}"
     []
   end

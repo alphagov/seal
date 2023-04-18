@@ -1,6 +1,6 @@
 require "spec_helper"
 require "fakefs/spec_helpers"
-require 'webmock/rspec'
+require "webmock/rspec"
 require_relative "../lib/team_builder"
 
 RSpec.describe TeamBuilder do
@@ -8,15 +8,17 @@ RSpec.describe TeamBuilder do
 
   let(:organisation) { "big_cats" }
 
-  let(:uri) { URI('https://docs.publishing.service.gov.uk/repos.json') }
+  let(:uri) { URI("https://docs.publishing.service.gov.uk/repos.json") }
 
-  let(:repos) {[{"app_name" => "Brazil", "team" => "#govuk-jaguars"},
-                {"app_name" => "rainforest", "team" => "#govuk-wildcats-team"},
-                {"app_name" => "savanna", "team" => "#govuk-wildcats-team"},
-                {"app_name" => "grassland", "team" => "#govuk-wildcats-team"}]}
+  let(:repos) do
+    [{ "app_name" => "Brazil", "team" => "#govuk-jaguars" },
+     { "app_name" => "rainforest", "team" => "#govuk-wildcats-team" },
+     { "app_name" => "savanna", "team" => "#govuk-wildcats-team" },
+     { "app_name" => "grassland", "team" => "#govuk-wildcats-team" }]
+  end
 
   before do
-    stub_request(:get, uri).with(headers: {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).to_return(status: 200, body: JSON.dump(repos), headers: {})
+    stub_request(:get, uri).with(headers: { "Accept" => "*/*", "User-Agent" => "Ruby" }).to_return(status: 200, body: JSON.dump(repos), headers: {})
 
     FileUtils.mkdir_p(File.join(File.dirname(__FILE__), "../config"))
     File.write(File.join(File.dirname(__FILE__), "../config/#{organisation}.yml"),
@@ -59,7 +61,7 @@ RSpec.describe TeamBuilder do
                  },
                  "govuk-wildcats" => {
                    "channel" => "#govuk-wildcats-team",
-                 }
+                 },
                ))
   end
 
@@ -74,7 +76,6 @@ RSpec.describe TeamBuilder do
 
   it "loads all keys" do
     lions = teams.find { |t| t.channel == "#lions" }
-    cats = teams.find { |t| t.channel == "#cats" }
 
     expect(lions.exclude_titles).to eq(["DO NOT MERGE", "WIP"])
 
@@ -99,17 +100,17 @@ RSpec.describe TeamBuilder do
 
   it "gets non gov.uk team repos from the static config file if repos array is defined" do
     lions = teams.find { |t| t.channel == "#lions" }
-    expect(lions.repos).to eq(["Africa"])
+    expect(lions.repos).to eq(%w[Africa])
   end
 
   it "gets gov.uk team repos from an external JSON file if repos array is not defined in static config file" do
     jaguars = teams.find { |t| t.channel == "#govuk-jaguars" }
-    expect(jaguars.repos).to eq(["Brazil"])
+    expect(jaguars.repos).to eq(%w[Brazil])
   end
 
   it "gets gov.uk team repos from an external JSON file if repos array is not defined in static config file and team channel differs to team name" do
     teams = TeamBuilder.build(env:, team_name: "govuk-wildcats")
-    expect(teams.first.repos).to eq(["rainforest", "savanna", "grassland"])
+    expect(teams.first.repos).to eq(%w[rainforest savanna grassland])
   end
 
   it "allows the overriding of options via environment variables" do

@@ -149,7 +149,7 @@ RSpec.describe GithubFetcher do
 
   let(:timeline_2295) do
     [
-      double(Sawyer::Resource, created_at: Time.new(2015, 7, 18, 2, 0, 44, "UTC"), event: "ready_for_review")
+      double(Sawyer::Resource, created_at: Time.new(2015, 7, 18, 2, 0, 44, "UTC"), event: "ready_for_review"),
     ]
   end
 

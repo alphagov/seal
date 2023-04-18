@@ -223,7 +223,7 @@ RSpec.describe MessageBuilder do
           comments_count: "1",
           thumbs_up: "0",
           created: Date.new(2015, 6, 13),
-          marked_ready_for_review_at: Date.new(2015, 7, 13)
+          marked_ready_for_review_at: Date.new(2015, 7, 13),
         }
       end
 

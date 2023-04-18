@@ -19,7 +19,7 @@ class GithubFetcher
       .reject { |pr| hidden?(pr) }
       .map { |pr| present_pull_request(pr) }
       .sort_by { |pr| pr[:date] }.reverse
-  rescue => e
+  rescue StandardError => e
     puts "Error listing pull requests: #{e.message}"
     []
   end
@@ -28,7 +28,7 @@ class GithubFetcher
     pulls = []
     @repos.each do |repo|
       github.pull_requests("#{organisation}/#{repo}", { state: :open, sort: :created })
-            .reject { |p| p.draft }.each do |pr|
+            .reject(&:draft).each do |pr|
         pulls << pr
       end
     rescue StandardError => e
@@ -64,7 +64,7 @@ private
       marked_ready_for_review_at: marked_ready_for_review_at(pull_request, repo)&.to_date,
       labels: labels(pull_request),
     }
-  rescue => e
+  rescue StandardError => e
     puts "Error presenting pull request #{pull_request.html_url}: #{e.message}"
     {}
   end
@@ -72,7 +72,7 @@ private
   def count_comments(pull_request, repo)
     pr = github.pull_request("#{organisation}/#{repo}", pull_request.number)
     pr.review_comments + pr.comments
-  rescue => e
+  rescue StandardError => e
     puts "Error counting comments for PR #{pull_request.html_url}: #{e.message}"
     0
   end
@@ -81,7 +81,7 @@ private
     response = github.issue_comments("#{organisation}/#{repo}", pull_request.number)
     comments_string = response.map(&:body).join
     comments_string.scan(/:\+1:/).count
-  rescue => e
+  rescue StandardError => e
     puts "Error counting thumbs up for PR #{pull_request.html_url}: #{e.message}"
     0
   end
@@ -89,7 +89,7 @@ private
   def approved?(pull_request, repo)
     reviews = github.get("repos/#{organisation}/#{repo}/pulls/#{pull_request.number}/reviews")
     reviews.any? { |review| review.state == "APPROVED" }
-  rescue => e
+  rescue StandardError => e
     puts "Error checking approval for PR #{pull_request.html_url}: #{e.message}"
     false
   end
@@ -98,14 +98,14 @@ private
     return [] unless use_labels
 
     pull_request.labels.map { |label| label[:name].downcase }
-  rescue => e
+  rescue StandardError => e
     puts "Error fetching labels for PR #{pull_request.html_url}: #{e.message}"
     []
   end
 
   def hidden?(pull_request)
     excluded_label?(pull_request) || excluded_title?(pull_request.title)
-  rescue => e
+  rescue StandardError => e
     puts "Error checking hidden status for PR #{pull_request.html_url}: #{e.message}"
     false
   end
@@ -120,8 +120,8 @@ private
 
   def marked_ready_for_review_at(pull_request, repo)
     events = github.get("repos/#{organisation}/#{repo}/issues/#{pull_request.number}/timeline")
-    events.filter { |e| e.event == "ready_for_review" }.map(&:created_at).sort.last
-  rescue => e
+    events.filter { |e| e.event == "ready_for_review" }.map(&:created_at).max
+  rescue StandardError => e
     puts "Error fetching marked ready for review time for PR #{pull_request.html_url}: #{e.message}"
     nil
   end
