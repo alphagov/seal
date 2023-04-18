@@ -6,7 +6,6 @@ class SlackPoster
     @team_channel = team_channel
     @mood = mood
     @today = Date.today
-    @postable_day = !today.saturday? && !today.sunday?
     mood_hash
     channel
     create_poster
@@ -18,10 +17,10 @@ class SlackPoster
 
   def send_request(message)
     if ENV["DRY"]
-      puts "Will#{' not' unless postable_day} post #{mood} message to #{channel} on #{today.strftime('%A')}"
+      puts "Will post #{mood} message to #{channel} on #{today.strftime('%A')}"
       puts slack_options.inspect
       puts message
-    elsif postable_day
+    else
       poster.send_message(message)
     end
   rescue StandardError => e
@@ -30,7 +29,7 @@ class SlackPoster
 
 private
 
-  attr_reader :postable_day, :today
+  attr_reader :today
 
   def slack_options
     {
