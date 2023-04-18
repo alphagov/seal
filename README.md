@@ -59,9 +59,9 @@ In your forked repo, include your team names in the appropriate bash script. Ex.
 ### Local testing
 
 To test the script, create a private Slack channel e.g. "#angry-seal-bot-test-abc" and update `@team_channel` on [this line in slack_poster.rb](https://github.com/alphagov/seal/blob/main/lib/slack_poster.rb#L120) to the one you created (also remove the `if` statement).
-Then log in to Heroku (credentials can be found in [govuk-secrets](https://github.com/alphagov/govuk-secrets)) and under the "Deploy" tab, you can deploy your branch which should be in the drop down list of branches in the "Manual deploy" section. Under the "More" drop down located in the top right, select "Run console" where you can run `./bin/seal.rb your_team_name`, and you should see the post in your test channel (assuming you have included it in the list of teams in [morning_seal.sh](https://github.com/alphagov/seal/blob/main/bin/morning_seal.sh)).
+Then log in to Heroku (credentials can be found in [govuk-secrets](https://github.com/alphagov/govuk-secrets)) and under the "Deploy" tab, you can deploy your branch which should be in the drop down list of branches in the "Manual deploy" section. Under the "More" drop down located in the top right, select "Run console" where you can run `./bin/seal_runner.rb your_team_name`, and you should see the post in your test channel (assuming you have included it in the list of teams in [morning_seal.sh](https://github.com/alphagov/seal/blob/main/bin/morning_seal.sh)).
 
-If you don't want to post github pull requests but a random quote from your team's quotes config, run `./bin/seal.rb your_team_name quotes`
+If you don't want to post github pull requests but a random quote from your team's quotes config, run `./bin/seal_runner.rb your_team_name quotes`
 
 ### Slack configuration
 
@@ -83,7 +83,7 @@ You can use the images in images/emojis that have the corresponding names.
 
 When that works, you can push the app to Heroku and add the GITHUB_TOKEN and SLACK_WEBHOOK environment variables to heroku.
 
-Use the Heroku scheduler add-on to create repeated tasks - I set the seal to run at 9.30am every morning (the seal won't post on weekends). The scheduler is at [https://scheduler.heroku.com/dashboard](https://scheduler.heroku.com/dashboard) and the command to run is `bin/seal.rb your_team_name bot_animal`
+Use the Heroku scheduler add-on to create repeated tasks - I set the seal to run at 9.30am every morning (the seal won't post on weekends). The scheduler is at [https://scheduler.heroku.com/dashboard](https://scheduler.heroku.com/dashboard) and the command to run is `bin/seal_runner.rb your_team_name bot_animal`
 
 Any questions feel free to contact me on Twitter - my handle is binaryberry
 

@@ -17,5 +17,5 @@ teams=(
 )
 
 for team in ${teams[*]}; do
-  ./bin/seal.rb $team dependapanda
+  ./bin/seal_runner.rb $team dependapanda
 done
