@@ -42,7 +42,7 @@ private
   attr_reader :team
 
   def build_dependapanda_message
-    return unless dependapanda.any?
+    return unless pull_requests.any?
 
     Message.new(dependapanda_message, mood: "panda")
   end
@@ -61,24 +61,16 @@ private
     pr[:marked_ready_for_review_at] || pr[:created]
   end
 
-  def panda_filter(prs)
-    prs.reject { |pr| pr[:author].include?("dependabot") }
-  end
-
   def pull_requests
-    @pull_requests ||= GithubFetcher.new(team).list_pull_requests
-  end
-
-  def dependapanda
-    @dependapanda ||= pull_requests.select { |pr| pr[:author].include?("dependabot") }
+    @pull_requests ||= GithubFetcher.new(team, dependabot_prs_only: @animal == :panda).list_pull_requests
   end
 
   def old_pull_requests
-    @old_pull_requests ||= panda_filter(pull_requests).select { |pr| rotten?(pr) }
+    @old_pull_requests ||= pull_requests.select { |pr| rotten?(pr) }
   end
 
   def unapproved_pull_requests
-    @unapproved_pull_requests ||= panda_filter(pull_requests).reject { |pr| pr[:approved] }
+    @unapproved_pull_requests ||= pull_requests.reject { |pr| pr[:approved] }
   end
 
   def recent_pull_requests
@@ -191,7 +183,7 @@ private
   end
 
   def panda_presenter
-    prs_by_repo = dependapanda.group_by { |pr| pr[:repo] }
+    prs_by_repo = pull_requests.group_by { |pr| pr[:repo] }
 
     prs = prs_by_repo.map do |repo_name, prs_for_app|
       oldest_pr, newest_pr = prs_for_app.map { |pr| pr_date(pr) }.minmax

@@ -1,7 +1,7 @@
 require "octokit"
 
 class GithubFetcher
-  def initialize(team)
+  def initialize(team, dependabot_prs_only: false)
     @organisation = ENV["SEAL_ORGANISATION"]
     @github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
     @github.api_endpoint = ENV["GITHUB_API_ENDPOINT"] if ENV["GITHUB_API_ENDPOINT"]
@@ -12,6 +12,7 @@ class GithubFetcher
     @exclude_titles = team.exclude_titles.map(&:downcase).uniq
     @labels = {}
     @repos = team.repos
+    @dependabot_prs_only = dependabot_prs_only
   end
 
   def list_pull_requests
@@ -19,6 +20,7 @@ class GithubFetcher
       .reject { |pr| hidden?(pr) }
       .map { |pr| present_pull_request(pr) }
       .sort_by { |pr| pr[:date] }.reverse
+      .filter { |pr| @dependabot_prs_only == pr[:author].include?("dependabot") }
   rescue StandardError => e
     puts "Error listing pull requests: #{e.message}"
     []

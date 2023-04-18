@@ -3,8 +3,10 @@ require "./lib/message_builder"
 
 RSpec.describe MessageBuilder do
   let(:team) { double(:team, compact: false) }
+  let(:dependabot_prs_only) { false }
   let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests) }
-  subject(:message_builder) { MessageBuilder.new(team, :seal) }
+  let(:animal) { :seal }
+  subject(:message_builder) { MessageBuilder.new(team, animal) }
 
   let(:no_unapproved_pull_requests) do
     [
@@ -90,7 +92,7 @@ RSpec.describe MessageBuilder do
   before do
     Timecop.freeze(Time.local(2015, 0o7, 18))
 
-    allow(GithubFetcher).to receive(:new).with(team).and_return(github_fetcher)
+    allow(GithubFetcher).to receive(:new).with(team, dependabot_prs_only:).and_return(github_fetcher)
   end
 
   context "with labels" do
@@ -233,6 +235,53 @@ RSpec.describe MessageBuilder do
 
       it "is not rotten" do
         expect(message_builder).to_not be_rotten(pull_request)
+      end
+    end
+  end
+
+  context "panda scenarios" do
+    let(:animal) { :panda }
+    let(:dependabot_prs_only) { true }
+    let(:dependabot_pull_requests) do
+      [
+        {
+          title: "Remove all Import-related code",
+          link: "https://github.com/alphagov/whitehall/pull/2248",
+          author: "dependabot",
+          repo: "whitehall",
+          comments_count: 5,
+          thumbs_up: 0,
+          approved: false,
+          created: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
+          labels: [],
+        },
+        {
+          title: "Some approved PR",
+          link: "https://github.com/alphagov/whitehall/pull/9999",
+          author: "dependabot",
+          repo: "whitehall",
+          comments_count: 5,
+          thumbs_up: 0,
+          approved: true,
+          created: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
+          labels: [],
+        },
+      ]
+    end
+
+    context "no dependabot PRs" do
+      let(:pull_requests) { [] }
+
+      it "does not post a message" do
+        expect(message_builder.build).to be_nil
+      end
+    end
+
+    context "dependabot PRs present" do
+      let(:pull_requests) { dependabot_pull_requests }
+
+      it "posts a message without security info" do
+        expect(message_builder.build.text).to include("You have 2 Dependabot PRs open on the following apps:")
       end
     end
   end
