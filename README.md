@@ -43,6 +43,7 @@ export GITHUB_API_ENDPOINT="your_github_api_endpoint" # OPTIONAL If you are usin
 export SLACK_WEBHOOK="get_your_incoming_webhook_link_for_your_slack_group_channel"
 export SLACK_CHANNEL="#whatever-channel-you-prefer"
 export GITHUB_USE_LABELS=true
+export GITHUB_SECURITY_ALERTS=true
 export GITHUB_EXCLUDE_LABELS="[DO NOT MERGE],Don't merge,DO NOT MERGE,Waiting on factcheck,wip"
 export GITHUB_REPOS="myapp,anotherrepo" # Repos you want to be notified about
 export COMPACT=true # Use a more compact version of the seal output

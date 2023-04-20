@@ -24,6 +24,10 @@
       "description": "Comma separated list of labels to include",
       "required": false
     },
+    "GITHUB_SECURITY_ALERTS": {
+      "description": "Should Dependapanda include security alerts information along with the standard Dependapanda info",
+      "required": false
+    },
     "GITHUB_EXCLUDE_LABELS": {
       "description": "Comma separated list of labels to exclude",
       "required": false
