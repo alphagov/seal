@@ -2,10 +2,10 @@
 
 ## What is it?
 
-This is a Slack bot that publishes a team's pull requests to their Slack Channel, once provided the organisation name, team names and respective repos.
+This is a Slack bot that publishes a team's pull requests, Dependabot updates, security alerts, and inspirational quotes to their Slack Channel. Once provided with the organization name, team names, and respective repositories, it posts messages as various animal characters such as the Seal and Dependapanda.
 
-![image](https://github.com/binaryberry/seal/blob/master/images/readme/informative.png)
-![image](https://github.com/binaryberry/seal/blob/master/images/readme/angry.png)
+![image](https://github.com/alphagov/seal/blob/main/images/readme/informative.png)
+![image](https://github.com/alphagov/seal/blob/main/images/readme/angry.png)
 
 ## How to use it?
 
@@ -29,13 +29,6 @@ export GITHUB_API_ENDPOINT="your_github_api_endpoint" # OPTIONAL If you are usin
 
 ### Env variables
 
-Another option, which is 12-factor-app ready is to use ENV variables for basically everything.
-In that case you don't need a config file at all.
-
-Divider is ',' (comma) symbol.
-
-In your shell profile, put in:
-
 ```sh
 export SEAL_ORGANISATION="your_github_organisation"
 export GITHUB_TOKEN="get_your_github_token_from_yourgithub_settings"
@@ -47,7 +40,7 @@ export GITHUB_SECURITY_ALERTS=true
 export GITHUB_EXCLUDE_LABELS="[DO NOT MERGE],Don't merge,DO NOT MERGE,Waiting on factcheck,wip"
 export GITHUB_REPOS="myapp,anotherrepo" # Repos you want to be notified about
 export COMPACT=true # Use a more compact version of the seal output
-export SEAL_QUOTES="Everyone should have the opportunity to learn. Don’t be afraid to pick up stories on things you don’t understand and ask for help with them.,Try to pair when possible."
+export SEAL_QUOTES="Everyone should have the opportunity to learn. Don't be afraid to pick up stories on things you don't understand and ask for help with them.,Try to pair when possible."
 ```
 
 - To get a new `GITHUB_TOKEN`, head to: https://github.com/settings/tokens
@@ -55,7 +48,13 @@ export SEAL_QUOTES="Everyone should have the opportunity to learn. Don’t be af
 
 ### Bash scripts
 
-In your forked repo, include your team names in the appropriate bash script. Ex. `bin/morning_seal.sh`
+You will find several bash scripts in the bin directory, such as morning_seal.sh, afternoon_seal.sh, and dependapanda.sh. These scripts are responsible for running the Seal at different times of the day and for different purposes:
+
+- [morning_seal.sh](https://github.com/alphagov/seal/blob/main/bin/morning_seal.sh): Runs the Seal bot in the morning, posting about old and recent pull requests by team members and also quotes.
+- [afternoon_seal.sh](https://github.com/alphagov/seal/blob/main/bin/afternoon_seal.sh): Runs the Seal bot in the afternoon, posting quotes.
+- [dependapanda.sh](https://github.com/alphagov/seal/blob/main/bin/dependapanda.sh): Runs the Dependapanda bot in the morning, posting about Dependabot pull requests and security information.
+
+To customize when and which bots post to your team channel, add or remove your team name in the bash scripts above. The team name should correspond to a key in [config/alphagov.yml](https://github.com/alphagov/seal/blob/main/config/alphagov.yml), which should have a `channel` property denoting the name of your team's Slack channel.
 
 ### Local testing
 
@@ -65,6 +64,8 @@ Then log in to Heroku (credentials can be found in [govuk-secrets](https://githu
 If you don't want to post github pull requests but a random quote from your team's quotes config, run `./bin/seal_runner.rb your_team_name quotes`
 
 ### Slack configuration
+
+The morning_seal.sh and dependapanda.sh scripts run every weekday morning, while the afternoon_seal.sh script runs every weekday afternoon. The scheduler is at https://scheduler.heroku.com/dashboard, and the command to run is bin/seal_runner.rb your_team_name bot_animal.
 
 You should also set up the following custom emojis in Slack:
 
@@ -82,32 +83,13 @@ You should also set up the following custom emojis in Slack:
 
 You can use the images in images/emojis that have the corresponding names.
 
-When that works, you can push the app to Heroku and add the GITHUB_TOKEN and SLACK_WEBHOOK environment variables to heroku.
-
-Use the Heroku scheduler add-on to create repeated tasks - I set the seal to run at 9.30am every morning (the seal won't post on weekends). The scheduler is at [https://scheduler.heroku.com/dashboard](https://scheduler.heroku.com/dashboard) and the command to run is `bin/seal_runner.rb your_team_name bot_animal`
-
-Any questions feel free to contact me on Twitter - my handle is binaryberry
-
 ## Deployment
 
 Heroku will deploy the main branch automatically.
 
 ## How to run the tests?
 
-Just run `rspec` in the command line.
-
-## Tips
-
-How to list your organisation's repositories modified within the last year:
-
-In `irb`, from the folder of the project, run:
-
-```ruby
-require 'octokit'
-github = Octokit::Client.new(:access_token => ENV['GITHUB_TOKEN'], auto_pagination: true)
-response = github.repos(org: ENV['SEAL_ORGANISATION'])
-repo_names = response.select { |repo| Date.parse(repo.created_at.to_s) > (Date.today - 365) }.map(&:name)
-```
+Just run `bundle exec rspec` in the command line.
 
 ## Licence
 
