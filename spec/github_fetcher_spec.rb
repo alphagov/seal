@@ -5,6 +5,7 @@ RSpec.describe GithubFetcher do
   let(:team) do
     Team.new(
       use_labels:,
+      security_alerts: false,
       exclude_labels:,
       exclude_titles:,
       repos:,
@@ -12,7 +13,7 @@ RSpec.describe GithubFetcher do
   end
 
   subject(:github_fetcher) do
-    described_class.new(team)
+    described_class.new(team, dependabot_prs_only: false)
   end
 
   let(:fake_octokit_client) { double(Octokit::Client) }
@@ -32,6 +33,7 @@ RSpec.describe GithubFetcher do
         created: Date.parse("2015-07-13 ((2457217j,0s,0n),+0s,2299161j)"),
         updated: Date.parse("2015-07-13 ((2457217j,0s,0n),+0s,2299161j)"),
         marked_ready_for_review_at: nil,
+        security_label: nil,
         labels: wip_or_not,
       },
       {
@@ -45,6 +47,7 @@ RSpec.describe GithubFetcher do
         created: Date.parse("2015-07-17 ((2457221j,0s,0n),+0s,2299161j)"),
         updated: Date.parse("2015-07-17 ((2457221j,0s,0n),+0s,2299161j)"),
         marked_ready_for_review_at: nil,
+        security_label: nil,
         labels: [],
       },
       {
@@ -59,6 +62,7 @@ RSpec.describe GithubFetcher do
         created: Date.parse("2015-07-17 ((2457221j,0s,0n),+0s,2299161j)"),
         updated: Date.parse("2015-07-17 ((2457221j,0s,0n),+0s,2299161j)"),
         marked_ready_for_review_at: Date.new(2015, 7, 18),
+        security_label: nil,
       },
     ]
   end
@@ -78,6 +82,7 @@ RSpec.describe GithubFetcher do
            created_at: "2015-07-13 01:00:44 UTC",
            updated_at: "2015-07-13 01:00:44 UTC",
            draft: false,
+           head: double(Sawyer::Resource, ref: "sample-branch-1"),
            base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "whitehall")),
            labels: [
              { name: "wip" },
@@ -95,6 +100,7 @@ RSpec.describe GithubFetcher do
            created_at: "2015-07-17 01:00:44 UTC",
            updated_at: "2015-07-17 01:00:44 UTC",
            draft: false,
+           head: double(Sawyer::Resource, ref: "sample-branch-1"),
            base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "govuk-docker")),
            labels: [])
   end
@@ -110,6 +116,7 @@ RSpec.describe GithubFetcher do
            created_at: "2015-07-17 01:00:44 UTC",
            updated_at: "2015-07-17 01:00:44 UTC",
            draft: false,
+           head: double(Sawyer::Resource, ref: "sample-branch-1"),
            base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "content-store")),
            labels: [])
   end
@@ -190,6 +197,24 @@ RSpec.describe GithubFetcher do
     allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/issues/2248/timeline}).and_return(timeline_2248)
     allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/issues/2266/timeline}).and_return(timeline_2266)
     allow(fake_octokit_client).to receive(:get).with(%r{repos/alphagov/[\w-]+/issues/2295/timeline}).and_return(timeline_2295)
+
+    allow(fake_octokit_client).to receive(:get).with(
+      "https://api.github.com/repos/alphagov/whitehall/dependabot/alerts",
+      accept: "application/vnd.github+json",
+      state: "open",
+    ).and_return([])
+
+    allow(fake_octokit_client).to receive(:get).with(
+      "https://api.github.com/repos/alphagov/govuk-docker/dependabot/alerts",
+      accept: "application/vnd.github+json",
+      state: "open",
+    ).and_return([])
+
+    allow(fake_octokit_client).to receive(:get).with(
+      "https://api.github.com/repos/alphagov/content-store/dependabot/alerts",
+      accept: "application/vnd.github+json",
+      state: "open",
+    ).and_return([])
   end
 
   shared_examples_for "fetching from GitHub" do

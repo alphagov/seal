@@ -61,8 +61,12 @@ private
     pr[:marked_ready_for_review_at] || pr[:created]
   end
 
+  def github_fetcher
+    @github_fetcher ||= GithubFetcher.new(team, dependabot_prs_only: @animal == :panda)
+  end
+
   def pull_requests
-    @pull_requests ||= GithubFetcher.new(team, dependabot_prs_only: @animal == :panda).list_pull_requests
+    @pull_requests ||= github_fetcher.list_pull_requests
   end
 
   def old_pull_requests
@@ -95,10 +99,25 @@ private
   end
 
   def dependapanda_message
-    @message = panda_presenter
+    @repos = panda_presenter
 
-    template_file = "#{TEMPLATE_DIR}dependapanda.text.erb"
-    ERB.new(template_file.read, trim_mode: "-").result(binding).strip
+    @all_prs_count = @repos.sum { |repo| repo[:pr_count] }
+
+    if @team.security_alerts
+      @all_alerts_count = github_fetcher.security_alerts_count
+      @all_alerts_link = "https://github.com/orgs/alphagov/security/alerts/dependabot?q=is:open+repo:#{@team.repos.join(',')}"
+      @github_api_errors = github_fetcher.github_api_errors
+
+      security_prs = @repos.flat_map { |repo| repo[:security_prs] }
+
+      severity_mapping = { "low" => 1, "medium" => 2, "high" => 3, "critical" => 4 }
+
+      @security_prs_ordered = security_prs.sort_by { |pr| [severity_mapping[pr[:security_label][:severity]], pr[:security_label][:count]] }
+        .map { |pr| pr.merge(pr_link: pr[:link], pr_title: pr[:title]) }.reverse
+    end
+
+    template_file = TEMPLATE_DIR + "dependapanda.text.erb"
+    ERB.new(template_file.read, trim_mode: '-').result(binding).strip
   end
 
   def comments(pull_request)
@@ -187,12 +206,15 @@ private
 
     prs = prs_by_repo.map do |repo_name, prs_for_app|
       oldest_pr, newest_pr = prs_for_app.map { |pr| pr_date(pr) }.minmax
+      security_prs = @team.security_alerts ? prs_for_app.select { |pr| pr[:security_label] } : []
+
       {
         repo_name:,
         repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
         pr_count: prs_for_app.count,
         oldest_pr: age_in_days(oldest_pr),
         newest_pr: age_in_days(newest_pr),
+        security_prs:,
       }
     end
 
