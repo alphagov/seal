@@ -26,7 +26,7 @@ class Seal
     begin
       message = case mode
                 when "quotes"
-                  Message.new(team.quotes.sample)
+                  Message.new(team.quotes.sample) if team.quotes_days.map(&:downcase).include?(Date.today.strftime("%A").downcase)
                 when "dependapanda"
                   MessageBuilder.new(team, :panda).build
                 else

@@ -37,6 +37,13 @@ RSpec.describe TeamBuilder do
                      "This is a quote",
                      "This is also a quote",
                    ],
+                   "quotes_days" => [
+                      "Monday",
+                      "Tuesday",
+                      "Wednesday",
+                      "Thursday",
+                      "Friday",
+                    ],
                    "repos" => [
                      "Africa"
                    ],

@@ -13,6 +13,12 @@ common_properties: &common_properties
     - DNM
     - DRAFT
     - PARKED
+  quotes_days:
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
 
 data-infrastructure:
   channel: '#data-infrastructure'
@@ -103,6 +109,10 @@ fun-workstream-gds-community:
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/how-gds-works/our-people/its-ok-to|It's ok to> ask for help
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/how-gds-works/our-people/its-ok-to|It's ok to> put yourself first
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/how-gds-works/our-people/its-ok-to|It's ok to> love what you do
+  quotes_days:
+    - Monday
+    - Wednesday
+    - Friday
 
 fun-workstream-govuk:
   channel: '#govuk'
@@ -136,6 +146,10 @@ fun-workstream-govuk:
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/how-gds-works/our-people/its-ok-to|It's ok to> ask for help
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/how-gds-works/our-people/its-ok-to|It's ok to> put yourself first
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/how-gds-works/our-people/its-ok-to|It's ok to> love what you do
+  quotes_days:
+    - Monday
+    - Wednesday
+    - Friday
 
 govuk-accounts:
   channel: '#govuk-accounts'
