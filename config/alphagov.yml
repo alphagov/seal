@@ -278,8 +278,8 @@ govuk-pay:
     - pay-toolbox
     - pay-webhooks
 
-govuk-platform-reliability:
-  channel: '#govuk-platform-reliability-team'
+govuk-platform-security-reliability:
+  channel: '#govuk-platform-security-reliability-team'
   compact: true
   <<: *common_properties
   quotes:
@@ -307,8 +307,8 @@ govuk-publishing-platform:
   compact: true
   <<: *common_properties
 
-govuk-replatforming:
-  channel: '#govuk-replatforming'
+govuk-platform-engineering:
+  channel: '#govuk-platform-engineering'
   compact: true
   <<: *common_properties
 

@@ -8,10 +8,10 @@ teams=(
   govuk-forms
   govuk-frontenders
   govuk-pay
-  govuk-platform-reliability
+  govuk-platform-security-reliability
   govuk-publishing-experience
   govuk-publishing-platform
-  govuk-replatforming
+  govuk-platform-engineering
   govwifi
   interaction-and-personalisation-govuk
   navigation-and-homepage-govuk
