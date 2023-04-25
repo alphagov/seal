@@ -2,7 +2,7 @@
 
 teams=(
   govuk-accounts
-  govuk-platform-reliability
+  govuk-platform-security-reliability
 )
 
 for team in ${teams[*]} ; do
