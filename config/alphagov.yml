@@ -188,7 +188,6 @@ dev-platform-team:
     - di-devplatform-deploy
     - di-devplatform-demo-sam-app 
     - di-devplatform-utils
-    - di-devplatform-identity-broker 
     - di-devplatform-infra-audit-hook 
     - di-devplatform-lambda-audit-hook 
     - di-devplatform-upload-action
