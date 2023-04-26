@@ -13,7 +13,7 @@ teams=(
   govuk-publishing-platform
   govuk-platform-engineering
   govwifi
-  interaction-and-personalisation-govuk
+  content-interactions-on-platform-govuk
   navigation-and-homepage-govuk
   user-experience-measurement-govuk
   dev-platform-team
