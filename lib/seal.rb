@@ -18,26 +18,25 @@ class Seal
     end
   end
 
-  private
+private
 
   attr_reader :teams
 
   def bark_at(team, mode: nil)
-    begin
-      message = case mode
-                when "quotes"
-                  Message.new(team.quotes.sample) if team.quotes_days.map(&:downcase).include?(Date.today.strftime("%A").downcase)
-                when "dependapanda"
-                  MessageBuilder.new(team, :panda).build
-                else
-                  MessageBuilder.new(team, :seal).build
-                end
+    message = case mode
+              when "quotes"
+                Message.new(team.quotes.sample) if team.quotes_days.map(&:downcase).include?(Date.today.strftime("%A").downcase)
+              when "dependapanda"
+                MessageBuilder.new(team, :panda).build
+              else
+                MessageBuilder.new(team, :seal).build
+              end
 
-      return if message.nil?
-      poster = SlackPoster.new(team.channel, message.mood)
-      poster.send_request(message.text)
-    rescue => e
-      puts "Error barking at team '#{team.name}': #{e.message}"
-    end
+    return if message.nil?
+
+    poster = SlackPoster.new(team.channel, message.mood)
+    poster.send_request(message.text)
+  rescue StandardError => e
+    puts "Error barking at team '#{team.name}': #{e.message}"
   end
 end

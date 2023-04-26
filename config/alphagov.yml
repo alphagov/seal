@@ -2,6 +2,7 @@
 # To overwrite a specific section of common_properties, add the desired property with a new value after the '<<: *common_properties' line in the corresponding section
 
 common_properties: &common_properties
+  security_alerts: true
   exclude_labels:
     - WIP
     - ignore
@@ -28,7 +29,6 @@ data-insights:
   channel: '#data-insights'
   <<: *common_properties
 
-
 di-ipv-orange-cri-maintainers:
   channel: '#di-cri-orange-team-tech'
   <<: *common_properties
@@ -44,6 +44,7 @@ di-ipv-orange-cri-maintainers:
     - di-ipv-cri-kbv-front
     - di-ipv-cri-lib
     - di-ipv-cri-pipieline-deployment
+  security_alerts: false
 
 data-products:
   channel: '#data-products'
@@ -172,6 +173,7 @@ govuk-accounts-tech:
     - di-account-management-backend
     - di-account-management-frontend
     - di-accounts-infra
+  security_alerts: false
 
 govuk-datagovuk:
   channel: '#govuk-datagovuk'
@@ -221,6 +223,7 @@ govuk-forms:
     - forms-api
     - forms-runner
     - forms-product-page
+  security_alerts: false
 
 govuk-frontenders:
   channel: '#govuk-publishing-components'

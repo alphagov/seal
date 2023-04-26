@@ -13,18 +13,13 @@ class MessageBuilder
   end
 
   def build
-    if @animal == :panda
-      Message.new(dependapanda_message, mood: "panda") if dependapanda.any?
+    case @animal
+    when :panda
+      build_dependapanda_message
     else
-      if old_pull_requests.any?
-        Message.new(bark_about_old_pull_requests, mood: "angry")
-      elsif unapproved_pull_requests.any?
-        Message.new(list_pull_requests, mood: "informative")
-      else
-        Message.new(no_pull_requests, mood: "approval")
-      end
+      build_regular_message
     end
-  rescue => e
+  rescue StandardError => e
     puts "Error building message: #{e.message}"
     nil
   end
@@ -46,28 +41,40 @@ private
 
   attr_reader :team
 
+  def build_dependapanda_message
+    return unless pull_requests.any?
+
+    Message.new(dependapanda_message, mood: "panda")
+  end
+
+  def build_regular_message
+    if old_pull_requests.any?
+      Message.new(bark_about_old_pull_requests, mood: "angry")
+    elsif unapproved_pull_requests.any?
+      Message.new(list_pull_requests, mood: "informative")
+    else
+      Message.new(no_pull_requests, mood: "approval")
+    end
+  end
+
   def pr_date(pr)
     pr[:marked_ready_for_review_at] || pr[:created]
   end
 
-  def panda_filter(prs)
-    prs.reject { |pr| pr[:author].include?("dependabot") }
+  def github_fetcher
+    @github_fetcher ||= GithubFetcher.new(team, dependabot_prs_only: @animal == :panda)
   end
 
   def pull_requests
-    @pull_requests ||= GithubFetcher.new(team).list_pull_requests
-  end
-
-  def dependapanda
-    @dependapanda ||= pull_requests.select { |pr| pr[:author].include?("dependabot") }
+    @pull_requests ||= github_fetcher.list_pull_requests
   end
 
   def old_pull_requests
-    @old_pull_requests ||= panda_filter(pull_requests).select { |pr| rotten?(pr) }
+    @old_pull_requests ||= pull_requests.select { |pr| rotten?(pr) }
   end
 
   def unapproved_pull_requests
-    @unapproved_pull_requests ||= panda_filter(pull_requests).reject { |pr| pr[:approved] }
+    @unapproved_pull_requests ||= pull_requests.reject { |pr| pr[:approved] }
   end
 
   def recent_pull_requests
@@ -92,7 +99,22 @@ private
   end
 
   def dependapanda_message
-    @message = panda_presenter
+    @repos = panda_presenter
+
+    @all_prs_count = @repos.sum { |repo| repo[:pr_count] }
+
+    if @team.security_alerts
+      @all_alerts_count = github_fetcher.security_alerts_count
+      @all_alerts_link = "https://github.com/orgs/alphagov/security/alerts/dependabot?q=is:open+repo:#{@team.repos.join(',')}"
+      @github_api_errors = github_fetcher.github_api_errors
+
+      security_prs = @repos.flat_map { |repo| repo[:security_prs] }
+
+      severity_mapping = { "low" => 1, "medium" => 2, "high" => 3, "critical" => 4 }
+
+      @security_prs_ordered = security_prs.sort_by { |pr| [severity_mapping[pr[:security_label][:severity]], pr[:security_label][:count]] }
+        .map { |pr| pr.merge(pr_link: pr[:link], pr_title: pr[:title]) }.reverse
+    end
 
     template_file = TEMPLATE_DIR + "dependapanda.text.erb"
     ERB.new(template_file.read, trim_mode: '-').result(binding).strip
@@ -180,21 +202,24 @@ private
   end
 
   def panda_presenter
-    prs_by_repo = dependapanda.group_by { |pr| pr[:repo] }
+    prs_by_repo = pull_requests.group_by { |pr| pr[:repo] }
 
     prs = prs_by_repo.map do |repo_name, prs_for_app|
       oldest_pr, newest_pr = prs_for_app.map { |pr| pr_date(pr) }.minmax
+      security_prs = @team.security_alerts ? prs_for_app.select { |pr| pr[:security_label] } : []
+
       {
-        repo_name: repo_name,
+        repo_name:,
         repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
         pr_count: prs_for_app.count,
         oldest_pr: age_in_days(oldest_pr),
-        newest_pr: age_in_days(newest_pr)
+        newest_pr: age_in_days(newest_pr),
+        security_prs:,
       }
     end
-    
-    prs.sort_by {|pr| pr[:oldest_pr]}.reverse
-  rescue => e
+
+    prs.sort_by { |pr| pr[:oldest_pr] }.reverse
+  rescue StandardError => e
     puts "Error generating panda presenter: #{e.message}"
     []
   end

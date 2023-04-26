@@ -20,7 +20,7 @@ teams=(
 )
 
 for team in ${teams[*]}; do
-  ./bin/seal.rb $team
+  ./bin/seal_runner.rb $team
 done
 
 morning_quote_teams=(
@@ -32,5 +32,5 @@ morning_quote_teams=(
 )
 
 for team in ${morning_quote_teams[*]}; do
-  ./bin/seal.rb $team quotes
+  ./bin/seal_runner.rb $team quotes
 done

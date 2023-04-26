@@ -1,9 +1,17 @@
-You have <%= @message.reduce(0) { |acc, pr| acc + pr.fetch(:pr_count) } %> Dependabot PRs open on the following apps:
+<%= @all_prs_count > 1 ? "You have #{@all_prs_count} Dependabot PRs open on the following apps:" : "You have 1 Dependabot PR open on the following app:" %>
 
-<% @message.each do |pr| -%>
-<<%= pr[:repo_url] %>|<%= html_encode(pr[:repo_name]) %>> (<%= pr[:pr_count] %>, <% if pr[:pr_count] > 1 -%>
-oldest: <%= days_plural(pr[:oldest_pr])%>, newest: <%= days_plural(pr[:newest_pr]) %>)
-<% else -%>
-opened <%= days_plural(pr[:oldest_pr]) %>)
+<% @repos.each do |repo| -%>
+<<%= repo[:repo_url] %>|<%= html_encode(repo[:repo_name]) %>> (<%= repo[:pr_count] %>, <%= "#{repo[:pr_count] > 1 ? "oldest: #{days_plural(repo[:oldest_pr])}, newest: #{days_plural(repo[:newest_pr])})" : "opened #{days_plural(repo[:oldest_pr])})"}" %>
 <% end -%>
+
+<% if @team.security_alerts %>
+<%= ":#{@all_alerts_count.zero? ? 'tada' : 'alert'}: There #{@all_alerts_count == 1 ? 'is' : 'are'} a total of <#{@all_alerts_link}|#{@all_alerts_count == 1 ? '1 security alert' : "#{@all_alerts_count} security alerts"}> across all of your repos.#{' :tada:' if @all_alerts_count.zero?}" -%>
+<% if @github_api_errors.positive? %>
+<%= ":warning: #{@github_api_errors} errors fetching security alerts. Check that you have the <#{'https://docs.publishing.service.gov.uk/manual/configure-github-repo.html#when-you-create-a-new-repo'}%7Cright permissions> on all your repos." %>
+<% end %>
+<%= "Please prioritise reviewing #{@security_prs_ordered.length == 1 ? 'this PR' : 'these PRs'} to resolve #{@security_prs_ordered.length != @all_alerts_count ? 'some of ' : ''}them:" if @security_prs_ordered.any? %>
+
+<% @security_prs_ordered.each do |security_pr| -%>
+<%= "<#{security_pr[:pr_link]}|#{security_pr[:pr_title]}> (<#{security_pr[:security_label][:url]}|#{security_pr[:security_label][:count] > 1 ? "#{security_pr[:security_label][:count]} solvable alerts" : "1 solvable alert"}>, highest severity: #{security_pr[:security_label][:severity]})" %>
 <% end -%>
+<% end %>
