@@ -359,7 +359,7 @@ govwifi:
     - govwifi-watchdog
 
 content-interactions-on-platform-govuk:
-  channel: '#tech-content-interactions-on-platform'
+  channel: '#tech-content-interactions-on-platform-govuk'
   compact: true
   <<: *common_properties
 
