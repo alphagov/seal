@@ -7,7 +7,7 @@
 <% if @team.security_alerts %>
 <%= ":#{@all_alerts_count.zero? ? 'tada' : 'alert'}: There #{@all_alerts_count == 1 ? 'is' : 'are'} a total of <#{@all_alerts_link}|#{@all_alerts_count == 1 ? '1 security alert' : "#{@all_alerts_count} security alerts"}> across all of your repos.#{' :tada:' if @all_alerts_count.zero?}" -%>
 <% if @github_api_errors.positive? %>
-<%= ":warning: #{@github_api_errors} errors fetching security alerts. Check that you have the <#{'https://docs.publishing.service.gov.uk/manual/configure-github-repo.html#when-you-create-a-new-repo'}|right permissions> on all your repos." %>
+<%= ":warning: #{@github_api_errors} errors fetching security alerts. Check that you have the <#{'https://docs.publishing.service.gov.uk/manual/configure-github-repo.html#when-you-create-a-new-repo'}|right permissions> on all <#{'https://docs.publishing.service.gov.uk/repos.html#repos-by-team'}|your repos>." %>
 <% end %>
 <%= "Please prioritise reviewing #{@security_prs_ordered.length == 1 ? 'this PR' : 'these PRs'} to resolve #{@security_prs_ordered.length != @all_alerts_count ? 'some of ' : ''}them:" if @security_prs_ordered.any? %>
 
