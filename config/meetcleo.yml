@@ -1,0 +1,130 @@
+common_properties: &common_properties
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
+
+monet:
+  <<: *common_properties
+
+  repos:
+    - meetcleo
+
+  include_repos:
+    - meetcleo
+
+  members:
+    - AgentAntelope
+    - RSijelmass
+    - wilco3d
+
+  channel: "#monet_squad"
+
+payments_infrastructure:
+  <<: *common_properties
+
+  repos:
+    - meetcleo
+
+  include_repos:
+    - meetcleo
+
+  members:
+    - ClemCB
+    - davefrey
+    - kofibright
+    - sachimp
+    - tomwhatmore
+    - toypadlock
+    - FriedSock
+    - joelbiffin
+
+  channel: "#payments-infrastructure-internal"
+
+odyssey:
+  <<: *common_properties
+
+  repos:
+    - meetcleo
+
+  include_repos:
+    - meetcleo
+
+  members:
+    - SaraBon
+    - iconpin
+    - tarawud
+    - naeglinghaff
+    - stevehook
+
+  channel: "#cash-advance-odyssey-dev"
+
+security_alerts:
+  <<: *common_properties
+
+  repos:
+    - meetcleo
+
+  include_repos:
+    - meetcleo
+
+  members:
+    - "dependabot[bot]"
+
+  channel: "#first-responders"
+
+data:
+  <<: *common_properties
+
+  repos:
+    - analytics
+
+  include_repos:
+    - analytics
+
+  members: []
+
+  channel: "#dbt-code-review"
+
+payments_security_experience:
+  <<: *common_properties
+
+  repos:
+    - meetcleo
+
+  include_repos:
+    - meetcleo
+
+  members:
+    - CliffAw
+    - DhirenAtodaria
+    - repoocuts
+    - karimtimer
+
+  channel: "##payments-security-experience-dev"
+
+seal_team:
+  <<: *common_properties
+
+  repos:
+    - meetcleo
+
+  include_repos:
+    - meetcleo
+    - seal
+
+  members:
+    - davefrey
+    - toypadlock
+    - claire-c
+    - Mike-Heneghan
+    - h-lame
+
+  channel: "#seal-bot-test"
