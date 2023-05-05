@@ -1,15 +1,103 @@
-seal_team:
-  channel: "#seal-bot-test"
-  members:
-    - naeglinghaff
+_default_filters: &default_filters
   exclude_titles:
-    - "[DO NOT MERGE]"
-    - "[PROTOTYPE]"
-    - WIP
-    - "[WIP]"
-  use_labels: true
-  exclude_labels:
-    - "wip"
     - "WIP"
-    - "ignore"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
+
+monet:
+  <<: *default_filters
+
+  repos:
+    - meetcleo
+
+  members:
+    - AgentAntelope
+    - RSijelmass
+    - wilco3d
+
+  channel: "#monet_squad"
+
+payments_infrastructure:
+  <<: *default_filters
+
+  repos:
+    - meetcleo
+
+  members:
+    - ClemCB
+    - davefrey
+    - kofibright
+    - sachimp
+    - tomwhatmore
+    - toypadlock
+    - FriedSock
+    - joelbiffin
+
+  channel: "#payments-infrastructure-internal"
+
+odyssey:
+  <<: *default_filters
+
+  repos:
+    - meetcleo
+
+  members:
+    - SaraBon
+    - iconpin
+    - tarawud
+    - naeglinghaff
+    - stevehook
+
+  channel: "#cash-advance-odyssey-dev"
+
+security_alerts:
+  <<: *default_filters
+
+  repos:
+    - meetcleo
+
+  members:
+    - "dependabot[bot]"
+
+  channel: "#first-responders"
+
+data:
+  <<: *default_filters
+
+  repos:
+    - analytics
+
+  members: []
+
+  channel: "#dbt-code-review"
+
+payments_security_experience:
+  <<: *default_filters
+
+  repos:
+    - meetcleo
+
+  members:
+    - CliffAw
+    - DhirenAtodaria
+    - repoocuts
+    - karimtimer
+
+  channel: "##payments-security-experience-dev"
+
+seal_team:
+  <<: *default_filters
+
+  repos:
+    - seal_the_revenge
+
   github_team: "seal_team"
+
+  channel: "#seal-bot-test"
