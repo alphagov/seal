@@ -1,4 +1,4 @@
-_default_filters: &default_filters
+monet:
   exclude_titles:
     - "WIP"
     - "[WIP]"
@@ -11,9 +11,6 @@ _default_filters: &default_filters
 
   use_labels: true
 
-monet:
-  <<: *default_filters
-
   repos:
     - meetcleo
 
@@ -25,7 +22,17 @@ monet:
   channel: "#monet_squad"
 
 payments_infrastructure:
-  <<: *default_filters
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
 
   repos:
     - meetcleo
@@ -43,7 +50,17 @@ payments_infrastructure:
   channel: "#payments-infrastructure-internal"
 
 odyssey:
-  <<: *default_filters
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
 
   repos:
     - meetcleo
@@ -58,7 +75,17 @@ odyssey:
   channel: "#cash-advance-odyssey-dev"
 
 security_alerts:
-  <<: *default_filters
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
 
   repos:
     - meetcleo
@@ -69,7 +96,17 @@ security_alerts:
   channel: "#first-responders"
 
 data:
-  <<: *default_filters
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
 
   repos:
     - analytics
@@ -79,7 +116,17 @@ data:
   channel: "#dbt-code-review"
 
 payments_security_experience:
-  <<: *default_filters
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
 
   repos:
     - meetcleo
@@ -93,7 +140,17 @@ payments_security_experience:
   channel: "##payments-security-experience-dev"
 
 seal_team:
-  <<: *default_filters
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
 
   repos:
     - seal_the_revenge
