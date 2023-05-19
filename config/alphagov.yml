@@ -381,3 +381,32 @@ user-experience-measurement-govuk:
   channel: '#user-experience-measurement-govuk'
   compact: true
   <<: *common_properties
+
+proj-early-talent-assigned-learning:
+  channel: '#proj-early-talent-assigned-learning'
+  <<: *common_properties
+  quotes_days:
+    - Friday
+  quotes:
+    - Did you learn something cool recently? Share it with your fellow devs!
+    - Be Excellent To Each Other!
+    - Assume everyone is trying to do the right thing
+    - Look out for each other
+    - Try with each bit of work to upskill others
+    - We treat each other with integrity, honesty and respect.
+    - We invest time and effort in increasing our understanding of the problems we’re working on. This will help us make things better for users.
+    - Remember our user needs!
+    - It's OK to ask for help
+  repos:
+    - early-talent-assigned-learning-time
+    - learningtime-ad-sem1-postcode-geocoder
+    - learningtime-jy-sem1
+    - learningtime-rk-sem1
+    - learning-time-RA-sem1
+    - learningtime-ka-sem1
+    - learningtime-jr-sem1
+    - learningtime-ph-sem1
+    - learningtime-dm-sem1-darkmode
+    - learningtime-hh-sem1-gov-location-service
+    - learningtime-an-sem
+  security_alerts: false
