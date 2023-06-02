@@ -14,7 +14,7 @@ teams=(
   govuk-platform-engineering
   content-interactions-on-platform-govuk
   navigation-and-homepage-govuk
-  user-experience-measurement-govuk
+  user-experience-measurement-govuk-robot-invasion
 )
 
 for team in ${teams[*]}; do
