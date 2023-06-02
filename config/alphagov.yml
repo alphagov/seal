@@ -322,6 +322,16 @@ govuk-publishing-experience:
   compact: true
   <<: *common_properties
 
+govuk-publishing-on-platform-content:
+  channel: '#govuk-publishing-on-platform-content-tech'
+  compact: true
+  <<: *common_properties
+  repos:
+    - publisher
+    - collections-publisher
+    - content-tagger
+    - smart-answers
+
 govuk-publishing-platform:
   channel: '#govuk-publishing-platform'
   compact: true

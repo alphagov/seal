@@ -9,6 +9,7 @@ teams=(
   govuk-frontenders
   govuk-platform-security-reliability
   govuk-publishing-experience
+  govuk-publishing-on-platform-content
   govuk-publishing-platform
   govuk-platform-engineering
   content-interactions-on-platform-govuk

@@ -10,6 +10,7 @@ teams=(
   govuk-pay
   govuk-platform-security-reliability
   govuk-publishing-experience
+  govuk-publishing-on-platform-content
   govuk-publishing-platform
   govuk-platform-engineering
   govwifi
