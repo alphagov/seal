@@ -232,6 +232,8 @@ govuk-forms:
 govuk-frontenders:
   channel: '#govuk-publishing-components'
   <<: *common_properties
+  repos:
+    - govuk_publishing_components
 
 govuk-green-team:
   channel: '#govuk-green-team'
