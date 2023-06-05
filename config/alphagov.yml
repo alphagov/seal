@@ -394,7 +394,7 @@ navigation-and-homepage-govuk:
     - Is your work waiting to be reviewed? Make sure to ask someone.
     - Did you learn something cool recently? Share it with your fellow devs!
 
-user-experience-measurement-govuk-robot-invasion:
+user-experience-measurement-govuk:
   channel: '#user-experience-measurement-govuk-robot-invasion'
   compact: true
   <<: *common_properties
