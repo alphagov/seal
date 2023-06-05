@@ -16,7 +16,7 @@ teams=(
   govwifi
   content-interactions-on-platform-govuk
   navigation-and-homepage-govuk
-  user-experience-measurement-govuk-robot-invasion
+  user-experience-measurement-govuk
   dev-platform-team
 )
 
@@ -30,6 +30,7 @@ morning_quote_teams=(
   govuk-green-team
   navigation-and-homepage-govuk
   dev-platform-team
+  user-experience-measurement-govuk
 )
 
 for team in ${morning_quote_teams[*]}; do
