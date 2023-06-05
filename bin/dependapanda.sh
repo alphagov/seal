@@ -6,8 +6,8 @@ teams=(
   govuk-datagovuk
   govuk-developers
   govuk-forms
-  govuk-frontenders
   govuk-platform-security-reliability
+  govuk-publishing-components
   govuk-publishing-experience
   govuk-publishing-on-platform-content
   govuk-publishing-platform

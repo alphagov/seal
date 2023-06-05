@@ -229,9 +229,11 @@ govuk-forms:
     - forms-product-page
   security_alerts: false
 
-govuk-frontenders:
+govuk-publishing-components:
   channel: '#govuk-publishing-components'
   <<: *common_properties
+  repos:
+    - govuk_publishing_components
 
 govuk-green-team:
   channel: '#govuk-green-team'
