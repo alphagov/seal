@@ -177,6 +177,7 @@ govuk-accounts-tech:
     - di-account-management-backend
     - di-account-management-frontend
     - di-accounts-infra
+    - di-govuk-one-login-service-header
   security_alerts: false
 
 govuk-datagovuk:
