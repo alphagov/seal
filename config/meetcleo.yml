@@ -11,7 +11,7 @@ monet:
 
   use_labels: true
 
-  repos:
+  include_repos:
     - meetcleo
 
   members:
@@ -34,7 +34,7 @@ payments_infrastructure:
 
   use_labels: true
 
-  repos:
+  include_repos:
     - meetcleo
 
   github_team: "payments-infrastructure-be"
@@ -54,7 +54,7 @@ security_alerts:
 
   use_labels: true
 
-  repos:
+  include_repos:
     - meetcleo
 
   members:
@@ -75,7 +75,7 @@ data:
 
   use_labels: true
 
-  repos:
+  include_repos:
     - analytics
 
   members: []
@@ -95,7 +95,7 @@ payments_security_experience:
 
   use_labels: true
 
-  repos:
+  include_repos:
     - meetcleo
 
   github_team: "payments-experience"
@@ -115,7 +115,7 @@ seal_team:
 
   use_labels: true
 
-  repos:
+  include_repos:
     - seal_the_revenge
 
   github_team: "seal_team"
