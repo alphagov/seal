@@ -49,31 +49,6 @@ payments_infrastructure:
 
   channel: "#payments-infrastructure-internal"
 
-odyssey:
-  exclude_titles:
-    - "WIP"
-    - "[WIP]"
-    - "DO NOT MERGE"
-    - "[DO NOT MERGE]"
-
-  exclude_labels:
-    - "Waiting on copy"
-    - "Do Not Merge"
-
-  use_labels: true
-
-  repos:
-    - meetcleo
-
-  members:
-    - SaraBon
-    - iconpin
-    - tarawud
-    - naeglinghaff
-    - stevehook
-
-  channel: "#cash-advance-odyssey-dev"
-
 security_alerts:
   exclude_titles:
     - "WIP"

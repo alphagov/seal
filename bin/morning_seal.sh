@@ -2,7 +2,6 @@
 
 teams=(
   payments_infrastructure
-  odyssey
   security_alerts
   data
   payments_security_experience
