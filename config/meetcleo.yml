@@ -120,4 +120,4 @@ seal_team:
 
   github_team: "seal_team"
 
-  channel: "#seal-bot-test"
+  channel: "#action_group_seal-bot"
