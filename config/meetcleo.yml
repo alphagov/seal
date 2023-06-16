@@ -37,15 +37,7 @@ payments_infrastructure:
   repos:
     - meetcleo
 
-  members:
-    - ClemCB
-    - davefrey
-    - kofibright
-    - sachimp
-    - tomwhatmore
-    - toypadlock
-    - FriedSock
-    - joelbiffin
+  github_team: "payments-infrastructure-be"
 
   channel: "#payments-infrastructure-internal"
 
