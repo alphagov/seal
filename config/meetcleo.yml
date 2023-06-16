@@ -39,7 +39,7 @@ payments_infrastructure:
 
   github_team: "payments-infrastructure-be"
 
-  channel: "#payments-infrastructure-internal"
+  channel: "#payments-infrastructure-devs"
 
 security_alerts:
   exclude_titles:
