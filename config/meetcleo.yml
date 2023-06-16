@@ -106,13 +106,9 @@ payments_security_experience:
   repos:
     - meetcleo
 
-  members:
-    - CliffAw
-    - DhirenAtodaria
-    - repoocuts
-    - karimtimer
+  github_team: "payments-experience"
 
-  channel: "##payments-security-experience-dev"
+  channel: "#pse-dev"
 
 seal_team:
   exclude_titles:
