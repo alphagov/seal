@@ -121,3 +121,23 @@ seal_team:
   github_team: "seal_team"
 
   channel: "#action_group_seal-bot"
+
+data_science_engineers:
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
+
+  include_repos:
+    - meetcleo
+
+  github_team: "ds-eng"
+
+  channel: "#ds-eng-casual"
