@@ -6,6 +6,7 @@ teams=(
   data
   payments_security_experience
   seal_team
+  data_science_engineers
 )
 
 for team in ${teams[*]}; do
