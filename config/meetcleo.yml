@@ -39,7 +39,7 @@ payments_infrastructure:
 
   github_team: "payments-infrastructure-be"
 
-  channel: "#payments-infrastructure-devs"
+  channel: "#squad-payments_infrastructure-devs"
 
 security_alerts:
   exclude_titles:
@@ -100,7 +100,7 @@ payments_security_experience:
 
   github_team: "payments-experience"
 
-  channel: "#pse-dev"
+  channel: "#squad-pse-dev"
 
 seal_team:
   exclude_titles:
