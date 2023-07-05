@@ -156,8 +156,8 @@ fun-workstream-govuk:
     - Wednesday
     - Friday
 
-govuk-accounts:
-  channel: '#govuk-accounts'
+one-login-home:
+  channel: "#one-login-home"
   quotes:
     - We put users first. We strive to create services that bring real value to our users and that meet their needs and expectations.
     - We believe users should feel safe and confident when they use our services.
@@ -170,8 +170,8 @@ govuk-accounts:
     - We know we can't do this alone. We need to work with teams across GDS and government to succeed.
     - We invest time and effort in increasing our understanding of the problems we’re working on. This will help us make things better for users and move the conversation about personalisation in government forward.
 
-govuk-accounts-tech:
-  channel: '#govuk-accounts-tech'
+one-login-home-tech:
+  channel: "#one-login-home-tech"
   <<: *common_properties
   repos:
     - di-account-management-backend
