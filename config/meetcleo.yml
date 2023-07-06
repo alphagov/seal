@@ -1,26 +1,3 @@
-monet:
-  exclude_titles:
-    - "WIP"
-    - "[WIP]"
-    - "DO NOT MERGE"
-    - "[DO NOT MERGE]"
-
-  exclude_labels:
-    - "Waiting on copy"
-    - "Do Not Merge"
-
-  use_labels: true
-
-  include_repos:
-    - meetcleo
-
-  members:
-    - AgentAntelope
-    - RSijelmass
-    - wilco3d
-
-  channel: "#monet_squad"
-
 payments_infrastructure:
   exclude_titles:
     - "WIP"
