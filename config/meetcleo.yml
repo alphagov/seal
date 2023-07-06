@@ -97,7 +97,7 @@ seal_team:
 
   github_team: "seal_team"
 
-  channel: "#action_group_seal-bot"
+  channel: "#proj-seal_bot"
 
 data_science_engineers:
   exclude_titles:
