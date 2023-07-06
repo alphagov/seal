@@ -57,7 +57,7 @@ data:
 
   members: []
 
-  channel: "#dbt-code-review"
+  channel: "#collab-dbt-code-review"
 
 payments_security_experience:
   exclude_titles:
