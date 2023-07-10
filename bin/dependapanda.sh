@@ -20,4 +20,5 @@ teams=(
 
 for team in ${teams[*]}; do
   ./bin/seal_runner.rb $team dependapanda
+  sleep 60
 done
