@@ -275,6 +275,7 @@ govuk-pay:
     - pay-infra
     - pay-java-commons
     - pay-js-commons
+    - pay-js-metrics
     - pay-ledger
     - pay-logging-lambdas
     - pay-nginx-forward-proxy
