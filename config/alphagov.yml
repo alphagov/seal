@@ -29,6 +29,12 @@ data-insights:
   channel: '#data-insights'
   <<: *common_properties
 
+di-architecture:
+  channel: '#di-architecture'
+  <<: *common_properties
+  repos:
+    - digital-identity-architecture
+
 di-ipv-orange-cri-maintainers:
   channel: '#di-cri-orange-team-tech'
   <<: *common_properties
