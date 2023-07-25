@@ -193,6 +193,10 @@ govuk-datagovuk:
 govuk-developers:
   channel: '#govuk-developers'
   <<: *common_properties
+  quotes_days:
+    - Wednesday
+  quotes:
+    - "Do you know someone who has gone above and beyond? Remember you can <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/business-and-people-services/gds-people-team/reward-and-recognition|nominate a colleague for a voucher or bonus> at any time."
 
 dev-platform-team:
   channel: '#di-dev-platform-team-internal'
