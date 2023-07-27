@@ -43,17 +43,22 @@ di-ipv-orange-cri-maintainers:
     - di-ipv-config
     - di-ipv-cri-address-api
     - di-ipv-cri-address-front
+    - di-ipv-cri-check-hmrc-api
+    - di-ipv-cri-check-hmrc-front
     - di-ipv-cri-common-express
     - di-ipv-cri-common-infrastructure
     - di-ipv-cri-common-lambdas
     - di-ipv-cri-dev-tools
     - di-ipv-cri-kbv-api
     - di-ipv-cri-kbv-front
+    - di-ipv-cri-kbv-hmrc-api
+    - di-ipv-cri-kbv-hmrc-front
     - di-ipv-cri-lib
+    - di-ipv-cri-otg-hmrc
     - di-ipv-cri-pipeline-deployment
+    - di-ipv-cri-tech-docs
     - di-ipv-cri-toy-api
     - di-ipv-cri-toy-front
-
   security_alerts: false
 
 data-products:
