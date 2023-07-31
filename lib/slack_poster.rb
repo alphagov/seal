@@ -44,6 +44,7 @@ private
     check_season
     set_mood_from_team
     assign_poster_settings
+    @mood_hash
   end
 
   def assign_poster_settings
