@@ -89,15 +89,11 @@ private
   end
 
   def halloween_season?
-    this_year = today.year
-    today <= Date.new(this_year, 10, 31) && today >= Date.new(this_year, 10, 23)
+    [today.day, today.month] in [23..31, 10]
   end
 
   def festive_season?
-    this_year = today.year
-    return true if today <= Date.new(this_year, 12, 31) && today >= Date.new(this_year, 12, 1)
-
-    today == Date.new(this_year, 1, 1)
+    [today.day, today.month] in [1, 1] | [1..31, 12]
   end
 
   def snake_case(string)
