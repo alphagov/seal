@@ -1,5 +1,5 @@
 class SlackPoster
-  attr_accessor :webhook_url, :poster, :mood, :mood_hash, :channel, :season_name, :halloween_season, :festive_season
+  attr_accessor :webhook_url, :poster, :mood, :mood_hash, :channel, :season_name
 
   def initialize(team_channel, mood)
     @webhook_url = ENV["SLACK_WEBHOOK"]
@@ -78,22 +78,15 @@ private
   end
 
   def check_season
-    @season_name = if halloween_season?
+    @season_name = case [today.day, today.month]
+                   in [23..31, 10]
                      "Halloween "
-                   elsif festive_season?
+                   in [1, 1] | [1..31, 12]
                      "Festive Season "
                    else
                      ""
                    end
     @season_symbol = snake_case(@season_name)
-  end
-
-  def halloween_season?
-    [today.day, today.month] in [23..31, 10]
-  end
-
-  def festive_season?
-    [today.day, today.month] in [1, 1] | [1..31, 12]
   end
 
   def snake_case(string)

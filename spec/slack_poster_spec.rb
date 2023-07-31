@@ -45,10 +45,6 @@ RSpec.describe SlackPoster do
         Timecop.freeze(Time.local(2015, 10, 28))
       end
 
-      it "knows it is Halloween season" do
-        expect(slack_poster.send(:halloween_season?)).to eq true
-      end
-
       it "posts as Halloween Informative Seal" do
         slack_poster.send(:mood_hash)
         expect(slack_poster.send(:mood_hash)).to eq "Halloween Informative Seal"
@@ -59,10 +55,6 @@ RSpec.describe SlackPoster do
       before do
         expect(Slack::Poster).to receive(:new).and_return(fake_slack_poster)
         Timecop.freeze(Time.local(2015, 12, 0o1))
-      end
-
-      it "knows it is Festive Season" do
-        expect(slack_poster.send(:festive_season?)).to eq true
       end
 
       it "posts as Festive Season Informative Seal" do
