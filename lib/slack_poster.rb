@@ -94,15 +94,16 @@ private
   end
 
   def check_if_quotes
-    if @team_channel == "#club-tea"
-      @mood = "tea"
-    elsif ["#govuk", "#gds-community", "#sealtesting"].include?(@team_channel)
-      @mood = "fun-workstream"
-    elsif @team_channel == "#govuk-green-team"
-      @mood = "govuk-green-team"
-    elsif @mood.nil?
-      @mood = "charter"
-    end
+    @mood = case @team_channel
+            when "#club-tea"
+              "tea"
+            when "#govuk", "#gds-community", "#sealtesting"
+              "fun-workstream"
+            when "#govuk-green-team"
+              "govuk-green-team"
+            else
+              @mood.nil? ? "charter" : @mood
+            end
   end
 
   def channel
