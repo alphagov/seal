@@ -42,7 +42,7 @@ private
   def mood_hash
     @mood_hash = {}
     check_season
-    check_if_quotes
+    set_mood_from_team
     assign_poster_settings
   end
 
@@ -93,7 +93,7 @@ private
     string.downcase.gsub(" ", "_")
   end
 
-  def check_if_quotes
+  def set_mood_from_team
     @mood = case @team_channel
             when "#club-tea"
               "tea"
