@@ -96,7 +96,6 @@ private
   def check_if_quotes
     if @team_channel == "#club-tea"
       @mood = "tea"
-    # If the channel name is either govuk or gds-community, set the mood to 'fun-workstream'
     elsif ["#govuk", "#gds-community", "#sealtesting"].include?(@team_channel)
       @mood = "fun-workstream"
     elsif @team_channel == "#govuk-green-team"
