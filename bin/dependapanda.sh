@@ -7,7 +7,7 @@ teams=(
   govuk-developers
   govuk-forms
   govuk-platform-security-reliability
-  govuk-publishing-access-and-permissions-team
+  govuk-publishing-access-and-permissions
   govuk-publishing-components
   govuk-publishing-experience
   govuk-publishing-on-platform-content
