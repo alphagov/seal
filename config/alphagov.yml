@@ -242,8 +242,10 @@ govuk-forms:
     - forms
     - forms-admin
     - forms-api
+    - forms-e2e-tests
     - forms-runner
     - forms-product-page
+    - govuk-forms-markdown
   security_alerts: false
 
 govuk-publishing-components:
