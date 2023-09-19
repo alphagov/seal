@@ -1,0 +1,34 @@
+name: "Morning Seal"
+
+on: workflow_dispatch
+
+jobs:
+  morning-seal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Morning Seal
+        id: morning_seal
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+            teams=(
+            )
+            
+            for team in ${teams[*]}; do
+                ./bin/seal_runner.rb $team
+            done
+            
+            morning_quote_teams=(
+            )
+            
+            for team in ${morning_quote_teams[*]}; do
+                ./bin/seal_runner.rb $team quotes
+            done

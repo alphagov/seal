@@ -1,0 +1,28 @@
+name: "Dependapanda"
+
+on: workflow_dispatch
+
+jobs:
+  dependapanda:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Dependapanda
+        id: dependapanda
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+            teams=(
+            )
+            
+            for team in ${teams[*]}; do
+                ./bin/seal_runner.rb $team dependapanda
+                sleep 60
+            done
