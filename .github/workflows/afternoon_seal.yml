@@ -1,0 +1,25 @@
+name: "Afternoon Seal"
+
+on: workflow_dispatch
+
+jobs:
+  afternoon-seal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Afternoon Seal
+        id: afternoon_seal
+        run: |
+          teams=(
+          )
+          
+          for team in ${teams[*]} ; do
+            ./bin/seal_runner.rb $team quotes
+          done
