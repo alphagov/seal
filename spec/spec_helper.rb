@@ -18,7 +18,7 @@
 require "timecop"
 require "pry-byebug"
 
-ENV["SEAL_ORGANISATION"] ||= "alphagov"
+ENV["SEAL_ORGANISATION"] ||= "govuk-one-login"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

@@ -4,18 +4,18 @@
 
 This is a Slack bot that publishes a team's pull requests, Dependabot updates, security alerts, and inspirational quotes to their Slack Channel. Once provided with the organization name, team names, and respective repositories, it posts messages as various animal characters such as the Seal and Dependapanda.
 
-![image](https://github.com/alphagov/seal/blob/main/images/readme/informative.png)
-![image](https://github.com/alphagov/seal/blob/main/images/readme/angry.png)
+![image](https://github.com/govuk-one-login/seal/blob/main/images/readme/informative.png)
+![image](https://github.com/govuk-one-login/seal/blob/main/images/readme/angry.png)
 
 ## How to use it?
 
 ### Config
 
-Fork the repo and add/change the config files that relate to your github organisation. For example, the alphagov config file is located at [config/alphagov.yml](config/alphagov.yml) and the config for scheduled daily visits can be found in [bin](bin)
+Fork the repo and add/change the config files that relate to your github organisation. For example, the govuk-one-login config file is located at [config/govuk-one-login.yml](config/govuk-one-login.yml) and the config for scheduled daily visits can be found in [bin](bin)
 
 Include your team's name, repos and the Slack channel you want to post to.
 
-> If your team is part of the GOV.UK programme, you do not need to add a list of repos to config/alphagov.yml.
+> If your team is part of the GOV.UK programme, you do not need to add a list of repos to config/govuk-one-login.yml.
 > The [Developer docs repos.json](https://docs.publishing.service.gov.uk/repos.json) is now the single source of truth for information about GOV.UK repositories and which team is responsible for them.
 
 In your shell profile, put in:
@@ -50,16 +50,16 @@ export SEAL_QUOTES="Everyone should have the opportunity to learn. Don't be afra
 
 You will find several bash scripts in the bin directory, such as morning_seal.sh, afternoon_seal.sh, and dependapanda.sh. These scripts are responsible for running the Seal at different times of the day and for different purposes:
 
-- [morning_seal.sh](https://github.com/alphagov/seal/blob/main/bin/morning_seal.sh): Runs the Seal bot in the morning, posting about old and recent pull requests by team members and also quotes.
-- [afternoon_seal.sh](https://github.com/alphagov/seal/blob/main/bin/afternoon_seal.sh): Runs the Seal bot in the afternoon, posting quotes.
-- [dependapanda.sh](https://github.com/alphagov/seal/blob/main/bin/dependapanda.sh): Runs the Dependapanda bot in the morning, posting about Dependabot pull requests and security information.
+- [morning_seal.sh](https://github.com/govuk-one-login/seal/blob/main/bin/morning_seal.sh): Runs the Seal bot in the morning, posting about old and recent pull requests by team members and also quotes.
+- [afternoon_seal.sh](https://github.com/govuk-one-login/seal/blob/main/bin/afternoon_seal.sh): Runs the Seal bot in the afternoon, posting quotes.
+- [dependapanda.sh](https://github.com/govuk-one-login/seal/blob/main/bin/dependapanda.sh): Runs the Dependapanda bot in the morning, posting about Dependabot pull requests and security information.
 
-To customize when and which bots post to your team channel, add or remove your team name in the bash scripts above. The team name should correspond to a key in [config/alphagov.yml](https://github.com/alphagov/seal/blob/main/config/alphagov.yml), which should have a `channel` property denoting the name of your team's Slack channel.
+To customize when and which bots post to your team channel, add or remove your team name in the bash scripts above. The team name should correspond to a key in [config/govuk-one-login.yml](https://github.com/govuk-one-login/seal/blob/main/config/govuk-one-login.yml), which should have a `channel` property denoting the name of your team's Slack channel.
 
 ### Local testing
 
-To test the script, create a private Slack channel e.g. "#angry-seal-bot-test-abc" and update `@team_channel` on [this line in slack_poster.rb](https://github.com/alphagov/seal/blob/main/lib/slack_poster.rb#L120) to the one you created (also remove the `if` statement).
-Then log in to Heroku (credentials can be found in [govuk-secrets](https://github.com/alphagov/govuk-secrets)) and under the "Deploy" tab, you can deploy your branch which should be in the drop down list of branches in the "Manual deploy" section. Under the "More" drop down located in the top right, select "Run console" where you can run `./bin/seal_runner.rb your_team_name`, and you should see the post in your test channel (assuming you have included it in the list of teams in [morning_seal.sh](https://github.com/alphagov/seal/blob/main/bin/morning_seal.sh)).
+To test the script, create a private Slack channel e.g. "#angry-seal-bot-test-abc" and update `@team_channel` on [this line in slack_poster.rb](https://github.com/govuk-one-login/seal/blob/main/lib/slack_poster.rb#L120) to the one you created (also remove the `if` statement).
+Then log in to Heroku (credentials can be found in [govuk-secrets](https://github.com/govuk-one-login/govuk-secrets)) and under the "Deploy" tab, you can deploy your branch which should be in the drop down list of branches in the "Manual deploy" section. Under the "More" drop down located in the top right, select "Run console" where you can run `./bin/seal_runner.rb your_team_name`, and you should see the post in your test channel (assuming you have included it in the list of teams in [morning_seal.sh](https://github.com/govuk-one-login/seal/blob/main/bin/morning_seal.sh)).
 
 If you don't want to post github pull requests but a random quote from your team's quotes config, run `./bin/seal_runner.rb your_team_name quotes`
 

@@ -105,7 +105,7 @@ private
 
     if @team.security_alerts
       @all_alerts_count = github_fetcher.security_alerts_count
-      @all_alerts_link = "https://github.com/orgs/alphagov/security/alerts/dependabot?q=is:open+repo:#{@team.repos.join(',')}"
+      @all_alerts_link = "https://github.com/orgs/govuk-one-login/security/alerts/dependabot?q=is:open+repo:#{@team.repos.join(',')}"
       @github_api_errors = github_fetcher.github_api_errors
 
       security_prs = @repos.flat_map { |repo| repo[:security_prs] }
@@ -210,7 +210,7 @@ private
 
       {
         repo_name:,
-        repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
+        repo_url: "https://github.com/govuk-one-login/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
         pr_count: prs_for_app.count,
         oldest_pr: age_in_days(oldest_pr),
         newest_pr: age_in_days(newest_pr),

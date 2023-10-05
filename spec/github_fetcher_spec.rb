@@ -17,9 +17,9 @@ RSpec.describe GithubFetcher do
   end
 
   let(:fake_octokit_client) { double(Octokit::Client) }
-  let(:whitehall_repo_name) { "#{ENV['SEAL_ORGANISATION']}/whitehall" }
-  let(:govuk_docker_repo_name) { "#{ENV['SEAL_ORGANISATION']}/govuk-docker" }
-  let(:content_store_repo_name) { "#{ENV['SEAL_ORGANISATION']}/content-store" }
+  let(:whitehall_repo_name) { "alphagov/whitehall" }
+  let(:govuk_docker_repo_name) { "alphagov/govuk-docker" }
+  let(:content_store_repo_name) { "alphagov/content-store" }
   let(:expected_open_prs) do
     [
       {
