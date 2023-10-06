@@ -1,6 +1,13 @@
 name: Run Tests
 on: [push, pull_request]
 jobs:
+
+  codeql-sast:
+    name: CodeQL SAST scan
+    uses: alphagov/govuk-infrastructure/.github/workflows/codeql-analysis.yml@main
+    permissions:
+      security-events: write
+      
   tests:
     runs-on: ubuntu-latest
     steps:
