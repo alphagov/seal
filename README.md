@@ -56,6 +56,8 @@ You will find several bash scripts in the bin directory, such as morning_seal.sh
 
 To customize when and which bots post to your team channel, add or remove your team name in the bash scripts above. The team name should correspond to a key in [config/alphagov.yml](https://github.com/alphagov/seal/blob/main/config/alphagov.yml), which should have a `channel` property denoting the name of your team's Slack channel.
 
+The `channel` property should match a channel name in the [list of repos by ownership in the Developer Docs](https://docs.publishing.service.gov.uk/repos.html#repos-by-team), otherwise Dependapanda won't know which repos to notify your channel about.
+
 ### Local testing
 
 To test the script, create a private Slack channel e.g. "#angry-seal-bot-test-abc" and update `@team_channel` on [this line in slack_poster.rb](https://github.com/alphagov/seal/blob/main/lib/slack_poster.rb#L120) to the one you created (also remove the `if` statement).
