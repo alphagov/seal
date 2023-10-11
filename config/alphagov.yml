@@ -29,12 +29,6 @@ data-insights:
   channel: '#data-insights'
   <<: *common_properties
 
-di-architecture:
-  channel: '#di-architecture'
-  <<: *common_properties
-  repos:
-    - digital-identity-architecture
-
 data-products:
   channel: '#data-products'
   <<: *common_properties
