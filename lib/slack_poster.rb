@@ -100,6 +100,6 @@ private
   end
 
   def channel
-    @team_channel = "#bot-testing" if ENV["DYNO"].nil?
+    @team_channel = "#bot-testing" if ENV["DEVELOPMENT"]
   end
 end
