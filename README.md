@@ -11,7 +11,7 @@ This is a Slack bot that publishes a team's pull requests, Dependabot updates, s
 
 ### Config
 
-Fork the repo and add/change the config files that relate to your github organisation. For example, the alphagov config file is located at [config/alphagov.yml](config/alphagov.yml) and the config for scheduled daily visits can be found in [bin](bin)
+Fork the repo and add/change the config files that relate to your github organisation. For example, the alphagov config file is located at [config/alphagov.yml](config/alphagov.yml) and the config for scheduled daily visits can be found in [.github/workflows](.github/workflows)
 
 Include your team's name, repos and the Slack channel you want to post to.
 
@@ -46,28 +46,28 @@ export SEAL_QUOTES="Everyone should have the opportunity to learn. Don't be afra
 - To get a new `GITHUB_TOKEN`, head to: https://github.com/settings/tokens
 - To get a new `SLACK_WEBHOOK`, head to: https://slack.com/services/new/incoming-webhook
 
-### Bash scripts
+### GitHub Actions
 
-You will find several bash scripts in the bin directory, such as morning_seal.sh, afternoon_seal.sh, and dependapanda.sh. These scripts are responsible for running the Seal at different times of the day and for different purposes:
+This repository now utilizes GitHub Actions for automated Slack notifications. The workflows are defined in the `.github/workflows` directory and perform various tasks at different times of the day:
 
-- [morning_seal.sh](https://github.com/alphagov/seal/blob/main/bin/morning_seal.sh): Runs the Seal bot in the morning, posting about old and recent pull requests by team members and also quotes.
-- [afternoon_seal.sh](https://github.com/alphagov/seal/blob/main/bin/afternoon_seal.sh): Runs the Seal bot in the afternoon, posting quotes.
-- [dependapanda.sh](https://github.com/alphagov/seal/blob/main/bin/dependapanda.sh): Runs the Dependapanda bot in the morning, posting about Dependabot pull requests and security information.
+- [Morning Seal](https://github.com/alphagov/seal/blob/main/.github/workflows/morning_seal.yml): Runs the Seal bot in the morning, posting about old and recent pull requests by team members and also quotes.
+- [Afternoon Seal](https://github.com/alphagov/seal/blob/main/.github/workflows/afternoon_seal.yml): Runs the Seal bot in the afternoon, posting quotes.
+- [Dependapanda](https://github.com/alphagov/seal/blob/main/.github/workflows/dependapanda.yml): Runs the Dependapanda bot in the morning, posting about Dependabot pull requests and security information.
 
-To customize when and which bots post to your team channel, add or remove your team name in the bash scripts above. The team name should correspond to a key in [config/alphagov.yml](https://github.com/alphagov/seal/blob/main/config/alphagov.yml), which should have a `channel` property denoting the name of your team's Slack channel.
+The Morning Seal and Dependapanda workflows run every weekday morning, while the Afternoon Seal workflow runs every weekday afternoon.
+
+To customize which bots post to your team channel, add or remove your team name in the workflows above. The team name should correspond to a key in [config/alphagov.yml](https://github.com/alphagov/seal/blob/main/config/alphagov.yml), which should have a `channel` property denoting the name of your team's Slack channel.
 
 The `channel` property should match a channel name in the [list of repos by ownership in the Developer Docs](https://docs.publishing.service.gov.uk/repos.html#repos-by-team), otherwise Dependapanda won't know which repos to notify your channel about.
 
 ### Local testing
 
-To test the script, create a private Slack channel e.g. "#angry-seal-bot-test-abc" and update `@team_channel` on [this line in slack_poster.rb](https://github.com/alphagov/seal/blob/main/lib/slack_poster.rb#L120) to the one you created (also remove the `if` statement).
-Then log in to Heroku (credentials can be found in [govuk-secrets](https://github.com/alphagov/govuk-secrets)) and under the "Deploy" tab, you can deploy your branch which should be in the drop down list of branches in the "Manual deploy" section. Under the "More" drop down located in the top right, select "Run console" where you can run `./bin/seal_runner.rb your_team_name`, and you should see the post in your test channel (assuming you have included it in the list of teams in [morning_seal.sh](https://github.com/alphagov/seal/blob/main/bin/morning_seal.sh)).
+To test the script, create a private Slack channel e.g. "#angry-seal-bot-test-abc" and update `@team_channel` on [this line in slack_poster.rb](https://github.com/alphagov/seal/blob/main/lib/slack_poster.rb#L103) to the one you created, you'll also need a `DEVELOPMENT` env set to `true`.
+You can then run the [GitHub Action](https://github.com/alphagov/seal/actions) selecting your branch and you should see the post in your test channel.
 
-If you don't want to post github pull requests but a random quote from your team's quotes config, run `./bin/seal_runner.rb your_team_name quotes`
+If you don't want to post to Slack you can add a `DRY: true` env to your workflow and the output will only show in the logs.
 
 ### Slack configuration
-
-The morning_seal.sh and dependapanda.sh scripts run every weekday morning, while the afternoon_seal.sh script runs every weekday afternoon. The scheduler is at https://scheduler.heroku.com/dashboard, and the command to run is bin/seal_runner.rb your_team_name bot_animal.
 
 You should also set up the following custom emojis in Slack:
 
@@ -87,7 +87,7 @@ You can use the images in images/emojis that have the corresponding names.
 
 ## Deployment
 
-Heroku will deploy the main branch automatically.
+All of the code runs in GitHub Actions and does not need deploying.
 
 ## How to run the tests?
 
