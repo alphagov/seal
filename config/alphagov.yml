@@ -206,7 +206,6 @@ dev-platform-team:
     - We believe in the power of documentation.
     - We believe that no bug should occur twice, but if it does, we will be able to fix it following documentation.
   repos:
-    - di-devplatform-deploy
     - di-devplatform-demo-sam-app
     - di-devplatform-utils
     - di-devplatform-infra-audit-hook
