@@ -188,35 +188,6 @@ govuk-developers:
   quotes:
     - "Do you know someone who has gone above and beyond? Remember you can <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/business-and-people-services/gds-people-team/reward-and-recognition|nominate a colleague for a voucher or bonus> at any time."
 
-dev-platform-team:
-  channel: '#di-dev-platform-team-internal'
-  <<: *common_properties
-  quotes:
-    - We put users first. We strive to create services that bring real value to our users and that meet their needs and expectations.
-    - We believe users should feel safe and confident when they use our services.
-    - We’re comfortable challenging assumptions and asking difficult questions. We speak truth to power.
-    - We’re OK with change, failure, ambiguity, and adapting our approach.
-    - We work collaboratively. Our work does not happen in discipline silos and we value the contributions of every discipline equally.
-    - We treat each other with integrity, honesty and respect.
-    - We work in the open so users and government colleagues know what we’re doing and why.
-    - We know we can't do this alone. We need to work with teams across GDS and government to succeed.
-    - We invest time and effort in increasing our understanding of the problems we’re working on. This will help us make things better for users and move the conversation about personalisation in government forward.
-    - 'Remember to make time for personal-development :big-brain:'
-    - 'Remember to celebrate our successes :tada:'
-    - We believe in the power of documentation.
-    - We believe that no bug should occur twice, but if it does, we will be able to fix it following documentation.
-  repos:
-    - di-devplatform-demo-sam-app
-    - di-devplatform-utils
-    - di-devplatform-infra-audit-hook
-    - di-devplatform-lambda-audit-hook
-    - di-devplatform-upload-action
-    - di-devplatform-upload-action-ecr
-    - di-devplatform-metriccollector
-    - di-devplatform-checkov-hook
-    - di-devplatform-container-verifier
-    - di-devplatform-auth-api-test
-
 govuk-forms:
   channel: '#govuk-forms-tech'
   compact: true
