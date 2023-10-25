@@ -39,11 +39,7 @@ di-ipv-orange-cri-maintainers:
   channel: '#di-cri-orange-team-tech'
   <<: *common_properties
   repos:
-    - di-ipv-acceptance-tests
     - di-ipv-cri-check-hmrc-api
-    - di-ipv-cri-check-hmrc-front
-    - di-ipv-cri-kbv-hmrc-front
-    - di-ipv-cri-templates
   security_alerts: false
 
 data-products:
@@ -227,51 +223,33 @@ govuk-pay:
     - WIP
   repos:
     - gds-apple-developer-account-governance
-    - pay-access-control
     - pay-adot
     - pay-adminusers
     - pay-api-docs-generator
     - pay-architecture
     - pay-aws-compliance
     - pay-cardid
-    - pay-cardid-data
     - pay-ci
-    - pay-cloudwatch-logs-s3-export
-    - pay-cloudwatch-logs-s3-lambda
     - pay-code-analysis-config
-    - pay-concourse
-    - pay-concourse-deployment
     - pay-connector
-    - pay-dockerfiles
-    - pay-endtoend
     - pay-frontend
-    - pay-infra
     - pay-java-commons
     - pay-js-commons
     - pay-js-metrics
     - pay-ledger
-    - pay-logging-lambdas
-    - pay-nginx-forward-proxy
     - pay-nginx-proxy
     - pay-notifications
     - pay-performance-reporter
-    - pay-perftests
     - pay-product-page
     - pay-products
     - pay-products-ui
-    - pay-prototype
     - pay-publicapi
     - pay-publicauth
-    - pay-scripts
     - pay-selfservice
-    - pay-selfservice-policy-docs
     - pay-set-up-pre-commit
     - pay-smoke-tests
     - pay-stream-s3-sqs
-    - pay-stubs
-    - pay-team-manual
     - pay-tech-docs
-    - pay-telegraf
     - pay-toolbox
     - pay-webhooks
 
@@ -330,7 +308,6 @@ govwifi:
     - govwifi-acceptance-tests
     - govwifi-admin
     - govwifi-authentication-api
-    - govwifi-build
     - govwifi-builder-task
     - govwifi-concourse-deploy-pipeline
     - govwifi-concourse-runner
