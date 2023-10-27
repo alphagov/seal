@@ -28,6 +28,7 @@ security_alerts:
   exclude_labels:
     - "Waiting on copy"
     - "Do Not Merge"
+    - "maintenance-upgrade"
 
   use_labels: true
 
@@ -38,6 +39,28 @@ security_alerts:
     - "dependabot[bot]"
 
   channel: "#collab-first_responders"
+
+github_bots:
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
+
+  include_repos:
+    - meetcleo
+
+  members:
+    - "dependabot[bot]"
+    - "sweepai[bot]"
+
+  channel: "#collab-github-bots"
 
 data:
   exclude_titles:
