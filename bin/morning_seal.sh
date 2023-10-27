@@ -1,12 +1,13 @@
 #!/bin/bash
 
 teams=(
+  github_bots
   payments_infrastructure
-  security_alerts
   data
   payments_security_experience
   seal_team
   data_science_engineers
+  security_alerts
 )
 
 for team in ${teams[*]}; do
