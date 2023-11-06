@@ -270,8 +270,8 @@ govuk-publishing-experience:
   compact: true
   <<: *common_properties
 
-govuk-publishing-on-platform-content:
-  channel: '#govuk-publishing-on-platform-content-tech'
+govuk-publishing-mainstream-experience:
+  channel: '#govuk-publishing-mainstream-experience-tech'
   compact: true
   <<: *common_properties
 
