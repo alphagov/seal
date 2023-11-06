@@ -35,13 +35,6 @@ di-architecture:
   repos:
     - digital-identity-architecture
 
-di-ipv-orange-cri-maintainers:
-  channel: '#di-cri-orange-team-tech'
-  <<: *common_properties
-  repos:
-    - di-ipv-cri-check-hmrc-api
-  security_alerts: false
-
 data-products:
   channel: '#data-products'
   <<: *common_properties
