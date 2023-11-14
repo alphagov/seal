@@ -159,3 +159,21 @@ pricing_and_lending:
 
   channel: "#squad-pricing_and_lending-devs"
 
+card_2:
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Do Not Merge"
+
+  use_labels: true
+
+  include_repos:
+    - meetcleo
+
+  github_team: "card-2"
+
+  channel: "#squad-honet_badgers-devs"

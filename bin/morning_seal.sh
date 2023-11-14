@@ -9,6 +9,7 @@ teams=(
   data_science_engineers
   security_alerts
   pricing_and_lending
+  card_2
 )
 
 for team in ${teams[*]}; do
