@@ -3,7 +3,7 @@ name: "Dependapanda"
 on:
   workflow_dispatch: {}
   schedule:
-    - cron:  '00 8 * * 1-5' # Runs at 8:00, Monday through Friday.
+    - cron:  '00 10 * * 1-5' # Runs at 10:00, Monday through Friday.
 
 env:
   SEAL_ORGANISATION: alphagov
