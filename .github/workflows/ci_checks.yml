@@ -1,0 +1,46 @@
+name: "CI Checks"
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron:  '00 9 * * 1-5' # Runs at 9:00, Monday through Friday.
+
+env:
+  SEAL_ORGANISATION: alphagov
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+jobs:
+  ci-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: CI Checks
+        id: ci_checks
+        run: |
+          teams=(
+            ai-govuk
+            govuk-developers
+            govuk-frontenders
+            govuk-navigation-tech
+            govuk-platform-engineering
+            govuk-platform-security-reliability-team
+            govuk-publishing-access-and-permissions-team
+            govuk-publishing-experience-tech
+            govuk-publishing-mainstream-experience-tech
+            govuk-publishing-platform
+            govuk-search-improvement
+            tech-content-interactions-on-platform-govuk
+            user-experience-measurement-govuk-robot-invasion
+          )
+          
+          for team in ${teams[*]} ; do
+            ./bin/seal_runner.rb $team ci
+          done

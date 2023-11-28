@@ -16,6 +16,8 @@ class MessageBuilder
     case @mode
     when :panda
       build_dependapanda_message
+    when :ci
+      build_ci_message
     else
       build_regular_message
     end
@@ -57,6 +59,18 @@ private
     end
   end
 
+  def build_ci_message
+    Message.new(ci_message, mood: "robot_face")
+  end
+
+  def ci_message
+    @repos = check_team_repos_ci.reject { |_,v| v }.keys
+    return nil if @repos.empty?
+
+    template_file = TEMPLATE_DIR + "list_ci_issues.text.erb"
+    ERB.new(template_file.read, trim_mode: '-').result(binding).strip
+  end
+
   def pr_date(pr)
     pr[:marked_ready_for_review_at] || pr[:created]
   end
@@ -67,6 +81,10 @@ private
 
   def pull_requests
     @pull_requests ||= github_fetcher.list_pull_requests
+  end
+
+  def check_team_repos_ci
+    @check_team_repos_ci ||= github_fetcher.check_team_repos_ci
   end
 
   def old_pull_requests

@@ -278,4 +278,44 @@ RSpec.describe GithubFetcher do
       end
     end
   end
+
+  describe "CI checks" do
+    let(:bad_ci_file) { double(Sawyer::Resource, content: "rubbish") }
+    let(:good_ci_file) { double(Sawyer::Resource, content: "dXNlczogYWxwaGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93\nb3JrZmxvd3MvZGVwZW5kZW5jeS1yZXZpZXcueW1sQG1haW4KdXNlczogYWxw\naGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93b3JrZmxvd3Mv\nY29kZXFsLWFuYWx5c2lzLnltbEBtYWluCg==\n") }
+    let(:use_labels) { false }
+    let(:repos) { %w[repo1] }
+
+    context "when ci file exists and checks are present" do
+      it "returns true" do
+        allow(fake_octokit_client).to receive(:contents).and_return(good_ci_file)
+
+        expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => true })
+      end
+    end
+
+    context "when ci file exists and checks are not present" do
+      it "returns false" do
+        allow(fake_octokit_client).to receive(:contents).and_return(bad_ci_file)
+
+        expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => false })
+      end
+    end
+
+    context "when ci file does not exist" do
+      it "returns true" do
+        allow(fake_octokit_client).to receive(:contents)
+          .and_raise(Octokit::NotFound.new)
+
+        expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => true })
+      end
+    end
+
+    context "when repo in ignore list" do
+      it "returns true" do
+        allow(github_fetcher).to receive(:ignored_ci_repos).and_return(%w[repo1])
+
+        expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => true })
+      end
+    end
+  end
 end
