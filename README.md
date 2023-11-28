@@ -13,7 +13,7 @@ This is a Slack bot that publishes a team's pull requests, Dependabot updates, s
 
 Fork the repo and add/change the config files that relate to your github organisation. For example, the alphagov config file is located at [config/alphagov.yml](config/alphagov.yml) and the config for scheduled daily visits can be found in [.github/workflows](.github/workflows)
 
-Include your team's name, repos and the Slack channel you want to post to.
+Include your team's name, repositories, and the Slack channel you want to post to. The Seal doesn't currently support private repos, but you can fork this repo and use your own token with your preferred permissions if that's required.
 
 > If your team is part of the GOV.UK programme, you do not need to add a list of repos to config/alphagov.yml.
 > The [Developer docs repos.json](https://docs.publishing.service.gov.uk/repos.json) is now the single source of truth for information about GOV.UK repositories and which team is responsible for them.
@@ -40,7 +40,7 @@ export GITHUB_SECURITY_ALERTS=true
 export GITHUB_EXCLUDE_LABELS="[DO NOT MERGE],Don't merge,DO NOT MERGE,Waiting on factcheck,wip"
 export GITHUB_REPOS="myapp,anotherrepo" # Repos you want to be notified about
 export COMPACT=true # Use a more compact version of the seal output
-export SEAL_QUOTES="Everyone should have the opportunity to learn. Don't be afraid to pick up stories on things you don't understand and ask for help with them.,Try to pair when possible."
+export SEAL_QUOTES="Everyone should have the opportunity to learn. Don't be afraid to pick up stories on things you don't understand and ask for help with them. Try to pair when possible."
 ```
 
 - To get a new `GITHUB_TOKEN`, head to: https://github.com/settings/tokens
@@ -69,7 +69,7 @@ If you don't want to post to Slack you can add a `DRY: true` env to your workflo
 
 ### Slack configuration
 
-You should also set up the following custom emojis in Slack:
+<details><summary>You should also set up the following custom emojis in Slack:</summary>
 
 - :informative_seal:
 - :angrier_seal:
@@ -82,7 +82,7 @@ You should also set up the following custom emojis in Slack:
 - :festive_season_angrier_seal:
 - :festive_season_seal_of_approval:
 - :manatea:
-
+</details>
 You can use the images in images/emojis that have the corresponding names.
 
 ## Deployment
