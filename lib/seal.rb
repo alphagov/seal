@@ -32,7 +32,7 @@ private
                 MessageBuilder.new(team, :seal).build
               end
 
-    return if message.nil?
+    return if message.nil? || message.text.nil?
 
     poster = SlackPoster.new(team.channel, message.mood)
     poster.send_request(message.text)
