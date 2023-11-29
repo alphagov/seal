@@ -26,8 +26,6 @@ jobs:
         id: dependapanda
         run: |
           teams=(
-            di-ipv-orange-cri-maintainers
-            govuk-accounts-tech
             govuk-datagovuk
             govuk-developers
             govuk-forms

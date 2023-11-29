@@ -25,7 +25,6 @@ jobs:
         id: afternoon_seal
         run: |
           teams=(
-            govuk-accounts
             govuk-developers
             govuk-platform-security-reliability
           )
