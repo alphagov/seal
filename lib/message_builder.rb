@@ -7,13 +7,13 @@ class MessageBuilder
 
   attr_accessor :pull_requests, :report, :mood, :poster_mood
 
-  def initialize(team, animal)
+  def initialize(team, mode)
     @team = team
-    @animal = animal
+    @mode = mode
   end
 
   def build
-    case @animal
+    case @mode
     when :panda
       build_dependapanda_message
     else
@@ -62,7 +62,7 @@ private
   end
 
   def github_fetcher
-    @github_fetcher ||= GithubFetcher.new(team, dependabot_prs_only: @animal == :panda)
+    @github_fetcher ||= GithubFetcher.new(team, dependabot_prs_only: @mode == :panda)
   end
 
   def pull_requests
