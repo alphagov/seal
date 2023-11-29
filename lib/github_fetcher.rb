@@ -15,7 +15,7 @@ class GithubFetcher
     @repos = team.repos
     @include_security_alerts = team.security_alerts
     @dependabot_prs_only = dependabot_prs_only
-    @repo_specific_alerts = {}
+    @repo_security_alerts = {}
     @security_alert_handler = dependabot_prs_only && @include_security_alerts ? SecurityAlertHandler.new(github, organisation, repos) : nil
   end
 
@@ -32,7 +32,7 @@ class GithubFetcher
 
   def pull_requests_from_github
     repos.flat_map do |repo|
-      @repo_specific_alerts[repo] = @security_alert_handler.filter_security_alerts(repo) if @security_alert_handler
+      @repo_security_alerts[repo] = @security_alert_handler.filter_security_alerts(repo) if @security_alert_handler
       fetch_pull_requests(repo).reject(&:draft)
     end
   end
@@ -64,7 +64,7 @@ private
 
   def present_pull_request(pull_request)
     repo = pull_request.base.repo.name
-    security_label = @dependabot_prs_only && @include_security_alerts ? @security_alert_handler.label_for_branch(pull_request.head.ref, pull_request.title, @repo_specific_alerts[repo]) : nil
+    security_label = @dependabot_prs_only && @include_security_alerts ? @security_alert_handler.label_for_branch(pull_request.head.ref, pull_request.title, @repo_security_alerts[repo]) : nil
 
     {
       title: pull_request.title,
