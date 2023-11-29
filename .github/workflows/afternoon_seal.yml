@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
@@ -25,7 +25,6 @@ jobs:
         id: afternoon_seal
         run: |
           teams=(
-            govuk-accounts
             govuk-developers
             govuk-platform-security-reliability
           )
