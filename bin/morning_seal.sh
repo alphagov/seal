@@ -8,6 +8,7 @@ teams=(
   seal_team
   data_science_engineers
   security_alerts
+  pricing_and_lending
 )
 
 for team in ${teams[*]}; do

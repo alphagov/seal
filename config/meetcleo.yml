@@ -141,3 +141,20 @@ data_science_engineers:
   github_team: "ds-eng"
 
   channel: "#squad-ds-eng-reviews"
+
+pricing_and_lending:
+  exclude_titles:
+    - "WIP"
+
+  exclude_labels:
+    - "Do Not Merge"
+
+  use_labels: true
+
+  include_repos:
+    - meetcleo
+
+  github_team: "ds-payments-and-lending-be"
+
+  channel: "#squad-pricing_and_lending-devs"
+
