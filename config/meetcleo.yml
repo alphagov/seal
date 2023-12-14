@@ -145,6 +145,7 @@ data_science_engineers:
 pricing_and_lending:
   exclude_titles:
     - "WIP"
+    - "[WIP]"
 
   exclude_labels:
     - "Do Not Merge"
@@ -154,7 +155,7 @@ pricing_and_lending:
   include_repos:
     - meetcleo
 
-  github_team: "ds-payments-and-lending-be"
+  github_team: "pricing-and-lending-be"
 
   channel: "#squad-pricing_and_lending-devs"
 
