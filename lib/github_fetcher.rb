@@ -1,4 +1,5 @@
 require "octokit"
+require "yaml"
 require_relative "security_alert_handler"
 
 class GithubFetcher
@@ -35,6 +36,10 @@ class GithubFetcher
       @repo_security_alerts[repo] = @security_alert_handler.filter_security_alerts(repo) if @security_alert_handler
       fetch_pull_requests(repo).reject(&:draft)
     end
+  end
+
+  def check_team_repos_ci
+    repos.each_with_object({}) { |repo, sca_sast_enabled| sca_sast_enabled[repo] = has_sca_sast_scans?(repo) }
   end
 
   def security_alerts_count
@@ -140,5 +145,21 @@ private
   rescue StandardError => e
     puts "Error fetching marked ready for review time for PR #{pull_request.html_url}: #{e.message}"
     nil
+  end
+
+  def ignored_ci_repos
+    YAML.load_file(File.join(File.dirname(__FILE__), "../ignored_ci_repos.yml"))
+  end
+
+  def has_sca_sast_scans?(repo)
+    return true if ignored_ci_repos.include?(repo)
+
+    ci_file = Base64.decode64(github.contents("#{organisation}/#{repo}", path: ".github/workflows/ci.yml").content)
+    sca_string = "uses: alphagov/govuk-infrastructure/.github/workflows/dependency-review.yml@main"
+    sast_string = "uses: alphagov/govuk-infrastructure/.github/workflows/codeql-analysis.yml@main"
+
+    ci_file.include?(sca_string) && ci_file.include?(sast_string)
+  rescue Octokit::NotFound => e
+    true # if a CI file is not present assume no scans are needed
   end
 end

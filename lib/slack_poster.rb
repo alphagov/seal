@@ -57,6 +57,8 @@ private
       [":#{@season_symbol}seal_of_approval:", "#{@season_name}Seal of Approval"]
     when "angry"
       [":#{@season_symbol}angrier_seal:", "#{@season_name}Angry Seal"]
+    when "robot_face"
+      [":robot_face:", "Angry CI Robot"]
     when "tea"
       [":manatea:", "Tea Seal"]
     when "charter"

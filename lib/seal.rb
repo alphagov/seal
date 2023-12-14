@@ -28,6 +28,8 @@ private
                 Message.new(team.quotes.sample) if team.quotes_days.map(&:downcase).include?(Date.today.strftime("%A").downcase)
               when "dependapanda"
                 MessageBuilder.new(team, :panda).build
+              when "ci"
+                MessageBuilder.new(team, :ci).build
               else
                 MessageBuilder.new(team, :seal).build
               end
