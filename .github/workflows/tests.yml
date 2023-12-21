@@ -11,7 +11,12 @@ jobs:
   dependency-review:
     name: Dependency Review scan
     uses: alphagov/govuk-infrastructure/.github/workflows/dependency-review.yml@main
-      
+
+  snyk-security:
+    name: SNYK security analysis
+    uses: alphagov/govuk-infrastructure/.github/workflows/snyk-security.yml@main
+    secrets: inherit
+
   tests:
     runs-on: ubuntu-latest
     steps:
