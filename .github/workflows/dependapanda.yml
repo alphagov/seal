@@ -38,9 +38,9 @@ jobs:
             govuk-platform-engineering
             content-interactions-on-platform-govuk
             navigation-and-homepage-govuk
-            user-experience-measurement-govuk
+            ai-govuk
           )
-          
+
           for team in ${teams[*]}; do
             ./bin/seal_runner.rb $team dependapanda
             sleep 60

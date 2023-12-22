@@ -328,21 +328,18 @@ navigation-and-homepage-govuk:
     - Is your work waiting to be reviewed? Make sure to ask someone.
     - Did you learn something cool recently? Share it with your fellow devs!
 
-user-experience-measurement-govuk:
-  channel: '#user-experience-measurement-govuk-robot-invasion'
+ai-govuk:
+  channel: '#dev-notifications-ai-govuk'
   compact: true
   <<: *common_properties
-quotes:
-    - What do you call a failed robot invasion? A botched invasion!
-    - What do you call a robot who likes to row? A row-bot!
-    - What’s the name of a robot’s favourite restaurant? Megabytes!
-    - What do robot dogs do? They byte!
-    - Why did the robot fail its exam? They were a bit rusty!
-    - What is a robot's favourite music? Heavy metal!
-    - What do robots eat for snacks? Micro chips!
-quotes_days:
-  - Monday
-  - Friday
+  quotes:
+    - Why was the chatbot always calm? Because it had a great CTRL over its emotions!
+    - Why do programmers prefer dark mode? Because light attracts bugs!
+    - Why did the AI break up with its algorithm partner? Because it couldn't find the right parameters for a meaningful relationship!
+    - What's a computer's favourite snack? Microchips with a side of cookies!
+  quotes_days:
+    - Monday
+    - Friday
 
 proj-early-talent-assigned-learning:
   channel: '#proj-early-talent-assigned-learning'

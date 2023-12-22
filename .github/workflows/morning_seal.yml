@@ -40,22 +40,22 @@ jobs:
             govwifi
             content-interactions-on-platform-govuk
             navigation-and-homepage-govuk
-            user-experience-measurement-govuk
+            ai-govuk
           )
-          
+
           for team in ${teams[*]}; do
             ./bin/seal_runner.rb $team
           done
-          
+
           morning_quote_teams=(
             fun-workstream-govuk
             fun-workstream-gds-community
             govuk-green-team
             navigation-and-homepage-govuk
             dev-platform-team
-            user-experience-measurement-govuk
+            ai-govuk
           )
-          
+
           for team in ${morning_quote_teams[*]}; do
             ./bin/seal_runner.rb $team quotes
           done
