@@ -38,9 +38,9 @@ jobs:
             govuk-publishing-platform
             govuk-search-improvement
             tech-content-interactions-on-platform-govuk
-            user-experience-measurement-govuk-robot-invasion
+            dev-notifications-ai-govuk
           )
-          
+
           for team in ${teams[*]} ; do
             ./bin/seal_runner.rb $team ci
           done
