@@ -1,4 +1,4 @@
-The following repos are missing <<%= "https://docs.publishing.service.gov.uk/manual/dependency-review.html" %>|<%= html_encode("SCA") %>> and <<%= "https://docs.publishing.service.gov.uk/manual/codeql.html" %>|<%= html_encode("SAST") %>> scans in their CI pipelines (.github/workflows/ci.yml):
+Please check that the following repos have <<%= "https://docs.publishing.service.gov.uk/manual/dependency-review.html" %>|<%= html_encode("SCA") %>>, <<%= "https://docs.publishing.service.gov.uk/manual/codeql.html" %>|<%= html_encode("SAST") %>>  and <<%= "https://docs.publishing.service.gov.uk/manual/snyk.html" %>|<%= html_encode("SNYK") %>> scans in their CI pipelines (.github/workflows/ci.yml):
 <% @repos.each do |repo| -%>
 <<%= "https://github.com/alphagov/#{repo}" %>|<%= html_encode(repo) %>>
 <% end -%>
