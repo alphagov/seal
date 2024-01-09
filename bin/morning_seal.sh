@@ -4,7 +4,7 @@ teams=(
   github_bots
   payments_infrastructure
   data
-  payments_security_experience
+  cash_advance_1
   seal_team
   data_science_engineers
   security_alerts
