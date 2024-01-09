@@ -98,9 +98,9 @@ payments_security_experience:
   include_repos:
     - meetcleo
 
-  github_team: "payments-experience"
+  github_team: "cash-advance-1"
 
-  channel: "#squad-pse-dev"
+  channel: "#squad-cash_advance_1-dev"
 
 seal_team:
   exclude_titles:
