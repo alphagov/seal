@@ -221,6 +221,7 @@ govuk-pay:
     - pay-connector
     - pay-frontend
     - pay-java-commons
+    - pay-java-lambdas
     - pay-js-commons
     - pay-js-metrics
     - pay-ledger
