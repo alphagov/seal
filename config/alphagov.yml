@@ -370,3 +370,9 @@ proj-early-talent-assigned-learning:
     - learningtime-hh-sem1-gov-location-service
     - learningtime-an-sem
   security_alerts: false
+
+di-authentication:
+  channel: '#di-authentication-notifications'
+  <<: *common_properties
+  repos:
+    - di-infrastructure
