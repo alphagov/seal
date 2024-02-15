@@ -26,6 +26,7 @@ jobs:
         id: morning_seal
         run: |
           teams=(
+            di-authentication
             govuk-datagovuk
             govuk-developers
             govuk-forms
