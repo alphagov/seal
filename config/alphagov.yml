@@ -210,6 +210,7 @@ govuk-pay:
     - WIP
   repos:
     - gds-apple-developer-account-governance
+    - paas-grafana-annotation-resource
     - pay-adot
     - pay-adminusers
     - pay-api-docs-generator
