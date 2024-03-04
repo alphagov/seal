@@ -241,6 +241,7 @@ govuk-pay:
     - pay-tech-docs
     - pay-toolbox
     - pay-webhooks
+    - pkl-concourse-pipeline
 
 govuk-platform-security-reliability:
   channel: '#govuk-platform-security-reliability-team'
