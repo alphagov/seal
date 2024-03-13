@@ -38,7 +38,7 @@ security_alerts:
   members:
     - "dependabot[bot]"
 
-  channel: "#collab-first_responders"
+  channel: "#alerts-first_responders"
 
 github_bots:
   exclude_titles:
