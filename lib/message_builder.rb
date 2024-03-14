@@ -27,16 +27,10 @@ class MessageBuilder
   end
 
   def rotten?(pull_request)
-    today = Date.today
-    actual_age = (today - pr_date(pull_request)).to_i
-    weekdays_age = if today.monday?
-                     actual_age - 2
-                   elsif today.tuesday?
-                     actual_age - 1
-                   else
-                     actual_age
-                   end
-    weekdays_age > 2
+    age_in_weekdays = (pr_date(pull_request)...Date.today)
+      .reject { |d| d.saturday? || d.sunday? }
+      .count
+    age_in_weekdays > 2
   end
 
 private
