@@ -32,7 +32,6 @@ jobs:
             govuk-forms
             govuk-pay
             govuk-platform-security-reliability
-            govuk-publishing-access-and-permissions
             govuk-publishing-components
             govuk-publishing-experience
             govuk-publishing-mainstream-experience
