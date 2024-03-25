@@ -277,11 +277,6 @@ govuk-publishing-platform:
   compact: true
   <<: *common_properties
 
-govuk-publishing-access-and-permissions:
-  channel: '#govuk-publishing-access-and-permissions-team'
-  compact: true
-  <<: *common_properties
-
 govuk-platform-engineering:
   channel: '#govuk-platform-engineering'
   compact: true
