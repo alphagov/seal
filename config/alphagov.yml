@@ -32,34 +32,6 @@ data-insights:
 data-products:
   channel: '#data-products'
   <<: *common_properties
-  repos:
-    - data-community-tech-docs
-    - differential-privacy-tests
-    - govuk-accessibility-reports
-    - govuk-content-metadata
-    - govuk-content-similarity
-    - govuk-data-science-workshop
-    - govuk-datalabs-streamlit-NER
-    - govuk-entity-personalisation
-    - govuk-feedback-pipeline
-    - govuk-feedback-spam-classifier
-    - govuk-intent-detector
-    - govuk-knowledge-graph
-    - govuk-mongodb-content
-    - govuk-network-data
-    - govuk-networks
-    - govuk-networkx-tutorial
-    - govuk-related-links-recommender
-    - govuk-spaCy
-    - govuk-user-feedback-processing
-    - govuk-user-journey-analysis-tools
-    - govuk-user-journey-models
-    - govuk-wuj-network-analysis
-    - govuk_ab_analysis
-    - insights-data-visualisation-templates
-    - lstm_segmentation
-    - related-links-data
-    - tagging-suggester
 
 fun-workstream-gds-community:
   channel: '#gds-community'
