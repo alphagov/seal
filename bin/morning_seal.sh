@@ -6,7 +6,6 @@ teams=(
   data
   cash_advance_1
   seal_team
-  data_science_engineers
   security_alerts
   pricing_and_lending
   card_2

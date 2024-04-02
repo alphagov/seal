@@ -122,26 +122,6 @@ seal_team:
 
   channel: "#proj-seal_bot"
 
-data_science_engineers:
-  exclude_titles:
-    - "WIP"
-    - "[WIP]"
-    - "DO NOT MERGE"
-    - "[DO NOT MERGE]"
-
-  exclude_labels:
-    - "Waiting on copy"
-    - "Do Not Merge"
-
-  use_labels: true
-
-  include_repos:
-    - meetcleo
-
-  github_team: "ds-eng"
-
-  channel: "#squad-ds-eng-reviews"
-
 pricing_and_lending:
   exclude_titles:
     - "WIP"
