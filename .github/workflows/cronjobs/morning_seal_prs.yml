@@ -1,4 +1,4 @@
-name: "Morning Seal"
+name: "Morning Seal PRs"
 
 on:
   workflow_dispatch: {}
@@ -22,8 +22,8 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Morning Seal
-        id: morning_seal
+      - name: Morning Seal PRs
+        id: morning_seal_prs
         run: |
           teams=(
             di-authentication
@@ -45,17 +45,4 @@ jobs:
 
           for team in ${teams[*]}; do
             ./bin/seal_runner.rb $team
-          done
-
-          morning_quote_teams=(
-            fun-workstream-govuk
-            fun-workstream-gds-community
-            govuk-green-team
-            navigation-and-homepage-govuk
-            dev-platform-team
-            ai-govuk
-          )
-
-          for team in ${morning_quote_teams[*]}; do
-            ./bin/seal_runner.rb $team quotes
           done
