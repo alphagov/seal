@@ -1,4 +1,4 @@
-name: "Afternoon Seal"
+name: "Afternoon Seal Quotes"
 
 on:
   workflow_dispatch: {}
@@ -21,8 +21,8 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Afternoon Seal
-        id: afternoon_seal
+      - name: Afternoon Seal Quotes
+        id: afternoon_seal_quotes
         run: |
           teams=(
             govuk-developers
