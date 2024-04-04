@@ -59,6 +59,8 @@ private
       [":#{@season_symbol}angrier_seal:", "#{@season_name}Angry Seal"]
     when "robot_face"
       [":robot_face:", "Angry CI Robot"]
+    when "gem"
+      [":gem:", "Gem Release Robot"]
     when "tea"
       [":manatea:", "Tea Seal"]
     when "charter"

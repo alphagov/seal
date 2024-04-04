@@ -1,0 +1,26 @@
+name: "Gem Version Checker"
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron:  '00 13 * * 3' # Runs at 13:00 UTC, Every Wednesday.
+
+env:
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+jobs:
+  gem-version-checker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Gem Version Checker
+        id: gem_version_checker
+        run: |
+          ./bin/gem_version_checker.rb
