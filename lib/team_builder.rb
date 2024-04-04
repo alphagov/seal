@@ -44,10 +44,11 @@ private
   end
 
   def build_all_teams
-    static_config.map do |_, team_config|
+    static_config.map do |team_name, team_config|
       if team_config["repos"].nil?
         team_config["repos"] = govuk_team_repos(team_config["channel"])
       end
+      team_config["ci_checks"] = is_govuk_team?(team_name)
       Team.new(**apply_env(team_config))
     end
   rescue StandardError => e
@@ -103,5 +104,9 @@ private
   rescue StandardError => e
     puts "Error fetching govuk team repos (#{team_channel}): #{e.message}"
     []
+  end
+
+  def is_govuk_team?(team)
+    @govuk_data.any? { | repo | repo["team"] == "##{team}"}
   end
 end
