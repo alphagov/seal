@@ -45,6 +45,10 @@ RSpec.configure do |config|
     Timecop.return
   end
 
+  config.before do 
+    allow($stdout).to receive(:puts) 
+  end
+
   # The settings below are suggested to provide a good initial experience
   # with RSpec, but feel free to customize to your heart's content.
   #   # These two settings work together to allow you to limit a spec run
