@@ -13,6 +13,8 @@ class Seal
   end
 
   def bark(mode: nil)
+    return if Date.today.bank_holiday?
+
     teams.each do |team|
       bark_at(team, mode:)
     end
