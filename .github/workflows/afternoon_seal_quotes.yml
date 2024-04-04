@@ -3,7 +3,7 @@ name: "Afternoon Seal Quotes"
 on:
   workflow_dispatch: {}
   schedule:
-    - cron:  '00 12 * * 1-5' # Runs at 12:00, Monday through Friday.
+    - cron:  '00 12 * * 1-5' # Runs at 12:00 UTC, Monday through Friday.
 
 env:
   SEAL_ORGANISATION: alphagov
@@ -24,11 +24,4 @@ jobs:
       - name: Afternoon Seal Quotes
         id: afternoon_seal_quotes
         run: |
-          teams=(
-            govuk-developers
-            govuk-platform-security-reliability
-          )
-          
-          for team in ${teams[*]} ; do
-            ./bin/seal_runner.rb $team quotes
-          done
+          ./bin/seal_runner.rb afternoon_seal_quotes

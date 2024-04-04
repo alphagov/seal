@@ -3,6 +3,10 @@
 
 common_properties: &common_properties
   security_alerts: true
+  morning_seal_quotes: false
+  seal_prs: false
+  afternoon_seal_quotes: false
+  dependapanda: false
   exclude_labels:
     - WIP
     - ignore
@@ -21,6 +25,29 @@ common_properties: &common_properties
     - Thursday
     - Friday
 
+ai-govuk:
+  channel: '#dev-notifications-ai-govuk'
+  compact: true
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+  morning_seal_quotes: true
+  quotes:
+    - Why was the chatbot always calm? Because it had a great CTRL over its emotions!
+    - Why do programmers prefer dark mode? Because light attracts bugs!
+    - Why did the AI break up with its algorithm partner? Because it couldn't find the right parameters for a meaningful relationship!
+    - What's a computer's favourite snack? Microchips with a side of cookies!
+  quotes_days:
+    - Monday
+    - Friday
+
+tech-content-interactions-on-platform-govuk:
+  channel: '#tech-content-interactions-on-platform-govuk'
+  compact: true
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+
 data-infrastructure:
   channel: '#data-infrastructure'
   <<: *common_properties
@@ -33,8 +60,40 @@ data-products:
   channel: '#data-products'
   <<: *common_properties
 
+di-authentication:
+  channel: '#di-authentication-notifications'
+  <<: *common_properties
+  seal_prs: true
+  repos:
+    - di-infrastructure
+
+di-one-login-home:
+  channel: "#di-one-login-home"
+  quotes:
+    - We put users first. We strive to create services that bring real value to our users and that meet their needs and expectations.
+    - We believe users should feel safe and confident when they use our services.
+    - We design for everyone. We think about under-represented audiences from the start and check our biases throughout the design process.
+    - We’re comfortable challenging assumptions and asking difficult questions. We speak truth to power.
+    - We’re OK with change, failure, ambiguity, and adapting our approach.
+    - We work collaboratively. Our work does not happen in discipline silos and we value the contributions of every discipline equally.
+    - We treat each other with integrity, honesty and respect.
+    - We work in the open so users and government colleagues know what we’re doing and why.
+    - We know we can't do this alone. We need to work with teams across GDS and government to succeed.
+    - We invest time and effort in increasing our understanding of the problems we’re working on. This will help us make things better for users and move the conversation about personalisation in government forward.
+
+di-one-login-home-tech:
+  channel: "#di-one-login-home-tech"
+  <<: *common_properties
+  repos:
+    - di-account-management-backend
+    - di-account-management-frontend
+    - di-accounts-infra
+    - di-govuk-one-login-service-header
+  security_alerts: false
+
 fun-workstream-gds-community:
   channel: '#gds-community'
+  morning_seal_quotes: true
   quotes:
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/welcome-to-gds-induction/its-ok-to|It's ok to> feel the way you feel
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/welcome-to-gds-induction/its-ok-to|It's ok to> talk about how you're feeling
@@ -72,6 +131,7 @@ fun-workstream-gds-community:
 
 fun-workstream-govuk:
   channel: '#govuk'
+  morning_seal_quotes: true
   quotes:
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/welcome-to-gds-induction/its-ok-to|It's ok to> feel the way you feel
     - <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/welcome-to-gds-induction/its-ok-to|It's ok to> talk about how you're feeling
@@ -107,37 +167,18 @@ fun-workstream-govuk:
     - Wednesday
     - Friday
 
-di-one-login-home:
-  channel: "#di-one-login-home"
-  quotes:
-    - We put users first. We strive to create services that bring real value to our users and that meet their needs and expectations.
-    - We believe users should feel safe and confident when they use our services.
-    - We design for everyone. We think about under-represented audiences from the start and check our biases throughout the design process.
-    - We’re comfortable challenging assumptions and asking difficult questions. We speak truth to power.
-    - We’re OK with change, failure, ambiguity, and adapting our approach.
-    - We work collaboratively. Our work does not happen in discipline silos and we value the contributions of every discipline equally.
-    - We treat each other with integrity, honesty and respect.
-    - We work in the open so users and government colleagues know what we’re doing and why.
-    - We know we can't do this alone. We need to work with teams across GDS and government to succeed.
-    - We invest time and effort in increasing our understanding of the problems we’re working on. This will help us make things better for users and move the conversation about personalisation in government forward.
-
-di-one-login-home-tech:
-  channel: "#di-one-login-home-tech"
-  <<: *common_properties
-  repos:
-    - di-account-management-backend
-    - di-account-management-frontend
-    - di-accounts-infra
-    - di-govuk-one-login-service-header
-  security_alerts: false
-
 govuk-datagovuk:
   channel: '#govuk-datagovuk'
   <<: *common_properties
+  dependapanda: true
+  seal_prs: true
 
 govuk-developers:
   channel: '#govuk-developers'
   <<: *common_properties
+  afternoon_seal_quotes: true
+  dependapanda: true
+  seal_prs: true
   quotes_days:
     - Wednesday
   quotes:
@@ -147,6 +188,8 @@ govuk-forms:
   channel: '#govuk-forms-tech'
   compact: true
   <<: *common_properties
+  dependapanda: true
+  seal_prs: true
   repos:
     - forms
     - forms-admin
@@ -157,14 +200,9 @@ govuk-forms:
     - govuk-forms-markdown
   security_alerts: false
 
-govuk-publishing-components:
-  channel: '#govuk-publishing-components'
-  <<: *common_properties
-  repos:
-    - govuk_publishing_components
-
 govuk-green-team:
   channel: '#govuk-green-team'
+  morning_seal_quotes: true
   quotes:
     - 'Remember to make time for personal development :big-brain:'
     - 'Remember to make time for community and corporate objectives :handshake:'
@@ -176,6 +214,7 @@ govuk-green-team:
 
 govuk-pay:
   channel: '#govuk-pay-tech'
+  seal_prs: true
   exclude_titles:
     - DO NOT MERGE
     - '[DRAFT]'
@@ -215,10 +254,20 @@ govuk-pay:
     - pay-webhooks
     - pkl-concourse-pipeline
 
-govuk-platform-security-reliability:
+govuk-platform-engineering:
+  channel: '#govuk-platform-engineering'
+  compact: true
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+
+govuk-platform-security-reliability-team:
   channel: '#govuk-platform-security-reliability-team'
   compact: true
   <<: *common_properties
+  afternoon_seal_quotes: true
+  dependapanda: true
+  seal_prs: true
   quotes:
     - When picking up a new card, ask if anyone would like to work on it with you.
     - Stuck on something? Don't be afraid to ask for help or ask if anyone is free to pair.
@@ -234,28 +283,38 @@ govuk-platform-security-reliability:
     - It's okay to spend some time understanding the thing(s) before implementing the solution
     - It's OK to pick up and work on something you don't understand yet
 
-govuk-publishing-experience:
+govuk-publishing-components:
+  channel: '#govuk-publishing-components'
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+  repos:
+    - govuk_publishing_components
+
+govuk-publishing-experience-tech:
   channel: '#govuk-publishing-experience-tech'
   compact: true
   <<: *common_properties
+  dependapanda: true
+  seal_prs: true
 
-govuk-publishing-mainstream-experience:
+govuk-publishing-mainstream-experience-tech:
   channel: '#govuk-publishing-mainstream-experience-tech'
   compact: true
   <<: *common_properties
+  dependapanda: true
+  seal_prs: true
 
 govuk-publishing-platform:
   channel: '#govuk-publishing-platform'
   compact: true
   <<: *common_properties
-
-govuk-platform-engineering:
-  channel: '#govuk-platform-engineering'
-  compact: true
-  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
 
 govwifi:
   channel: '#govwifi-monitoring'
+  seal_prs: true
   exclude_titles:
     - DO NOT MERGE
     - PROTOTYPE
@@ -283,33 +342,18 @@ govwifi:
     - govwifi-user-signup-api
     - govwifi-watchdog
 
-content-interactions-on-platform-govuk:
-  channel: '#tech-content-interactions-on-platform-govuk'
-  compact: true
-  <<: *common_properties
-
-navigation-and-homepage-govuk:
+govuk-navigation-tech:
   channel: '#govuk-navigation-tech'
   compact: true
   <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+  morning_seal_quotes: true
   quotes:
     - Be Excellent To Each Other!
     - Don't be working if you're ill!
     - Is your work waiting to be reviewed? Make sure to ask someone.
     - Did you learn something cool recently? Share it with your fellow devs!
-
-ai-govuk:
-  channel: '#dev-notifications-ai-govuk'
-  compact: true
-  <<: *common_properties
-  quotes:
-    - Why was the chatbot always calm? Because it had a great CTRL over its emotions!
-    - Why do programmers prefer dark mode? Because light attracts bugs!
-    - Why did the AI break up with its algorithm partner? Because it couldn't find the right parameters for a meaningful relationship!
-    - What's a computer's favourite snack? Microchips with a side of cookies!
-  quotes_days:
-    - Monday
-    - Friday
 
 proj-early-talent-assigned-learning:
   channel: '#proj-early-talent-assigned-learning'
@@ -339,9 +383,3 @@ proj-early-talent-assigned-learning:
     - learningtime-hh-sem1-gov-location-service
     - learningtime-an-sem
   security_alerts: false
-
-di-authentication:
-  channel: '#di-authentication-notifications'
-  <<: *common_properties
-  repos:
-    - di-infrastructure
