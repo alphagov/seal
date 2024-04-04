@@ -9,7 +9,7 @@ RSpec.describe Seal do
     Team.new(
       slack_channel: "#lions",
       quotes: ["go lions!"],
-      quotes_days: ["Monday", "tuesday", "Wednesday"],
+      quotes_days: %w[Monday tuesday Wednesday],
     )
   end
   let(:tigers) do
@@ -21,7 +21,7 @@ RSpec.describe Seal do
     Team.new(
       slack_channel: "#cats",
       quotes: ["go cats!"],
-      quotes_days: ["yarn", "catnip", "nap", "scratches", "mischief"],
+      quotes_days: %w[yarn catnip nap scratches mischief],
     )
   end
   let(:teams) do

@@ -58,7 +58,7 @@ private
   end
 
   def ci_message
-    @repos = check_team_repos_ci.reject { |_,v| v }.keys
+    @repos = check_team_repos_ci.reject { |_, v| v }.keys
     return nil if @repos.empty?
 
     template_file = TEMPLATE_DIR + "list_ci_issues.text.erb"
