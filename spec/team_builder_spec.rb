@@ -14,7 +14,8 @@ RSpec.describe TeamBuilder do
     [{ "app_name" => "Brazil", "team" => "#govuk-jaguars" },
      { "app_name" => "rainforest", "team" => "#govuk-wildcats-team" },
      { "app_name" => "savanna", "team" => "#govuk-wildcats-team" },
-     { "app_name" => "grassland", "team" => "#govuk-wildcats-team" }]
+     { "app_name" => "grassland", "team" => "#govuk-wildcats-team" },
+     { "app_name" => "generic-repo", "team" => "govuk-generic-team" }]
   end
 
   before do
@@ -62,6 +63,12 @@ RSpec.describe TeamBuilder do
                  "govuk-wildcats" => {
                    "channel" => "#govuk-wildcats-team",
                  },
+                 "govuk-generic-team" => {
+                   "channel" => "#govuk-generic-team",
+                   "repos" => [
+                     "generic-repo"
+                   ],
+                 },
                ))
   end
 
@@ -70,8 +77,8 @@ RSpec.describe TeamBuilder do
   let(:teams) { TeamBuilder.build(env:) }
 
   it "loads each team from the static config file" do
-    expect(teams.count).to eq(5)
-    expect(teams.map(&:channel)).to match_array(["#lions", "#tigers", "#cats", "#govuk-jaguars", "#govuk-wildcats-team"])
+    expect(teams.count).to eq(6)
+    expect(teams.map(&:channel)).to match_array(["#lions", "#tigers", "#cats", "#govuk-jaguars", "#govuk-wildcats-team", "#govuk-generic-team"])
   end
 
   it "loads all keys" do
@@ -96,6 +103,11 @@ RSpec.describe TeamBuilder do
     expect(tigers.compact).to eq(false)
     expect(tigers.quotes).to eq([])
     expect(tigers.repos).to eq([])
+  end
+
+  it "raises an error if a GOV.UK team has manually added their repos to the YAML config file" do
+    allow(TeamBuilder).to receive(:build).and_raise("govuk-generic-team is a GOV.UK team and shouldn't list repos in ./config/alphagov.yml")
+    expect { teams }.to raise_error(RuntimeError, /govuk-generic-team is a GOV.UK team and shouldn't list repos in .*\/config\/alphagov.yml/)
   end
 
   it "gets non gov.uk team repos from the static config file if repos array is defined" do

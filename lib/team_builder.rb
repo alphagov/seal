@@ -18,9 +18,6 @@ class TeamBuilder
     else
       build_all_teams
     end
-  rescue StandardError => e
-    puts "Error building team(s): #{e.message}"
-    []
   end
 
 private
@@ -33,9 +30,7 @@ private
     if team.channel.nil?
       []
     else
-      if team.repos.empty?
-        (team.repos << govuk_team_repos(team.channel)).flatten!
-      end
+      (team.repos << govuk_team_repos(team.channel)).flatten! if team.repos.empty?
       [team]
     end
   rescue StandardError => e
@@ -47,13 +42,12 @@ private
     static_config.map do |team_name, team_config|
       if team_config["repos"].nil?
         team_config["repos"] = govuk_team_repos(team_config["channel"])
+      elsif is_govuk_team?(team_name)
+        raise "#{team_name} is a GOV.UK team and shouldn't list repos in ./config/alphagov.yml"
       end
       team_config["ci_checks"] = is_govuk_team?(team_name)
       Team.new(**apply_env(team_config))
     end
-  rescue StandardError => e
-    puts "Error building all teams: #{e.message}"
-    []
   end
 
   def apply_env(config)
