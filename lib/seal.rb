@@ -3,6 +3,7 @@
 require "bundler/setup"
 Bundler.require(:default)
 
+require_relative "bank_holidays"
 require_relative "message_builder"
 require_relative "slack_poster"
 
