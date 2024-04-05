@@ -39,6 +39,7 @@ RSpec.describe Seal do
   describe ".bark(mode: nil)" do
     before do
       allow(SlackPoster).to receive(:new).and_return(slack_poster)
+      allow(Date).to receive(:bank_holidays).and_return([])
     end
 
     it "barks at all teams" do
@@ -46,6 +47,14 @@ RSpec.describe Seal do
         expect(MessageBuilder).to receive(:new).with(team, :seal).and_return(message_builder)
         expect(SlackPoster).to receive(:new).with(team.channel, anything)
       end
+
+      subject.bark
+    end
+
+    it "doesn't bark on bank holidays" do
+      allow(Date).to receive(:bank_holidays).and_return([Date.today])
+
+      expect(MessageBuilder).not_to receive(:new)
 
       subject.bark
     end
