@@ -31,8 +31,8 @@ private
                 send_quotes_message(team, mode)
               when "dependapanda"
                 if team.dependapanda
-                  MessageBuilder.new(team, :panda).build
                   sleep 60 # to prevent rate-limiting
+                  MessageBuilder.new(team, :panda).build
                 end
               when "ci"
                 MessageBuilder.new(team, :ci).build if team.ci_checks
