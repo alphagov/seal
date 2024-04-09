@@ -3,9 +3,9 @@ require_relative "github_fetcher"
 require_relative "message"
 
 class MessageBuilder
-  TEMPLATE_DIR = Pathname.new(File.join(File.dirname(__FILE__), *%w[.. templates]))
+  TEMPLATE_DIR = File.join(File.dirname(__FILE__), *%w[.. templates])
 
-  attr_accessor :pull_requests, :report, :mood, :poster_mood
+  attr_accessor :report, :mood, :poster_mood
 
   def initialize(team, mode)
     @team = team
@@ -58,15 +58,15 @@ private
   end
 
   def ci_message
-    @repos = check_team_repos_ci.reject { |_,v| v }.keys
+    @repos = check_team_repos_ci.reject { |_, v| v }.keys
     return nil if @repos.empty?
 
-    template_file = TEMPLATE_DIR + "list_ci_issues.text.erb"
-    ERB.new(template_file.read, trim_mode: '-').result(binding).strip
+    template_file = Pathname.new("#{TEMPLATE_DIR}/list_ci_issues.text.erb")
+    ERB.new(template_file.read, trim_mode: "-").result(binding).strip
   end
 
-  def pr_date(pr)
-    pr[:marked_ready_for_review_at] || pr[:created]
+  def pr_date(pull_request)
+    pull_request[:marked_ready_for_review_at] || pull_request[:created]
   end
 
   def github_fetcher
@@ -128,8 +128,8 @@ private
         .map { |pr| pr.merge(pr_link: pr[:link], pr_title: pr[:title]) }.reverse
     end
 
-    template_file = TEMPLATE_DIR + "dependapanda.text.erb"
-    ERB.new(template_file.read, trim_mode: '-').result(binding).strip
+    template_file = Pathname.new("#{TEMPLATE_DIR}/dependapanda.text.erb")
+    ERB.new(template_file.read, trim_mode: "-").result(binding).strip
   end
 
   def comments(pull_request)
@@ -154,10 +154,10 @@ private
     end
   end
 
-  def present(pr, index)
+  def present(pull_request, index)
     @index = index
-    @pr = pr
-    @title = pr[:title]
+    @pr = pull_request
+    @title = pull_request[:title]
     @days = age_in_days(pr_date(@pr))
 
     @thumbs_up = if (@pr[:thumbs_up]).positive?
@@ -209,7 +209,7 @@ private
   end
 
   def render(template_name)
-    template_file = TEMPLATE_DIR + "#{apply_style(template_name)}.text.erb"
+    template_file = Pathname.new("#{TEMPLATE_DIR}/#{apply_style(template_name)}.text.erb")
     ERB.new(template_file.read).result(binding).strip
   end
 

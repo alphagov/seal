@@ -45,8 +45,8 @@ RSpec.configure do |config|
     Timecop.return
   end
 
-  config.before do 
-    allow($stdout).to receive(:puts) 
+  config.before do
+    allow($stdout).to receive(:puts)
   end
 
   # The settings below are suggested to provide a good initial experience

@@ -9,7 +9,7 @@ RSpec.describe Seal do
     Team.new(
       slack_channel: "#lions",
       quotes: ["go lions!"],
-      quotes_days: ["Monday", "tuesday", "Wednesday"],
+      quotes_days: %w[Monday tuesday Wednesday],
       morning_seal_quotes: true,
       seal_prs: true,
     )
@@ -24,7 +24,7 @@ RSpec.describe Seal do
     Team.new(
       slack_channel: "#cats",
       quotes: ["go cats!"],
-      quotes_days: ["yarn", "catnip", "nap", "scratches", "mischief"],
+      quotes_days: %w[yarn catnip nap scratches mischief],
       morning_seal_quotes: true,
       seal_prs: true,
     )
@@ -68,7 +68,7 @@ RSpec.describe Seal do
       let(:teams) { [lions, cats] }
 
       it "posts quotes if a quotes day" do
-        Timecop.freeze(Time.local(2023, 04, 24)) # Monday
+        Timecop.freeze(Time.local(2023, 0o4, 24)) # Monday
         expect(Message).to receive(:new).with("go lions!").and_return(message)
         expect(SlackPoster).to receive(:new).with(lions.channel, anything)
 
@@ -76,7 +76,7 @@ RSpec.describe Seal do
       end
 
       it "doesn't posts quotes if not a quotes day" do
-        Timecop.freeze(Time.local(2023, 04, 27)) # Thursday
+        Timecop.freeze(Time.local(2023, 0o4, 27)) # Thursday
         expect(Message).not_to receive(:new).with("go lions!")
         expect(SlackPoster).not_to receive(:new).with(lions.channel, anything)
 
@@ -91,7 +91,7 @@ RSpec.describe Seal do
       end
 
       it "posts quotes if day downcased" do
-        Timecop.freeze(Time.local(2023, 04, 25)) # Tuesday
+        Timecop.freeze(Time.local(2023, 0o4, 25)) # Tuesday
         expect(Message).to receive(:new).with("go lions!").and_return(message)
         expect(SlackPoster).to receive(:new).with(lions.channel, anything)
 

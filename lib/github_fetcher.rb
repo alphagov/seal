@@ -160,7 +160,7 @@ private
     snyk_string = "uses: alphagov/govuk-infrastructure/.github/workflows/snyk-security.yml@main"
 
     ci_file.include?(sca_string) && ci_file.include?(sast_string) && ci_file.include?(snyk_string)
-  rescue Octokit::NotFound => e
+  rescue Octokit::NotFound
     true # if a CI file is not present assume no scans are needed
   end
 end

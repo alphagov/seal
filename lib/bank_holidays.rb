@@ -8,9 +8,9 @@ class Date
       .then { JSON.parse _1 }
       .dig("england-and-wales", "events")
       .map { |e| Date.iso8601(e["date"]) }
-    rescue StandardError => e
-      puts "Error fetching bank holidays JSON: #{e.message}"
-      []
+  rescue StandardError => e
+    puts "Error fetching bank holidays JSON: #{e.message}"
+    []
   end
 
   def bank_holiday?
