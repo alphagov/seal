@@ -288,8 +288,6 @@ govuk-publishing-components:
   <<: *common_properties
   dependapanda: true
   seal_prs: true
-  repos:
-    - govuk_publishing_components
 
 govuk-publishing-experience-tech:
   channel: '#govuk-publishing-experience-tech'
