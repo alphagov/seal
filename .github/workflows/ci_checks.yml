@@ -3,7 +3,7 @@ name: "CI Checks"
 on:
   workflow_dispatch: {}
   schedule:
-    - cron:  '00 9 * * 1-5' # Runs at 9:00, Monday through Friday.
+    - cron:  '00 9 * * 1-5' # Runs at 9:00 UTC, Monday through Friday.
 
 env:
   SEAL_ORGANISATION: alphagov
@@ -25,21 +25,4 @@ jobs:
       - name: CI Checks
         id: ci_checks
         run: |
-          teams=(
-            ai-govuk
-            govuk-developers
-            govuk-frontenders
-            govuk-navigation-tech
-            govuk-platform-engineering
-            govuk-platform-security-reliability-team
-            govuk-publishing-experience-tech
-            govuk-publishing-mainstream-experience-tech
-            govuk-publishing-platform
-            govuk-search-improvement
-            tech-content-interactions-on-platform-govuk
-            dev-notifications-ai-govuk
-          )
-
-          for team in ${teams[*]} ; do
-            ./bin/seal_runner.rb $team ci
-          done
+          ./bin/seal_runner.rb ci

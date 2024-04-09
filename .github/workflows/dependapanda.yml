@@ -3,7 +3,7 @@ name: "Dependapanda"
 on:
   workflow_dispatch: {}
   schedule:
-    - cron:  '00 10 * * 1-5' # Runs at 10:00, Monday through Friday.
+    - cron:  '00 9 * * 1-5' # Runs at 9:00 UTC, Monday through Friday.
 
 env:
   SEAL_ORGANISATION: alphagov
@@ -25,22 +25,4 @@ jobs:
       - name: Dependapanda
         id: dependapanda
         run: |
-          teams=(
-            govuk-datagovuk
-            govuk-developers
-            govuk-forms
-            govuk-platform-security-reliability
-            govuk-publishing-components
-            govuk-publishing-experience
-            govuk-publishing-mainstream-experience
-            govuk-publishing-platform
-            govuk-platform-engineering
-            content-interactions-on-platform-govuk
-            navigation-and-homepage-govuk
-            ai-govuk
-          )
-
-          for team in ${teams[*]}; do
-            ./bin/seal_runner.rb $team dependapanda
-            sleep 60
-          done
+          ./bin/seal_runner.rb dependapanda

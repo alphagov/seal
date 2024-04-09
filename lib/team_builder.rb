@@ -18,9 +18,6 @@ class TeamBuilder
     else
       build_all_teams
     end
-  rescue StandardError => e
-    puts "Error building team(s): #{e.message}"
-    []
   end
 
 private
@@ -33,9 +30,7 @@ private
     if team.channel.nil?
       []
     else
-      if team.repos.empty?
-        (team.repos << govuk_team_repos(team.channel)).flatten!
-      end
+      (team.repos << govuk_team_repos(team.channel)).flatten! if team.repos.empty?
       [team]
     end
   rescue StandardError => e
@@ -44,15 +39,15 @@ private
   end
 
   def build_all_teams
-    static_config.map do |_, team_config|
+    static_config.map do |team_name, team_config|
       if team_config["repos"].nil?
         team_config["repos"] = govuk_team_repos(team_config["channel"])
+      elsif is_govuk_team?(team_name)
+        raise "#{team_name} is a GOV.UK team and shouldn't list repos in ./config/alphagov.yml"
       end
+      team_config["ci_checks"] = is_govuk_team?(team_name)
       Team.new(**apply_env(team_config))
     end
-  rescue StandardError => e
-    puts "Error building all teams: #{e.message}"
-    []
   end
 
   def apply_env(config)
@@ -60,6 +55,11 @@ private
       use_labels: env["GITHUB_USE_LABELS"] == "true" || config["use_labels"],
       quotes_days: env["GITHUB_QUOTES_DAYS"]&.split(",") || config["quotes_days"],
       security_alerts: env["GITHUB_SECURITY_ALERTS"] == "true" || config["security_alerts"],
+      morning_seal_quotes: env["MORNING_SEAL_QUOTES"] == "true" || config["morning_seal_quotes"],
+      seal_prs: env["SEAL_PRS"] == "true" || config["seal_prs"],
+      afternoon_seal_quotes: env["AFTERNOON_SEAL_QUOTES"] == "true" || config["afternoon_seal_quotes"],
+      dependapanda: env["DEPENDAPANDA"] == "true" || config["dependapanda"],
+      ci_checks: env["CI_CHECKS"] == "true" || config["ci_checks"],
       compact: env["COMPACT"] == "true" || config["compact"],
       exclude_labels: env["GITHUB_EXCLUDE_LABELS"]&.split(",") || config["exclude_labels"],
       exclude_titles: env["GITHUB_EXCLUDE_TITLES"]&.split(",") || config["exclude_titles"],
@@ -98,5 +98,9 @@ private
   rescue StandardError => e
     puts "Error fetching govuk team repos (#{team_channel}): #{e.message}"
     []
+  end
+
+  def is_govuk_team?(team)
+    @govuk_data.any? { | repo | repo["team"] == "##{team}"}
   end
 end
