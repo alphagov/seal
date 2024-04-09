@@ -141,12 +141,12 @@ DEPENDENCIES
   fakefs
   faraday-retry
   jsonlint
-  octokit (~> 8.1)
+  octokit
   pry-byebug
   rake
   rspec
   rubocop-govuk
-  slack-poster (~> 2.2.2)
+  slack-poster
   timecop
   webmock
 
