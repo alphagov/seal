@@ -40,15 +40,15 @@ RSpec.describe TeamBuilder do
                      "This is a quote",
                      "This is also a quote",
                    ],
-                   "quotes_days" => [
-                      "Monday",
-                      "Tuesday",
-                      "Wednesday",
-                      "Thursday",
-                      "Friday",
-                    ],
-                   "repos" => [
-                     "Africa"
+                   "quotes_days" => %w[
+                     Monday
+                     Tuesday
+                     Wednesday
+                     Thursday
+                     Friday
+                   ],
+                   "repos" => %w[
+                     Africa
                    ],
                  },
                  "tigers" => {
@@ -65,8 +65,8 @@ RSpec.describe TeamBuilder do
                  },
                  "govuk-generic-team" => {
                    "channel" => "#govuk-generic-team",
-                   "repos" => [
-                     "generic-repo"
+                   "repos" => %w[
+                     generic-repo
                    ],
                  },
                ))

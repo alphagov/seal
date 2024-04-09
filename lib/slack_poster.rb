@@ -1,5 +1,5 @@
 class SlackPoster
-  attr_accessor :webhook_url, :poster, :mood, :mood_hash, :channel, :season_name
+  attr_accessor :webhook_url, :poster, :mood, :season_name
 
   def initialize(team_channel, mood)
     @webhook_url = ENV["SLACK_WEBHOOK"]
@@ -48,28 +48,29 @@ private
   end
 
   def assign_poster_settings
-    @mood_hash[:icon_emoji], @mood_hash[:username] = case @mood
-    when "panda"
-      [":panda_face:", "Dependapanda"]
-    when "informative"
-      [":#{@season_symbol}informative_seal:", "#{@season_name}Informative Seal"]
-    when "approval"
-      [":#{@season_symbol}seal_of_approval:", "#{@season_name}Seal of Approval"]
-    when "angry"
-      [":#{@season_symbol}angrier_seal:", "#{@season_name}Angry Seal"]
-    when "robot_face"
-      [":robot_face:", "Angry CI Robot"]
-    when "tea"
-      [":manatea:", "Tea Seal"]
-    when "charter"
-      [":happyseal:", "Team Charter Seal"]
-    when "fun-workstream"
-      [":wholesome-seal:", "It's ok Seal"]
-    when "govuk-green-team"
-      [":happybabyseal:", "Elephant Seal"]
-    else
-      raise "Bad mood: #{mood}."
-    end
+    @mood_hash[:icon_emoji], @mood_hash[:username] =
+      case @mood
+      when "panda"
+        [":panda_face:", "Dependapanda"]
+      when "informative"
+        [":#{@season_symbol}informative_seal:", "#{@season_name}Informative Seal"]
+      when "approval"
+        [":#{@season_symbol}seal_of_approval:", "#{@season_name}Seal of Approval"]
+      when "angry"
+        [":#{@season_symbol}angrier_seal:", "#{@season_name}Angry Seal"]
+      when "robot_face"
+        [":robot_face:", "Angry CI Robot"]
+      when "tea"
+        [":manatea:", "Tea Seal"]
+      when "charter"
+        [":happyseal:", "Team Charter Seal"]
+      when "fun-workstream"
+        [":wholesome-seal:", "It's ok Seal"]
+      when "govuk-green-team"
+        [":happybabyseal:", "Elephant Seal"]
+      else
+        raise "Bad mood: #{mood}."
+      end
   end
 
   def check_season

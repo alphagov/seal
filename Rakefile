@@ -17,7 +17,16 @@ rescue LoadError
   # no jsonlint available
 end
 
+begin
+  require "rubocop/rake_task"
+
+  RuboCop::RakeTask.new
+rescue LoadError
+  # no rubocop available
+end
+
 task default: %i[
   jsonlint
+  rubocop
   spec
 ]

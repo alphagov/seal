@@ -47,11 +47,11 @@ private
   rescue StandardError => e
     puts "Error barking at team '#{team.name}': #{e.message}"
   end
-  
+
   def send_quotes_message(team, mode)
     today_is_quote_day = team.quotes_days.map(&:downcase).include?(Date.today.strftime("%A").downcase)
-    team_has_enabled_this_mode = team.public_send("#{mode}")
-    
+    team_has_enabled_this_mode = team.public_send(mode.to_s)
+
     Message.new(team.quotes.sample) if today_is_quote_day && team_has_enabled_this_mode
   end
 end
