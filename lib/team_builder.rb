@@ -46,6 +46,7 @@ private
         raise "#{team_name} is a GOV.UK team and shouldn't list repos in ./config/alphagov.yml"
       end
       team_config["ci_checks"] = is_govuk_team?(team_name)
+      team_config["gems"] = is_govuk_team?(team_name)
       Team.new(**apply_env(team_config))
     end
   end
@@ -60,6 +61,7 @@ private
       afternoon_seal_quotes: env["AFTERNOON_SEAL_QUOTES"] == "true" || config["afternoon_seal_quotes"],
       dependapanda: env["DEPENDAPANDA"] == "true" || config["dependapanda"],
       ci_checks: env["CI_CHECKS"] == "true" || config["ci_checks"],
+      gems: env["GEMS"] == "true" || config["gems"],
       compact: env["COMPACT"] == "true" || config["compact"],
       exclude_labels: env["GITHUB_EXCLUDE_LABELS"]&.split(",") || config["exclude_labels"],
       exclude_titles: env["GITHUB_EXCLUDE_TITLES"]&.split(",") || config["exclude_titles"],

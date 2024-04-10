@@ -7,6 +7,7 @@ class Team
     afternoon_seal_quotes: nil,
     dependapanda: nil,
     ci_checks: nil,
+    gems: nil,
     compact: nil,
     exclude_labels: nil,
     exclude_titles: nil,
@@ -22,6 +23,7 @@ class Team
     @afternoon_seal_quotes = (afternoon_seal_quotes.nil? ? false : afternoon_seal_quotes)
     @dependapanda = (dependapanda.nil? ? false : dependapanda)
     @ci_checks = (ci_checks.nil? ? false : ci_checks)
+    @gems = (gems.nil? ? false : gems)
     @compact = (compact.nil? ? false : compact)
     @quotes_days = quotes_days || []
     @exclude_labels = exclude_labels || []
@@ -40,6 +42,7 @@ class Team
     afternoon_seal_quotes
     dependapanda
     ci_checks
+    gems
     compact
     exclude_labels
     exclude_titles

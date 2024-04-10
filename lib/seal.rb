@@ -38,6 +38,8 @@ private
                 MessageBuilder.new(team, :ci).build if team.ci_checks
               when "seal_prs"
                 MessageBuilder.new(team, :seal).build if team.seal_prs
+              when "gems"
+                MessageBuilder.new(team, :gems).build if team.gems
               end
 
     return if message.nil? || message.text.nil?

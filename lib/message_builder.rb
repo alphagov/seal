@@ -1,4 +1,5 @@
 require "pathname"
+require_relative "gem_version_checker"
 require_relative "github_fetcher"
 require_relative "message"
 
@@ -18,6 +19,8 @@ class MessageBuilder
       build_dependapanda_message
     when :ci
       build_ci_message
+    when :gems
+      build_gems_message
     else
       build_regular_message
     end
@@ -55,6 +58,33 @@ private
 
   def build_ci_message
     Message.new(ci_message, mood: "robot_face")
+  end
+
+  def build_gems_message
+    Message.new(gems_message, mood: "gem")
+  end
+
+  def gems_message
+    @alerts = all_govuk_gems.select { |gem| gem["team"] == team.channel }.map { |gem|
+      alert = GemVersionChecker.new.detect_version_discrepancies(gem["app_name"])
+      "<#{gem['links']['repo_url']}|#{gem['app_name']}> has unreleased changes since v#{alert}" if alert
+    }.compact
+
+    template_file = Pathname.new("#{TEMPLATE_DIR}/gem_alerts.text.erb")
+    ERB.new(template_file.read, trim_mode: "-").result(binding).strip
+  end
+
+  def all_govuk_gems
+    @all_govuk_gems ||= fetch_gems
+  end
+
+  def fetch_gems
+    res = Net::HTTP.get_response(URI("https://docs.publishing.service.gov.uk/gems.json"))
+
+    JSON.parse(res.body)
+  rescue StandardError => e
+    puts "Error fetching gems: #{e.message}"
+    []
   end
 
   def ci_message
