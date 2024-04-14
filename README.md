@@ -2,7 +2,7 @@
 
 ## What is it?
 
-This is a Slack bot that publishes a team's pull requests, Dependabot updates, security alerts, and inspirational quotes to their Slack Channel.
+It is a Slack bot that publishes a team's pull requests, Dependabot updates, security alerts, and inspirational quotes to their Slack Channel.
 
 ![image](https://github.com/alphagov/seal/blob/main/images/readme/informative.png)
 ![image](https://github.com/alphagov/seal/blob/main/images/readme/angry.png)
