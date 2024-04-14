@@ -1,6 +1,5 @@
 # Seal
 
-## What is it?
 
 This is a Slack bot that publishes a team's pull requests, Dependabot updates, security alerts, and inspirational quotes to their Slack Channel.
 
