@@ -17,6 +17,8 @@
 #
 require "timecop"
 require "pry-byebug"
+require "simplecov"
+SimpleCov.start
 
 ENV["SEAL_ORGANISATION"] ||= "alphagov"
 

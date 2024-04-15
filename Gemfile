@@ -13,6 +13,7 @@ group :test do
   gem "pry-byebug"
   gem "rake"
   gem "rspec"
+  gem "simplecov", require: false
   gem "timecop"
   gem "webmock"
 end
