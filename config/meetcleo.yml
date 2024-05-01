@@ -13,6 +13,7 @@ payments_infrastructure:
 
   include_repos:
     - meetcleo
+    - mobile-app
 
   github_team: "payments-infrastructure-be"
 
@@ -55,6 +56,7 @@ github_bots:
 
   include_repos:
     - meetcleo
+    - mobile-app
 
   members:
     - "dependabot[bot]"
@@ -97,6 +99,7 @@ cash_advance_1:
 
   include_repos:
     - meetcleo
+    - mobile-app
 
   github_team: "cash-advance-1"
 
@@ -153,6 +156,7 @@ card_2:
 
   include_repos:
     - meetcleo
+    - mobile-app
 
   github_team: "card-2"
 
