@@ -105,6 +105,27 @@ cash_advance_1:
 
   channel: "#squad-cash_advance_1-dev"
 
+plus:
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+
+  use_labels: true
+
+  include_repos:
+    - meetcleo
+    - mobile-app
+
+  github_team: "plus"
+
+  channel: "#squad-cleo_plus-dev"
+
 seal_team:
   exclude_titles:
     - "WIP"
