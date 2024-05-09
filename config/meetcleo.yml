@@ -84,27 +84,6 @@ data:
 
   channel: "#collab-dbt-code-review"
 
-cash_advance_1:
-  exclude_titles:
-    - "WIP"
-    - "[WIP]"
-    - "DO NOT MERGE"
-    - "[DO NOT MERGE]"
-
-  exclude_labels:
-    - "Waiting on copy"
-    - "Do Not Merge"
-
-  use_labels: true
-
-  include_repos:
-    - meetcleo
-    - mobile-app
-
-  github_team: "cash-advance-1"
-
-  channel: "#squad-cash_advance_1-dev"
-
 plus:
   exclude_titles:
     - "WIP"
@@ -146,22 +125,20 @@ seal_team:
 
   channel: "#proj-seal_bot"
 
-pricing_and_lending:
-  exclude_titles:
-    - "WIP"
-    - "[WIP]"
-
-  exclude_labels:
-    - "Do Not Merge"
+cash_advance:
+  # Working on the assumption that PRs we don't want to merge should be
+  # converted to Draft PRs instead of relying on labels and titles.
+  exclude_titles: []
+  exclude_labels: []
 
   use_labels: true
 
   include_repos:
     - meetcleo
+    - mobile-app
 
-  github_team: "pricing-and-lending-be"
-
-  channel: "#squad-pricing_and_lending-devs"
+  github_team: "cash-advance"
+  channel: "#squad-cash_advance-devs"
 
 card_2:
   exclude_titles:
