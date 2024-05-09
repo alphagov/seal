@@ -4,10 +4,9 @@ teams=(
   github_bots
   payments_infrastructure
   data
-  cash_advance_1
+  cash_advance
   seal_team
   security_alerts
-  pricing_and_lending
   card_2
   plus
 )
