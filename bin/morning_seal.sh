@@ -9,6 +9,7 @@ teams=(
   security_alerts
   pricing_and_lending
   card_2
+  plus
 )
 
 for team in ${teams[*]}; do
