@@ -5,6 +5,7 @@ teams=(
   payments_infrastructure
   data
   cash_advance
+  pricing_and_lending
   seal_team
   security_alerts
   card_2
