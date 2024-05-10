@@ -103,7 +103,7 @@ plus:
 
   github_team: "plus"
 
-  channel: "#squad-cleo_plus-dev"
+  channel: "#squad-plus_subscription-dev"
 
 seal_team:
   exclude_titles:
