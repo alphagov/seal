@@ -1,7 +1,6 @@
 name: CI
 on: [push, pull_request]
 jobs:
-
   codeql-sast:
     name: CodeQL SAST scan
     uses: alphagov/govuk-infrastructure/.github/workflows/codeql-analysis.yml@main
@@ -11,15 +10,6 @@ jobs:
   dependency-review:
     name: Dependency Review scan
     uses: alphagov/govuk-infrastructure/.github/workflows/dependency-review.yml@main
-
-  snyk-security:
-    name: SNYK security analysis
-    uses: alphagov/govuk-infrastructure/.github/workflows/snyk-security.yml@main
-    secrets: inherit
-    permissions:
-     contents: read
-     security-events: write
-     actions: read
 
   test:
     runs-on: ubuntu-latest
