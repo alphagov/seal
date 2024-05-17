@@ -7,7 +7,8 @@ teams=(
   cash_advance
   pricing_and_lending
   seal_team
-  security_alerts
+  security_alerts_web_and_be
+  security_alerts_app
   card_2
   plus
 )
