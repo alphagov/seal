@@ -19,7 +19,7 @@ payments_infrastructure:
 
   channel: "#squad-payments_infrastructure-devs"
 
-security_alerts:
+security_alerts_web_and_be:
   exclude_titles:
     - "WIP"
     - "[WIP]"
@@ -40,6 +40,28 @@ security_alerts:
     - "dependabot[bot]"
 
   channel: "#alerts-first_responders"
+
+security_alerts_app:
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Waiting on copy"
+    - "Do Not Merge"
+    - "maintenance-upgrade"
+
+  use_labels: true
+
+  include_repos:
+    - moblie-app
+
+  members:
+    - "dependabot[bot]"
+
+  channel: "#collab-frontend-first-responders"
 
 github_bots:
   exclude_titles:
