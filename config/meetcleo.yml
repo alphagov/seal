@@ -56,7 +56,7 @@ security_alerts_app:
   use_labels: true
 
   include_repos:
-    - moblie-app
+    - mobile-app
 
   members:
     - "dependabot[bot]"
