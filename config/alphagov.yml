@@ -41,8 +41,8 @@ ai-govuk:
     - Monday
     - Friday
 
-tech-content-interactions-on-platform-govuk:
-  channel: '#tech-content-interactions-on-platform-govuk'
+govuk-patterns-and-pages:
+  channel: '#govuk-patterns-and-pages'
   compact: true
   <<: *common_properties
   dependapanda: true
