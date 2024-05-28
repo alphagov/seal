@@ -253,6 +253,7 @@ govuk-pay:
     - pay-toolbox
     - pay-webhooks
     - pkl-concourse-pipeline
+    - pool-resource
 
 govuk-platform-engineering:
   channel: '#govuk-platform-engineering'
