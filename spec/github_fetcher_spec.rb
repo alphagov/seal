@@ -281,7 +281,7 @@ RSpec.describe GithubFetcher do
 
   describe "CI checks" do
     let(:bad_ci_file) { double(Sawyer::Resource, content: "rubbish") }
-    let(:good_ci_file) { double(Sawyer::Resource, content: "dXNlczogYWxwaGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93\nb3JrZmxvd3MvZGVwZW5kZW5jeS1yZXZpZXcueW1sQG1haW4KdXNlczogYWxw\naGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93b3JrZmxvd3Mv\nY29kZXFsLWFuYWx5c2lzLnltbEBtYWluCnVzZXM6IGFscGhhZ292L2dvdnVr\nLWluZnJhc3RydWN0dXJlLy5naXRodWIvd29ya2Zsb3dzL2JyYWtlbWFuLnlt\nbEBtYWlu\n") }
+    let(:good_ci_file) { double(Sawyer::Resource, content: "dXNlczogYWxwaGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93\nb3JrZmxvd3MvZGVwZW5kZW5jeS1yZXZpZXcueW1sQG1haW4KdXNlczogYWxw\naGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93b3JrZmxvd3Mv\nY29kZXFsLWFuYWx5c2lzLnltbEBtYWluCg==\n") }
     let(:use_labels) { false }
     let(:repos) { %w[repo1] }
 
