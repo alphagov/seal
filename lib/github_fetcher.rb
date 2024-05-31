@@ -157,9 +157,8 @@ private
     ci_file = Base64.decode64(github.contents("#{organisation}/#{repo}", path: ".github/workflows/ci.yml").content)
     sca_string = "uses: alphagov/govuk-infrastructure/.github/workflows/dependency-review.yml@main"
     sast_string = "uses: alphagov/govuk-infrastructure/.github/workflows/codeql-analysis.yml@main"
-    brakeman_string = "uses: alphagov/govuk-infrastructure/.github/workflows/brakeman.yml@main"
 
-    ci_file.include?(sca_string) && ci_file.include?(sast_string) && ci_file.include?(brakeman_string)
+    ci_file.include?(sca_string) && ci_file.include?(sast_string)
   rescue Octokit::NotFound
     true # if a CI file is not present assume no scans are needed
   end
