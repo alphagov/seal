@@ -39,7 +39,7 @@ class GithubFetcher
   end
 
   def check_team_repos_ci
-    repos.each_with_object({}) { |repo, sca_sast_enabled| sca_sast_enabled[repo] = has_sca_sast_scans?(repo) }
+    repos.each_with_object({}) { |repo, scans_enabled| scans_enabled[repo] = has_required_scans?(repo) }
   end
 
   def security_alerts_count
@@ -151,15 +151,38 @@ private
     YAML.load_file(File.join(File.dirname(__FILE__), "../ignored_ci_repos.yml"))
   end
 
-  def has_sca_sast_scans?(repo)
+  def rails_app?(repo)
+    gemfile = github.contents("#{organisation}/#{repo}", path: "Gemfile")
+    Base64.decode64(gemfile.content).include?("\ngem \"rails\"")
+  rescue Octokit::NotFound
+    false
+  end
+
+  def fetch_ci_file_content(repo)
+    Base64.decode64(github.contents("#{organisation}/#{repo}", path: ".github/workflows/ci.yml").content)
+  rescue Octokit::NotFound
+    nil
+  end
+
+  def has_required_scans?(repo)
     return true if ignored_ci_repos.include?(repo)
 
-    ci_file = Base64.decode64(github.contents("#{organisation}/#{repo}", path: ".github/workflows/ci.yml").content)
-    sca_string = "uses: alphagov/govuk-infrastructure/.github/workflows/dependency-review.yml@main"
-    sast_string = "uses: alphagov/govuk-infrastructure/.github/workflows/codeql-analysis.yml@main"
+    ci_file = fetch_ci_file_content(repo)
+    return true if ci_file.nil? # if a CI file is not present assume no scans are needed
 
-    ci_file.include?(sca_string) && ci_file.include?(sast_string)
-  rescue Octokit::NotFound
-    true # if a CI file is not present assume no scans are needed
+    scans_needed = rails_app?(repo) ? %i[sca sast brakeman] : %i[sca sast]
+    scans_needed.all? { |scan_type| has_scan?(ci_file, scan_type) }
+  end
+
+  def has_scan?(ci_file, scan_type)
+    case scan_type
+    when :sca
+      ci_file.include?("uses: alphagov/govuk-infrastructure/.github/workflows/dependency-review.yml@main")
+    when :sast
+      ci_file.include?("uses: alphagov/govuk-infrastructure/.github/workflows/codeql-analysis.yml@main")
+    when :brakeman
+      ci_file.include?("uses: alphagov/govuk-infrastructure/.github/workflows/brakeman.yml@main") ||
+        ci_file.include?("bundle exec brakeman")
+    end
   end
 end
