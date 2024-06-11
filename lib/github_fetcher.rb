@@ -153,13 +153,13 @@ private
 
   def rails_app?(repo)
     gemfile = github.contents("#{organisation}/#{repo}", path: "Gemfile")
-    Base64.decode64(gemfile.content).include?("\ngem \"rails\"")
+    gemfile.content.unpack1("m").include?("\ngem \"rails\"")
   rescue Octokit::NotFound
     false
   end
 
   def fetch_ci_file_content(repo)
-    Base64.decode64(github.contents("#{organisation}/#{repo}", path: ".github/workflows/ci.yml").content)
+    github.contents("#{organisation}/#{repo}", path: ".github/workflows/ci.yml").content.unpack1("m")
   rescue Octokit::NotFound
     nil
   end
