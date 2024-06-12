@@ -1,5 +1,6 @@
 - govuk-developer-docs
 - govuk-dns-tf
+- govuk-dns-ui              # Private repo
 - govuk-docker
 - govuk-exporter
 - govuk-helm-charts
@@ -7,7 +8,6 @@
 - govuk-pact-broker
 - govuk-replatform-test-app
 - govuk-rota-announcer
-- govuk-secrets
 - govuk-user-reviewer
 - router
 - rubocop-govuk
