@@ -1,13 +1,12 @@
 - govuk-developer-docs
-- govuk-dns-tf
+- govuk-dns-tf              # Private repo, no IaC scanning
 - govuk-dns-ui              # Private repo
-- govuk-docker
+- govuk-docker              # Used for local development, no container scanning
 - govuk-exporter
-- govuk-helm-charts
+- govuk-helm-charts         # No IaC scanning
 - govuk-mirror
-- govuk-pact-broker
+- govuk-pact-broker         # No container scanning
 - govuk-replatform-test-app
-- govuk-rota-announcer
-- govuk-user-reviewer
+- govuk-rota-announcer      # Private repo (contains PII)
+- govuk-user-reviewer       # Private repo (contains PII)
 - router
-- rubocop-govuk
