@@ -10,7 +10,7 @@ teams=(
   security_alerts_web_and_be
   security_alerts_app
   card_2
-  plus
+  plus_subscription
 )
 
 for team in ${teams[*]}; do

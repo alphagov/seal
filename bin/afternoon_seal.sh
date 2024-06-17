@@ -2,6 +2,7 @@
 
 teams=(
   cash_advance
+  plus_subscription
 )
 
 for team in ${teams[*]} ; do
