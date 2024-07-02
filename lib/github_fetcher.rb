@@ -158,8 +158,17 @@ private
     false
   end
 
-  def fetch_ci_file_content(repo)
-    github.contents("#{organisation}/#{repo}", path: ".github/workflows/ci.yml").content.unpack1("m")
+  def fetch_workflows(repo)
+    ci_yml = fetch_file_content(repo, ".github/workflows/ci.yml")
+    security_yml = fetch_file_content(repo, ".github/workflows/security.yml")
+
+    return nil if ci_yml.nil? && security_yml.nil?
+
+    { ci: ci_yml, security: security_yml }
+  end
+
+  def fetch_file_content(repo, path)
+    github.contents("#{organisation}/#{repo}", path:).content.unpack1("m")
   rescue Octokit::NotFound
     nil
   end
@@ -167,22 +176,26 @@ private
   def has_required_scans?(repo)
     return true if ignored_ci_repos.include?(repo)
 
-    ci_file = fetch_ci_file_content(repo)
-    return true if ci_file.nil? # if a CI file is not present assume no scans are needed
+    workflows = fetch_workflows(repo)
+    return true if workflows.nil? # if workflows are not present assume no scans are needed
 
     scans_needed = rails_app?(repo) ? %i[sca sast brakeman] : %i[sca sast]
-    scans_needed.all? { |scan_type| has_scan?(ci_file, scan_type) }
+    scans_needed.all? do |scan_type|
+      workflows.values.any? { |workflow| has_scan?(workflow, scan_type) }
+    end
   end
 
-  def has_scan?(ci_file, scan_type)
+  def has_scan?(workflow, scan_type)
+    return false if workflow.nil?
+
     case scan_type
     when :sca
-      ci_file.include?("uses: alphagov/govuk-infrastructure/.github/workflows/dependency-review.yml@main")
+      workflow.include?("uses: alphagov/govuk-infrastructure/.github/workflows/dependency-review.yml@main")
     when :sast
-      ci_file.include?("uses: alphagov/govuk-infrastructure/.github/workflows/codeql-analysis.yml@main")
+      workflow.include?("uses: alphagov/govuk-infrastructure/.github/workflows/codeql-analysis.yml@main")
     when :brakeman
-      ci_file.include?("uses: alphagov/govuk-infrastructure/.github/workflows/brakeman.yml@main") ||
-        ci_file.include?("bundle exec brakeman")
+      workflow.include?("uses: alphagov/govuk-infrastructure/.github/workflows/brakeman.yml@main") ||
+        workflow.include?("bundle exec brakeman")
     end
   end
 end
