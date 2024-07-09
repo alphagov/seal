@@ -279,32 +279,36 @@ RSpec.describe GithubFetcher do
     end
   end
 
-  describe "CI checks" do
-    let(:bad_ci_file) { double(Sawyer::Resource, content: "rubbish") }
-    let(:good_ci_file) { double(Sawyer::Resource, content: "dXNlczogYWxwaGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93\nb3JrZmxvd3MvZGVwZW5kZW5jeS1yZXZpZXcueW1sQG1haW4KdXNlczogYWxw\naGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93b3JrZmxvd3Mv\nY29kZXFsLWFuYWx5c2lzLnltbEBtYWluCnVzZXM6IGFscGhhZ292L2dvdnVr\nLWluZnJhc3RydWN0dXJlLy5naXRodWIvd29ya2Zsb3dzL2JyYWtlbWFuLnlt\nbEBtYWlu\n") }
-    let(:use_labels) { false }
+  describe "Workflow checks" do
+    let(:bad_workflow_content) { "rubbish" }
+    let(:good_workflow_content) { "dXNlczogYWxwaGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93\nb3JrZmxvd3MvZGVwZW5kZW5jeS1yZXZpZXcueW1sQG1haW4KdXNlczogYWxw\naGFnb3YvZ292dWstaW5mcmFzdHJ1Y3R1cmUvLmdpdGh1Yi93b3JrZmxvd3Mv\nY29kZXFsLWFuYWx5c2lzLnltbEBtYWluCnVzZXM6IGFscGhhZ292L2dvdnVr\nLWluZnJhc3R1Y3R1cmUvLmdpdGh1Yi93b3JrZmxvd3MvYnJha2VtYW4ueW1s\nQG1haW4\n".unpack1("m") }
     let(:repos) { %w[repo1] }
+    let(:use_labels) { false }
 
-    context "when ci file exists and checks are present" do
+    before do
+      allow(github_fetcher).to receive(:ignored_ci_repos).and_return([])
+      allow(github_fetcher).to receive(:rails_app?).with("repo1").and_return(false)
+    end
+
+    context "when workflow file exists and checks are present" do
       it "returns true" do
-        allow(fake_octokit_client).to receive(:contents).and_return(good_ci_file)
+        allow(github_fetcher).to receive(:fetch_workflows).with("repo1").and_return({ ci: good_workflow_content, security: nil })
 
         expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => true })
       end
     end
 
-    context "when ci file exists and checks are not present" do
+    context "when workflow file exists and checks are not present" do
       it "returns false" do
-        allow(fake_octokit_client).to receive(:contents).and_return(bad_ci_file)
+        allow(github_fetcher).to receive(:fetch_workflows).with("repo1").and_return({ ci: bad_workflow_content, security: nil })
 
         expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => false })
       end
     end
 
-    context "when ci file does not exist" do
+    context "when neither ci file nor security file exist" do
       it "returns true" do
-        allow(fake_octokit_client).to receive(:contents)
-          .and_raise(Octokit::NotFound.new)
+        allow(github_fetcher).to receive(:fetch_workflows).with("repo1").and_return(nil)
 
         expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => true })
       end
@@ -315,6 +319,20 @@ RSpec.describe GithubFetcher do
         allow(github_fetcher).to receive(:ignored_ci_repos).and_return(%w[repo1])
 
         expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => true })
+      end
+    end
+
+    context "when ci and security files exist and checks are mixed" do
+      it "returns true if any file contains required checks" do
+        allow(github_fetcher).to receive(:fetch_workflows).with("repo1").and_return({ ci: bad_workflow_content, security: good_workflow_content })
+
+        expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => true })
+      end
+
+      it "returns false if no file contains required checks" do
+        allow(github_fetcher).to receive(:fetch_workflows).with("repo1").and_return({ ci: bad_workflow_content, security: bad_workflow_content })
+
+        expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => false })
       end
     end
   end
