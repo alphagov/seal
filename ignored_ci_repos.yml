@@ -1,4 +1,3 @@
-- govuk-developer-docs
 - govuk-dns-tf              # Private repo, no IaC scanning
 - govuk-dns-ui              # Private repo
 - govuk-docker              # Used for local development, no container scanning
