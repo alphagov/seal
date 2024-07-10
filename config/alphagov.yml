@@ -290,8 +290,8 @@ govuk-publishing-components:
   dependapanda: true
   seal_prs: true
 
-govuk-publishing-experience-tech:
-  channel: '#govuk-publishing-experience-tech'
+govuk-whitehall-experience-tech:
+  channel: '#govuk-whitehall-experience-tech'
   compact: true
   <<: *common_properties
   dependapanda: true
