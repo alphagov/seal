@@ -220,6 +220,7 @@ govuk-pay:
     - '[DRAFT]'
     - WIP
   repos:
+    - cron-resource
     - gds-apple-developer-account-governance
     - paas-grafana-annotation-resource
     - pay-adot
