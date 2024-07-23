@@ -35,7 +35,7 @@ class MessageBuilder
       {
         icon_emoji: ":sad-seal:",
         username: "Seal error",
-        channel: "#govuk-platform-security-reliability-team",
+        channel: "#govuk-platform-support",
       }
 
     poster = Slack::Poster.new(ENV["SLACK_WEBHOOK"].to_s, slack_options)

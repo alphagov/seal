@@ -263,28 +263,6 @@ govuk-platform-engineering:
   dependapanda: true
   seal_prs: true
 
-govuk-platform-security-reliability-team:
-  channel: '#govuk-platform-security-reliability-team'
-  compact: true
-  <<: *common_properties
-  afternoon_seal_quotes: true
-  dependapanda: true
-  seal_prs: true
-  quotes:
-    - When picking up a new card, ask if anyone would like to work on it with you.
-    - Stuck on something? Don't be afraid to ask for help or ask if anyone is free to pair.
-    - Have you paired at all this week? Pairing is a great way of upskilling others - let's do more of it!
-    - Be ready and willing to pair on work
-    - Slack as primary point of contact; email for things you want to remember
-    - Assume everyone is trying to do the right thing
-    - Look out for each other
-    - Make sure every meeting has a purpose and objective and explains who is required
-    - Keep stand up updates as short as possible
-    - Make sure anyone who wants to be involved in a decision has the opportunity to be
-    - Try with each bit of work to upskill others
-    - It's okay to spend some time understanding the thing(s) before implementing the solution
-    - It's OK to pick up and work on something you don't understand yet
-
 govuk-publishing-components:
   channel: '#govuk-publishing-components'
   <<: *common_properties
