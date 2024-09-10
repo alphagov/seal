@@ -11,6 +11,7 @@ teams=(
   security_alerts_app
   card_2
   plus_subscription
+  ufu
 )
 
 for team in ${teams[*]}; do
