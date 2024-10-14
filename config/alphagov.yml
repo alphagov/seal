@@ -48,17 +48,10 @@ govuk-patterns-and-pages:
   dependapanda: true
   seal_prs: true
 
-data-infrastructure:
-  channel: '#data-infrastructure'
+data-engineering:
+  channel: '#data-engineering'
   <<: *common_properties
-
-data-insights:
-  channel: '#data-insights'
-  <<: *common_properties
-
-data-products:
-  channel: '#data-products'
-  <<: *common_properties
+  dependapanda: true
 
 di-authentication:
   channel: '#di-authentication-notifications'
