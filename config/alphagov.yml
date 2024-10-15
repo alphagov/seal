@@ -239,6 +239,7 @@ govuk-pay:
     - pay-products-ui
     - pay-publicapi
     - pay-publicauth
+    - pay-run-amock
     - pay-selfservice
     - pay-set-up-pre-commit
     - pay-smoke-tests
