@@ -278,7 +278,7 @@ govuk-publishing-mainstream-experience-tech:
   seal_prs: true
 
 govuk-publishing-platform:
-  channel: '#govuk-publishing-platform'
+  channel: '#govuk-publishing-platform-system-alerts'
   compact: true
   <<: *common_properties
   dependapanda: true
