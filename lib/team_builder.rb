@@ -103,6 +103,6 @@ private
   end
 
   def is_govuk_team?(team)
-    @govuk_data.any? { |repo| repo["team"] == "##{team}" }
+    @govuk_data.any? { |repo| repo["alerts_team"] == "##{team}" }
   end
 end
