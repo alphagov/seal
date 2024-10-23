@@ -11,11 +11,11 @@ RSpec.describe TeamBuilder do
   let(:uri) { URI("https://docs.publishing.service.gov.uk/repos.json") }
 
   let(:repos) do
-    [{ "app_name" => "Brazil", "team" => "#govuk-jaguars" },
-     { "app_name" => "rainforest", "team" => "#govuk-wildcats-team" },
-     { "app_name" => "savanna", "team" => "#govuk-wildcats-team" },
-     { "app_name" => "grassland", "team" => "#govuk-wildcats-team" },
-     { "app_name" => "generic-repo", "team" => "govuk-generic-team" }]
+    [{ "app_name" => "Brazil", "alerts_team" => "#govuk-jaguars" },
+     { "app_name" => "rainforest", "alerts_team" => "#govuk-wildcats-team" },
+     { "app_name" => "savanna", "alerts_team" => "#govuk-wildcats-team" },
+     { "app_name" => "grassland", "alerts_team" => "#govuk-wildcats-team" },
+     { "app_name" => "generic-repo", "alerts_team" => "govuk-generic-team" }]
   end
 
   before do
