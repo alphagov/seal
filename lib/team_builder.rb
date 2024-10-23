@@ -96,7 +96,7 @@ private
   end
 
   def govuk_team_repos(team_channel)
-    @govuk_data.select { |repos| repos["team"] == team_channel }.map { |repo| repo["app_name"] }
+    @govuk_data.select { |repos| repos["alerts_team"] == team_channel }.map { |repo| repo["app_name"] }
   rescue StandardError => e
     puts "Error fetching govuk team repos (#{team_channel}): #{e.message}"
     []
