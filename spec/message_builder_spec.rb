@@ -4,12 +4,13 @@ require "./lib/message_builder"
 RSpec.describe MessageBuilder do
   let(:security_alerts) { false }
   let(:security_alerts_count) { 0 }
+  let(:critical_security_alerts_count) { 0 }
   let(:github_api_errors) { 0 }
   let(:repos) { %w[repo1 repo2] }
   let(:team) { double(:team, security_alerts:, compact: false, dependabot_prs_only:, repos:) }
   let(:pull_requests) { [] }
   let(:dependabot_prs_only) { false }
-  let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests, security_alerts_count:, github_api_errors:) }
+  let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests, security_alerts_count:, critical_security_alerts_count:, github_api_errors:) }
   let(:animal) { :seal }
   subject(:message_builder) { MessageBuilder.new(team, animal) }
 
@@ -317,6 +318,61 @@ RSpec.describe MessageBuilder do
       it "shows a warning if there are API errors" do
         expect(message_builder.build.text).to include(":warning: 2 errors fetching security alerts.")
         expect(message_builder.build.text).to include("1 security alert")
+      end
+    end
+
+    context "security_alerts=True, critical_security_alerts_count=0, dependabot PRs present" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 1 }
+      let(:critical_security_alerts_count) { 0 }
+      let(:pull_requests) { dependabot_pull_requests }
+
+      it "posts a message with security info" do
+        expect(message_builder.build.text).to include("It is not critical.")
+      end
+    end
+
+    context "security_alerts=True, critical_security_alerts_count=1, dependabot PRs present" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 1 }
+      let(:critical_security_alerts_count) { 1 }
+      let(:pull_requests) { dependabot_pull_requests }
+
+      it "posts a message with security info" do
+        expect(message_builder.build.text).to include("It is critical.")
+      end
+    end
+
+    context "security_alerts=True, critical_security_alerts_count=0, dependabot PRs present" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 2 }
+      let(:critical_security_alerts_count) { 0 }
+      let(:pull_requests) { dependabot_pull_requests }
+
+      it "posts a message with security info" do
+        expect(message_builder.build.text).to include("None of them are critical.")
+      end
+    end
+
+    context "security_alerts=True, critical_security_alerts_count=1, dependabot PRs present" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 2 }
+      let(:critical_security_alerts_count) { 1 }
+      let(:pull_requests) { dependabot_pull_requests }
+
+      it "posts a message with security info" do
+        expect(message_builder.build.text).to include("One of them is critical.")
+      end
+    end
+
+    context "security_alerts=True, critical_security_alerts_count=2, dependabot PRs present" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 2 }
+      let(:critical_security_alerts_count) { 2 }
+      let(:pull_requests) { dependabot_pull_requests }
+
+      it "posts a message with security info" do
+        expect(message_builder.build.text).to include("2 of them are critical.")
       end
     end
   end
