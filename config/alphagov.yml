@@ -251,7 +251,7 @@ govuk-pay:
     - pool-resource
 
 govuk-platform-engineering:
-  channel: '#govuk-platform-engineering'
+  channel: '#govuk-platform-support'
   compact: true
   <<: *common_properties
   dependapanda: true
