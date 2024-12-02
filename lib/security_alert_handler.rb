@@ -13,6 +13,10 @@ class SecurityAlertHandler
     @global_security_alerts.length
   end
 
+  def critical_security_alerts_count
+    @global_security_alerts.select { |alert| alert[:severity] == 4 }.length
+  end
+
   def filter_security_alerts(repo)
     @global_security_alerts.select { |alert| alert[:repo] == repo }
   end
