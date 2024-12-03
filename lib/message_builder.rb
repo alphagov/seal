@@ -160,8 +160,6 @@ private
 
     if @team.security_alerts
       @all_alerts_count = github_fetcher.security_alerts_count
-      @critical_alerts_count = github_fetcher.critical_security_alerts_count
-
       @all_alerts_link = "https://github.com/orgs/alphagov/security/alerts/dependabot?q=is:open+repo:#{@team.repos.join(',')}"
       @github_api_errors = github_fetcher.github_api_errors
 

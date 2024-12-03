@@ -46,10 +46,6 @@ class GithubFetcher
     @security_alert_handler&.security_alerts_count
   end
 
-  def critical_security_alerts_count
-    @security_alert_handler&.critical_security_alerts_count
-  end
-
   def github_api_errors
     @security_alert_handler&.github_api_errors || 0
   end
