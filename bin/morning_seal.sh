@@ -12,6 +12,7 @@ teams=(
   card_2
   plus_subscription
   ufu
+  marketplace
 )
 
 for team in ${teams[*]}; do

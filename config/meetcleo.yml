@@ -215,3 +215,22 @@ ufu:
 
   github_team: "ufu-be"
   channel: "#squad-ufu-eng"
+
+marketplace:
+  exclude_titles:
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
+
+  exclude_labels:
+    - "Do Not Merge"
+
+  use_labels: true
+
+  include_repos:
+    - meetcleo
+    - mobile-app
+
+  github_team: "marketplace"
+  channel: "#squad-marketplace"
