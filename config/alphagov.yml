@@ -184,7 +184,6 @@ govuk-forms:
   dependapanda: true
   seal_prs: true
   repos:
-    - forms
     - forms-admin
     - forms-api
     - forms-e2e-tests
