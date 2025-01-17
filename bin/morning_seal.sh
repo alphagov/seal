@@ -4,7 +4,7 @@ teams=(
   github_bots
   payments_infrastructure
   data
-  cash_advance
+  ewa_core
   pricing_and_lending
   seal_team
   security_alerts_web_and_be
