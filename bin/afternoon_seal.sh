@@ -1,7 +1,7 @@
 #!/bin/bash
 
 teams=(
-  cash_advance
+  ewa_core
   plus_subscription
 )
 

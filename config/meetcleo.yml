@@ -147,7 +147,7 @@ seal_team:
 
   channel: "#proj-seal_bot"
 
-cash_advance:
+ewa_core:
   exclude_titles: []
   exclude_labels: []
 
@@ -157,8 +157,8 @@ cash_advance:
     - meetcleo
     - mobile-app
 
-  github_team: "cash-advance"
-  channel: "#squad-cash_advance-devs"
+  github_team: "ewa-core"
+  channel: "#squad-ewa_core-devs"
 
 pricing_and_lending:
   exclude_titles: []
