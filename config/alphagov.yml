@@ -230,6 +230,8 @@ govuk-pay:
     - pay-js-commons
     - pay-js-metrics
     - pay-ledger
+    - pay-logging-firehose-transformation
+    - pay-logging-s3-to-firehose-delivery
     - pay-nginx-proxy
     - pay-notifications
     - pay-performance-reporter
