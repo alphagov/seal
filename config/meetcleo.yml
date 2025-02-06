@@ -106,7 +106,7 @@ data:
 
   channel: "#collab-dbt-code-review"
 
-plus_subscription:
+ewa_progression:
   exclude_titles:
     - "WIP"
     - "[WIP]"
@@ -123,9 +123,9 @@ plus_subscription:
     - meetcleo
     - mobile-app
 
-  github_team: "plus-subscription"
+  github_team: "ewa-progression"
 
-  channel: "#squad-plus_subscription-dev"
+  channel: "#squad-ewa_progression-dev"
 
 seal_team:
   exclude_titles:
