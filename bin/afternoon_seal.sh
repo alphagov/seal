@@ -2,7 +2,7 @@
 
 teams=(
   ewa_core
-  plus_subscription
+  ewa_progression
 )
 
 for team in ${teams[*]} ; do

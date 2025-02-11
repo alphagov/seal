@@ -160,7 +160,7 @@ ewa_core:
   github_team: "ewa-core"
   channel: "#squad-ewa_core-devs"
 
-pricing_and_lending:
+ewa_modelling:
   exclude_titles: []
   exclude_labels:
     - "Do Not Merge"
@@ -175,8 +175,8 @@ pricing_and_lending:
     - cleo-flux
     - general-infra
 
-  github_team: "pricing-and-lending"
-  channel: "#squad-pricing_and_lending-devs"
+  github_team: "ewa-modelling"
+  channel: "#squad-ewa_modelling-devs"
 
 card_2:
   exclude_titles:
