@@ -1,0 +1,18 @@
+name: "Test of the CI failure alert"
+
+on:
+  workflow_dispatch: {}
+jobs:
+  failed-run:
+    name: Failed run
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Always failing
+        run: exit 1
+      - if: ${{ failure() }}
+        uses: alphagov/govuk-infrastrtucture/.github/actions/report-ci-errors@add-send-ci-errors
+        with:
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          github: ${{ toJson(github) }}
+          channel: govuk-datagovuk
+          message: "Testing CI failure alerting"
