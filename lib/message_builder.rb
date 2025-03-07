@@ -203,7 +203,7 @@ private
     @title = pull_request[:title]
     @days = age_in_days(pr_date(@pr))
 
-    @thumbs_up = if (@pr[:thumbs_up]).positive?
+    @thumbs_up = if @pr[:thumbs_up].positive?
                    " | #{@pr[:thumbs_up]} :+1:"
                  else
                    ""
