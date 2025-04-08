@@ -6,9 +6,9 @@ RSpec.describe MessageBuilder do
   let(:security_alerts_count) { 0 }
   let(:github_api_errors) { 0 }
   let(:repos) { %w[repo1 repo2] }
-  let(:team) { double(:team, security_alerts:, compact: false, dependabot_prs_only:, repos:) }
+  let(:team) { double(:team, security_alerts:, compact: false, dependency_prs:, repos:) }
   let(:pull_requests) { [] }
-  let(:dependabot_prs_only) { false }
+  let(:dependency_prs) { false }
   let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests, security_alerts_count:, github_api_errors:) }
   let(:animal) { :seal }
   subject(:message_builder) { MessageBuilder.new(team, animal) }
@@ -97,7 +97,7 @@ RSpec.describe MessageBuilder do
   before do
     Timecop.freeze(Time.local(2015, 0o7, 18))
 
-    allow(GithubFetcher).to receive(:new).with(team, dependabot_prs_only:).and_return(github_fetcher)
+    allow(GithubFetcher).to receive(:new).with(team, dependency_prs:).and_return(github_fetcher)
   end
 
   context "with labels" do
@@ -246,7 +246,7 @@ RSpec.describe MessageBuilder do
 
   context "panda scenarios" do
     let(:animal) { :panda }
-    let(:dependabot_prs_only) { true }
+    let(:dependency_prs) { true }
     let(:dependabot_pull_requests) do
       [
         {

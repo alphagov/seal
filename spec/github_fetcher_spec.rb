@@ -13,7 +13,7 @@ RSpec.describe GithubFetcher do
   end
 
   subject(:github_fetcher) do
-    described_class.new(team, dependabot_prs_only: false)
+    described_class.new(team, dependency_prs: false)
   end
 
   let(:fake_octokit_client) { double(Octokit::Client) }

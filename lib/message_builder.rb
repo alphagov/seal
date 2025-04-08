@@ -113,7 +113,7 @@ private
   end
 
   def github_fetcher
-    @github_fetcher ||= GithubFetcher.new(team, dependabot_prs_only: @mode == :panda)
+    @github_fetcher ||= GithubFetcher.new(team, dependency_prs: @mode == :panda)
   end
 
   def pull_requests
