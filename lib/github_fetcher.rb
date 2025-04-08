@@ -25,7 +25,7 @@ class GithubFetcher
       .reject { |pr| hidden?(pr) }
       .map { |pr| present_pull_request(pr) }
       .sort_by { |pr| pr[:date] }.reverse
-      .filter { |pr| @dependency_prs == pr[:author].include?("dependabot") }
+      .filter { |pr| @dependency_prs == (pr[:author].include?("dependabot") || pr[:branch].start_with?("renovate")) }
   rescue StandardError => e
     puts "Error listing pull requests: #{e.message}"
     []
@@ -76,6 +76,7 @@ private
       link: pull_request.html_url,
       author: pull_request.user.login,
       repo:,
+      branch: pull_request.head.ref,
       comments_count: count_comments(pull_request, repo),
       thumbs_up: count_thumbs_up(pull_request, repo),
       approved: approved?(pull_request, repo),

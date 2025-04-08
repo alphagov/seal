@@ -2,7 +2,7 @@
 
 ## What is it?
 
-This is a Slack bot that publishes a team's pull requests, Dependabot updates, security alerts, and inspirational quotes to their Slack Channel.
+This is a Slack bot that publishes a team's pull requests, Dependabot and Renovate updates, security alerts, and inspirational quotes to their Slack Channel.
 
 ![image](https://github.com/alphagov/seal/blob/main/images/readme/informative.png)
 ![image](https://github.com/alphagov/seal/blob/main/images/readme/angry.png)
@@ -28,8 +28,10 @@ To customize which alerts your team channel gets, find your team in [config/alph
 - morning_seal_quotes: Morning quotes set by your team
 - afternoon_seal_quotes: Afternoon quotes set by your team
 - seal_prs: Morning alerts about old and recent pull requests by team members
-- dependapanda: Morning alerts about Dependabot pull requests
+- dependapanda: Morning alerts about Dependabot and Renovate pull requests*
 - security_alerts: Security alerts (only available to teams receiving Dependabot alerts)
+
+\* Dependapanda identifies PRs authored by Dependabot and those with branches beginning "renovate". When posting to Slack, it links to a list of PRs with the label "dependencies". Most Dependabot PRs will have this label - [a small minority don't](https://github.com/search?q=org%3Aalphagov+author%3Adependabot%5Bbot%5D+-label%3Adependencies&type=pullrequests). [Renovate must be set up to provide this label](https://github.com/alphagov/publishing-api/blob/6053b22d536ece8f93ae1006f99c9a513bc1d381/renovate.json#L14).
 
 ### Local testing
 

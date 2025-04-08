@@ -1,4 +1,4 @@
-<%= @all_prs_count > 1 ? "You have #{@all_prs_count} Dependabot PRs open on the following apps:" : "You have 1 Dependabot PR open on the following app:" %>
+<%= @all_prs_count > 1 ? "You have #{@all_prs_count} automatic dependency upgrade PRs open on the following apps:" : "You have 1 automatic dependency upgrade PR open on the following app:" %>
 
 <% @repos.each do |repo| -%>
 <<%= repo[:repo_url] %>|<%= html_encode(repo[:repo_name]) %>> (<%= repo[:pr_count] %>, <%= "#{repo[:pr_count] > 1 ? "oldest: #{days_plural(repo[:oldest_pr])}, newest: #{days_plural(repo[:newest_pr])})" : "opened #{days_plural(repo[:oldest_pr])})"}" %>

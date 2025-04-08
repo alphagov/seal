@@ -20,6 +20,7 @@ RSpec.describe MessageBuilder do
         link: "https://github.com/alphagov/whitehall/pull/9999",
         author: "helpful_person",
         repo: "whitehall",
+        branch: "sample-branch-1",
         comments_count: 5,
         thumbs_up: 0,
         approved: true,
@@ -36,6 +37,7 @@ RSpec.describe MessageBuilder do
         link: "https://github.com/alphagov/whitehall/pull/2248",
         author: "tekin",
         repo: "whitehall",
+        branch: "sample-branch-2",
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
@@ -47,6 +49,7 @@ RSpec.describe MessageBuilder do
         link: "https://github.com/alphagov/whitehall/pull/9999",
         author: "helpful_person",
         repo: "whitehall",
+        branch: "sample-branch-1",
         comments_count: 5,
         thumbs_up: 0,
         approved: true,
@@ -63,6 +66,7 @@ RSpec.describe MessageBuilder do
         link: "https://github.com/alphagov/whitehall/pull/2266",
         author: "mattbostock",
         repo: "whitehall",
+        branch: "sample-branch-3",
         comments_count: 1,
         thumbs_up: 1,
         approved: false,
@@ -74,6 +78,7 @@ RSpec.describe MessageBuilder do
         link: "https://github.com/alphagov/whitehall/pull/2248",
         author: "tekin",
         repo: "whitehall",
+        branch: "sample-branch-2",
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
@@ -85,6 +90,7 @@ RSpec.describe MessageBuilder do
         link: "https://github.com/alphagov/seal/pull/9999",
         author: "elliotcm",
         repo: "seal",
+        branch: "sample-branch-4",
         comments_count: 5,
         thumbs_up: 0,
         approved: false,
@@ -109,6 +115,7 @@ RSpec.describe MessageBuilder do
           link: "https://github.com/org/repo/pull/42",
           author: "Agatha Christie",
           repo: "repo",
+          branch: "sample-branch-5",
           comments_count: 0,
           thumbs_up: 0,
           approved: false,
@@ -227,6 +234,7 @@ RSpec.describe MessageBuilder do
           link: "https://github.com/alphagov/whitehall/pull/2266",
           author: "mattbostock",
           repo: "whitehall",
+          branch: "sample-branch-3",
           comments_count: "1",
           thumbs_up: "0",
           created: Date.new(2015, 6, 13),
@@ -254,6 +262,7 @@ RSpec.describe MessageBuilder do
           link: "https://github.com/alphagov/whitehall/pull/2248",
           author: "dependabot",
           repo: "whitehall",
+          branch: "sample-branch-6",
           comments_count: 5,
           thumbs_up: 0,
           approved: false,
@@ -265,6 +274,7 @@ RSpec.describe MessageBuilder do
           link: "https://github.com/alphagov/whitehall/pull/9999",
           author: "dependabot",
           repo: "whitehall",
+          branch: "sample-branch-7",
           comments_count: 5,
           thumbs_up: 0,
           approved: true,
@@ -273,8 +283,24 @@ RSpec.describe MessageBuilder do
         },
       ]
     end
+    let(:renovate_pull_requests) do
+      [
+        {
+          title: "Your Repo Made Perfect",
+          link: "https://github.com/alphagov/whitehall/pull/2828",
+          author: "govuk-ci",
+          repo: "whitehall",
+          branch: "renovate/sample-branch",
+          comments_count: 5,
+          thumbs_up: 0,
+          approved: false,
+          created: Date.parse("2015-07-17 ((2457221j, 0s, 0n), +0s, 2299161j)"),
+          labels: [],
+        },
+      ]
+    end
 
-    context "security_alerts=False, no dependabot PRs" do
+    context "security_alerts=False, no dependabot or Renovate PRs" do
       let(:pull_requests) { [] }
       let(:security_alerts) { false }
 
@@ -288,12 +314,22 @@ RSpec.describe MessageBuilder do
       let(:security_alerts) { false }
 
       it "posts a message without security info" do
-        expect(message_builder.build.text).to include("You have 2 Dependabot PRs open on the following apps:")
+        expect(message_builder.build.text).to include("You have 2 automatic dependency upgrade PRs open on the following apps:")
         expect(message_builder.build.text).not_to include("security alert")
       end
     end
 
-    context "security_alerts=True, no dependabot PRs" do
+    context "security_alerts=False, Renovate PRs present" do
+      let(:pull_requests) { renovate_pull_requests }
+      let(:security_alerts) { false }
+
+      it "posts a message without security info" do
+        expect(message_builder.build.text).to include("You have 1 automatic dependency upgrade PR open on the following app:")
+        expect(message_builder.build.text).not_to include("security alert")
+      end
+    end
+
+    context "security_alerts=True, no dependabot or Renovate PRs" do
       let(:security_alerts) { true }
       let(:pull_requests) { [] }
 
@@ -308,7 +344,25 @@ RSpec.describe MessageBuilder do
       let(:pull_requests) { dependabot_pull_requests }
 
       it "posts a message with security info" do
-        expect(message_builder.build.text).to include("You have 2 Dependabot PRs open on the following apps:")
+        expect(message_builder.build.text).to include("You have 2 automatic dependency upgrade PRs open on the following apps:")
+        expect(message_builder.build.text).to include("1 security alert")
+      end
+
+      let(:github_api_errors) { 2 }
+
+      it "shows a warning if there are API errors" do
+        expect(message_builder.build.text).to include(":warning: 2 errors fetching security alerts.")
+        expect(message_builder.build.text).to include("1 security alert")
+      end
+    end
+
+    context "security_alerts=True, Renovate PRs present" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 1 }
+      let(:pull_requests) { renovate_pull_requests }
+
+      it "posts a message with security info" do
+        expect(message_builder.build.text).to include("You have 1 automatic dependency upgrade PR open on the following app:")
         expect(message_builder.build.text).to include("1 security alert")
       end
 
