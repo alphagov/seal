@@ -35,7 +35,7 @@ To customize which alerts your team channel gets, find your team in [config/alph
 
 ### Local testing
 
-To test the script, create a private Slack channel e.g. "#angry-seal-bot-test-abc" and update `@team_channel` on [this line in slack_poster.rb](https://github.com/alphagov/seal/blob/main/lib/slack_poster.rb#L103) to the one you created, you'll also need a `DEVELOPMENT` env set to `true`.
+To test the script, create a private Slack channel e.g. "#angry-seal-bot-test-abc" and update `@team_channel` on [this line in slack_poster.rb](https://github.com/alphagov/seal/blob/fe03ae1d2637d2fcd69816344e26a4a6e0696ffb/lib/slack_poster.rb#L108) to the one you created, you'll also need a `DEVELOPMENT` env set to `true`.
 You can then run the [GitHub Action](https://github.com/alphagov/seal/actions) selecting your branch and you should see the post in your test channel.
 
 If you don't want to post to Slack you can add a `DRY: true` env to your workflow and the output will only show in the logs.
