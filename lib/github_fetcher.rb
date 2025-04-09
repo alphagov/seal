@@ -3,7 +3,7 @@ require "yaml"
 require_relative "security_alert_handler"
 
 class GithubFetcher
-  def initialize(team, dependabot_prs_only: false)
+  def initialize(team, dependency_prs: false)
     @organisation = ENV["SEAL_ORGANISATION"]
     @github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
     @github.api_endpoint = ENV["GITHUB_API_ENDPOINT"] if ENV["GITHUB_API_ENDPOINT"]
@@ -15,9 +15,9 @@ class GithubFetcher
     @labels = {}
     @repos = team.repos
     @include_security_alerts = team.security_alerts
-    @dependabot_prs_only = dependabot_prs_only
+    @dependency_prs = dependency_prs
     @repo_security_alerts = {}
-    @security_alert_handler = dependabot_prs_only && @include_security_alerts ? SecurityAlertHandler.new(github, organisation, repos) : nil
+    @security_alert_handler = dependency_prs && @include_security_alerts ? SecurityAlertHandler.new(github, organisation, repos) : nil
   end
 
   def list_pull_requests
@@ -25,7 +25,7 @@ class GithubFetcher
       .reject { |pr| hidden?(pr) }
       .map { |pr| present_pull_request(pr) }
       .sort_by { |pr| pr[:date] }.reverse
-      .filter { |pr| @dependabot_prs_only == pr[:author].include?("dependabot") }
+      .filter { |pr| @dependency_prs == (pr[:author].include?("dependabot") || pr[:branch].start_with?("renovate")) }
   rescue StandardError => e
     puts "Error listing pull requests: #{e.message}"
     []
@@ -69,13 +69,14 @@ private
 
   def present_pull_request(pull_request)
     repo = pull_request.base.repo.name
-    security_label = @dependabot_prs_only && @include_security_alerts ? @security_alert_handler.label_for_branch(pull_request.head.ref, pull_request.title, @repo_security_alerts[repo]) : nil
+    security_label = @dependency_prs && @include_security_alerts ? @security_alert_handler.label_for_branch(pull_request.head.ref, pull_request.title, @repo_security_alerts[repo]) : nil
 
     {
       title: pull_request.title,
       link: pull_request.html_url,
       author: pull_request.user.login,
       repo:,
+      branch: pull_request.head.ref,
       comments_count: count_comments(pull_request, repo),
       thumbs_up: count_thumbs_up(pull_request, repo),
       approved: approved?(pull_request, repo),
