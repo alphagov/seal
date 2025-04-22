@@ -1,5 +1,5 @@
 class SecurityAlertHandler
-  attr_reader :github_api_errors
+  attr_reader :github_api_errors, :code_scanning_alerts_count
 
   def initialize(github, organisation, repos)
     @github = github
@@ -7,6 +7,7 @@ class SecurityAlertHandler
     @repos = repos
     @github_api_errors = 0
     @global_security_alerts = fetch_security_alerts
+    @code_scanning_alerts_count = fetch_code_scanning_alerts_count
   end
 
   def security_alerts_count
@@ -34,6 +35,17 @@ private
       next
     end
     alerts
+  end
+
+  def fetch_code_scanning_alerts_count
+    @repos.sum do |repo|
+      response = @github.get("https://api.github.com/repos/#{@organisation}/#{repo}/code-scanning/alerts", accept: "application/vnd.github+json")
+      response.count { |alert| alert[:state] == "open" }
+    rescue StandardError => e
+      @github_api_errors += 1
+      puts "Error fetching code scanning alerts for repo #{repo}: #{e.message}"
+      0
+    end
   end
 
   def parse_security_alert(alert, repo)

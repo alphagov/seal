@@ -57,6 +57,14 @@ RSpec.describe SecurityAlertHandler do
         accept: "application/vnd.github+json",
         state: "open",
       ).and_return(api_response)
+
+      allow(github).to receive(:get).with(
+        "https://api.github.com/repos/test-org/#{repo}/code-scanning/alerts",
+        accept: "application/vnd.github+json",
+      ).and_return([
+        { state: "open" },
+        { state: "closed" },
+      ])
     end
 
     allow(handler).to receive(:fetch_security_alerts).and_return(sample_alerts)
@@ -73,9 +81,9 @@ RSpec.describe SecurityAlertHandler do
         expect(handler.security_alerts_count).to eq(0)
       end
 
-      it "returns 2 for github_api_errors" do
+      it "returns 4 for github_api_errors" do
         handler = SecurityAlertHandler.new(github, organisation, repos)
-        expect(handler.github_api_errors).to eq(2)
+        expect(handler.github_api_errors).to eq(4)
       end
     end
 

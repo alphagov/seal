@@ -50,6 +50,10 @@ class GithubFetcher
     @security_alert_handler&.github_api_errors || 0
   end
 
+  def code_scanning_alerts_count
+    @security_alert_handler&.code_scanning_alerts_count
+  end
+
 private
 
   attr_reader :use_labels,
