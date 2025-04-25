@@ -4,12 +4,13 @@ require "./lib/message_builder"
 RSpec.describe MessageBuilder do
   let(:security_alerts) { false }
   let(:security_alerts_count) { 0 }
+  let(:code_scanning_alerts_count) { 0 }
   let(:github_api_errors) { 0 }
   let(:repos) { %w[repo1 repo2] }
   let(:team) { double(:team, security_alerts:, compact: false, dependency_prs:, repos:) }
   let(:pull_requests) { [] }
   let(:dependency_prs) { false }
-  let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests, security_alerts_count:, github_api_errors:) }
+  let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests, security_alerts_count:, code_scanning_alerts_count:, github_api_errors:) }
   let(:animal) { :seal }
   subject(:message_builder) { MessageBuilder.new(team, animal) }
 
@@ -341,36 +342,38 @@ RSpec.describe MessageBuilder do
     context "security_alerts=True, dependabot PRs present" do
       let(:security_alerts) { true }
       let(:security_alerts_count) { 1 }
+      let(:code_scanning_alerts_count) { 0 }
       let(:pull_requests) { dependabot_pull_requests }
 
       it "posts a message with security info" do
         expect(message_builder.build.text).to include("You have 2 automatic dependency upgrade PRs open on the following apps:")
-        expect(message_builder.build.text).to include("1 security alert")
+        expect(message_builder.build.text).to include("1 Dependabot security alert")
       end
 
       let(:github_api_errors) { 2 }
 
       it "shows a warning if there are API errors" do
         expect(message_builder.build.text).to include(":warning: 2 errors fetching security alerts.")
-        expect(message_builder.build.text).to include("1 security alert")
+        expect(message_builder.build.text).to include("1 Dependabot security alert")
       end
     end
 
     context "security_alerts=True, Renovate PRs present" do
       let(:security_alerts) { true }
       let(:security_alerts_count) { 1 }
+      let(:code_scanning_alerts_count) { 0 }
       let(:pull_requests) { renovate_pull_requests }
 
       it "posts a message with security info" do
         expect(message_builder.build.text).to include("You have 1 automatic dependency upgrade PR open on the following app:")
-        expect(message_builder.build.text).to include("1 security alert")
+        expect(message_builder.build.text).to include("1 Dependabot security alert")
       end
 
       let(:github_api_errors) { 2 }
 
       it "shows a warning if there are API errors" do
         expect(message_builder.build.text).to include(":warning: 2 errors fetching security alerts.")
-        expect(message_builder.build.text).to include("1 security alert")
+        expect(message_builder.build.text).to include("1 Dependabot security alert")
       end
     end
   end
