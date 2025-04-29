@@ -2,7 +2,6 @@
 
 teams=(
   ewa_core
-  ewa_progression
 )
 
 for team in ${teams[*]} ; do

@@ -5,12 +5,10 @@ teams=(
   payments_infrastructure
   data
   ewa_core
-  ewa_modelling
   seal_team
   security_alerts_web_and_be
   security_alerts_app
   card_2
-  ewa_progression
   ufu
   marketplace
 )
