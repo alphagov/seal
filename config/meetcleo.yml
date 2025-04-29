@@ -35,6 +35,7 @@ security_alerts_web_and_be:
 
   include_repos:
     - meetcleo
+    - webhooks-app
 
   members:
     - "dependabot[bot]"
@@ -79,6 +80,7 @@ github_bots:
   include_repos:
     - meetcleo
     - mobile-app
+    - webhooks-app
 
   members:
     - "dependabot[bot]"
