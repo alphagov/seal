@@ -216,7 +216,7 @@ ufu:
     - meetcleo
 
   github_team: "ufu-be"
-  channel: "#squad-ufu-eng"
+  channel: "#squad-chat-recs-eng"
 
 marketplace:
   exclude_titles:
