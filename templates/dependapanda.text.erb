@@ -9,7 +9,7 @@
 
 <%= ":#{@dependabot_alerts_count.zero? ? 'tada' : 'alert'}: There #{@dependabot_alerts_count == 1 ? 'is' : 'are'} a total of <#{@dependabot_alerts_link}|#{@dependabot_alerts_count == 1 ? '1 Dependabot security alert' : "#{@dependabot_alerts_count} Dependabot security alerts"}> across all of your repos.#{' :tada:' if @dependabot_alerts_count.zero?}" -%>
 <% if @github_api_errors.positive? %>
-<%= ":warning: #{@github_api_errors} errors fetching security alerts. Check that you have the <#{'https://docs.publishing.service.gov.uk/manual/configure-github-repo.html#when-you-create-a-new-repo'}|right permissions> on all <#{'https://docs.publishing.service.gov.uk/repos.html#repos-by-team'}|your repos>." %>
+<%= ":warning: #{@github_api_errors} errors fetching security alerts. Check that you have the <#{'https://docs.publishing.service.gov.uk/manual/github-new-repo.html'}|right permissions> on all <#{'https://docs.publishing.service.gov.uk/repos.html#repos-by-team'}|your repos>." %>
 <% end %>
 <%= "Please prioritise reviewing #{@security_prs_ordered.length == 1 ? 'this PR' : 'these PRs'} to resolve #{@security_prs_ordered.length != @dependabot_alerts_count ? 'some of ' : ''}them:" if @security_prs_ordered.any? %>
 
