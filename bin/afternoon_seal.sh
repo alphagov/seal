@@ -1,8 +1,6 @@
 #!/bin/bash
 
-teams=(
-  ewa_core
-)
+teams=()
 
 for team in ${teams[*]} ; do
   ./bin/seal.rb $team quotes

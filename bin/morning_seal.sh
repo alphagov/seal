@@ -4,7 +4,6 @@ teams=(
   github_bots
   payments_infrastructure
   data
-  ewa_core
   seal_team
   security_alerts_web_and_be
   security_alerts_app
