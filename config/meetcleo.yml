@@ -149,6 +149,7 @@ seal_team:
 
   channel: "#proj-seal_bot"
 
+# EWA Core are currently testing Swarmia as an alternative, so this is not enabled in the morning/afternoon notification
 ewa_core:
   exclude_titles: []
   exclude_labels: []
