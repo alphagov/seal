@@ -1,13 +1,13 @@
 payments_infrastructure:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Waiting on copy'
-    - 'Do Not Merge'
+    - "Waiting on copy"
+    - "Do Not Merge"
 
   use_labels: true
 
@@ -15,21 +15,21 @@ payments_infrastructure:
     - meetcleo
     - mobile-app
 
-  github_team: 'payments-infrastructure-be'
+  github_team: "payments-infrastructure-be"
 
-  channel: '#squad-payments_infrastructure-devs'
+  channel: "#squad-payments_infrastructure-devs"
 
 security_alerts_web_and_be:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Waiting on copy'
-    - 'Do Not Merge'
-    - 'maintenance-upgrade'
+    - "Waiting on copy"
+    - "Do Not Merge"
+    - "maintenance-upgrade"
 
   use_labels: true
 
@@ -38,21 +38,21 @@ security_alerts_web_and_be:
     - webhooks-app
 
   members:
-    - 'dependabot[bot]'
+    - "dependabot[bot]"
 
-  channel: '#alerts-first_responders'
+  channel: "#alerts-first_responders"
 
 security_alerts_app:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Waiting on copy'
-    - 'Do Not Merge'
-    - 'maintenance-upgrade'
+    - "Waiting on copy"
+    - "Do Not Merge"
+    - "maintenance-upgrade"
 
   use_labels: true
 
@@ -60,20 +60,20 @@ security_alerts_app:
     - mobile-app
 
   members:
-    - 'dependabot[bot]'
+    - "dependabot[bot]"
 
-  channel: '#collab-frontend-first-responders'
+  channel: "#collab-frontend-first-responders"
 
 github_bots:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Waiting on copy'
-    - 'Do Not Merge'
+    - "Waiting on copy"
+    - "Do Not Merge"
 
   use_labels: true
 
@@ -83,21 +83,21 @@ github_bots:
     - webhooks-app
 
   members:
-    - 'dependabot[bot]'
-    - 'sweepai[bot]'
+    - "dependabot[bot]"
+    - "sweepai[bot]"
 
-  channel: '#collab-github-bots'
+  channel: "#collab-github-bots"
 
 data:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Waiting on copy'
-    - 'Do Not Merge'
+    - "Waiting on copy"
+    - "Do Not Merge"
 
   use_labels: true
 
@@ -106,18 +106,18 @@ data:
 
   members: []
 
-  channel: '#collab-dbt-code-review'
+  channel: "#collab-dbt-code-review"
 
 ewa_progression:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Waiting on copy'
-    - 'Do Not Merge'
+    - "Waiting on copy"
+    - "Do Not Merge"
 
   use_labels: true
 
@@ -125,29 +125,29 @@ ewa_progression:
     - meetcleo
     - mobile-app
 
-  github_team: 'ewa-progression'
+  github_team: "ewa-progression"
 
-  channel: '#squad-ewa_progression-dev'
+  channel: "#squad-ewa_progression-dev"
 
 seal_team:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Waiting on copy'
-    - 'Do Not Merge'
+    - "Waiting on copy"
+    - "Do Not Merge"
 
   use_labels: true
 
   include_repos:
     - seal_the_revenge
 
-  github_team: 'seal_team'
+  github_team: "seal_team"
 
-  channel: '#proj-seal_bot'
+  channel: "#proj-seal_bot"
 
 # EWA Core are currently testing Swarmia as an alternative, so this is not enabled in the morning/afternoon notification
 ewa_core:
@@ -160,14 +160,14 @@ ewa_core:
     - meetcleo
     - mobile-app
 
-  github_team: 'ewa-core'
-  channel: '#squad-ewa_core-devs'
+  github_team: "ewa-core"
+  channel: "#squad-ewa_core-devs"
 
 ewa_modelling:
   exclude_titles: []
   exclude_labels:
-    - 'Do Not Merge'
-    - 'destroy'
+    - "Do Not Merge"
+    - "destroy"
 
   use_labels: true
 
@@ -178,18 +178,18 @@ ewa_modelling:
     - cleo-flux
     - general-infra
 
-  github_team: 'ewa-modelling'
-  channel: '#squad-ewa_modelling-devs'
+  github_team: "ewa-modelling"
+  channel: "#squad-ewa_modelling-devs"
 
 card_2:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Do Not Merge'
+    - "Do Not Merge"
 
   use_labels: true
 
@@ -197,37 +197,37 @@ card_2:
     - meetcleo
     - mobile-app
 
-  github_team: 'card-2'
+  github_team: "card-2"
 
-  channel: '#squad-honet_badgers-devs'
+  channel: "#squad-honet_badgers-devs"
 
 ufu:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Do Not Merge'
+    - "Do Not Merge"
 
   use_labels: true
 
   include_repos:
     - meetcleo
 
-  github_team: 'ufu-be'
-  channel: '#squad-chat-recs-eng'
+  github_team: "ufu-be"
+  channel: "#squad-chat-recs-eng"
 
 marketplace:
   exclude_titles:
-    - 'WIP'
-    - '[WIP]'
-    - 'DO NOT MERGE'
-    - '[DO NOT MERGE]'
+    - "WIP"
+    - "[WIP]"
+    - "DO NOT MERGE"
+    - "[DO NOT MERGE]"
 
   exclude_labels:
-    - 'Do Not Merge'
+    - "Do Not Merge"
 
   use_labels: true
 
@@ -235,5 +235,5 @@ marketplace:
     - meetcleo
     - mobile-app
 
-  github_team: 'marketplace'
-  channel: '#squad-marketplace'
+  github_team: "marketplace"
+  channel: "#squad-marketplace"
