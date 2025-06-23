@@ -175,7 +175,8 @@ govuk-developers:
   quotes_days:
     - Wednesday
   quotes:
-    - "Have you learnt something new this week? Or would you like to improve your presentation skills on a friendly bunch of devs? Why not add a talk to the next Tech Fortnightly <https://docs.google.com/document/d/1X-AberK3K4XzXxY6N4zzKZJY5t-bXfi5YX4SAcLpYtk|agenda>."
+    - "Do you know someone who has gone above and beyond? Remember you can <https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/directorates-and-groups/business-and-people-services/people-services/reward-and-recognition|nominate a colleague for a voucher or bonus> at any time."
+
 govuk-forms:
   channel: '#govuk-forms-tech'
   compact: true
