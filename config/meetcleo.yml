@@ -201,7 +201,7 @@ card_2:
 
   channel: "#squad-honet_badgers-devs"
 
-ufu:
+tx_enrichment:
   exclude_titles:
     - "WIP"
     - "[WIP]"
@@ -215,9 +215,10 @@ ufu:
 
   include_repos:
     - meetcleo
+    - cleo-flux
 
-  github_team: "ufu-be"
-  channel: "#squad-chat-recs-eng"
+  github_team: "tx-enrichment-be"
+  channel: "#squad-tx-enrichment-eng"
 
 marketplace:
   exclude_titles:
