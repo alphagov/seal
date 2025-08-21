@@ -1,12 +1,13 @@
-- govuk_chat_private        # Private repo
-- govuk-dns-tf              # Private repo, no IaC scanning
-- govuk-dns-ui              # Private repo
-- govuk-docker              # Used for local development, no container scanning
+- govuk_chat_private           # Private repo
+- govuk-chat-gradio-prototype  # Private repo
+- govuk-dns-tf                 # Private repo, no IaC scanning
+- govuk-dns-ui                 # Private repo
+- govuk-docker                 # Used for local development, no container scanning
 - govuk-exporter
-- govuk-helm-charts         # No IaC scanning
+- govuk-helm-charts            # No IaC scanning
 - govuk-mirror
-- govuk-pact-broker         # No container scanning
+- govuk-pact-broker            # No container scanning
 - govuk-replatform-test-app
-- govuk-rota-announcer      # Private repo (contains PII)
-- govuk-user-reviewer       # Private repo (contains PII)
+- govuk-rota-announcer         # Private repo (contains PII)
+- govuk-user-reviewer          # Private repo (contains PII)
 - router
