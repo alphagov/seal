@@ -64,8 +64,6 @@ private
       Message.new(bark_about_old_pull_requests, mood: "angry")
     elsif unapproved_pull_requests.any?
       Message.new(list_pull_requests, mood: "informative")
-    else
-      Message.new(no_pull_requests, mood: "approval")
     end
   end
 
@@ -147,10 +145,6 @@ private
     @message = present_multiple(unapproved_pull_requests)
 
     render "list_pull_requests"
-  end
-
-  def no_pull_requests
-    render "no_pull_requests"
   end
 
   def dependapanda_message
