@@ -328,10 +328,35 @@ RSpec.describe MessageBuilder do
 
     context "security_alerts=True, no dependabot or Renovate PRs" do
       let(:security_alerts) { true }
+      let(:security_alerts_count) { 2 }
+      let(:code_scanning_alerts_count) { 1 }
       let(:pull_requests) { [] }
 
-      it "does not post a message" do
-        expect(message_builder.build).to be_nil
+      it "posts a message with only security info" do
+        expect(message_builder.build.text).to include("2 Dependabot security alerts")
+        expect(message_builder.build.text).to include("1 Code Scanning security alert")
+      end
+    end
+
+    context "Dependabot security alerts, no dependabot or Renovate PRs" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 2 }
+      let(:code_scanning_alerts_count) { 0 }
+      let(:pull_requests) { [] }
+
+      it "posts a message with only security info" do
+        expect(message_builder.build.text).to include("2 Dependabot security alerts")
+      end
+    end
+
+    context "Code Scanning security alerts, no dependabot or Renovate PRs" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 0 }
+      let(:code_scanning_alerts_count) { 1 }
+      let(:pull_requests) { [] }
+
+      it "posts a message with only security info" do
+        expect(message_builder.build.text).to include("1 Code Scanning security alert")
       end
     end
 

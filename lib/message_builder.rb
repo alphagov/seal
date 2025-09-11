@@ -54,7 +54,7 @@ private
   attr_reader :team
 
   def build_dependapanda_message
-    return unless pull_requests.any?
+    return unless pull_requests.any? || team.security_alerts
 
     Message.new(dependapanda_message, mood: "panda")
   end
