@@ -24,5 +24,11 @@ jobs:
 
       - name: Seal PRs
         id: seal_prs
-        run: |
-          ./bin/seal_runner.rb seal_prs
+        run: ./bin/seal_runner.rb seal_prs
+
+      - if: ${{ failure() }}
+        uses: alphagov/govuk-infrastructure/.github/actions/report-run-failure@main
+        with:
+          slack_webhook_url: ${{ secrets.GOVUK_SLACK_WEBHOOK_URL }}
+          channel: platform-support
+          message: "Seal PRs workflow failed"

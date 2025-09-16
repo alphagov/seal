@@ -54,8 +54,6 @@ private
         [":panda_face:", "Dependapanda"]
       when "informative"
         [":#{@season_symbol}informative_seal:", "#{@season_name}Informative Seal"]
-      when "approval"
-        [":#{@season_symbol}seal_of_approval:", "#{@season_name}Seal of Approval"]
       when "angry"
         [":#{@season_symbol}angrier_seal:", "#{@season_name}Angry Seal"]
       when "robot_face"

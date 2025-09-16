@@ -151,12 +151,8 @@ RSpec.describe MessageBuilder do
   context "no unapproved pull requests" do
     let(:pull_requests) { no_unapproved_pull_requests }
 
-    it "builds seal of approval message" do
-      expect(message_builder.build.text).to eq("Aloha team! It's a beautiful day! :happyseal: :happyseal: :happyseal:\n\nNo pull requests to review today! :rainbow: :sunny: :metal: :tada:")
-    end
-
-    it "has an approval poster mood" do
-      expect(message_builder.build.mood).to eq("approval")
+    it "does not build a message" do
+      expect(message_builder.build).to be_nil
     end
   end
 
@@ -332,10 +328,35 @@ RSpec.describe MessageBuilder do
 
     context "security_alerts=True, no dependabot or Renovate PRs" do
       let(:security_alerts) { true }
+      let(:security_alerts_count) { 2 }
+      let(:code_scanning_alerts_count) { 1 }
       let(:pull_requests) { [] }
 
-      it "does not post a message" do
-        expect(message_builder.build).to be_nil
+      it "posts a message with only security info" do
+        expect(message_builder.build.text).to include("2 Dependabot security alerts")
+        expect(message_builder.build.text).to include("1 Code Scanning security alert")
+      end
+    end
+
+    context "Dependabot security alerts, no dependabot or Renovate PRs" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 2 }
+      let(:code_scanning_alerts_count) { 0 }
+      let(:pull_requests) { [] }
+
+      it "posts a message with only security info" do
+        expect(message_builder.build.text).to include("2 Dependabot security alerts")
+      end
+    end
+
+    context "Code Scanning security alerts, no dependabot or Renovate PRs" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 0 }
+      let(:code_scanning_alerts_count) { 1 }
+      let(:pull_requests) { [] }
+
+      it "posts a message with only security info" do
+        expect(message_builder.build.text).to include("1 Code Scanning security alert")
       end
     end
 
