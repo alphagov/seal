@@ -167,6 +167,8 @@ private
         .map { |pr| pr.merge(pr_link: pr[:link], pr_title: pr[:title]) }.reverse
     end
 
+    @merge_stats = github_fetcher.dependency_prs_merged_yesterday
+
     template_file = Pathname.new("#{TEMPLATE_DIR}/dependapanda.text.erb")
     ERB.new(template_file.read, trim_mode: "-").result(binding).strip
   end

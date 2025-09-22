@@ -173,15 +173,15 @@ RSpec.describe GithubFetcher do
     allow(fake_octokit_client).to receive(:auto_paginate=).with(false)
 
     allow(fake_octokit_client).to receive(:pull_requests).with(
-      "alphagov/whitehall", { state: :open, sort: :created }
+      "alphagov/whitehall", { state: :open, sort: :updated, direction: :desc, per_page: 50 }
     ).and_return([pull_2266])
 
     allow(fake_octokit_client).to receive(:pull_requests).with(
-      "alphagov/govuk-docker", { state: :open, sort: :created }
+      "alphagov/govuk-docker", { state: :open, sort: :updated, direction: :desc, per_page: 50 }
     ).and_return([pull_2248])
 
     allow(fake_octokit_client).to receive(:pull_requests).with(
-      "alphagov/content-store", { state: :open, sort: :created }
+      "alphagov/content-store", { state: :open, sort: :updated, direction: :desc, per_page: 50 }
     ).and_return([pull_2295])
 
     allow(fake_octokit_client).to receive(:issue_comments).with(whitehall_repo_name, 2266).and_return(comments_2266)
@@ -224,14 +224,6 @@ RSpec.describe GithubFetcher do
     describe "#list_pull_requests" do
       it "displays open pull requests open on the team's repos" do
         expect(github_fetcher.list_pull_requests).to match expected_open_prs.sort_by { |pr| pr[:date] }.reverse
-      end
-    end
-
-    describe "#pull_requests_from_github" do
-      it "returns an empty array when there are no items returned from search" do
-        allow(fake_octokit_client).to receive(:pull_requests).and_return(no_prs)
-
-        expect(github_fetcher.pull_requests_from_github).to eq([])
       end
     end
   end
@@ -337,6 +329,100 @@ RSpec.describe GithubFetcher do
 
         expect(github_fetcher.check_team_repos_ci).to match({ "repo1" => false })
       end
+    end
+  end
+
+  describe "#dependency_prs_merged_yesterday" do
+    let(:use_labels) { false }
+    let(:shallow_merged_1) do
+      double(Sawyer::Resource,
+             user: double(Sawyer::Resource, login: "dependabot[bot]"),
+             number: 111,
+             base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "whitehall")),
+             merged_at: (Date.today - 1).to_time,
+             draft: false)
+    end
+
+    let(:shallow_merged_2) do
+      double(Sawyer::Resource,
+             user: double(Sawyer::Resource, login: "dependabot[bot]"),
+             number: 222,
+             base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "govuk-docker")),
+             merged_at: (Date.today - 1).to_time,
+             draft: false)
+    end
+
+    let(:full_pr_111) do
+      double(Sawyer::Resource,
+             merged_by: double(Sawyer::Resource, login: "govuk-ci"))
+    end
+
+    let(:full_pr_222) do
+      double(Sawyer::Resource,
+             merged_by: double(Sawyer::Resource, login: "alice"))
+    end
+
+    before do
+      allow(fake_octokit_client).to receive(:pull_requests).with(
+        "alphagov/whitehall",
+        { state: :closed, sort: :updated, direction: :desc, per_page: 50 },
+      ).and_return([shallow_merged_1])
+
+      allow(fake_octokit_client).to receive(:pull_requests).with(
+        "alphagov/govuk-docker",
+        { state: :closed, sort: :updated, direction: :desc, per_page: 50 },
+      ).and_return([shallow_merged_2])
+
+      allow(fake_octokit_client).to receive(:pull_requests).with(
+        "alphagov/content-store",
+        { state: :closed, sort: :updated, direction: :desc, per_page: 50 },
+      ).and_return([])
+
+      allow(fake_octokit_client).to receive(:pull_request).with(whitehall_repo_name, 111).and_return(full_pr_111)
+      allow(fake_octokit_client).to receive(:pull_request).with(govuk_docker_repo_name, 222).and_return(full_pr_222)
+    end
+
+    it "returns totals and splits auto vs manual merges for Dependabot PRs merged yesterday" do
+      stats = github_fetcher.dependency_prs_merged_yesterday
+
+      expect(stats[:total]).to eq(2)
+      expect(stats[:auto]).to eq(1)
+      expect(stats[:manual]).to eq(1)
+      expect(stats[:auto_percentage]).to eq(50)
+      expect(stats[:manual_percentage]).to eq(50)
+    end
+  end
+
+  describe "#fetch_all_prs (private)" do
+    let(:use_labels) { false }
+
+    it "fetches PRs for the given state and filters out drafts" do
+      draft_pr = double(Sawyer::Resource, draft: true)
+
+      allow(fake_octokit_client).to receive(:pull_requests).with(
+        "alphagov/whitehall",
+        { state: :open, sort: :updated, direction: :desc, per_page: 50 },
+      ).and_return([pull_2266, draft_pr])
+
+      allow(fake_octokit_client).to receive(:pull_requests).with(
+        "alphagov/govuk-docker",
+        { state: :open, sort: :updated, direction: :desc, per_page: 50 },
+      ).and_return([])
+
+      allow(fake_octokit_client).to receive(:pull_requests).with(
+        "alphagov/content-store",
+        { state: :open, sort: :updated, direction: :desc, per_page: 50 },
+      ).and_return([])
+
+      prs = github_fetcher.send(:fetch_all_prs, :open)
+      expect(prs).to eq([pull_2266])
+    end
+
+    it "returns an empty array when the GitHub call raises" do
+      allow(fake_octokit_client).to receive(:pull_requests).and_raise(StandardError.new("boom"))
+
+      expect { github_fetcher.send(:fetch_all_prs, :open) }.not_to raise_error
+      expect(github_fetcher.send(:fetch_all_prs, :open)).to eq([])
     end
   end
 end

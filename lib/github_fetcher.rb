@@ -21,7 +21,7 @@ class GithubFetcher
   end
 
   def list_pull_requests
-    pull_requests_from_github
+    fetch_all_prs(:open)
       .reject { |pr| hidden?(pr) }
       .map { |pr| present_pull_request(pr) }
       .sort_by { |pr| pr[:date] }.reverse
@@ -31,11 +31,34 @@ class GithubFetcher
     []
   end
 
-  def pull_requests_from_github
-    repos.flat_map do |repo|
-      @repo_security_alerts[repo] = @security_alert_handler.filter_security_alerts(repo) if @security_alert_handler
-      fetch_pull_requests(repo).reject(&:draft)
+  def dependency_prs_merged_yesterday
+    merged_prs = fetch_all_prs(:closed).select do |pr|
+      pr.merged_at &&
+        pr.merged_at.to_date == Date.today - 1 &&
+        pr.user.login.include?("dependabot")
     end
+
+    merged_prs_full = merged_prs.map { |pr|
+      repo = pr.base.repo.name
+      begin
+        github.pull_request("#{organisation}/#{repo}", pr.number)
+      rescue StandardError => e
+        puts "Error fetching full PR #{pr.number} from #{repo}: #{e.message}"
+        nil
+      end
+    }.compact
+
+    total  = merged_prs_full.size
+    auto   = merged_prs_full.count { |pr| pr.merged_by&.login == "govuk-ci" }
+    manual = total - auto
+
+    {
+      total: total,
+      auto: auto,
+      manual: manual,
+      auto_percentage: total.positive? ? ((auto.to_f / total) * 100).round : 0,
+      manual_percentage: total.positive? ? ((manual.to_f / total) * 100).round : 0,
+    }
   end
 
   def check_team_repos_ci
@@ -64,11 +87,23 @@ private
               :organisation,
               :github
 
-  def fetch_pull_requests(repo)
-    github.pull_requests("#{organisation}/#{repo}", state: :open, sort: :created)
-  rescue StandardError => e
-    puts "Error fetching pull requests from GitHub for repo #{repo}: #{e.message}"
-    []
+  def fetch_all_prs(state)
+    repos.flat_map do |repo|
+      @repo_security_alerts[repo] = @security_alert_handler.filter_security_alerts(repo) if @security_alert_handler
+
+      prs = github.pull_requests(
+        "#{organisation}/#{repo}",
+        state: state,
+        sort: :updated,
+        direction: :desc,
+        per_page: 50,
+      )
+
+      prs.reject(&:draft)
+    rescue StandardError => e
+      puts "Error fetching #{state} pull requests from GitHub for repo #{repo}: #{e.message}"
+      []
+    end
   end
 
   def present_pull_request(pull_request)

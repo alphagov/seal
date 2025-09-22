@@ -10,7 +10,7 @@ RSpec.describe MessageBuilder do
   let(:team) { double(:team, security_alerts:, compact: false, dependency_prs:, repos:) }
   let(:pull_requests) { [] }
   let(:dependency_prs) { false }
-  let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests, security_alerts_count:, code_scanning_alerts_count:, github_api_errors:) }
+  let(:github_fetcher) { double(:github_fetcher, list_pull_requests: pull_requests, security_alerts_count:, code_scanning_alerts_count:, github_api_errors:, dependency_prs_merged_yesterday: { total: 0, auto: 0, manual: 0, auto_percentage: 0, manual_percentage: 0 }) }
   let(:animal) { :seal }
   subject(:message_builder) { MessageBuilder.new(team, animal) }
 
@@ -395,6 +395,26 @@ RSpec.describe MessageBuilder do
       it "shows a warning if there are API errors" do
         expect(message_builder.build.text).to include(":warning: 2 errors fetching security alerts.")
         expect(message_builder.build.text).to include("1 Dependabot security alert")
+      end
+    end
+
+    context "when Dependabot PRs were merged yesterday" do
+      let(:pull_requests) { dependabot_pull_requests }
+
+      let(:github_fetcher) do
+        double(:github_fetcher,
+               list_pull_requests: pull_requests,
+               security_alerts_count: 0,
+               code_scanning_alerts_count: 0,
+               github_api_errors: 0,
+               dependency_prs_merged_yesterday: { total: 3, auto: 2, manual: 1, auto_percentage: 67, manual_percentage: 33 })
+      end
+
+      it "includes merge stats in the rendered Slack message" do
+        text = message_builder.build.text
+        expect(text).to include("Yesterday, 3 Dependabot PRs were merged")
+        expect(text).to include("🤖 2 auto-merged (67%)")
+        expect(text).to include("👩‍💻 1 manually merged (33%)")
       end
     end
   end
