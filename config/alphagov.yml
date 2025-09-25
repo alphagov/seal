@@ -263,6 +263,13 @@ govuk-publishing-components:
   dependapanda: true
   seal_prs: true
 
+govuk-search:
+  channel: '#govuk-search'
+  compact: true
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+
 govuk-whitehall-experience-tech:
   channel: '#govuk-whitehall-experience-tech'
   compact: true
