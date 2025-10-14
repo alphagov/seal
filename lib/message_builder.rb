@@ -24,22 +24,6 @@ class MessageBuilder
     else
       build_regular_message
     end
-  rescue StandardError => e
-    puts "Error building message: #{e.message}"
-    alert_slack(e.message)
-    nil
-  end
-
-  def alert_slack(message)
-    slack_options =
-      {
-        icon_emoji: ":sad-seal:",
-        username: "Seal error",
-        channel: "#govuk-platform-support",
-      }
-
-    poster = Slack::Poster.new(ENV["SLACK_WEBHOOK"].to_s, slack_options)
-    poster.send_message("The Seal has encountered an error running in mode #{@mode}: #{message}")
   end
 
   def rotten?(pull_request)
