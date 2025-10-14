@@ -25,3 +25,10 @@ jobs:
         id: afternoon_seal_quotes
         run: |
           ./bin/seal_runner.rb afternoon_seal_quotes
+
+      - if: ${{ failure() }}
+        uses: alphagov/govuk-infrastructure/.github/actions/report-run-failure@main
+        with:
+          slack_webhook_url: ${{ secrets.GOVUK_SLACK_WEBHOOK_URL }}
+          channel: govuk-platform-support
+          message: "Afternoon Seal Quotes workflow failed"
