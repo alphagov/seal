@@ -30,5 +30,5 @@ jobs:
         uses: alphagov/govuk-infrastructure/.github/actions/report-run-failure@main
         with:
           slack_webhook_url: ${{ secrets.GOVUK_SLACK_WEBHOOK_URL }}
-          channel: platform-support
+          channel: govuk-platform-support
           message: "Dependapanda workflow failed"
