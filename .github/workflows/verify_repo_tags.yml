@@ -43,7 +43,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "The <https://github.com/alphagov/govuk-developer-docs/blob/main/data/repos.yml|Developer Docs repo list> is out of sync with the repos tagged as 'govuk' in GitHub."
+                    "text": "The <https://github.com/alphagov/govuk-developer-docs/blob/main/data/repos.yml|Developer Docs repo list> is out of sync with the repos tagged as 'govuk' in GitHub. <https://docs.google.com/document/d/12W_OiSSH-cs_MTzBwT66anRDFDOwmx-7RKF_U0u9vVM/edit?tab=t.0#heading=h.ddohqbdt0uqc|See the runbook>"
                   },
                   "accessory": {
                     "type": "button",
