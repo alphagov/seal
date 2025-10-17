@@ -184,7 +184,6 @@ govuk-forms:
   seal_prs: true
   repos:
     - forms-admin
-    - forms-api
     - forms-e2e-tests
     - forms-runner
     - forms-product-page
