@@ -32,9 +32,15 @@ class GithubFetcher
   end
 
   def dependency_prs_merged_yesterday
+    target_date = if Date.today.monday?
+                    Date.today - 3
+                  else
+                    Date.today - 1
+                  end
+
     merged_prs = fetch_all_prs(:closed).select do |pr|
       pr.merged_at &&
-        pr.merged_at.to_date == Date.today - 1 &&
+        pr.merged_at.to_date == target_date &&
         pr.user.login.include?("dependabot")
     end
 

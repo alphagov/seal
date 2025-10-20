@@ -333,13 +333,17 @@ RSpec.describe GithubFetcher do
   end
 
   describe "#dependency_prs_merged_yesterday" do
+    let(:target_date) do
+      Date.today.monday? ? Date.today - 3 : Date.today - 1
+    end
+
     let(:use_labels) { false }
     let(:shallow_merged_1) do
       double(Sawyer::Resource,
              user: double(Sawyer::Resource, login: "dependabot[bot]"),
              number: 111,
              base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "whitehall")),
-             merged_at: (Date.today - 1).to_time,
+             merged_at: target_date.to_time,
              draft: false)
     end
 
@@ -348,7 +352,7 @@ RSpec.describe GithubFetcher do
              user: double(Sawyer::Resource, login: "dependabot[bot]"),
              number: 222,
              base: double(Sawyer::Resource, repo: double(Sawyer::Resource, name: "govuk-docker")),
-             merged_at: (Date.today - 1).to_time,
+             merged_at: target_date.to_time,
              draft: false)
     end
 
