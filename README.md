@@ -2,7 +2,19 @@
 
 ## What is it?
 
-This is a Slack bot that publishes a team's pull requests, Dependabot and Renovate updates, security alerts, and inspirational quotes to their Slack Channel.
+This Slack bot automates reporting and consistency checks across the team’s repositories. It provides visibility into code health, dependency management and gem release status by automatically posting key insights to engineering teams' channels.
+
+Features:
+
+- Pull Request updates: posts a summary of open pull requests across the team's repositories.
+- Dependency monitoring: reports on Dependabot and Renovate updates to keep dependencies current and secure.
+- Security insights: highlights Code Scanning and Dependabot security alerts to help identify and resolve vulnerabilities early.
+- CI health checks: verifies that CI pipelines include the required security scan configurations and alerts the team on issues.
+- Gem release tracking: detects unreleased changes in the team’s Ruby gem repositories.
+- Motivational quotes: shares inspirational quotes in Slack channels to keep spirits high.
+
+- Repository tag audit: includes a script that checks all repositories listed in the Developer Docs are tagged with the `govuk` topic for governance and consistency.
+
 
 ![image](https://github.com/alphagov/seal/blob/main/images/readme/informative.png)
 ![image](https://github.com/alphagov/seal/blob/main/images/readme/angry.png)
