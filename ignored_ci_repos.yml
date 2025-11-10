@@ -12,3 +12,4 @@
 - govuk-toolbox-image          # No container scanning
 - govuk-user-reviewer          # Private repo (contains PII)
 - router
+- search-api-v2-dataform       # Used to define SQL scripts for use in GCP
