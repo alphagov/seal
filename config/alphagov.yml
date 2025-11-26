@@ -195,6 +195,7 @@ govuk-forms:
     - forms-runner
     - forms-product-page
     - govuk-forms-markdown
+    - forms-deploy
   security_alerts: false
 
 govuk-green-team:
