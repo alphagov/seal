@@ -42,7 +42,7 @@ ai-govuk:
     - Friday
 
 govuk-publishing-content-modelling-dev:
-  channel: '#govuk-publishing-content-modelling-dev'
+  channel: '#govuk-publishing-content-modelling-automations'
   compact: true
   <<: *common_properties
   dependapanda: true
