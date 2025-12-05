@@ -168,7 +168,7 @@ fun-workstream-govuk:
     - Friday
 
 govuk-datagovuk:
-  channel: '#govuk-datagovuk'
+  channel: '#datagovuk-technical'
   <<: *common_properties
   dependapanda: true
   seal_prs: true
