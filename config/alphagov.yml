@@ -337,6 +337,12 @@ govwifi:
     - govwifi-user-signup-api
     - govwifi-watchdog
 
+insights-and-analytics-alerts:
+  channel: '#insights-and-analytics-alerts'
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+
 proj-early-talent-assigned-learning:
   channel: '#proj-early-talent-assigned-learning'
   <<: *common_properties
