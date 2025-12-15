@@ -41,20 +41,6 @@ ai-govuk:
     - Monday
     - Friday
 
-govuk-publishing-content-modelling-dev:
-  channel: '#govuk-publishing-content-modelling-automations'
-  compact: true
-  <<: *common_properties
-  dependapanda: true
-  seal_prs: true
-
-govuk-patterns-and-pages:
-  channel: '#govuk-patterns-and-pages'
-  compact: true
-  <<: *common_properties
-  dependapanda: true
-  seal_prs: true
-
 data-engineering:
   channel: '#data-engineering'
   <<: *common_properties
@@ -183,6 +169,7 @@ govuk-developers:
     - Wednesday
   quotes:
     - "Have you learnt something new this week? Or would you like to improve your presentation skills on a friendly bunch of devs? Why not add a talk to the next Tech Fortnightly <https://docs.google.com/document/d/1X-AberK3K4XzXxY6N4zzKZJY5t-bXfi5YX4SAcLpYtk|agenda>."
+
 govuk-forms:
   channel: '#govuk-forms-tech'
   compact: true
@@ -209,6 +196,26 @@ govuk-green-team:
     - "Remember to fill out the <https://docs.google.com/spreadsheets/d/1MV7ASHzDj_FWxix2tCo_EpuBmK0uvuYPnwjijjGIp00/edit#gid=0|spreadsheet> if you're going into the office soon so your teammates can look out for you. :office:"
     - 'Remember to add <https://docs.google.com/document/d/14L5FbIxpTEcjTXgA2deTAupr4y8n3JcIJixNSH5Czz0/edit|QOTDs> to the pinned list when you think of them'
     - "Remember to <https://forms.gle/DdzRiptNuYQqA1Xn9|let me know> if there’s anything else I can help with or if you have any feedback. :mega:"
+
+govuk-navigation-tech:
+  channel: '#govuk-navigation-tech'
+  compact: true
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+  morning_seal_quotes: true
+  quotes:
+    - Be Excellent To Each Other!
+    - Don't be working if you're ill!
+    - Is your work waiting to be reviewed? Make sure to ask someone.
+    - Did you learn something cool recently? Share it with your fellow devs!
+
+govuk-patterns-and-pages:
+  channel: '#govuk-patterns-and-pages'
+  compact: true
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
 
 govuk-pay:
   channel: '#govuk-pay-tech'
@@ -270,15 +277,8 @@ govuk-publishing-components:
   dependapanda: true
   seal_prs: true
 
-govuk-search:
-  channel: '#govuk-search'
-  compact: true
-  <<: *common_properties
-  dependapanda: true
-  seal_prs: true
-
-govuk-whitehall-experience-tech:
-  channel: '#govuk-whitehall-experience-tech'
+govuk-publishing-content-modelling-dev:
+  channel: '#govuk-publishing-content-modelling-automations'
   compact: true
   <<: *common_properties
   dependapanda: true
@@ -293,6 +293,20 @@ govuk-publishing-mainstream-experience-tech:
 
 govuk-publishing-platform:
   channel: '#govuk-publishing-platform-system-alerts'
+  compact: true
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+
+govuk-search:
+  channel: '#govuk-search'
+  compact: true
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+
+govuk-whitehall-experience-tech:
+  channel: '#govuk-whitehall-experience-tech'
   compact: true
   <<: *common_properties
   dependapanda: true
@@ -327,19 +341,6 @@ govwifi:
     - govwifi-terraform
     - govwifi-user-signup-api
     - govwifi-watchdog
-
-govuk-navigation-tech:
-  channel: '#govuk-navigation-tech'
-  compact: true
-  <<: *common_properties
-  dependapanda: true
-  seal_prs: true
-  morning_seal_quotes: true
-  quotes:
-    - Be Excellent To Each Other!
-    - Don't be working if you're ill!
-    - Is your work waiting to be reviewed? Make sure to ask someone.
-    - Did you learn something cool recently? Share it with your fellow devs!
 
 proj-early-talent-assigned-learning:
   channel: '#proj-early-talent-assigned-learning'
