@@ -41,11 +41,6 @@ ai-govuk:
     - Monday
     - Friday
 
-data-engineering:
-  channel: '#data-engineering'
-  <<: *common_properties
-  dependapanda: true
-
 di-authentication:
   channel: '#di-authentication-notifications'
   <<: *common_properties
