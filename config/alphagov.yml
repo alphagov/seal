@@ -205,8 +205,8 @@ govuk-navigation-tech:
     - Is your work waiting to be reviewed? Make sure to ask someone.
     - Did you learn something cool recently? Share it with your fellow devs!
 
-govuk-patterns-and-pages:
-  channel: '#govuk-patterns-and-pages'
+govuk-patterns-and-pages-tech:
+  channel: '#govuk-patterns-and-pages-tech'
   compact: true
   <<: *common_properties
   dependapanda: true
