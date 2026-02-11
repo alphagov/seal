@@ -41,6 +41,19 @@ ai-govuk:
     - Monday
     - Friday
 
+datagovuk:
+  channel: '#datagovuk-technical'
+  <<: *common_properties
+  dependapanda: true
+  seal_prs: true
+  repos:
+    - govuk-dgu-charts
+    - ckan-mock-harvest-sources
+    - ckanext-datagovuk
+    - ckanext-spatial
+    - datagovuk-tech-docs
+    - datagovuk_find
+
 di-authentication:
   channel: '#di-authentication-notifications'
   <<: *common_properties
@@ -147,12 +160,6 @@ fun-workstream-govuk:
     - Monday
     - Wednesday
     - Friday
-
-govuk-datagovuk:
-  channel: '#datagovuk-technical'
-  <<: *common_properties
-  dependapanda: true
-  seal_prs: true
 
 govuk-developers:
   channel: '#govuk-developers'
