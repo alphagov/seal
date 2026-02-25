@@ -301,7 +301,7 @@ govuk-publishing-platform:
   seal_prs: true
 
 govuk-search:
-  channel: '#govuk-search'
+  channel: '#govuk-search-tech'
   compact: true
   <<: *common_properties
   dependapanda: true
