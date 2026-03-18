@@ -27,7 +27,32 @@ Add your team's configuration to [config/alphagov.yml](https://github.com/alphag
 
 ### GOV.UK teams
 
-Include your team's name and the Slack channel you want to post to. These *must match the team name and Slack channel* specified in the [Developer Docs](https://docs.publishing.service.gov.uk/repos.html#repos-by-team). Do not add a list of repos, they will be pulled from the developer docs automatically. Private repos are not currently supported.
+Include your team's name and the Slack channel you want to post to. For example:
+
+```yaml
+govuk-my-team-name-slack-channel:
+  channel: '#govuk-my-team-name-slack-channel'
+  compact: true
+  <<: *common_properties
+```
+
+The name of the team and the Slack channel  *must match the team name and Slack channel* specified in the 
+[Developer Docs](https://docs.publishing.service.gov.uk/repos.html#repos-by-team).
+
+If you want to post to a different channel than your team's main Slack channel (for example, an automations channel), 
+you can specify a different channel like so:
+
+```yaml
+govuk-my-team-name-slack-channel:
+  channel: '#govuk-my-team-name-automations-channel'
+  compact: true
+  <<: *common_properties
+```
+
+If you do this, then you must ensure that additional channel is set as the `alerts_team` for each repo in the Developer 
+Docs [repos.yml](https://github.com/alphagov/govuk-developer-docs/blob/main/data/repos.yml).
+
+Do not add a list of repos, they will be pulled from the developer docs automatically. Private repos are not currently supported.
 
 > The [Developer docs repos.json](https://docs.publishing.service.gov.uk/repos.json) is now the single source of truth for information about GOV.UK repositories and which team is responsible for them.
 
