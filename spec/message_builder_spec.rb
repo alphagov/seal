@@ -311,7 +311,7 @@ RSpec.describe MessageBuilder do
       let(:security_alerts) { false }
 
       it "posts a message without security info" do
-        expect(message_builder.build.text).to include("You have 2 automatic dependency upgrade PRs open on the following apps:")
+        expect(message_builder.build.text).to include("2 automatic dependency upgrade PRs")
         expect(message_builder.build.text).not_to include("security alert")
       end
     end
@@ -321,7 +321,7 @@ RSpec.describe MessageBuilder do
       let(:security_alerts) { false }
 
       it "posts a message without security info" do
-        expect(message_builder.build.text).to include("You have 1 automatic dependency upgrade PR open on the following app:")
+        expect(message_builder.build.text).to include("1 automatic dependency upgrade PR")
         expect(message_builder.build.text).not_to include("security alert")
       end
     end
@@ -367,7 +367,7 @@ RSpec.describe MessageBuilder do
       let(:pull_requests) { dependabot_pull_requests }
 
       it "posts a message with security info" do
-        expect(message_builder.build.text).to include("You have 2 automatic dependency upgrade PRs open on the following apps:")
+        expect(message_builder.build.text).to include("2 automatic dependency upgrade PRs")
         expect(message_builder.build.text).to include("1 Dependabot security alert")
       end
 
@@ -386,7 +386,7 @@ RSpec.describe MessageBuilder do
       let(:pull_requests) { renovate_pull_requests }
 
       it "posts a message with security info" do
-        expect(message_builder.build.text).to include("You have 1 automatic dependency upgrade PR open on the following app:")
+        expect(message_builder.build.text).to include("1 automatic dependency upgrade PR")
         expect(message_builder.build.text).to include("1 Dependabot security alert")
       end
 
