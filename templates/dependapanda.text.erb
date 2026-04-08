@@ -1,7 +1,7 @@
 <% if @all_prs_count == 1 -%>
-You have 1 automatic dependency upgrade PR open on the following app:
+You have <<%= @all_prs_link %>|1 automatic dependency upgrade PR> open on the following app:
 <% elsif @all_prs_count > 1 -%>
-You have <%= @all_prs_count %> automatic dependency upgrade PRs open on the following apps:
+You have <<%= @all_prs_link %>|<%= @all_prs_count %> automatic dependency upgrade PRs> open on the following apps:
 <% end -%>
 
 <% @repos.each do |repo| -%>

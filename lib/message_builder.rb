@@ -135,6 +135,7 @@ private
     @repos = panda_presenter
 
     @all_prs_count = @repos.sum { |repo| repo[:pr_count] }
+    @all_prs_link = "https://github.com/search?q=is:pr+is:open+label:dependencies+#{@team.repos.map { "repo:alphagov/#{it}" }.join('+')}"
 
     if @team.security_alerts
       @dependabot_alerts_count = github_fetcher.security_alerts_count
