@@ -53,6 +53,7 @@ datagovuk:
     - ckanext-spatial
     - datagovuk-tech-docs
     - datagovuk_find
+    - datagovuk
 
 di-authentication:
   channel: '#di-authentication-notifications'
