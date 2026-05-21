@@ -1,4 +1,3 @@
-require "pathname"
 require_relative "gem_version_checker"
 require_relative "github_fetcher"
 require_relative "message"
