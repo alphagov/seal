@@ -9,6 +9,7 @@
 - govuk-pact-broker            # No container scanning
 - govuk-replatform-test-app
 - govuk-rota-announcer         # Private repo (contains PII)
+- govuk-rota-generator         # Private repo (contains PII)
 - govuk-toolbox-image          # No container scanning
 - govuk-user-reviewer          # Private repo (contains PII)
 - router
