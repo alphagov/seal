@@ -280,8 +280,8 @@ govuk-publishing-components:
   dependapanda: true
   seal_prs: true
 
-govuk-publishing-content-modelling-dev:
-  channel: '#govuk-publishing-content-modelling-automations'
+govuk-publishing-content-reuse-dev:
+  channel: '#govuk-publishing-content-reuse-automations'
   compact: true
   <<: *common_properties
   dependapanda: true
