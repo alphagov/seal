@@ -28,7 +28,6 @@ GEM
       bigdecimal
       rexml
     diff-lcs (1.6.2)
-    docile (1.4.1)
     drb (2.2.3)
     fakefs (3.2.1)
     faraday (2.14.3)
@@ -139,12 +138,7 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     securerandom (0.4.1)
-    simplecov (0.22.0)
-      docile (~> 1.1)
-      simplecov-html (~> 0.11)
-      simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.13.2)
-    simplecov_json_formatter (0.1.4)
+    simplecov (1.0.1)
     slack-poster (2.2.2)
       faraday (>= 1.0.0)
     timecop (0.9.11)
