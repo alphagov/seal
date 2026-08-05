@@ -171,7 +171,7 @@ govuk-developers:
   quotes_days:
     - Wednesday
   quotes:
-    - "Have you learnt something new this week? Or would you like to improve your presentation skills on a friendly bunch of devs? Why not add a talk to the next Tech Fortnightly <https://docs.google.com/document/d/1X-AberK3K4XzXxY6N4zzKZJY5t-bXfi5YX4SAcLpYtk|agenda>."
+    - "Have you learnt something new this week? Or would you like to improve your presentation skills on a friendly bunch of devs? Why not add a talk to the next Tech Fortnightly <https://beisgov.sharepoint.com/:w:/r/sites/GOVUKTechnologyCommunity-TechnologyCommunity/_layouts/15/Doc.aspx?sourcedoc=%7B4DA57498-9662-42E6-9DC2-DB5FAE34BC81%7D|agenda>."
 
 govuk-forms:
   channel: '#govuk-forms-tech'
