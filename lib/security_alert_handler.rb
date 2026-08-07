@@ -29,6 +29,9 @@ private
     @repos.each do |repo|
       response = @github.get("https://api.github.com/repos/#{@organisation}/#{repo}/dependabot/alerts", accept: "application/vnd.github+json", state: "open")
       alerts.concat(response.map { |alert| parse_security_alert(alert, repo) })
+    rescue Octokit::NotFound
+      puts "Repo #{repo} does not have Dependabot enabled"
+      next
     rescue StandardError => e
       @github_api_errors += 1
       puts "Error fetching security alerts for repo #{repo}: #{e.message}"
