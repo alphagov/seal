@@ -98,6 +98,62 @@ RSpec.describe SecurityAlertHandler do
       end
     end
 
+    context "when one of the repositories does not have Dependabot enabled and the rest do" do
+      before do
+        allow(github).to receive(:get).with(
+          "https://api.github.com/repos/test-org/#{repos[0]}/dependabot/alerts",
+          accept: "application/vnd.github+json",
+          state: "open",
+        ).and_raise(Octokit::NotFound)
+
+        allow(github).to receive(:get).with(
+          "https://api.github.com/repos/test-org/#{repos[1]}/dependabot/alerts",
+          accept: "application/vnd.github+json",
+          state: "open",
+        ).and_return(api_response)
+      end
+
+      it "does not count dependabot being enabled as an error" do
+        handler = SecurityAlertHandler.new(github, organisation, repos)
+        expect(handler.security_alerts_count).to eq(1)
+        expect(handler.github_api_errors).to eq(0)
+      end
+    end
+
+    context "when the API errors for one repo, one does not have dependabot configured, and a third repo does" do
+      let(:repos) { %w[repo1 repo2 repo3] }
+
+      before do
+        allow(github).to receive(:get).with(
+          "https://api.github.com/repos/test-org/#{repos[0]}/dependabot/alerts",
+          accept: "application/vnd.github+json",
+          state: "open",
+        ).and_raise(Octokit::NotFound)
+
+        allow(github).to receive(:get).with(
+          "https://api.github.com/repos/test-org/#{repos[1]}/dependabot/alerts",
+          accept: "application/vnd.github+json",
+          state: "open",
+        ).and_return(api_response)
+
+        allow(github).to receive(:get).with(
+          "https://api.github.com/repos/test-org/#{repos[2]}/dependabot/alerts",
+          accept: "application/vnd.github+json",
+          state: "open",
+        ).and_raise(StandardError.new("API error"))
+      end
+
+      it "has one security alert" do
+        handler = SecurityAlertHandler.new(github, organisation, repos)
+        expect(handler.security_alerts_count).to eq(1)
+      end
+
+      it "has one api error" do
+        handler = SecurityAlertHandler.new(github, organisation, repos)
+        expect(handler.github_api_errors).to eq(1)
+      end
+    end
+
     it "returns the total number of security alerts" do
       expect(handler.security_alerts_count).to eq(2)
     end
