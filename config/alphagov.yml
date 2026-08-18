@@ -26,7 +26,7 @@ common_properties: &common_properties
     - Friday
 
 ai-govuk:
-  channel: '#dev-notifications-ai-govuk'
+  channel: '#ai-govuk-chat-devs'
   compact: true
   <<: *common_properties
   dependapanda: true
