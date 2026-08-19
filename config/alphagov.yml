@@ -51,8 +51,8 @@ datagovuk:
     - ckanext-datagovuk
     - ckanext-spatial
     - datagovuk-tech-docs
-    - datagovuk_find
     - datagovuk
+    - datagovuk-infrastructure
 
 di-authentication:
   channel: '#di-authentication-notifications'
