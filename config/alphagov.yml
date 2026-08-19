@@ -45,7 +45,6 @@ datagovuk:
   channel: '#datagovuk-technical'
   <<: *common_properties
   dependapanda: true
-  seal_prs: true
   repos:
     - govuk-dgu-charts
     - ckan-mock-harvest-sources
