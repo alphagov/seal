@@ -273,7 +273,7 @@ govuk-platform-engineering:
   dependapanda: true
   seal_prs: true
 
-govuk-publishing-components:
+govuk-ruby-frontenders:
   channel: '#govuk-publishing-components'
   <<: *common_properties
   dependapanda: true
