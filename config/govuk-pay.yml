@@ -1,0 +1,47 @@
+govuk-pay:
+  channel: '#govuk-pay-tech'
+  seal_prs: true
+  exclude_titles:
+    - DO NOT MERGE
+    - '[DRAFT]'
+    - WIP
+  repos:
+    - cron-resource
+    - gds-apple-developer-account-governance
+    - paas-grafana-annotation-resource
+    - pay-adot
+    - pay-adminusers
+    - pay-api-docs-generator
+    - pay-architecture
+    - pay-aws-compliance
+    - pay-cardid
+    - pay-ci
+    - pay-code-analysis-config
+    - pay-connector
+    - pay-frontend
+    - pay-java-commons
+    - pay-java-lambdas
+    - pay-js-commons
+    - pay-js-metrics
+    - pay-ledger
+    - pay-logging-firehose-transformation
+    - pay-logging-s3-to-firehose-delivery
+    - pay-nginx-proxy
+    - pay-notifications
+    - pay-performance-reporter
+    - pay-product-page
+    - pay-products
+    - pay-products-ui
+    - pay-publicapi
+    - pay-publicauth
+    - pay-run-amock
+    - pay-selfservice
+    - pay-set-up-pre-commit
+    - pay-smoke-tests
+    - pay-stream-s3-sqs
+    - pay-tech-docs
+    - pay-toolbox
+    - pay-webhooks
+    - pkl-concourse-pipeline
+    - pool-resource
+
