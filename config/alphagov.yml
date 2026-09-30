@@ -161,6 +161,23 @@ fun-workstream-govuk:
     - Wednesday
     - Friday
 
+govuk-design-system:
+  channel: '#design-system-dev'
+  <<: *common_properties
+  dependapanda: true
+  repos:
+  - accessible-autocomplete
+  - design-system-custom-wpt-metrics
+  - design-system-team-labels
+  - govuk-design-system
+  - govuk-frontend
+  - govuk-frontend-docs
+  - govuk-prototype-kit
+  - govuk-prototype-kit-common-templates
+  - govuk-prototype-kit-docs
+  - govuk-prototype-kit-step-by-step
+  - stylelint-config-gds
+
 govuk-developers:
   channel: '#govuk-developers'
   <<: *common_properties
