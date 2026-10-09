@@ -284,6 +284,81 @@ govuk-whitehall-experience-tech:
   dependapanda: true
   seal_prs: true
 
+govuk-whitehall-experience-team:
+  channel: '#govuk-whitehall-experience-team'
+  morning_seal_quotes: true
+  quotes:
+    - We are open, transparent and honest with each other.
+    - We treat each other with respect and kindness.
+    - We trust each other.
+    - We value inclusivity and diverse perspectives.
+    - We stay curious and learn from one another.
+    - We leave code and systems in a better state than we found them.
+    - We care about users and the experience of publishers.
+    - We pair and learn from each other.
+    - We share what we learn and write it down.
+    - We work in the open and communicate regularly so things don't become siloed.
+    - We flag blockers, concerns and assumptions early.
+    - It's safe to ask for help. There are no stupid questions.
+    - We listen to each other and give everyone room to speak.
+    - We keep a blameless culture.
+    - We use user research and data to inform our decisions.
+    - We help each other get work over the line through reviews, pairing and offers of support.
+    - We prefer small, iterative releases over big ones.
+    - We reduce complexity in our code, our processes and our user experience.
+    - We plan and celebrate our milestones.
+    - We make time for fun and team connection.
+    - We make a habit of short kick-offs for cards, especially during sit-downs.
+    - We surface complexity and assumptions early to avoid rabbit holes later.
+    - We share our work and discuss progress in sit-downs.
+    - We kick off work well, especially when it crosses teams.
+    - We use dedicated Slack channels for bigger pieces of work where it helps.
+    - We make planning multidisciplinary.
+    - We bring every discipline into planning early, especially for UCD-like tickets.
+    - We make data a normal part of our work.
+    - We plan user research at intervals that make sense for the work.
+    - We make time and space to celebrate recent successes and recognise good work.
+    - We're clear about where things are documented, whether that's Confluence, GitHub or SharePoint.
+    - We use team changes as opportunities for ownership and leadership.
+    - We generate user-centred hypotheses together as a whole team.
+    - We create a welcoming atmosphere where there are no stupid questions.
+    - We work effectively across multiple teams.
+    - We adopt AI more widely and make the best use of AI tools.
+    - We work to understand and document the complexity of Whitehall.
+    - We untangle complexity in our products, code and processes.
+    - We focus our limited capacity on the highest priority work.
+    - We deliver meaningful benefits to the users of our applications.
+    - We protect against knowledge loss when team members leave.
+    - We fill the knowledge and experience gaps left by people who have moved on.
+    - We build enough understanding of the Whitehall codebase to make useful AI recommendations.
+    - We maintain multidisciplinary collaboration and shared product knowledge.
+    - We split stories and refine tickets well.
+    - We're disciplined about running kick-offs for cards during sit-downs.
+    - We use meetings wisely and prioritise which ones to attend.
+    - We make sure diverse voices and room to speak exist in practice, not just in intent.
+    - We keep a regular user research voice to spot missed opportunities.
+    - It's ok to be open and vulnerable when you don't understand something.
+    - Ask the question others may also be wondering about.
+    - Help keep our team psychologically safe.
+    - Be generous with your time and check in on a colleague today.
+    - Offer to pair with or support a teammate.
+    - Share your work in a different format to suit different communication styles.
+    - Get to know a teammate you don't usually work with.
+    - Spend time on planning and bring in UCD input.
+    - Learn something new about Whitehall or the publishing systems around it.
+    - Share something you know with the rest of the team.
+    - Help drive a piece of work through to completion.
+    - Help the team work on few enough things to leave room for learning, pairing and collaboration.
+    - Try something that brings AI into how we work.
+    - Help make our kick-offs truly multidisciplinary.
+    - Take ownership of a task and be proactive about pairing.
+  quotes_days:
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+
 govwifi:
   channel: '#govwifi-monitoring'
   seal_prs: true
