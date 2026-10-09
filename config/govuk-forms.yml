@@ -1,0 +1,15 @@
+govuk-forms:
+  channel: '#govuk-forms-tech'
+  dependapanda: true
+  seal_prs: true
+  exclude_titles:
+    - DO NOT MERGE
+    - '[DRAFT]'
+    - WIP
+  repos:
+    - forms-admin
+    - forms-e2e-tests
+    - forms-runner
+    - forms-product-page
+    - govuk-forms-markdown
+    - forms-deploy
