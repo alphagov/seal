@@ -189,21 +189,6 @@ govuk-developers:
   quotes:
     - "Have you learnt something new this week? Or would you like to improve your presentation skills on a friendly bunch of devs? Why not add a talk to the next Tech Fortnightly <https://beisgov.sharepoint.com/:w:/r/sites/GOVUKTechnologyCommunity-TechnologyCommunity/_layouts/15/Doc.aspx?sourcedoc=%7B4DA57498-9662-42E6-9DC2-DB5FAE34BC81%7D|agenda>."
 
-govuk-forms:
-  channel: '#govuk-forms-tech'
-  compact: true
-  <<: *common_properties
-  dependapanda: true
-  seal_prs: true
-  repos:
-    - forms-admin
-    - forms-e2e-tests
-    - forms-runner
-    - forms-product-page
-    - govuk-forms-markdown
-    - forms-deploy
-  security_alerts: false
-
 govuk-green-team:
   channel: '#govuk-green-team'
   morning_seal_quotes: true
