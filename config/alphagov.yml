@@ -166,6 +166,7 @@ govuk-design-system:
   <<: *common_properties
   dependapanda: true
   repos:
+  - govuk-country-and-territory-autocomplete
   - accessible-autocomplete
   - design-system-custom-wpt-metrics
   - design-system-team-labels
