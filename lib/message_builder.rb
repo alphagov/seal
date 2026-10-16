@@ -10,6 +10,7 @@ class MessageBuilder
   def initialize(team, mode)
     @team = team
     @mode = mode
+    @organisation = ENV["SEAL_ORGANISATION"]
   end
 
   def build
@@ -134,13 +135,13 @@ private
     @repos = panda_presenter
 
     @all_prs_count = @repos.sum { |repo| repo[:pr_count] }
-    @all_prs_link = "https://github.com/search?q=is:pr+is:open+label:dependencies+#{@team.repos.map { "repo:alphagov/#{it}" }.join('+')}"
+    @all_prs_link = "https://github.com/search?q=is:pr+is:open+label:dependencies+#{@team.repos.map { "repo:#{@organisation}/#{it}" }.join('+')}"
 
     if @team.security_alerts
       @dependabot_alerts_count = github_fetcher.security_alerts_count
-      @dependabot_alerts_link = "https://github.com/orgs/alphagov/security/alerts/dependabot?q=is:open+repo:#{@team.repos.join(',')}"
+      @dependabot_alerts_link = "https://github.com/orgs/#{@organisation}/security/alerts/dependabot?q=is:open+repo:#{@team.repos.join(',')}"
       @code_scanning_alerts_count = github_fetcher.code_scanning_alerts_count
-      @code_scanning_alerts_link = "https://github.com/orgs/alphagov/security/alerts/code-scanning?query=is:open+repo:#{@team.repos.join(',')}"
+      @code_scanning_alerts_link = "https://github.com/orgs/#{@organisation}/security/alerts/code-scanning?query=is:open+repo:#{@team.repos.join(',')}"
       @github_api_errors = github_fetcher.github_api_errors
 
       security_prs = @repos.flat_map { |repo| repo[:security_prs] }
@@ -247,7 +248,7 @@ private
 
       {
         repo_name:,
-        repo_url: "https://github.com/alphagov/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
+        repo_url: "https://github.com/#{@organisation}/#{repo_name}/pulls?q=is:pr+is:open+label:dependencies",
         pr_count: prs_for_app.count,
         oldest_pr: age_in_days(oldest_pr),
         newest_pr: age_in_days(newest_pr),
