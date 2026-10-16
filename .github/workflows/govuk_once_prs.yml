@@ -1,0 +1,43 @@
+name: "Seal PRs (govuk-once)"
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron:  '30 7 * * 1-5' # Runs at 7:30 UTC, Monday through Friday.
+
+env:
+  SEAL_ORGANISATION: govuk-once
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+jobs:
+  morning-seal:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          bundler-cache: true
+
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.GOVUK_ONCE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.GOVUK_ONCE_APP_PRIVATE_KEY }}
+          owner: govuk-once
+
+      - name: Seal PRs
+        id: seal_prs
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: ./bin/seal_runner.rb seal_prs
+
+      - if: ${{ failure() }}
+        uses: alphagov/govuk-infrastructure/.github/actions/report-run-failure@main
+        with:
+          slack_webhook_url: ${{ secrets.GOVUK_SLACK_WEBHOOK_URL }}
+          channel: govuk-platform-support
+          message: "Seal PRs (govuk-once) workflow failed"

@@ -1,0 +1,11 @@
+ai-govuk-chat-devs:
+  channel: '#ai-govuk-chat-devs'
+  compact: true
+  seal_prs: true
+  use_labels: true
+  exclude_titles:
+    - DO NOT MERGE
+  repos:
+    - govuk-chat-v2
+    - govuk-chat-v2-experiments
+    - govuk-chat-v2-private
