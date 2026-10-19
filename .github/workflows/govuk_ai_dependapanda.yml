@@ -1,0 +1,34 @@
+name: "GOV.UK AI Dependapanda (govuk-once)"
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    - cron:  '00 9 * * 1-5' # Runs at 9:00 UTC, Monday through Friday.
+
+env:
+  SEAL_ORGANISATION: govuk-once
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+jobs:
+  dependapanda:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          bundler-cache: true
+
+      - name: Dependapanda
+        id: dependapanda
+        run: ./bin/seal_runner.rb dependapanda
+
+      - if: ${{ failure() }}
+        uses: alphagov/govuk-infrastructure/.github/actions/report-run-failure@main
+        with:
+          slack_webhook_url: ${{ secrets.GOVUK_SLACK_WEBHOOK_URL }}
+          channel: govuk-platform-support
+          message: "GOV.UK AI Dependapanda (govuk-once) workflow failed"

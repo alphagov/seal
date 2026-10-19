@@ -2,6 +2,7 @@ ai-govuk-chat-devs:
   channel: '#ai-govuk-chat-devs'
   compact: true
   seal_prs: true
+  dependapanda: true
   use_labels: true
   exclude_labels:
     - WIP
