@@ -3,7 +3,8 @@ name: "Afternoon Seal Quotes"
 on:
   workflow_dispatch: {}
   schedule:
-    - cron:  '00 12 * * 1-5' # Runs at 12:00 UTC, Monday through Friday.
+    - cron: '00 13 * * 1-5' # Runs at 13:00 PM, Monday through Friday.
+    - timezone: "Europe/London"
 
 env:
   SEAL_ORGANISATION: alphagov
