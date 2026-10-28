@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
   schedule:
     - cron: '00 14 * * 3' # Runs at 14:00 AM, Every Wednesday.
-    - timezone: "Europe/London"
+      timezone: "Europe/London"
 
 env:
   SEAL_ORGANISATION: alphagov
