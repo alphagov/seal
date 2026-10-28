@@ -169,7 +169,6 @@ RSpec.describe GithubFetcher do
 
   before do
     allow(Octokit::Client).to receive(:new).and_return(fake_octokit_client)
-    allow(fake_octokit_client).to receive_message_chain("user.login")
     allow(fake_octokit_client).to receive(:auto_paginate=).with(false)
 
     allow(fake_octokit_client).to receive(:pull_requests).with(
