@@ -398,6 +398,23 @@ RSpec.describe MessageBuilder do
       end
     end
 
+    context "when the organisation is not alphagov" do
+      let(:security_alerts) { true }
+      let(:security_alerts_count) { 1 }
+      let(:code_scanning_alerts_count) { 1 }
+      let(:pull_requests) { dependabot_pull_requests }
+
+      it "links to that organisation's repos and alerts" do
+        allow(ENV).to receive(:fetch).with("SEAL_ORGANISATION").and_return("govuk-once")
+        expect(message_builder.build.text).to include(
+          "repo:govuk-once/repo1",
+          "https://github.com/govuk-once/whitehall/pulls",
+          "https://github.com/orgs/govuk-once/security/alerts/dependabot",
+          "https://github.com/orgs/govuk-once/security/alerts/code-scanning",
+        )
+      end
+    end
+
     context "when Dependabot PRs were merged yesterday" do
       let(:pull_requests) { dependabot_pull_requests }
 
