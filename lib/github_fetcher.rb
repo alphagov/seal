@@ -8,7 +8,6 @@ class GithubFetcher
     @github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
     @github.api_endpoint = ENV["GITHUB_API_ENDPOINT"] if ENV["GITHUB_API_ENDPOINT"]
     @github.auto_paginate = false
-    @github.user.login
     @use_labels = team.use_labels
     @exclude_labels = team.exclude_labels.map(&:downcase).uniq
     @exclude_titles = team.exclude_titles.map(&:downcase).uniq
