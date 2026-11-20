@@ -1,6 +1,5 @@
 require "spec_helper"
 require_relative "../lib/security_alert_handler"
-require "ostruct"
 
 RSpec.describe SecurityAlertHandler do
   let(:github) { double("Github") }
